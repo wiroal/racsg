@@ -1,340 +1,605 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>62ª RAC - Informe Área 3 Bogotá</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --navy:      #0a1a35;
-            --navy-mid:  #142850;
-            --gold:      #c5a059;
-            --gold-lt:   #e2c275;
-            --white:     #ffffff;
-            --cream:     #f8f9fa;
-            --text:      #2d3436;
-            --muted:     #636e72;
-            --accent:    #d63031;
-            --green:     #27ae60;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Informe 62ª RAC · AA Colombia 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:      #1a2456;
+    --navy-mid:  #2a3870;
+    --gold:      #c9a84c;
+    --gold-lt:   #e8c96d;
+    --white:     #f8f7f4;
+    --cream:     #f0ede6;
+    --text:      #1a1a2e;
+    --muted:     #6b7280;
+    --accent:    #e63946;
+    --green:     #2d6a4f;
+  }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html, body {
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Source Sans 3', sans-serif;
-            background: #050c1a;
-            color: var(--white);
-        }
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Source Sans 3', sans-serif;
+    background: #0d1226;
+    color: var(--white);
+  }
 
-        /* ══ TIMER BAR ══ */
-        #timer-bar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            height: 50px;
-            background: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 15px;
-            z-index: 200;
-            border-bottom: 2px solid var(--gold);
-        }
-        #timer-display {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            color: var(--gold-lt);
-            letter-spacing: 2px;
-            min-width: 64px;
-        }
-        #timer-display.warning { color: #fdcb6e; }
-        #timer-display.danger  { color: var(--accent); animation: pulse 1s infinite; }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  /* ══ TIMER BAR ══ */
+  #timer-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 50px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    z-index: 200;
+    border-bottom: 2px solid var(--gold);
+    gap: 8px;
+  }
+  #timer-display {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold-lt);
+    letter-spacing: 3px;
+    min-width: 64px;
+  }
+  #timer-display.warning { color: #ff9f43; }
+  #timer-display.danger  { color: var(--accent); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 
-        #slide-info { font-size: .75rem; color: #a0aec0; }
-        #timer-controls { display: flex; gap: 8px; }
-        .tbtn {
-            padding: 4px 10px;
-            border: 1px solid var(--gold);
-            background: transparent;
-            color: var(--gold);
-            border-radius: 4px;
-            cursor: pointer;
-        }
+  #slide-info { font-size: .7rem; color: var(--muted); letter-spacing: 1px; white-space: nowrap; }
+  #timer-controls { display: flex; gap: 5px; }
+  .tbtn {
+    padding: 5px 11px;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--gold);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: .78rem;
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tbtn:active { background: var(--gold); color: var(--navy); }
 
-        #progress-bar {
-            position: fixed;
-            top: 50px; left: 0;
-            height: 3px;
-            background: var(--gold);
-            transition: width .6s linear;
-            z-index: 199;
-        }
+  #progress-bar {
+    position: fixed;
+    top: 50px; left: 0;
+    height: 3px;
+    background: var(--gold);
+    transition: width .6s linear;
+    z-index: 199;
+  }
 
-        /* ══ VIEWPORT ══ */
-        #viewport {
-            position: fixed;
-            top: 50px; bottom: 60px;
-            left: 0; right: 0;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+  /* ══ VIEWPORT ══ */
+  #viewport {
+    position: fixed;
+    top: 53px;
+    bottom: 56px;
+    left: 0; right: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 
-        /* ══ SLIDES ══ */
-        .slide {
-            display: none;
-            background: var(--white);
-            color: var(--text);
-            min-height: 100%;
-            flex-direction: column;
-            animation: fadeIn 0.4s ease-out;
-        }
-        .slide.active { display: flex; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  /* ══ SLIDES ══ */
+  .slide {
+    display: none;
+    background: var(--white);
+    color: var(--text);
+    min-height: 100%;
+    flex-direction: column;
+    animation: fadeUp .3s ease;
+  }
+  .slide.active { display: flex; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-        .slide-header {
-            background: var(--navy);
-            padding: 20px;
-            flex-shrink: 0;
-        }
-        .slide-header::after {
-            content: ''; display: block; height: 3px;
-            background: var(--gold); width: 40px; margin-top: 10px;
-        }
-        .slide-tag  { font-size: .65rem; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; font-weight: 600; }
-        .slide-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-top: 5px; }
+  /* header */
+  .slide-header {
+    background: var(--navy);
+    padding: 15px 18px 13px;
+    flex-shrink: 0;
+  }
+  .slide-header::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-top: 11px;
+  }
+  .slide-tag  { font-size: .6rem; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+  .slide-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--white); line-height: 1.25; }
+  .slide-subtitle { font-size: .76rem; color: #a0aec0; margin-top: 3px; }
 
-        .slide-body { padding: 20px; display: flex; flex-direction: column; gap: 15px; flex: 1; }
+  /* body */
+  .slide-body {
+    padding: 15px 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    flex: 1;
+  }
 
-        .cover-header {
-            background: linear-gradient(rgba(10, 26, 53, 0.9), rgba(10, 26, 53, 0.9)), var(--navy);
-            padding: 40px 25px;
-            text-align: center;
-            border-bottom: 5px solid var(--gold);
-        }
-        .cover-badge {
-            display: inline-block;
-            border: 1px solid var(--gold); color: var(--gold);
-            font-size: .65rem; letter-spacing: 2px;
-            padding: 5px 15px; border-radius: 2px; margin-bottom: 15px;
-        }
-        .cover-header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; color: var(--white); line-height: 1.1;
-        }
-        .cover-lema { font-size: 0.9rem; color: var(--gold-lt); font-style: italic; margin-top: 15px; }
-        
-        .card {
-            background: var(--cream); border-radius: 4px;
-            padding: 15px; border-top: 3px solid var(--navy);
-        }
-        .hbox { background: var(--navy); color: var(--white); padding: 15px; border-radius: 4px; font-size: .85rem; border-left: 4px solid var(--gold); }
+  /* ══ PORTADA ══ */
+  .cover-header {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 55%, #3a4e9a 100%);
+    padding: 38px 22px 30px;
+    text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 13px;
+    position: relative; overflow: hidden;
+  }
+  .cover-header::before {
+    content: 'AA';
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 13rem; color: rgba(255,255,255,.03);
+    top: -30px; right: -20px; pointer-events: none; line-height: 1;
+  }
+  .cover-badge {
+    display: inline-block;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-size: .58rem; letter-spacing: 2.5px;
+    padding: 4px 12px; border-radius: 20px;
+  }
+  .cover-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem; color: var(--white); line-height: 1.2;
+  }
+  .cover-lema { font-size: .86rem; color: var(--gold-lt); font-style: italic; line-height: 1.55; max-width: 300px; }
+  .cover-meta {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: #ddd; flex-shrink: 0;
+  }
+  .meta-item { background: var(--cream); padding: 13px 10px; text-align: center; }
+  .meta-val  { font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--navy); font-weight: 700; line-height: 1; }
+  .meta-lbl  { font-size: .62rem; color: var(--muted); letter-spacing: 1.2px; text-transform: uppercase; margin-top: 3px; }
 
-        /* ══ NAVEGACIÓN ══ */
-        #nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: 60px; background: var(--navy);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 15px; border-top: 2px solid var(--gold);
-            z-index: 300;
-        }
-        .nav-btn {
-            background: transparent; border: 1px solid var(--gold);
-            color: var(--gold); padding: 8px 16px; border-radius: 4px;
-            font-size: .8rem; font-weight: 600; cursor: pointer;
-            text-decoration: none;
-        }
-        .nav-btn.primary { background: var(--gold); color: var(--navy); }
-        .nav-btn:disabled { opacity: 0.3; }
+  /* ══ CARDS ══ */
+  .card-grid      { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .card-grid.c1   { grid-template-columns: 1fr; }
+  .card-grid.c3   { grid-template-columns: 1fr; gap: 8px; }
+  @media (min-width: 440px) { .card-grid.c3 { grid-template-columns: 1fr 1fr; } }
 
-        #dots { display: flex; gap: 6px; }
-        .dot-btn { width: 8px; height: 8px; border-radius: 50%; background: rgba(197, 160, 89, 0.3); border: none; }
-        .dot-btn.active { background: var(--gold); transform: scale(1.3); }
+  .card {
+    background: var(--cream); border-radius: 7px;
+    padding: 11px 13px; border-left: 3px solid var(--navy);
+  }
+  .card.gold  { border-left-color: var(--gold); }
+  .card.green { border-left-color: var(--green); }
+  .card.red   { border-left-color: var(--accent); }
+  .card-lbl  { font-size: .6rem; letter-spacing: 1.8px; color: var(--muted); text-transform: uppercase; margin-bottom: 3px; }
+  .card-val  { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--navy); font-weight: 700; line-height: 1.2; }
+  .card-desc { font-size: .77rem; color: var(--text); margin-top: 4px; line-height: 1.45; }
 
-        /* Estilos específicos para los nuevos botones de recursos */
-        .btn-resource {
-            width: 100%; 
-            padding: 12px; 
-            margin-bottom: 8px;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: transform 0.2s;
-            text-decoration: none;
-        }
-        .btn-resource:active { transform: scale(0.98); }
-        .btn-pc { background: var(--gold); color: var(--navy); border: none; }
-        .btn-virtual { background: var(--white); color: var(--navy); border: 2px solid var(--navy); }
+  /* ══ QUÓRUM TABLE ══ */
+  .q-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+  .q-table th { background: var(--navy); color: var(--gold); padding: 8px 11px; text-align: left; font-family: 'Playfair Display', serif; }
+  .q-table td { padding: 7px 11px; border-bottom: 1px solid #e5e7eb; }
+  .q-table tr:last-child td { border-bottom: none; }
+  .q-table .tot td { font-weight: 700; background: var(--cream); border-top: 2px solid var(--navy); }
+  .n { text-align: right; font-family: 'Playfair Display', serif; font-size: .98rem; }
 
-        .closing-body { 
-            display: flex; flex-direction: column; align-items: center; 
-            justify-content: center; text-align: center; padding: 30px 20px; flex: 1;
-        }
-        .aa-circle {
-            width: 60px; height: 60px; border-radius: 50%;
-            background: var(--navy); border: 3px solid var(--gold);
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold);
-        }
-    </style>
+  /* ══ PERSONAS ══ */
+  .person-list { display: flex; flex-direction: column; gap: 8px; }
+  .person-item { display: flex; align-items: center; gap: 11px; background: var(--cream); border-radius: 7px; padding: 9px 13px; }
+  .avatar {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--navy); color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: .8rem; font-weight: 700; flex-shrink: 0;
+  }
+  .person-name { font-weight: 600; color: var(--navy); font-size: .86rem; line-height: 1.2; }
+  .person-role { font-size: .7rem; color: var(--muted); margin-top: 1px; }
+
+  /* ══ ITEM LIST ══ */
+  .item-list { display: flex; flex-direction: column; }
+  .item-row  { display: flex; align-items: flex-start; gap: 9px; padding: 8px 0; border-bottom: 1px solid #e5e7eb; }
+  .item-row:last-child { border-bottom: none; }
+  .dot   { width: 7px; height: 7px; border-radius: 50%; background: var(--navy); flex-shrink: 0; margin-top: 5px; }
+  .dot.g { background: var(--gold); }
+  .item-text { font-size: .82rem; line-height: 1.5; flex: 1; }
+  .badge { font-size: .6rem; padding: 2px 7px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; font-weight: 600; }
+  .ok   { background: #d1fae5; color: #065f46; }
+  .no   { background: #fee2e2; color: #991b1b; }
+  .pend { background: #fef3c7; color: #92400e; }
+
+  /* ══ HIGHLIGHT ══ */
+  .hbox { background: var(--navy); color: var(--white); border-radius: 8px; padding: 13px 15px; font-size: .82rem; line-height: 1.6; }
+  .hbox.gold-bg  { background: var(--gold); color: var(--navy); }
+  .hbox.cream-bg { background: var(--cream); color: var(--text); border-left: 4px solid var(--gold); }
+
+  /* section label */
+  .sec-lbl { font-size: .6rem; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; padding-bottom: 4px; border-bottom: 1px solid #e5e7eb; }
+
+  /* ══ TIMELINE ══ */
+  .timeline { display: flex; flex-direction: column; }
+  .tl-item  { display: flex; gap: 12px; position: relative; }
+  .tl-item:not(:last-child)::before {
+    content: ''; position: absolute;
+    left: 12px; top: 26px; bottom: 0; width: 2px; background: #e5e7eb;
+  }
+  .tl-dot {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--navy); border: 2px solid var(--gold);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center; z-index: 1;
+  }
+  .tl-inner  { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .tl-content { padding: 2px 0 16px; }
+  .tl-label  { font-size: .6rem; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; }
+  .tl-text   { font-size: .8rem; line-height: 1.5; color: var(--text); margin-top: 2px; }
+
+  /* ══ GRUPOS ACORDEÓN ══ */
+  .grupo-item { background: var(--cream); border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb; }
+  .grupo-trigger {
+    width: 100%; background: none; border: none;
+    padding: 11px 13px; text-align: left; cursor: pointer;
+    display: flex; align-items: center; gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .grupo-trigger:active { background: rgba(0,0,0,.05); }
+  .grupo-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--navy); color: var(--gold);
+    font-family: 'Playfair Display', serif; font-size: .85rem;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .grupo-q {
+    font-size: .82rem; font-weight: 600; color: var(--navy);
+    flex: 1; line-height: 1.35; text-align: left;
+  }
+  .grupo-arrow { font-size: .7rem; color: var(--gold); transition: transform .25s; flex-shrink: 0; }
+  .grupo-item.open .grupo-arrow { transform: rotate(180deg); }
+  .grupo-body  { display: none; padding: 0 13px 13px 51px; }
+  .grupo-item.open .grupo-body { display: block; }
+  .grupo-conclusion {
+    font-size: .8rem; line-height: 1.6; color: var(--text);
+    border-left: 3px solid var(--gold); padding-left: 10px;
+  }
+
+  /* ══ CLOSING ══ */
+  .closing-body {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 34px 22px; text-align: center; gap: 16px; flex: 1;
+  }
+  .aa-circle {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: var(--navy); border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--gold);
+  }
+  .closing-lema { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: var(--navy); line-height: 1.45; }
+
+  /* ══ NAV ══ */
+  #nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px; background: rgba(10,14,40,.97);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 10px; border-top: 1px solid rgba(201,168,76,.3);
+    z-index: 200; gap: 6px;
+  }
+  .nav-btn {
+    padding: 8px 15px; border: 1px solid var(--gold);
+    background: transparent; color: var(--gold);
+    border-radius: 6px; cursor: pointer;
+    font-family: inherit; font-size: .83rem;
+    -webkit-tap-highlight-color: transparent; white-space: nowrap;
+  }
+  .nav-btn:active { background: var(--gold); color: var(--navy); }
+  .nav-btn:disabled { opacity: .22; pointer-events: none; }
+  .nav-btn.primary { background: var(--gold); color: var(--navy); font-weight: 600; }
+
+  #dots { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; align-items: center; flex: 1; overflow: hidden; max-height: 36px; }
+  .dot-btn {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(201,168,76,.3); border: none;
+    cursor: pointer; padding: 0; transition: all .2s; flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .dot-btn.active { background: var(--gold); transform: scale(1.5); }
+</style>
 </head>
 <body>
 
 <div id="timer-bar">
-    <div id="timer-display">20:00</div>
-    <div id="slide-info">Diap. <span id="cur">1</span>/<span id="tot">6</span></div>
-    <div id="timer-controls">
-        <button class="tbtn" id="btnStart">▶</button>
-        <button class="tbtn" id="btnPause">⏸</button>
-        <button class="tbtn" id="btnReset">↺</button>
-    </div>
+  <div id="timer-display">20:00</div>
+  <div id="slide-info">Diap. <span id="cur">1</span>/<span id="tot">12</span></div>
+  <div id="timer-controls">
+    <button class="tbtn" id="btnStart">▶</button>
+    <button class="tbtn" id="btnPause">⏸</button>
+    <button class="tbtn" id="btnReset">↺</button>
+  </div>
 </div>
-<div id="progress-bar"></div>
+<div id="progress-bar" style="width:100%"></div>
 
 <div id="viewport">
 
-    <div class="slide active" id="s1">
-        <div class="cover-header">
-            <div class="cover-badge">AREA 3 BOGOTÁ</div>
-            <h1>62ª Reunión Anual de la Conferencia</h1>
-            <p class="cover-lema">"La Recuperación y la Práctica de las Tradiciones garantizan un mejor Servicio"</p>
-        </div>
-        <div class="slide-body">
-            <div class="card">
-                <div style="font-weight: 700; color: var(--navy);">Informe de Delegatura</div>
-                <div style="font-size: 0.85rem; margin-top: 5px; color: var(--muted);">Panel 62 - Bogotá, Colombia. 2026</div>
-            </div>
-            <div class="hbox">Desliza hacia la izquierda o usa los botones para navegar por el informe.</div>
-        </div>
-    </div>
-
-    <div class="slide" id="s2">
-        <div class="slide-header"><div class="slide-tag">Sesiones</div><div class="slide-title">Dinámica de Trabajo</div></div>
-        <div class="slide-body"><div class="card">Análisis de informes y propuestas nacionales para el fortalecimiento de la comunidad.</div></div>
-    </div>
-
-    <div class="slide" id="s3">
-        <div class="slide-header"><div class="slide-tag">Quórum</div><div class="slide-title">Representatividad</div></div>
-        <div class="slide-body"><div class="card">Participación de 43 Delegados de todo el país y servidores de la OSG.</div></div>
-    </div>
-
-    <div class="slide" id="s4">
-        <div class="slide-header"><div class="slide-tag">Plan Nacional</div><div class="slide-title">Unicidad de Propósito</div></div>
-        <div class="slide-body"><div class="card">Aprobación del plan de acción 2027-2030 enfocado en el mensaje fundamental.</div></div>
-    </div>
-
-    <div class="slide" id="s5">
-        <div class="slide-header"><div class="slide-tag">Compartimiento</div><div class="slide-title">Conclusiones</div></div>
-        <div class="slide-body"><div class="hbox">La unidad no es uniformidad; es trabajar juntos hacia un mismo objetivo.</div></div>
-    </div>
-
-    <div class="slide" id="s6">
-        <div class="cover-header" style="padding: 30px 20px; border-bottom: 3px solid var(--gold);">
-            <div class="cover-badge">RECURSOS ADICIONALES</div>
-            <h1 style="font-size: 1.4rem;">Acceso a Documentos</h1>
-        </div>
-        
-        <div class="closing-body">
-            <div style="width: 100%; max-width: 300px; margin-bottom: 30px;">
-                
-                <a href="https://wiroal.github.io/racsg/informe_62RAC_PC.html" class="btn-resource btn-pc">
-                    🖥️ Ver Informe en PC
-                </a>
-
-                <a href="https://wiroal.github.io/racsg/grupos_virtuales_movil.html" class="btn-resource btn-virtual">
-                    🌐 Redela Grupos Virtuales
-                </a>
-
-            </div>
-
-            <div class="aa-circle">AA</div>
-            <p style="margin-top: 15px; font-weight: 700; color: var(--navy);">Área 3 Bogotá</p>
-            <p style="font-size: 0.75rem; color: var(--muted);">Panel 62 - Colombia 2026</p>
-        </div>
-    </div>
-
+<div class="slide active" id="s1">
+  <div class="cover-header">
+    <div class="cover-badge">CORPORACIÓN NACIONAL DE AA · COLOMBIA</div>
+    <h1>62ª Reunión Anual de la Conferencia</h1>
+    <p class="cover-lema">"La Recuperación y la Práctica de las Tradiciones garantizan un mejor Servicio"</p>
+  </div>
+  <div class="cover-meta">
+    <div class="meta-item"><div class="meta-val">30 abr–3 may</div><div class="meta-lbl">Fechas 2026</div></div>
+    <div class="meta-item"><div class="meta-val">Rionegro</div><div class="meta-lbl">Casa De La Salle</div></div>
+    <div class="meta-item"><div class="meta-val">60</div><div class="meta-lbl">Conferencistas</div></div>
+    <div class="meta-item"><div class="meta-val">43</div><div class="meta-lbl">Delegados</div></div>
+  </div>
 </div>
 
-<div id="nav">
-    <button class="nav-btn" id="btnPrev" disabled>← Ant.</button>
-    <div id="dots"></div>
-    <button class="nav-btn primary" id="btnNext">Sig. →</button>
+<div class="slide" id="s2">
+  <div class="slide-header">
+    <div class="slide-tag">Desarrollo de la 62ª RAC</div>
+    <div class="slide-title">Tres Tipos de Sesiones</div>
+  </div>
+  <div class="slide-body">
+    <div class="card-grid c3">
+      <div class="card"><div class="card-lbl">Sesión 1</div><div class="card-val">Informativa</div><div class="card-desc">Informes de carpeta, OSG, Entidades Operativas, REDELA e internacional</div></div>
+      <div class="card gold"><div class="card-lbl">Sesión 2</div><div class="card-val">Electiva</div><div class="card-desc">Custodios Clase B y A; servidores del panel delegados 2026–2027</div></div>
+      <div class="card green"><div class="card-lbl">Sesión 3</div><div class="card-val">Deliberativa</div><div class="card-desc">Proyectos de recomendación por comités y mociones de piso</div></div>
+    </div>
+    <div class="hbox"><strong>Material oficial:</strong> Carpeta de delegados · Manual de Servicio AA · Boletín Trimestral JSG (mar. 2026) · Reporte Ocho · aacolombia.org</div>
+  </div>
+</div>
+
+<div class="slide" id="s3">
+  <div class="slide-header">
+    <div class="slide-tag">Reunión Inaugural</div>
+    <div class="slide-title">Establecimiento del Quórum</div>
+    <div class="slide-subtitle">Por el Gerente (e) de la OSG</div>
+  </div>
+  <div class="slide-body">
+    <table class="q-table">
+      <thead><tr><th>Categoría</th><th class="n">N°</th></tr></thead>
+      <tbody>
+        <tr><td>Delegados</td><td class="n">43</td></tr>
+        <tr><td>Custodios Clase A</td><td class="n">1</td></tr>
+        <tr><td>Custodios Clase B</td><td class="n">7</td></tr>
+        <tr><td>Directores no Custodios – SG</td><td class="n">3</td></tr>
+        <tr><td>Directores no Custodios – El Mensaje</td><td class="n">2</td></tr>
+        <tr><td>Personal de la OSG</td><td class="n">4</td></tr>
+        <tr class="tot"><td><strong>TOTAL</strong></td><td class="n"><strong>60</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="card-grid">
+      <div class="card gold"><div class="card-lbl">Quórum 2/3</div><div class="card-val">40 votos</div><div class="card-desc">60 × 2/3 = 40</div></div>
+      <div class="card green"><div class="card-lbl">País invitado</div><div class="card-val">Bolivia</div><div class="card-desc">Manuel R. Voz y sin voto. Apadrinamiento estructural</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s4">
+  <div class="slide-header">
+    <div class="slide-tag">Reunión Exclusiva · 43 delegados</div>
+    <div class="slide-title">Reunión Sólo para Delegados</div>
+    <div class="slide-subtitle">Presidida por Blanca V. · Área 4, Región C</div>
+  </div>
+  <div class="slide-body">
+    <div class="item-list">
+      <div class="item-row"><div class="dot g"></div><div class="item-text">Compartimiento entre paneles 61ª y 62ª CSG</div></div>
+      <div class="item-row"><div class="dot g"></div><div class="item-text">Apertura del chat de delegados aprobada; continuación del canal de difusión</div></div>
+      <div class="item-row"><div class="dot g"></div><div class="item-text">Asistencia del Custodio boliviano Manuel R. aprobada (voz, sin voto)</div></div>
+    </div>
+    <div class="sec-lbl">Nuevos servidores elegidos 2026–2027</div>
+    <div class="person-list">
+      <div class="person-item"><div class="avatar">AP</div><div><div class="person-name">Addler Edwin P.</div><div class="person-role">Coordinador de Delegados · Área 1, Región A</div></div></div>
+      <div class="person-item"><div class="avatar">GS</div><div><div class="person-name">Giovanny S.</div><div class="person-role">Coordinador Suplente · Área 7, Región E</div></div></div>
+      <div class="person-item"><div class="avatar">MD</div><div><div class="person-name">Manuel Antonio D.</div><div class="person-role">Secretario · Área 5, Región B</div></div></div>
+      <div class="person-item"><div class="avatar">HT</div><div><div class="person-name">Hader Alberto T.</div><div class="person-role">Campanero · Área 3, Región D</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s5">
+  <div class="slide-header">
+    <div class="slide-tag">Sesión Electiva · Plenaria Ratificación</div>
+    <div class="slide-title">Custodios Elegidos y Ratificados</div>
+  </div>
+  <div class="slide-body">
+    <div class="sec-lbl">Clase B elegidos · Período 2026–2030</div>
+    <div class="card-grid">
+      <div class="card"><div class="card-lbl">Región B</div><div class="card-val" style="font-size:.95rem">José Alfonso C.</div></div>
+      <div class="card"><div class="card-lbl">Región E</div><div class="card-val" style="font-size:.95rem">Diego Alonso A.</div></div>
+      <div class="card"><div class="card-lbl">Territorio Norte</div><div class="card-val" style="font-size:.95rem">José Domingo C.</div></div>
+      <div class="card gold"><div class="card-lbl">Territorio Sur · 2026–2028</div><div class="card-val" style="font-size:.95rem">Martha Cecilia B.</div></div>
+    </div>
+    <div class="sec-lbl">Servicios Generales · Ratificado</div>
+    <div class="card gold"><div class="card-val" style="font-size:.95rem">Juan Guillermo Y.</div><div class="card-desc">Custodio SG · Período 2026–2030</div></div>
+    <div class="sec-lbl">Director no Custodio entrante · AA El Mensaje</div>
+    <div class="card"><div class="card-val" style="font-size:.95rem">Omar Alejandro B.</div></div>
+  </div>
+</div>
+
+<div class="slide" id="s6">
+  <div class="slide-header">
+    <div class="slide-tag">Sesión Plenaria Ratificación</div>
+    <div class="slide-title">Custodias Clase A</div>
+  </div>
+  <div class="slide-body">
+    <div class="sec-lbl">Actuales</div>
+    <div class="card green"><div class="card-lbl">✓ Ratificada por 3 años</div><div class="card-val" style="font-size:.95rem">Dra. Martha Cecilia Lobo Celis</div><div class="card-desc"><strong>Presidenta de la JSG</strong> y Representante Legal de la Corporación Nacional de AA</div></div>
+    <div class="card red"><div class="card-lbl">✗ No ratificada</div><div class="card-val" style="font-size:.95rem">Dra. Doris Yanet Velásquez Castaño</div><div class="card-desc">El Comité de Nominaciones gestionó la sustitución en plenaria</div></div>
+    <div class="sec-lbl">Custodias Clase A entrantes</div>
+    <div class="card-grid c3">
+      <div class="card"><div class="card-val" style="font-size:.85rem">Dra. Mireya Andrea Mora Varón</div></div>
+      <div class="card gold"><div class="card-val" style="font-size:.85rem">Dra. Leidy Viviana Godoy Sarmiento</div><div class="card-desc" style="font-size:.7rem">Ratificada en sustitución</div></div>
+      <div class="card"><div class="card-val" style="font-size:.85rem">Dr. Isacc Roa Cruz</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s7">
+  <div class="slide-header">
+    <div class="slide-tag">Políticas y Admisiones</div>
+    <div class="slide-title">Plan Nacional — Unicidad</div>
+  </div>
+  <div class="slide-body">
+    <div class="hbox"><strong>Diagnóstico:</strong> AA se confundió como programa de abstinencia cuando es un <strong>programa de recuperación espiritual.</strong></div>
+    <div class="card-grid">
+      <div class="card gold"><div class="card-lbl">Eje 1</div><div class="card-val">Unicidad</div><div class="card-desc">AA atiende únicamente al alcohólico.</div></div>
+      <div class="card green"><div class="card-lbl">Eje 2</div><div class="card-val">Recuperación</div><div class="card-desc">Estudio real de los 12 Pasos.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s8">
+  <div class="slide-header">
+    <div class="slide-title">Cinco Grupos — Conclusiones</div>
+  </div>
+  <div class="slide-body">
+    <div class="grupo-item" id="g1">
+      <button class="grupo-trigger" onclick="toggleGrupo('g1')">
+        <div class="grupo-num">1</div><div class="grupo-q">La Asamblea del Área</div><div class="grupo-arrow">▼</div>
+      </button>
+      <div class="grupo-body"><div class="grupo-conclusion">Es el corazón de la estructura: decide y da mandato.</div></div>
+    </div>
+    <div class="grupo-item" id="g2">
+      <button class="grupo-trigger" onclick="toggleGrupo('g2')">
+        <div class="grupo-num">2</div><div class="grupo-q">Liderazgo en AA</div><div class="grupo-arrow">▼</div>
+      </button>
+      <div class="grupo-body"><div class="grupo-conclusion">El servidor se forma, no nace.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s9">
+  <div class="slide-header">
+    <div class="slide-title">Acciones Recomendables</div>
+  </div>
+  <div class="slide-body">
+    <div class="item-list">
+      <div class="item-row"><div class="dot g"></div><div class="item-text">Renombrar Comité Instituciones Carcelarias</div><span class="badge ok">✓</span></div>
+      <div class="item-row"><div class="dot g"></div><div class="item-text">Prorrogar MRAC a 63ª RAC</div><span class="badge ok">✓</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s10">
+  <div class="slide-header">
+    <div class="slide-title">No Aprobados</div>
+  </div>
+  <div class="slide-body">
+    <div class="hbox"><strong>Literatura:</strong> 3 proyectos no aprobados.</div>
+    <div class="hbox red-bg"><strong>Archivos:</strong> Sin proyectos presentados.</div>
+  </div>
+</div>
+
+<div class="slide" id="s11">
+  <div class="slide-header">
+    <div class="slide-title">Clausura</div>
+  </div>
+  <div class="slide-body">
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-label">Próxima RAC</div><div class="tl-text">63ª RAC – 2027</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="slide" id="s12">
+  <div class="cover-header" style="padding: 25px 20px; border-bottom: 3px solid var(--gold);">
+    <div class="cover-badge">RECURSOS ADICIONALES</div>
+    <h1 style="font-size: 1.4rem;">Acceso a Documentos</h1>
+  </div>
+  
+  <div class="closing-body">
+    
+    <div style="width: 100%; max-width: 280px; margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px;">
+      
+      <a href="https://wiroal.github.io/racsg/informe_62RAC_PC.html" target="_blank" style="text-decoration: none;">
+        <div style="background: var(--gold); color: var(--navy); padding: 14px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-align: center;">
+          🖥️ VER EN PC (INFORME)
+        </div>
+      </a>
+
+      <a href="https://wiroal.github.io/racsg/grupos_virtuales_movil.html" target="_blank" style="text-decoration: none;">
+        <div style="background: #ffffff; color: var(--navy); padding: 14px; border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-align: center; border: 2px solid var(--navy);">
+          🌐 REDELA GRUPOS VIRTUALES
+        </div>
+      </a>
+
+    </div>
+
+    <div class="aa-circle">AA</div>
+    <p style="margin-top: 15px; font-weight: 700; color: var(--navy); font-family: 'Playfair Display', serif;">Área 3 Bogotá</p>
+    <p style="font-size: 0.7rem; color: var(--muted); letter-spacing: 1px;">DELEGADO PANEL 62</p>
+  </div>
+</div>
+
+</div><div id="nav">
+  <button class="nav-btn" id="btnPrev" disabled>← Ant.</button>
+  <div id="dots"></div>
+  <button class="nav-btn primary" id="btnNext">Sig. →</button>
 </div>
 
 <script>
-    const TOTAL = 6; 
-    let current = 1;
-    let timeLeft = 20 * 60;
-    let timerInterval = null;
-    let running = false;
+const TOTAL = 12, MINS = 20;
+let current = 1, timeLeft = MINS * 60, timerInterval = null, running = false, tx = 0;
 
-    const dotsEl = document.getElementById('dots');
-    const slides = document.querySelectorAll('.slide');
+const slideIds = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12'];
+const slides = slideIds.map(id => document.getElementById(id));
+const dotsEl = document.getElementById('dots');
+document.getElementById('tot').textContent = TOTAL;
 
-    for (let i = 1; i <= TOTAL; i++) {
-        const d = document.createElement('button');
-        d.className = 'dot-btn' + (i === 1 ? ' active' : '');
-        d.onclick = () => goTo(i);
-        dotsEl.appendChild(d);
-    }
+for (let i = 1; i <= TOTAL; i++) {
+  const d = document.createElement('button');
+  d.className = 'dot-btn' + (i === 1 ? ' active' : '');
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+}
 
-    function goTo(n) {
-        if (n < 1 || n > TOTAL) return;
-        slides[current - 1].classList.remove('active');
-        dotsEl.children[current - 1].classList.remove('active');
-        current = n;
-        slides[current - 1].classList.add('active');
-        dotsEl.children[current - 1].classList.add('active');
-        document.getElementById('cur').textContent = current;
-        document.getElementById('btnPrev').disabled = current === 1;
-        document.getElementById('btnNext').disabled = current === TOTAL;
-        document.getElementById('viewport').scrollTop = 0;
-    }
+function goTo(n) {
+  if (n < 1 || n > TOTAL) return;
+  slides[current - 1].classList.remove('active');
+  dotsEl.children[current - 1].classList.remove('active');
+  current = n;
+  slides[current - 1].classList.add('active');
+  dotsEl.children[current - 1].classList.add('active');
+  document.getElementById('cur').textContent = current;
+  document.getElementById('btnPrev').disabled = current === 1;
+  document.getElementById('btnNext').disabled = current === TOTAL;
+  document.getElementById('viewport').scrollTop = 0;
+}
 
-    document.getElementById('btnNext').onclick = () => goTo(current + 1);
-    document.getElementById('btnPrev').onclick = () => goTo(current - 1);
+document.getElementById('btnNext').onclick = () => goTo(current + 1);
+document.getElementById('btnPrev').onclick = () => goTo(current - 1);
 
-    const display = document.getElementById('timer-display');
-    const prog = document.getElementById('progress-bar');
-    const fmt = s => String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+const display = document.getElementById('timer-display');
+const prog    = document.getElementById('progress-bar');
+const fmt = s => String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
 
-    function updateDisplay() {
-        display.textContent = fmt(timeLeft);
-        prog.style.width = (timeLeft / (20 * 60) * 100) + '%';
-        if (timeLeft <= 60) display.className = 'danger';
-        else if (timeLeft <= 300) display.className = 'warning';
-    }
+function updateDisplay() {
+  display.textContent = fmt(timeLeft);
+  prog.style.width = (timeLeft / (MINS * 60) * 100) + '%';
+}
+function startTimer() {
+  if (running) return; running = true;
+  timerInterval = setInterval(() => { if (timeLeft > 0) { timeLeft--; updateDisplay(); } else { clearInterval(timerInterval); running = false; } }, 1000);
+}
+function pauseTimer() { clearInterval(timerInterval); running = false; }
+function resetTimer() { pauseTimer(); timeLeft = MINS * 60; updateDisplay(); }
 
-    document.getElementById('btnStart').onclick = () => {
-        if (running) return; running = true;
-        timerInterval = setInterval(() => {
-            if (timeLeft > 0) { timeLeft--; updateDisplay(); }
-            else { clearInterval(timerInterval); running = false; }
-        }, 1000);
-    };
+document.getElementById('btnStart').onclick = startTimer;
+document.getElementById('btnPause').onclick = pauseTimer;
+document.getElementById('btnReset').onclick = resetTimer;
+updateDisplay();
 
-    document.getElementById('btnPause').onclick = () => { clearInterval(timerInterval); running = false; };
-    document.getElementById('btnReset').onclick = () => { 
-        clearInterval(timerInterval); running = false; 
-        timeLeft = 20 * 60; updateDisplay(); 
-    };
-
-    // Navegación táctil (Swipe)
-    let touchStartX = 0;
-    document.getElementById('viewport').addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
-    document.getElementById('viewport').addEventListener('touchend', e => {
-        let touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 50) goTo(current + 1);
-        if (touchEndX - touchStartX > 50) goTo(current - 1);
-    });
+function toggleGrupo(id) {
+  const el = document.getElementById(id);
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('.grupo-item.open').forEach(g => g.classList.remove('open'));
+  if (!wasOpen) el.classList.add('open');
+}
 </script>
-
 </body>
 </html>
