@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#7F1D1D">
+<title>Los grupos virtuales — 24.ª REDELA Bolivia 2025</title>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: #f5f3f0;
+    color: #1f2937;
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .header {
+    background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 100%);
+    color: #fff;
+    padding: 28px 20px 24px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header h1 {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+  }
+  .header .subtitle {
+    font-size: 0.82rem;
+    opacity: 0.92;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .toolbar {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #fff;
+    border-bottom: 1px solid #e5e0d8;
+    position: sticky;
+    top: 88px;
+    z-index: 99;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .toolbar button {
+    flex: 1;
+    background: #f5f3f0;
+    border: 1px solid #e5e0d8;
+    color: #7F1D1D;
+    padding: 10px 8px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .toolbar button:active {
+    background: #7F1D1D;
+    color: #fff;
+    transform: scale(0.97);
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .intro {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    border-left: 4px solid #7F1D1D;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    font-size: 0.92rem;
+  }
+  .intro p { margin: 0; text-align: justify; }
+  .accordion {
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s;
+  }
+  .accordion.open {
+    box-shadow: 0 3px 10px rgba(127,29,29,0.12);
+  }
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    cursor: pointer;
+    user-select: none;
+    background: #fff;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  .accordion-header:active { background: #faf8f5; }
+  .accordion.open .accordion-header { background: #faf8f5; }
+  .num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    background: #7F1D1D;
+    color: #fff;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.88rem;
+    flex-shrink: 0;
+  }
+  .accordion-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: #1f2937;
+    line-height: 1.35;
+  }
+  .chevron {
+    color: #7F1D1D;
+    font-size: 1.1rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    font-weight: bold;
+  }
+  .accordion.open .chevron { transform: rotate(180deg); }
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .accordion.open .accordion-content { max-height: 8000px; }
+  .accordion-inner {
+    padding: 4px 20px 20px;
+    font-size: 0.94rem;
+    color: #2d2d2d;
+  }
+  .accordion-inner p { margin: 0 0 12px; text-align: justify; }
+  .accordion-inner h3 {
+    font-size: 0.98rem;
+    color: #7F1D1D;
+    margin: 18px 0 8px;
+    font-weight: 700;
+  }
+  .accordion-inner ul {
+    margin: 8px 0 12px;
+    padding-left: 22px;
+  }
+  .accordion-inner li {
+    margin-bottom: 8px;
+    text-align: justify;
+  }
+  .accordion-inner strong { color: #1f2937; }
+  blockquote {
+    margin: 12px 0;
+    padding: 12px 14px 12px 16px;
+    background: #faf3f3;
+    border-left: 4px solid #7F1D1D;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #3d2020;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .citation {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.78rem;
+    color: #7F1D1D;
+    font-style: normal;
+    font-weight: 600;
+    text-align: right;
+  }
+  .data-card {
+    background: #faf8f5;
+    border: 1px solid #e5e0d8;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 10px 0;
+  }
+  .data-card-title {
+    font-weight: 700;
+    color: #7F1D1D;
+    font-size: 0.88rem;
+    margin-bottom: 4px;
+  }
+  .data-card p { margin: 0; font-size: 0.9rem; }
+  .reference {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-top: 16px;
+    border: 2px dashed #7F1D1D;
+    font-size: 0.88rem;
+  }
+  .reference h3 {
+    margin: 0 0 10px;
+    color: #7F1D1D;
+    font-size: 1rem;
+  }
+  .reference p {
+    margin: 0 0 8px;
+    padding-left: 18px;
+    text-indent: -18px;
+    text-align: justify;
+  }
+  .reference em { color: #1f2937; }
+  .footer {
+    text-align: center;
+    padding: 24px 16px 40px;
+    color: #6b6258;
+    font-size: 0.82rem;
+    font-style: italic;
+  }
+  .footer strong {
+    display: block;
+    margin-top: 4px;
+    color: #7F1D1D;
+    font-style: normal;
+  }
+  .badge {
+    display: inline-block;
+    background: #7F1D1D;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .question {
+    background: #fef9e7;
+    border-left: 4px solid #d4a017;
+    padding: 12px 14px;
+    border-radius: 0 8px 8px 0;
+    margin: 8px 0;
+    font-size: 0.92rem;
+  }
+  @media (max-width: 360px) {
+    .header h1 { font-size: 1.1rem; }
+    .accordion-title { font-size: 0.92rem; }
+    .num { width: 28px; height: 28px; min-width: 28px; font-size: 0.82rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Los grupos virtuales en AA</h1>
+  <div class="subtitle">Resumen del Reporte Final<br>24.ª REDELA — Bolivia 2025</div>
+</div>
+
+<div class="toolbar">
+  <button onclick="expandAll()">📖 Abrir todo</button>
+  <button onclick="collapseAll()">📕 Cerrar todo</button>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    <p>Síntesis fiel de lo discutido y concluido sobre los <strong>grupos y reuniones virtuales</strong> en la 24.ª Reunión de las Américas, celebrada del 12 al 16 de octubre de 2025 en Santa Cruz de la Sierra, Bolivia, bajo el lema «Nuestra gran responsabilidad». Participaron <strong>20 países</strong> representados por <strong>25 delegados</strong>. Material preparado para el compartimiento en grupos de Bogotá, MCD y Asamblea de Área.</p>
+  </div>
+
+  <!-- Sección 1 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">1</div>
+      <div class="accordion-title">Marco general: grupo vs reunión virtual</div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>La 24.ª REDELA dedicó la <strong>Mesa de Trabajo Uno</strong> al tema «Apadrinamiento en reuniones virtuales». La conclusión central establece una distinción clave para nuestra estructura:</p>
+        <blockquote>
+          «La tecnología y la virtualidad son herramientas valiosas que debemos aprovechar. <strong>Se debe comprender la diferencia entre un grupo y una reunión virtual:</strong> un grupo presencial puede brindar el servicio en lo virtual, con base en los principios de AA para que no se distorsione el mensaje ni la forma que trabaja AA, en un espíritu de ayuda mutua y no de autoayuda».
+          <span class="citation">(REDELA, 2026, p. 109)</span>
+        </blockquote>
+        <p>Esta es la posición concluida por los 20 países en pleno. Reconoce que la virtualidad es una herramienta, pero advierte que un grupo de AA — con sus responsabilidades de Tercera, Cuarta y Quinta Tradición — <strong>no es lo mismo</strong> que una reunión virtual.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección 2 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">2</div>
+      <div class="accordion-title">Conclusiones oficiales de la Mesa de Trabajo Uno</div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>Mesa realizada el <strong>13 de octubre de 2025</strong>, conducida por Franklyn B. (Venezuela). Conclusiones aprobadas por la 24.ª REDELA <em>(REDELA, 2026, p. 109)</em>:</p>
+        <ul>
+          <li>Es de vital importancia el <strong>apadrinamiento</strong> tanto en las reuniones virtuales como en las presenciales; un padrino funciona como guía para que el nuevo tenga clara comprensión de la enfermedad y de los principios de recuperación.</li>
+          <li>Cada estructura tiene su <strong>propia dificultad</strong> en relación con las reuniones y los grupos virtuales; es un reto y un trabajo de formación e información de los principios espirituales y de anonimato a los nuevos.</li>
+          <li>La virtualidad ha servido para el apadrinamiento en la recuperación y el servicio de la gente que no está cerca; el problema no es aceptar, sino cómo se va a trabajar: <strong>es responsabilidad de la estructura de cada país</strong>.</li>
+          <li>El apadrinamiento virtual es el intercambio de información que ayuda a <strong>conectar a AA con personas donde no hay grupos</strong>, para que escuchen las experiencias de recuperación, unidad y servicio de los integrantes de AA de otros países.</li>
+          <li>La virtualidad también es una gran herramienta en diversas actividades de servicio, que <strong>fortalecen el funcionamiento</strong> de diferentes cuerpos de servicio de muchas estructuras.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección 3 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">3</div>
+      <div class="accordion-title">Compartimiento original (Franklyn B., Venezuela)</div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>Durante la mesa, Franklyn B. (Delegado mundial de primer término, Venezuela) compartió experiencia personal y orientaciones prácticas <em>(REDELA, 2026, pp. 39–40)</em>:</p>
+        <ul>
+          <li><strong>Para encontrar padrino en línea:</strong> escuchar las reuniones, identificar a alguien cuya experiencia resuene y pedirle directamente su ayuda.</li>
+          <li><strong>Práctica implementada:</strong> a quien va por información, el coordinador de la reunión le asigna inmediatamente un padrino. Surgió porque había ocasiones en que la persona se declaraba, a los días nadie sabía de ella, ni tenía su número, y no volvía.</li>
+          <li><strong>Proceso sugerido:</strong> escucha y observa → identifica un posible padrino → pide ayuda directamente → involucra al grupo. No te apresures, pero tampoco te demores en llamarlo.</li>
+          <li><strong>Sugerencias comunes (presencial y virtual):</strong> que el padrino sea del mismo sexo (para que no se desvíen el mensaje y el propósito); que comparta su experiencia para aprender; que la amistad sea una relación duradera.</li>
+        </ul>
+        <blockquote>
+          «No se deben seguir personas, sino principios».
+          <span class="citation">— Franklyn B., Venezuela (REDELA, 2026, p. 39)</span>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección 4 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">4</div>
+      <div class="accordion-title">Posición de Colombia <span class="badge">CLAVE</span></div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>Posición oficial vigente de nuestra estructura nacional, reportada al pleno de la 24.ª REDELA por la Corporación Nacional de Servicios Generales de AA de Colombia <em>(REDELA, 2026, p. 63)</em>:</p>
+        <blockquote>
+          «En nuestra estructura, sugerimos a todos los miembros de la comunidad nacional, y a los diferentes entes de los niveles de servicio, a <strong>utilizar las ventajas que ofrece la virtualidad</strong> para facilitar actividades de servicio, teniendo especial cuidado de no violar nuestras Undécima y Duodécima Tradiciones (anonimato). Hacemos énfasis en que <strong>no consideramos a los nacientes grupos de compartimiento online como parte de nuestra estructura</strong>, solo le damos carácter de reuniones porque, en la 61.ª Conferencia de Servicios Generales de 2025, se rindió un informe de la situación actual de los grupos virtuales en el mundo y, resultado de esto, aún no se incluyen dentro de nuestra estructura».
+          <span class="citation">(REDELA, 2026, p. 63)</span>
+        </blockquote>
+        <p>En síntesis, la posición de Colombia comporta <strong>tres elementos</strong>:</p>
+        <ul>
+          <li><strong>Se sugiere</strong> aprovechar la virtualidad como herramienta de servicio.</li>
+          <li><strong>Se advierte</strong> el cuidado del anonimato (Undécima y Duodécima Tradiciones) en el entorno digital.</li>
+          <li><strong>Los grupos de compartimiento online no son parte de la estructura nacional</strong>; se les reconoce carácter de reuniones, decisión basada en el informe de la 61.ª CSG (Rionegro, abril 30 – mayo 1 de 2025).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección 5 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">5</div>
+      <div class="accordion-title">Cifras comparadas: cómo lo resuelven otros países</div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>Cada estructura ha resuelto el tema según su autonomía:</p>
+
+        <div class="data-card">
+          <div class="data-card-title">🇦🇷 Argentina <em>(p. 49)</em></div>
+          <p>460 grupos presenciales y unos <strong>60 grupos en línea</strong>; 4 grupos en instituciones correccionales y 19 intergrupos.</p>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-title">🇨🇱 Chile <em>(p. 59)</em></div>
+          <p>121 grupos: 110 presenciales y <strong>11 en línea</strong>. Tiene 10 áreas de servicio: 9 presenciales y <strong>una «área de grupos en línea»</strong>. Ya comenzó a funcionar la primera área virtual con RSG de grupos virtuales, según acción recomendable de su Conferencia 2025.</p>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-title">🇺🇸🇨🇦 EE. UU. y Canadá <em>(p. 74)</em></div>
+          <p>Al 31/12/2022, <strong>68 476 grupos</strong> inscritos en la OSG, <strong>incluyendo grupos en línea</strong> con sede geográfica en EE. UU. y Canadá. También hay grupos y reuniones, presenciales y virtuales, no registrados en la OSG. <em>«Cada grupo es autónomo y su participación en la estructura de servicios generales es una decisión de su conciencia de grupo».</em></p>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-title">🇬🇹 Guatemala <em>(p. 78)</em></div>
+          <p>1 011 grupos a nivel nacional; «a partir de la pandemia, se abrieron grupos virtuales, de los cuales <strong>funcionan seis en total</strong>».</p>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-title">🇬🇾 Guyana <em>(p. 78)</em></div>
+          <p>De cinco juntas activas, <strong>dos son juntas híbridas</strong> (en persona y en línea).</p>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-title">🌎 Mesa de Trabajo Dos — Cuba <em>(p. 41)</em></div>
+          <p>Con las tecnologías digitales y tras la pandemia, <strong>miles de grupos se reúnen en línea cada día</strong>, lo que ha permitido llevar el mensaje a lugares donde no existen grupos presenciales.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección 6 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">6</div>
+      <div class="accordion-title">Recomendaciones aprobadas sobre virtualidad</div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>Acuerdos del pleno referidos al funcionamiento virtual de la propia REDELA <em>(REDELA, 2026, p. 105)</em>:</p>
+        <ul>
+          <li><strong>Reuniones de la REDELA:</strong> simple mayoría, cada tres meses.</li>
+          <li><strong>Reuniones de los comités:</strong> un mes antes de la reunión virtual de la REDELA.</li>
+        </ul>
+        <p>Adicionalmente <em>(REDELA, 2026, p. 101)</em>:</p>
+        <ul>
+          <li>El Comité de Agenda reportó la designación de un <strong>coordinador de las reuniones virtuales de la REDELA</strong>.</li>
+          <li>Se establece que el Comité de Literatura y Publicaciones / Agenda puede <strong>coordinar las reuniones virtuales de la REDELA</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección 7 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">7</div>
+      <div class="accordion-title">El tema no es nuevo: continuidad en la agenda</div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>El tema de los grupos virtuales no es nuevo en la agenda continental. En las recomendaciones históricas de la <strong>22.ª REDELA</strong> ya figuraban como temas propuestos para mesas de trabajo <em>(REDELA, 2026, p. 122)</em>:</p>
+        <ul>
+          <li>«Estructura de los grupos y/o reuniones virtuales».</li>
+          <li>«Los grupos virtuales, cómo ser incluyentes en la estructura».</li>
+        </ul>
+        <p>Esto evidencia que la pregunta sobre la inclusión estructural de los grupos virtuales <strong>viene siendo discutida desde varias REDELAs atrás</strong> y sigue sin tener una respuesta uniforme entre las estructuras de las Américas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección 8 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">8</div>
+      <div class="accordion-title">Preguntas para el compartimiento</div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>Para facilitar la discusión en grupo, MCD y Asamblea, se sugieren las siguientes preguntas:</p>
+
+        <div class="question">¿Cómo entendemos en nuestro grupo la diferencia entre «grupo» y «reunión virtual» tal como la formuló la 24.ª REDELA?</div>
+
+        <div class="question">¿Cómo estamos cuidando el anonimato (Undécima y Duodécima Tradiciones) cuando usamos plataformas digitales para el servicio?</div>
+
+        <div class="question">¿De qué manera la virtualidad nos ha permitido llevar el mensaje a quienes están lejos o no tienen un grupo cercano?</div>
+
+        <div class="question">¿Cómo apadrinamos al recién llegado que se acerca por primera vez a una reunión virtual de AA?</div>
+
+        <div class="question">¿Compartimos la posición de Colombia (no incluir los grupos online en la estructura, dándoles carácter de reuniones) o, como en Chile y Argentina, deberíamos considerar otra forma?</div>
+
+        <div class="question">¿La virtualidad fortalece o distorsiona el espíritu de «ayuda mutua y no de autoayuda» del que habla la conclusión de la Mesa de Trabajo Uno?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección 9 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="num">9</div>
+      <div class="accordion-title">Cierre</div>
+      <div class="chevron">⌄</div>
+    </button>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <p>La 24.ª REDELA confirma que la virtualidad es una <strong>herramienta legítima y útil</strong> para el servicio de AA, pero deja en manos de cada estructura nacional, conforme a su autonomía, la decisión sobre cómo integrar — o no — los grupos virtuales a la estructura formal.</p>
+        <p>En Colombia, la 61.ª Conferencia de Servicios Generales (Rionegro, 2025) determinó que los grupos de compartimiento online tienen <strong>carácter de reuniones, no de grupos parte de la estructura</strong>.</p>
+        <p>La invitación de la Mesa de Trabajo Uno es que, sin importar el formato, <strong>el padrinazgo, la formación en los principios y el cuidado del anonimato</strong> permanezcan como ejes irrenunciables de nuestra recuperación, unidad y servicio.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Referencia APA -->
+  <div class="reference">
+    <h3>📚 Referencia (APA 7.ª edición)</h3>
+    <p>Reunión de las Américas. (2026). <em>Reporte final de la 24.ª Reunión de las Américas: «Nuestra gran responsabilidad», Santa Cruz de la Sierra, Bolivia, 12–16 de octubre de 2025</em> (Reporte final confidencial). Despacho Internacional México / Centro de Información de la REDELA.</p>
+    <p style="font-size: 0.8rem; color: #6b6258; padding-left: 0; text-indent: 0; margin-top: 10px;"><strong>Nota:</strong> Se emplea «REDELA, 2026» como abreviatura. Las páginas citadas corresponden a la paginación impresa del documento.</p>
+  </div>
+
+  <div class="footer">
+    Compilado para el compartimiento en grupos, MCD y Asamblea por:
+    <strong>William — Delegado, Área 3, Región C, Territorio Sur</strong>
+    Bogotá, mayo de 2026
+  </div>
+
+</div>
+
+<script>
+  function toggleAccordion(btn) {
+    const acc = btn.parentElement;
+    acc.classList.toggle('open');
+    // Scroll suave hacia el encabezado si se está abriendo
+    if (acc.classList.contains('open')) {
+      setTimeout(() => {
+        const rect = acc.getBoundingClientRect();
+        const headerHeight = 150;
+        if (rect.top < headerHeight) {
+          window.scrollBy({ top: rect.top - headerHeight, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }
+  function expandAll() {
+    document.querySelectorAll('.accordion').forEach(a => a.classList.add('open'));
+  }
+  function collapseAll() {
+    document.querySelectorAll('.accordion').forEach(a => a.classList.remove('open'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
