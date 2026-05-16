@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe Financiero OSG 2025 · Área 3, Región C</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2456;
+  --navy-mid: #2a3870;
+  --navy-lt:  #3a4e9a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8c96d;
+  --white:    #f8f7f4;
+  --cream:    #f0ede6;
+  --text:     #1a1a2e;
+  --muted:    #6b7280;
+  --accent:   #e63946;
+  --green:    #2d6a4f;
+  --green-lt: #edf7ed;
+  --orange:   #e07a28;
+  --orange-lt:#fff8f0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Source Sans 3', sans-serif; background: #080e22; color: var(--white); user-select: none; }
+
+/* ══ TOP BAR ══ */
+#topbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 52px;
+  background: var(--navy); border-bottom: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; z-index: 300; gap: 20px;
+}
+#topbar-left { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+#timer-display { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--gold-lt); letter-spacing: 4px; min-width: 90px; }
+#timer-display.warning { color: #ff9f43; }
+#timer-display.danger  { color: var(--accent); animation: pulse 1s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.tbtn { padding: 6px 16px; border: 1px solid var(--gold); background: transparent; color: var(--gold); border-radius: 5px; cursor: pointer; font-size: .82rem; font-family: inherit; transition: all .15s; }
+.tbtn:hover { background: var(--gold); color: var(--navy); }
+#topbar-center { flex: 1; display: flex; align-items: center; justify-content: center; }
+#slide-title-bar { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--white); opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 500px; }
+#topbar-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+#slide-counter { font-size: .78rem; color: var(--muted); letter-spacing: 1.5px; white-space: nowrap; }
+.nav-btn { padding: 7px 22px; border: 1px solid var(--gold); background: transparent; color: var(--gold); border-radius: 6px; cursor: pointer; font-family: inherit; font-size: .88rem; transition: all .15s; white-space: nowrap; }
+.nav-btn:hover { background: rgba(201,168,76,.15); }
+.nav-btn:disabled { opacity: .22; pointer-events: none; }
+.nav-btn.primary { background: var(--gold); color: var(--navy); font-weight: 700; }
+.nav-btn.primary:hover { background: var(--gold-lt); }
+#progress-bar { position: fixed; top: 52px; left: 0; height: 3px; background: var(--gold); transition: width .6s linear; z-index: 299; }
+
+/* ══ LAYOUT ══ */
+#layout { position: fixed; top: 55px; bottom: 0; left: 0; right: 0; display: flex; }
+
+#sidebar {
+  width: 200px; flex-shrink: 0;
+  background: #0d1530; border-right: 1px solid rgba(201,168,76,.2);
+  overflow-y: auto; padding: 12px 0; display: flex; flex-direction: column; gap: 2px;
+}
+#sidebar::-webkit-scrollbar { width: 4px; }
+#sidebar::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); border-radius: 2px; }
+.side-item { display: flex; align-items: center; gap: 10px; padding: 9px 14px; cursor: pointer; border: none; background: transparent; text-align: left; width: 100%; border-left: 3px solid transparent; transition: all .15s; }
+.side-item:hover { background: rgba(255,255,255,.05); }
+.side-item.active { background: rgba(201,168,76,.12); border-left-color: var(--gold); }
+.side-num { font-family: 'Playfair Display', serif; font-size: .8rem; color: var(--gold); min-width: 20px; flex-shrink: 0; }
+.side-label { font-size: .72rem; color: #a0aec0; line-height: 1.3; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.side-item.active .side-label { color: var(--white); }
+
+#stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; background: #0a0f24; background-image: radial-gradient(ellipse at 30% 50%, rgba(26,36,86,.6) 0%, transparent 60%); overflow: hidden; }
+
+#slide-frame {
+  width: 100%; max-width: 1100px; aspect-ratio: 16/9;
+  background: var(--white); color: var(--text);
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(201,168,76,.2);
+  display: flex; flex-direction: column; animation: fadeUp .3s ease;
+}
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px) scale(.99)} to{opacity:1;transform:translateY(0) scale(1)} }
+
+/* ══ SLIDE ANATOMY ══ */
+.s-header { background: var(--navy); padding: 20px 36px 16px; flex-shrink: 0; position: relative; }
+.s-header::after { content:''; display:block; height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-lt) 40%,transparent); margin-top:12px; }
+.s-tag   { font-size:.65rem; letter-spacing:3px; color:var(--gold); text-transform:uppercase; margin-bottom:5px; }
+.s-title { font-family:'Playfair Display',serif; font-size:1.65rem; color:var(--white); line-height:1.2; }
+.s-sub   { font-size:.82rem; color:#a0aec0; margin-top:4px; }
+.s-body  { padding:20px 36px 22px; flex:1; display:flex; flex-direction:column; gap:12px; overflow:hidden; }
+.s-body.cols { flex-direction:row; gap:24px; }
+.col     { display:flex; flex-direction:column; gap:11px; flex:1; overflow:hidden; }
+.col.w38 { flex: 0 0 38%; }
+.col.w45 { flex: 0 0 45%; }
+.col.w55 { flex: 0 0 55%; }
+
+/* ══ COVER ══ */
+.cover-wrap { display:flex; flex-direction:column; height:100%; }
+.cover-hero {
+  background: linear-gradient(140deg, var(--navy) 0%, var(--navy-mid) 50%, var(--navy-lt) 100%);
+  flex:1; display:flex; align-items:center; justify-content:center;
+  flex-direction:column; gap:14px; text-align:center; padding:32px 60px;
+  position:relative; overflow:hidden;
+}
+.cover-hero::before { content:'$'; position:absolute; font-family:'Playfair Display',serif; font-size:20rem; color:rgba(255,255,255,.03); right:-20px; top:-40px; line-height:1; pointer-events:none; }
+.cover-hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,transparent,var(--gold),var(--gold-lt),var(--gold),transparent); }
+.cover-badge { display:inline-block; border:1px solid var(--gold); color:var(--gold); font-size:.65rem; letter-spacing:3px; padding:5px 18px; border-radius:20px; }
+.cover-hero h1 { font-family:'Playfair Display',serif; font-size:2.6rem; color:var(--white); line-height:1.15; }
+.cover-hero .lema { font-size:.95rem; color:var(--gold-lt); font-style:italic; line-height:1.6; max-width:520px; }
+.cover-meta { display:grid; grid-template-columns:repeat(4,1fr); background:#ddd; gap:1px; flex-shrink:0; }
+.meta-item { background:var(--cream); padding:15px 10px; text-align:center; }
+.meta-val  { font-family:'Playfair Display',serif; font-size:1.7rem; color:var(--navy); font-weight:700; line-height:1; }
+.meta-val.deficit { color:var(--accent); }
+.meta-val.green   { color:var(--green); }
+.meta-lbl  { font-size:.65rem; color:var(--muted); letter-spacing:1.5px; text-transform:uppercase; margin-top:4px; }
+
+/* ══ COMPONENTS ══ */
+.sec-lbl { font-size:.62rem; letter-spacing:3px; color:var(--gold); text-transform:uppercase; padding-bottom:5px; border-bottom:1px solid #e5e7eb; }
+
+.card { background:var(--cream); border-radius:7px; padding:13px 16px; border-left:3px solid var(--navy); }
+.card.gold   { border-left-color:var(--gold); }
+.card.green  { border-left-color:var(--green); }
+.card.red    { border-left-color:var(--accent); }
+.card.orange { border-left-color:var(--orange); background:var(--orange-lt); }
+.card-lbl { font-size:.62rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; margin-bottom:4px; }
+.card-val { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--navy); font-weight:700; line-height:1.2; }
+.card-val.red   { color:var(--accent); }
+.card-val.green { color:var(--green); }
+.card-val.gold  { color:#a07820; }
+.card-desc { font-size:.8rem; color:var(--text); margin-top:5px; line-height:1.45; }
+.card-grid { display:grid; gap:10px; }
+.card-grid.g2 { grid-template-columns:1fr 1fr; }
+.card-grid.g3 { grid-template-columns:1fr 1fr 1fr; }
+.card-grid.g4 { grid-template-columns:1fr 1fr 1fr 1fr; }
+
+/* hbox */
+.hbox { border-radius:8px; padding:13px 18px; font-size:.84rem; line-height:1.65; }
+.hbox.navy    { background:var(--navy); color:var(--white); }
+.hbox.gold-bg { background:var(--gold); color:var(--navy); }
+.hbox.cream   { background:var(--cream); color:var(--text); border-left:4px solid var(--gold); }
+.hbox.red-bg  { background:#fee2e2; color:#7f1d1d; border-left:4px solid var(--accent); }
+.hbox.green-bg{ background:var(--green-lt); color:#1a3a28; border-left:4px solid var(--green); }
+.hbox.orange  { background:var(--orange-lt); color:#7a3a10; border-left:4px solid var(--orange); }
+
+/* item list */
+.item-list { display:flex; flex-direction:column; }
+.item-row  { display:flex; align-items:flex-start; gap:10px; padding:8px 0; border-bottom:1px solid #e5e7eb; }
+.item-row:last-child { border-bottom:none; }
+.dot   { width:7px; height:7px; border-radius:50%; background:var(--navy); flex-shrink:0; margin-top:5px; }
+.dot.g { background:var(--gold); }
+.dot.r { background:var(--accent); }
+.dot.gr{ background:var(--green); }
+.item-text { font-size:.85rem; line-height:1.5; flex:1; }
+.badge { font-size:.65rem; padding:2px 8px; border-radius:10px; white-space:nowrap; flex-shrink:0; font-weight:700; }
+.ok    { background:#d1fae5; color:#065f46; }
+.no    { background:#fee2e2; color:#991b1b; }
+.warn  { background:#fef3c7; color:#92400e; }
+.top1  { background:#1a2456; color:#e8c96d; }
+
+/* ══ FINANCIAL TABLE ══ */
+.fin-table { width:100%; border-collapse:collapse; font-size:.82rem; }
+.fin-table th { background:var(--navy); color:var(--gold); padding:9px 14px; text-align:left; font-family:'Playfair Display',serif; }
+.fin-table th.r { text-align:right; }
+.fin-table td { padding:8px 14px; border-bottom:1px solid #e5e7eb; }
+.fin-table td.r { text-align:right; font-family:'Playfair Display',serif; font-size:.88rem; }
+.fin-table .sub { background:#f8f7f4; font-weight:700; }
+.fin-table .sub td { border-top:2px solid var(--navy); }
+.fin-table .pos { color:var(--green); font-weight:700; }
+.fin-table .neg { color:var(--accent); font-weight:700; }
+.fin-table .deficit-row td { background:#fee2e2; font-weight:700; color:#7f1d1d; font-size:.9rem; border-top:2px solid var(--accent); }
+.fin-table .section-head td { background:rgba(26,36,86,.06); font-size:.68rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; padding:5px 14px; }
+
+/* ══ REGION TABLE ══ */
+.reg-table { width:100%; border-collapse:collapse; font-size:.84rem; }
+.reg-table th { background:var(--navy); color:var(--gold); padding:9px 14px; text-align:left; font-family:'Playfair Display',serif; }
+.reg-table th.r { text-align:right; }
+.reg-table td { padding:9px 14px; border-bottom:1px solid #e5e7eb; }
+.reg-table td.r { text-align:right; font-family:'Playfair Display',serif; }
+.reg-table .highlight-row td { background:rgba(201,168,76,.1); font-weight:700; }
+.reg-table .tot td { background:var(--cream); font-weight:700; border-top:2px solid var(--navy); }
+.pct-bar { display:inline-block; height:8px; border-radius:4px; background:var(--navy); vertical-align:middle; margin-right:6px; }
+.pct-bar.over  { background:var(--green); }
+.pct-bar.warn  { background:#ff9f43; }
+.pct-bar.low   { background:var(--accent); }
+
+/* ══ BAR CHART ══ */
+.bar-chart { display:flex; flex-direction:column; gap:8px; }
+.bar-row { display:flex; align-items:center; gap:10px; }
+.bar-label { font-size:.78rem; color:var(--text); min-width:110px; flex-shrink:0; text-align:right; }
+.bar-track { flex:1; height:22px; background:#e5e7eb; border-radius:4px; overflow:hidden; position:relative; }
+.bar-fill  { height:100%; border-radius:4px; transition:width .6s ease; display:flex; align-items:center; justify-content:flex-end; padding-right:8px; }
+.bar-fill span { font-size:.7rem; font-weight:700; color:var(--white); white-space:nowrap; }
+.bar-val   { font-size:.75rem; color:var(--muted); min-width:90px; flex-shrink:0; font-family:'Playfair Display',serif; }
+
+/* ══ DONUT CHART ══ */
+.donut-wrap { display:flex; align-items:center; gap:20px; }
+.donut-svg  { flex-shrink:0; }
+.donut-legend { display:flex; flex-direction:column; gap:8px; }
+.legend-item { display:flex; align-items:center; gap:8px; }
+.legend-dot  { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.legend-txt  { font-size:.78rem; color:var(--text); }
+.legend-val  { font-size:.75rem; color:var(--muted); margin-left:auto; font-family:'Playfair Display',serif; }
+
+/* ══ CLOSING ══ */
+.closing-wrap { display:flex; flex-direction:column; height:100%; }
+.closing-hero { background:linear-gradient(140deg,var(--navy) 0%,var(--navy-mid) 50%,var(--navy-lt) 100%); flex:0 0 45%; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:12px; text-align:center; padding:28px 60px; position:relative; overflow:hidden; }
+.closing-hero::before { content:'₇'; position:absolute; font-family:'Playfair Display',serif; font-size:18rem; color:rgba(255,255,255,.03); right:-20px; top:-40px; line-height:1; pointer-events:none; }
+.closing-body { flex:1; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; padding:28px; text-align:center; }
+.aa-circle { width:80px; height:80px; border-radius:50%; background:var(--navy); border:3px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:2rem; color:var(--gold); }
+.closing-lema { font-family:'Playfair Display',serif; font-style:italic; font-size:1.25rem; color:var(--navy); line-height:1.45; max-width:560px; }
+
+#kb-hint { position:fixed; bottom:10px; right:16px; font-size:.65rem; color:rgba(255,255,255,.25); letter-spacing:1px; pointer-events:none; }
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <div id="topbar-left">
+    <div id="timer-display">20:00</div>
+    <div style="display:flex;gap:6px">
+      <button class="tbtn" id="btnStart">▶ Iniciar</button>
+      <button class="tbtn" id="btnPause">⏸ Pausa</button>
+      <button class="tbtn" id="btnReset">↺ Reset</button>
+    </div>
+  </div>
+  <div id="topbar-center"><div id="slide-title-bar">Informe Financiero OSG 2025 · Área 3, Región C</div></div>
+  <div id="topbar-right">
+    <div id="slide-counter">1 / 7</div>
+    <button class="nav-btn" id="btnPrev" disabled>← Anterior</button>
+    <button class="nav-btn primary" id="btnNext">Siguiente →</button>
+  </div>
+</div>
+<div id="progress-bar" style="width:100%"></div>
+
+<div id="layout">
+  <nav id="sidebar"></nav>
+  <div id="stage">
+    <div id="slide-frame"></div>
+  </div>
+</div>
+<div id="kb-hint">← → Flechas del teclado para navegar</div>
+
+<template id="t-slides">
+
+<!-- ① PORTADA -->
+<div class="slide-data" data-label="Portada">
+  <div class="cover-wrap">
+    <div class="cover-hero">
+      <div class="cover-badge">ÁREA 3, REGIÓN C · TERRITORIO SUR · BOGOTÁ · CONFIDENCIAL</div>
+      <h1>Informe Financiero OSG 2025</h1>
+      <p class="lema">"...fondos suficientes para su funcionamiento, más una reserva adecuada, sean su prudente principio financiero..."<br><em style="font-size:.82rem;color:#a0aec0">— Garantías Generales · Art. 12 Carta Constitutiva</em></p>
+    </div>
+    <div class="cover-meta">
+      <div class="meta-item"><div class="meta-val deficit">-$163,8M</div><div class="meta-lbl">Déficit 2025</div></div>
+      <div class="meta-item"><div class="meta-val" style="font-size:1.3rem">$153,4M</div><div class="meta-lbl">Impuesto renta (causa)</div></div>
+      <div class="meta-item"><div class="meta-val green">97,5%</div><div class="meta-lbl">Ejecución Región C</div></div>
+      <div class="meta-item"><div class="meta-val top1" style="font-size:1.3rem;color:var(--navy)">#1 País</div><div class="meta-lbl">Literatura OSG · Reg. C</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ② RESUMEN EJECUTIVO -->
+<div class="slide-data" data-label="Resumen ejecutivo">
+  <div class="s-header">
+    <div class="s-tag">Informe Financiero OSG 2025</div>
+    <div class="s-title">Resumen Ejecutivo</div>
+    <div class="s-sub">62ª RAC · Rionegro, Antioquia · 2026</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col w38">
+      <div class="card red">
+        <div class="card-lbl">Déficit del ejercicio 2025</div>
+        <div class="card-val red" style="font-size:1.6rem">−$163.795.448</div>
+        <div class="card-desc">El mayor déficit registrado en la historia reciente de la Corporación</div>
+      </div>
+      <div class="card orange">
+        <div class="card-lbl">Causa principal del déficit</div>
+        <div class="card-val" style="font-size:1.1rem;color:var(--orange)">Impuesto de renta</div>
+        <div class="card-desc"><strong>$153.369.000</strong> asumido por primera vez. Sin este impuesto, la pérdida operacional habría sido de solo $10.426.448 — manejable, pero igualmente preocupante</div>
+      </div>
+      <div class="card green">
+        <div class="card-lbl">Superávit 2024 (referencia)</div>
+        <div class="card-val green">+$29.774.157</div>
+        <div class="card-desc">2024 incluyó Convención y Foro Nacional — eventos no realizados en 2025</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Contexto del déficit</div>
+      <div class="item-list">
+        <div class="item-row"><div class="dot r"></div><div class="item-text">El impuesto de renta de $153,4M es una <strong>situación fiscal que la JSG deberá resolver estructuralmente</strong> — no es un gasto recurrente normal</div></div>
+        <div class="item-row"><div class="dot r"></div><div class="item-text">En 2024 hubo <strong>Convención Nacional y Foro Nacional</strong> que aportaron $879M en ingresos. En 2025 no se realizaron: eso explica la mayor parte de la caída de ingresos</div></div>
+        <div class="item-row"><div class="dot g"></div><div class="item-text">Los ingresos por <strong>literatura crecieron</strong> de $586M a $613M (+4,5%)</div></div>
+        <div class="item-row"><div class="dot g"></div><div class="item-text">Los aportes voluntarios crecieron de $328M a <strong>$376M (+14,8%)</strong></div></div>
+        <div class="item-row"><div class="dot r"></div><div class="item-text">Los gastos operacionales subieron de $576M a <strong>$711M (+23,3%)</strong> — crecimiento que debe monitorearse</div></div>
+      </div>
+      <div class="hbox navy" style="margin-top:auto">
+        La Séptima Tradición no es una sugerencia: es la <strong>columna vertebral de nuestra independencia</strong>. Cada peso que un grupo aporta es un voto por la autonomía de AA.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ ESTADO DE RESULTADOS -->
+<div class="slide-data" data-label="Estado de resultados">
+  <div class="s-header">
+    <div class="s-tag">Estado de Resultados 2025 vs. 2024</div>
+    <div class="s-title">Ingresos, Gastos y Resultado del Ejercicio</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col">
+      <table class="fin-table">
+        <thead><tr><th>Concepto</th><th class="r">2025 ($)</th><th class="r">2024 ($)</th></tr></thead>
+        <tbody>
+          <tr class="section-head"><td colspan="3">INGRESOS OPERACIONALES</td></tr>
+          <tr><td>Literatura (misional)</td><td class="r">613.262.600</td><td class="r">586.648.438</td></tr>
+          <tr><td>Aportes voluntarios</td><td class="r">376.887.846</td><td class="r">328.276.933</td></tr>
+          <tr><td>Boletín y Revista AA El Mensaje</td><td class="r">71.866.750</td><td class="r">64.477.750</td></tr>
+          <tr><td>Excedentes de eventos</td><td class="r">108.879.508</td><td class="r">5.575.976</td></tr>
+          <tr><td>Convención / Foro Nacional</td><td class="r">—</td><td class="r">879.251.428</td></tr>
+          <tr class="sub"><td><strong>TOTAL INGRESOS</strong></td><td class="r"><strong>1.170.896.704</strong></td><td class="r"><strong>1.864.230.525</strong></td></tr>
+          <tr class="section-head"><td colspan="3">GASTOS</td></tr>
+          <tr><td>Gastos operacionales</td><td class="r">711.141.704</td><td class="r">576.871.655</td></tr>
+          <tr><td>Gastos misionales</td><td class="r">525.605.314</td><td class="r">1.261.753.575</td></tr>
+          <tr class="sub"><td><strong>PÉRDIDA OPERACIONAL</strong></td><td class="r neg">−65.850.314</td><td class="r pos">+25.605.295</td></tr>
+          <tr class="section-head"><td colspan="3">OTROS</td></tr>
+          <tr><td>Ingresos no operacionales</td><td class="r">94.367.933</td><td class="r">24.365.766</td></tr>
+          <tr><td>Gastos financieros y extraordinarios</td><td class="r">38.944.067</td><td class="r">20.196.904</td></tr>
+          <tr><td><strong>Impuesto de renta</strong></td><td class="r neg"><strong>153.369.000</strong></td><td class="r">—</td></tr>
+          <tr class="deficit-row"><td>RESULTADO DEL EJERCICIO</td><td class="r">−163.795.448</td><td class="r">+29.774.157</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Lectura del resultado</div>
+      <div class="hbox red-bg"><strong>Sin el impuesto de renta ($153,4M)</strong>, la pérdida operacional real habría sido de <strong>$10.426.448</strong>. Manejable, pero que igualmente exige atención estructural.</div>
+      <div class="sec-lbl">Composición de ingresos 2025</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">Literatura</div><div class="bar-track"><div class="bar-fill" style="width:52%;background:var(--navy)"><span>52%</span></div></div><div class="bar-val">$613M</div></div>
+        <div class="bar-row"><div class="bar-label">Aportes voluntarios</div><div class="bar-track"><div class="bar-fill" style="width:32%;background:var(--navy-mid)"><span>32%</span></div></div><div class="bar-val">$377M</div></div>
+        <div class="bar-row"><div class="bar-label">Excedentes eventos</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:var(--gold)"><span>9%</span></div></div><div class="bar-val">$109M</div></div>
+        <div class="bar-row"><div class="bar-label">Boletín / Revista</div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#a07820"><span>6%</span></div></div><div class="bar-val">$72M</div></div>
+      </div>
+      <div class="hbox orange">La ausencia de la <strong>Convención y el Foro Nacional</strong> en 2025 redujo los ingresos en $879M respecto a 2024. El déficit hay que leerlo en ese contexto.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ④ APORTES POR REGIÓN -->
+<div class="slide-data" data-label="Aportes voluntarios por región">
+  <div class="s-header">
+    <div class="s-tag">Aportes Voluntarios por Región · 2025</div>
+    <div class="s-title">Ejecución Presupuestal por Región</div>
+    <div class="s-sub">Total presupuestado: $370.953.001 · Total ejecutado: $338.417.235 · Brecha: −$32.535.766</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col">
+      <table class="reg-table">
+        <thead><tr><th>Región</th><th class="r">Presupuesto</th><th class="r">Ejecutado</th><th class="r">Diferencia</th><th class="r">% Ejec.</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A</strong></td><td class="r">$40.410.817</td><td class="r">$52.775.450</td><td class="r" style="color:var(--green)">+$12.364.633</td><td class="r"><span class="pct-bar over" style="width:40px"></span>130,6%</td></tr>
+          <tr><td><strong>B</strong></td><td class="r">$65.900.231</td><td class="r">$28.106.000</td><td class="r" style="color:var(--accent)">−$37.794.231</td><td class="r"><span class="pct-bar low" style="width:17px"></span>42,6%</td></tr>
+          <tr class="highlight-row"><td><strong>C · Bogotá ★</strong></td><td class="r">$71.357.742</td><td class="r">$69.553.730</td><td class="r" style="color:#a07820">−$1.804.012</td><td class="r"><span class="pct-bar over" style="width:38px"></span>97,5%</td></tr>
+          <tr><td><strong>D</strong></td><td class="r">$33.912.278</td><td class="r">$65.659.708</td><td class="r" style="color:var(--green)">+$31.747.430</td><td class="r"><span class="pct-bar over" style="width:50px"></span>193,6%</td></tr>
+          <tr><td><strong>E</strong></td><td class="r">$159.371.933</td><td class="r">$122.322.347</td><td class="r" style="color:var(--accent)">−$37.049.586</td><td class="r"><span class="pct-bar warn" style="width:30px"></span>76,8%</td></tr>
+          <tr class="tot"><td><strong>TOTAL</strong></td><td class="r"><strong>$370.953.001</strong></td><td class="r"><strong>$338.417.235</strong></td><td class="r" style="color:var(--accent)"><strong>−$32.535.766</strong></td><td class="r"><strong>91,2%</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="hbox green-bg"><strong>★ Región C (Bogotá)</strong> fue la región que más cerca estuvo de cumplir su meta: <strong>97,5%</strong> de ejecución — solo $1,8M de diferencia sobre un presupuesto de $71,4M.</div>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Modalidades de aporte · Total país 2025</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">Mensual de grupos</div><div class="bar-track"><div class="bar-fill" style="width:54%;background:var(--navy)"><span>54%</span></div></div><div class="bar-val">$183,9M</div></div>
+        <div class="bar-row"><div class="bar-label">Aniversario miembro</div><div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--navy-mid)"><span>15%</span></div></div><div class="bar-val">$51,9M</div></div>
+        <div class="bar-row"><div class="bar-label">Semana Gratitud</div><div class="bar-track"><div class="bar-fill" style="width:12%;background:var(--gold)"><span>12%</span></div></div><div class="bar-val">$39,9M</div></div>
+        <div class="bar-row"><div class="bar-label">Voluntario miembros</div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#a07820"><span>10%</span></div></div><div class="bar-val">$35,3M</div></div>
+        <div class="bar-row"><div class="bar-label">Aniversario grupo</div><div class="bar-track"><div class="bar-fill" style="width:4%;background:#6b7280"><span>4%</span></div></div><div class="bar-val">$11,9M</div></div>
+        <div class="bar-row"><div class="bar-label">Aniv. miembro 50%</div><div class="bar-track"><div class="bar-fill" style="width:3%;background:#9ca3af"><span>3%</span></div></div><div class="bar-val">$10,9M</div></div>
+        <div class="bar-row"><div class="bar-label">Otros</div><div class="bar-track"><div class="bar-fill" style="width:2%;background:#d1d5db"><span></span></div></div><div class="bar-val">$4,7M</div></div>
+      </div>
+      <div class="hbox navy">El aporte <strong>mensual de grupos</strong> sigue siendo el pilar: 54% del total. Fortalecer este hábito en cada grupo es la acción más directa para cerrar la brecha.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑤ LITERATURA -->
+<div class="slide-data" data-label="Literatura — Ranking">
+  <div class="s-header">
+    <div class="s-tag">Compra de Literatura · Principal sustento operacional de la OSG</div>
+    <div class="s-title">Ranking Nacional de Compra de Literatura 2025</div>
+    <div class="s-sub">Total país: $555.308.674 (solo OSG) · $685.129.350 (incluyendo Revista)</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col w45">
+      <table class="reg-table">
+        <thead><tr><th>Región</th><th class="r">Literatura OSG</th><th class="r">+ Revista</th><th class="r">Pos.</th></tr></thead>
+        <tbody>
+          <tr class="highlight-row"><td><strong>C · Bogotá ★</strong></td><td class="r"><strong>$146.829.566</strong></td><td class="r"><strong>$176.769.422</strong></td><td class="r"><span class="badge top1">#1 OSG</span></td></tr>
+          <tr><td><strong>E</strong></td><td class="r">$171.278.549</td><td class="r">$211.711.396</td><td class="r"><span class="badge ok">#1 Total</span></td></tr>
+          <tr><td><strong>B</strong></td><td class="r">$88.281.972</td><td class="r">$110.199.575</td><td class="r">#3</td></tr>
+          <tr><td><strong>D</strong></td><td class="r">$77.461.317</td><td class="r">$93.632.637</td><td class="r">#4</td></tr>
+          <tr><td><strong>A</strong></td><td class="r">$71.457.270</td><td class="r">$92.816.320</td><td class="r">#5</td></tr>
+          <tr class="tot"><td><strong>TOTAL PAÍS</strong></td><td class="r"><strong>$555.308.674</strong></td><td class="r"><strong>$685.129.350</strong></td><td class="r"></td></tr>
+        </tbody>
+      </table>
+      <div class="hbox green-bg">
+        <strong>★ Región C lidera el país en compra de literatura OSG.</strong><br>
+        En aportes voluntarios la Región E supera a la C, pero en literatura pura la Región C ocupa el <strong>primer puesto nacional</strong>.
+      </div>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Literatura OSG por región — participación</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label" style="color:var(--navy);font-weight:700">C · Bogotá ★</div><div class="bar-track"><div class="bar-fill" style="width:26%;background:var(--gold)"><span>26%</span></div></div><div class="bar-val">$146,8M</div></div>
+        <div class="bar-row"><div class="bar-label">E</div><div class="bar-track"><div class="bar-fill" style="width:31%;background:var(--navy)"><span>31%</span></div></div><div class="bar-val">$171,3M</div></div>
+        <div class="bar-row"><div class="bar-label">B</div><div class="bar-track"><div class="bar-fill" style="width:16%;background:var(--navy-mid)"><span>16%</span></div></div><div class="bar-val">$88,3M</div></div>
+        <div class="bar-row"><div class="bar-label">D</div><div class="bar-track"><div class="bar-fill" style="width:14%;background:#6b7280"><span>14%</span></div></div><div class="bar-val">$77,5M</div></div>
+        <div class="bar-row"><div class="bar-label">A</div><div class="bar-track"><div class="bar-fill" style="width:13%;background:#9ca3af"><span>13%</span></div></div><div class="bar-val">$71,5M</div></div>
+      </div>
+      <div class="sec-lbl">¿Por qué importa la literatura?</div>
+      <div class="item-list">
+        <div class="item-row"><div class="dot g"></div><div class="item-text">La literatura es el <strong>52% de los ingresos totales</strong> de la OSG — su principal fuente de sostenibilidad</div></div>
+        <div class="item-row"><div class="dot g"></div><div class="item-text">Cada libro del Texto Básico que un grupo compra financia directamente la estructura nacional</div></div>
+        <div class="item-row"><div class="dot g"></div><div class="item-text">La Región C creció en compra de literatura respecto a 2024, consolidando su liderazgo</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑥ MENSAJE A LOS GRUPOS -->
+<div class="slide-data" data-label="Mensaje a los grupos">
+  <div class="s-header">
+    <div class="s-tag">Mensaje a los Grupos · Séptima Tradición</div>
+    <div class="s-title">¿Qué podemos hacer desde nuestro grupo?</div>
+    <div class="s-sub">Los $32,5 millones que faltaron para cumplir el presupuesto de aportes no son solo una cifra</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col">
+      <div class="hbox navy" style="font-size:.9rem;line-height:1.7">
+        <strong style="font-size:1rem">La brecha es concreta:</strong><br><br>
+        Los $32,5M que no se aportaron son <strong>foros que no se realizan</strong>, <strong>literatura que no llega</strong> a grupos nuevos, y <strong>delegados que no pueden viajar</strong> a representar a sus comunidades.
+      </div>
+      <div class="card gold">
+        <div class="card-lbl">Una sola acción puede cerrar la brecha</div>
+        <div class="card-val" style="font-size:1rem">Un aporte voluntario adicional al año por grupo</div>
+        <div class="card-desc">Si cada grupo del país hiciera un solo aporte voluntario adicional al año, la brecha de $32,5M estaría cubierta.</div>
+      </div>
+      <div class="hbox cream">
+        <em>"...fondos suficientes para su funcionamiento, más una reserva adecuada, sean su prudente principio financiero..."</em><br>
+        <strong style="font-size:.75rem;letter-spacing:1px">— Garantías Generales · Art. 12 Carta Constitutiva</strong>
+      </div>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Acciones concretas por grupo</div>
+      <div class="item-list">
+        <div class="item-row"><div class="dot gr"></div><div class="item-text"><strong>Socializar este informe</strong> en la reunión de grupo — la membresía tiene derecho a saber cómo está la Corporación</div></div>
+        <div class="item-row"><div class="dot gr"></div><div class="item-text"><strong>Revisar el aporte mensual</strong> del grupo — ¿refleja el crecimiento del grupo en el último año?</div></div>
+        <div class="item-row"><div class="dot gr"></div><div class="item-text"><strong>Activar la Semana de la Gratitud</strong> — solo aportó $39,9M; hay margen de crecimiento</div></div>
+        <div class="item-row"><div class="dot gr"></div><div class="item-text"><strong>Comprar literatura en la OSG</strong> — no en canales alternativos. Cada compra financia la estructura</div></div>
+        <div class="item-row"><div class="dot gr"></div><div class="item-text"><strong>Hacer un aporte en aniversario de grupo</strong> — modalidad que solo aportó $11,9M a nivel nacional</div></div>
+      </div>
+      <div class="card-grid g2" style="margin-top:auto">
+        <div class="card green"><div class="card-lbl">Región C en aportes</div><div class="card-val green">97,5%</div><div class="card-desc">Casi cumplimos. $1,8M separan a la Región C del 100%</div></div>
+        <div class="card gold"><div class="card-lbl">Región C en literatura</div><div class="card-val gold">#1 País</div><div class="card-desc">Lideramos la compra de literatura OSG a nivel nacional</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑦ CIERRE -->
+<div class="slide-data" data-label="Cierre">
+  <div class="closing-wrap">
+    <div class="closing-hero">
+      <div class="cover-badge">DELEGADO ÁREA 3 · REGIÓN C · TERRITORIO SUR · BOGOTÁ · CONFIDENCIAL</div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--white);line-height:1.2">Informe Financiero OSG 2025</h1>
+      <p style="font-size:.95rem;color:var(--gold-lt);font-style:italic;line-height:1.6;max-width:560px">Documento preparado para compartir en grupos — Área 3, Región C, Territorio Sur</p>
+    </div>
+    <div class="closing-body">
+      <div class="aa-circle">7ª</div>
+      <div class="closing-lema">"La Séptima Tradición no es una sugerencia: es la columna vertebral de nuestra independencia."</div>
+      <p style="color:var(--muted);font-size:.82rem;line-height:1.7;max-width:480px">Elaborado por el Delegado · Panel 62 · Área 3, Región C, Territorio Sur — Bogotá<br>62ª Reunión Anual de la Conferencia de Servicios Generales · Rionegro 2026<br><strong style="color:var(--accent)">DOCUMENTO CONFIDENCIAL — Solo para uso dentro de AA</strong></p>
+    </div>
+  </div>
+</div>
+
+</template>
+
+<script>
+const MINS = 20;
+const slideTitles = [
+  'Portada','Resumen ejecutivo','Estado de resultados',
+  'Aportes por región','Literatura — Ranking',
+  'Mensaje a los grupos','Cierre'
+];
+const tpl = document.getElementById('t-slides').content;
+const slideNodes = Array.from(tpl.querySelectorAll('.slide-data'));
+const TOTAL = slideNodes.length;
+let current = 1, timeLeft = MINS*60, timerInterval = null, running = false;
+
+const sidebar = document.getElementById('sidebar');
+slideNodes.forEach((_,i) => {
+  const btn = document.createElement('button');
+  btn.className = 'side-item' + (i===0?' active':'');
+  btn.innerHTML = `<span class="side-num">${i+1}</span><span class="side-label">${slideTitles[i]}</span>`;
+  btn.onclick = () => goTo(i+1);
+  sidebar.appendChild(btn);
+});
+
+const frame = document.getElementById('slide-frame');
+function renderSlide(n) {
+  const node = slideNodes[n-1].cloneNode(true);
+  frame.innerHTML = '';
+  while(node.firstChild) frame.appendChild(node.firstChild);
+  frame.style.animation='none'; frame.offsetHeight; frame.style.animation='';
+  document.getElementById('slide-title-bar').textContent = slideTitles[n-1];
+}
+function goTo(n) {
+  sidebar.children[current-1].classList.remove('active');
+  current = Math.max(1,Math.min(TOTAL,n));
+  sidebar.children[current-1].classList.add('active');
+  sidebar.children[current-1].scrollIntoView({block:'nearest'});
+  renderSlide(current);
+  document.getElementById('slide-counter').textContent = current+' / '+TOTAL;
+  document.getElementById('btnPrev').disabled = current===1;
+  document.getElementById('btnNext').disabled = current===TOTAL;
+}
+document.getElementById('btnNext').onclick = ()=>goTo(current+1);
+document.getElementById('btnPrev').onclick = ()=>goTo(current-1);
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown') goTo(current+1);
+  if(e.key==='ArrowLeft' ||e.key==='ArrowUp')   goTo(current-1);
+});
+const display=document.getElementById('timer-display');
+const prog=document.getElementById('progress-bar');
+const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+function updateDisplay(){
+  display.textContent=fmt(timeLeft);
+  prog.style.width=(timeLeft/(MINS*60)*100)+'%';
+  display.classList.remove('warning','danger');
+  if(timeLeft<=60){display.classList.add('danger');prog.style.background='#e63946';}
+  else if(timeLeft<=300){display.classList.add('warning');prog.style.background='#ff9f43';}
+  else{prog.style.background='var(--gold)';}
+}
+function startTimer(){if(running)return;running=true;timerInterval=setInterval(()=>{if(timeLeft>0){timeLeft--;updateDisplay();}else{clearInterval(timerInterval);running=false;}},1000);}
+function pauseTimer(){clearInterval(timerInterval);running=false;}
+function resetTimer(){pauseTimer();timeLeft=MINS*60;updateDisplay();}
+document.getElementById('btnStart').onclick=startTimer;
+document.getElementById('btnPause').onclick=pauseTimer;
+document.getElementById('btnReset').onclick=resetTimer;
+renderSlide(1); updateDisplay();
+document.getElementById('slide-counter').textContent='1 / '+TOTAL;
+</script>
+</body>
+</html>
