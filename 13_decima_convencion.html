@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aniversario #13 · Grupo Décima Convención de Bogotá</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deepest: #0a1428;
+    --navy-deep: #102447;
+    --navy: #1a3668;
+    --navy-mid: #2a4f8f;
+    --navy-light: #4a7bc8;
+    --silver-bright: #e8eef7;
+    --silver: #c5d2e4;
+    --silver-dim: #8fa2bf;
+    --gold-soft: #d4c896;
+    --paper: #f4f7fc;
+    --paper-warm: #eef2f9;
+    --mist: #d8e2f0;
+    --sky-light: #c8d8ed;
+    --line: rgba(26, 54, 104, 0.18);
+    --line-strong: rgba(26, 54, 104, 0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cormorant Garamond', serif;
+    background: var(--paper);
+    color: var(--navy-deep);
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Atmospheric background — mountain mist scene */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(232, 238, 247, 0.95) 0%, transparent 70%),
+      radial-gradient(ellipse 100% 50% at 50% 100%, rgba(168, 192, 220, 0.55) 0%, transparent 70%),
+      linear-gradient(180deg, #eaf1fa 0%, #d8e4f2 40%, #b8cce4 75%, #97b3d2 100%);
+    z-index: -3;
+  }
+
+  /* Light rays from the top */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      conic-gradient(from 180deg at 50% -10%,
+        transparent 0deg,
+        rgba(255, 255, 255, 0.0) 60deg,
+        rgba(255, 255, 255, 0.35) 85deg,
+        rgba(255, 255, 255, 0.0) 110deg,
+        transparent 180deg,
+        rgba(255, 255, 255, 0.0) 250deg,
+        rgba(255, 255, 255, 0.30) 275deg,
+        rgba(255, 255, 255, 0.0) 300deg,
+        transparent 360deg);
+    z-index: -2;
+    pointer-events: none;
+    animation: raysShift 30s ease-in-out infinite alternate;
+  }
+
+  @keyframes raysShift {
+    0%   { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 1.0; transform: scale(1.05); }
+  }
+
+  /* Mountain silhouettes (decorative SVG via CSS mask) */
+  .mountains {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45vh;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 600' preserveAspectRatio='none'><defs><linearGradient id='m1' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%237a99c0' stop-opacity='0.35'/><stop offset='1' stop-color='%23456a99' stop-opacity='0.55'/></linearGradient><linearGradient id='m2' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='%23567a9e' stop-opacity='0.55'/><stop offset='1' stop-color='%232a4a72' stop-opacity='0.85'/></linearGradient></defs><path fill='url(%23m1)' d='M0,380 L120,300 L240,360 L360,250 L480,330 L600,220 L720,310 L840,260 L960,340 L1080,280 L1200,360 L1320,300 L1440,380 L1440,600 L0,600 Z'/><path fill='url(%23m2)' d='M0,480 L100,420 L220,470 L340,400 L460,460 L580,390 L700,450 L820,400 L940,470 L1060,420 L1180,490 L1300,440 L1440,490 L1440,600 L0,600 Z'/></svg>");
+    background-size: cover;
+    background-position: bottom;
+    opacity: 0.7;
+  }
+
+  /* Floating particles */
+  .particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: radial-gradient(circle, rgba(255,255,255,0.95), rgba(255,255,255,0));
+    border-radius: 50%;
+    animation: float 14s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translate(0,0); opacity: 0; }
+    10%      { opacity: 0.9; }
+    50%      { transform: translate(20px, -120px); opacity: 0.7; }
+    90%      { opacity: 0.3; }
+  }
+
+  /* ─── HERO ─────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem 6rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ornament-top, .ornament-bot {
+    position: absolute;
+    width: 280px;
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .ornament-top { top: 5%; }
+  .ornament-bot { bottom: 5%; transform: rotate(180deg); }
+  .ornament-left  { left: 2%; }
+  .ornament-right { right: 2%; }
+
+  /* Emblem */
+  .emblem {
+    width: 230px;
+    height: 230px;
+    position: relative;
+    animation: emblemIn 1.6s cubic-bezier(.16,.84,.44,1) both;
+    filter: drop-shadow(0 18px 30px rgba(10, 20, 40, 0.35));
+  }
+  .emblem svg { width: 100%; height: 100%; }
+
+  @keyframes emblemIn {
+    0%   { transform: scale(0.4) rotate(-25deg); opacity: 0; }
+    60%  { transform: scale(1.08) rotate(5deg);  opacity: 1; }
+    100% { transform: scale(1)    rotate(0deg);   opacity: 1; }
+  }
+
+  .gear-outer { animation: spinSlow 60s linear infinite; transform-origin: center; }
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
+
+  .hero-titles {
+    margin-top: 2.2rem;
+    animation: fadeUp 1.2s 0.6s both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .badge-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem 1.6rem;
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--silver-bright);
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    border-radius: 2px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    box-shadow: 0 6px 14px rgba(10, 20, 40, 0.25);
+    margin-bottom: 1.8rem;
+    text-transform: uppercase;
+  }
+  .badge-line::before, .badge-line::after {
+    content: '◆';
+    color: var(--gold-soft);
+    font-size: 0.55rem;
+  }
+
+  .hero-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2.4vw, 1.55rem);
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-invita {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--navy-mid);
+    position: relative;
+    display: inline-block;
+    padding: 0 2.5rem;
+    margin: 0.4rem 0 0.6rem;
+  }
+  .hero-invita::before, .hero-invita::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--navy-light), transparent);
+  }
+  .hero-invita::before { left: 0; }
+  .hero-invita::after  { right: 0; }
+
+  .hero-main-title {
+    font-family: 'Pinyon Script', cursive;
+    font-size: clamp(4.5rem, 12vw, 8.5rem);
+    color: var(--navy-deep);
+    line-height: 0.9;
+    margin: 0.5rem 0 1.5rem;
+    background: linear-gradient(180deg, #1e3a73 0%, #0a1d3f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 1px rgba(10,20,40,0.1);
+    filter: drop-shadow(0 4px 8px rgba(10, 20, 40, 0.15));
+  }
+
+  .hero-sub-pills {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.4em;
+    color: var(--navy-mid);
+    text-transform: uppercase;
+  }
+  .hero-sub-pills span { opacity: 0.85; }
+  .hero-sub-pills .dot { width: 6px; height: 6px; background: var(--navy-mid); border-radius: 50%; opacity: 0.6; }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--navy-mid);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    animation: bob 2.5s ease-in-out infinite;
+  }
+  .scroll-cue::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(180deg, var(--navy-mid), transparent);
+    margin: 0.6rem auto 0;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─── COUNTDOWN ────────────────────────────────────── */
+  .countdown-section {
+    padding: 5rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.5em;
+    color: var(--navy-mid);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: inline-block;
+    padding: 0.3rem 1.5rem;
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+  }
+  .section-heading {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    color: var(--navy-deep);
+    letter-spacing: 0.06em;
+    margin-bottom: 2.5rem;
+  }
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: clamp(0.8rem, 2vw, 2rem);
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .count-cell {
+    background: linear-gradient(160deg,
+      rgba(255,255,255,0.85) 0%,
+      rgba(232, 238, 247, 0.7) 100%);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 4px;
+    padding: 1.4rem 1.5rem 1rem;
+    min-width: 110px;
+    position: relative;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.9) inset,
+      0 10px 30px rgba(10, 20, 40, 0.12),
+      0 0 0 1px rgba(26, 54, 104, 0.08);
+  }
+  .count-cell::before, .count-cell::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid var(--navy);
+    opacity: 0.5;
+  }
+  .count-cell::before {
+    top: 6px; left: 6px;
+    border-right: none; border-bottom: none;
+  }
+  .count-cell::after {
+    bottom: 6px; right: 6px;
+    border-left: none; border-top: none;
+  }
+  .count-num {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    color: var(--navy-deep);
+    line-height: 1;
+    background: linear-gradient(180deg, #1e3a73, #0a1d3f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .count-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+    color: var(--navy-mid);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  /* ─── DAY NAVIGATION ──────────────────────────────── */
+  .program-section {
+    padding: 5rem 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .program-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .day-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0 auto 3.5rem;
+    max-width: 700px;
+  }
+  .day-nav button {
+    flex: 1;
+    min-width: 140px;
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.85),
+      rgba(232,238,247,0.65));
+    border: 1px solid var(--line);
+    color: var(--navy-deep);
+    padding: 1.1rem 1rem;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(10, 20, 40, 0.08);
+  }
+  .day-nav button .day-date {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: var(--navy-mid);
+    margin-top: 0.4rem;
+    text-transform: none;
+  }
+  .day-nav button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(10, 20, 40, 0.15);
+    border-color: var(--navy-light);
+  }
+  .day-nav button.active {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--silver-bright);
+    border-color: var(--navy-deep);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.3) inset,
+      0 12px 26px rgba(10, 20, 40, 0.35);
+  }
+  .day-nav button.active .day-date { color: var(--silver); }
+
+  /* ─── DAY PANELS ──────────────────────────────────── */
+  .day-panel {
+    display: none;
+    animation: panelIn 0.7s cubic-bezier(.16,.84,.44,1) both;
+  }
+  .day-panel.active { display: block; }
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Day header banner */
+  .day-banner {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .day-banner-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--navy-deep);
+    letter-spacing: 0.2em;
+    display: inline-block;
+    padding: 0.8rem 3rem;
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.7),
+      rgba(232,238,247,0.5));
+    border-top: 2px solid var(--navy);
+    border-bottom: 2px solid var(--navy);
+    position: relative;
+    clip-path: polygon(2% 0, 98% 0, 100% 50%, 98% 100%, 2% 100%, 0% 50%);
+  }
+  .day-banner-subtitle {
+    margin-top: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--navy-mid);
+    letter-spacing: 0.05em;
+  }
+  .day-banner-subtitle .clock-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.4rem;
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Bloque grid */
+  .bloques {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+  .bloques.single { grid-template-columns: 1fr; max-width: 600px; margin: 0 auto; }
+
+  .bloque {
+    background: linear-gradient(160deg,
+      rgba(255,255,255,0.9) 0%,
+      rgba(244,247,252,0.75) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: 6px;
+    padding: 2rem 1.8rem;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.9) inset,
+      0 18px 40px rgba(10, 20, 40, 0.12),
+      0 0 0 1px rgba(26, 54, 104, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .bloque::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at top right, rgba(74, 123, 200, 0.15), transparent 70%);
+    pointer-events: none;
+  }
+
+  .bloque-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .bloque-tag {
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--silver-bright);
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    padding: 0.5rem 1.2rem;
+    clip-path: polygon(8% 0, 92% 0, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+    box-shadow: 0 4px 10px rgba(10, 20, 40, 0.25);
+  }
+  .bloque-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--navy-mid);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  /* Timeline of events */
+  .timeline {
+    position: relative;
+    padding-left: 3.4rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 22px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background:
+      repeating-linear-gradient(180deg,
+        var(--navy-light) 0 4px,
+        transparent 4px 8px);
+    opacity: 0.5;
+  }
+  .event {
+    position: relative;
+    padding: 0.8rem 0;
+    transition: transform 0.3s ease;
+  }
+  .event:hover { transform: translateX(4px); }
+  .event-icon {
+    position: absolute;
+    left: -3.4rem;
+    top: 0.7rem;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--silver-bright);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.3) inset,
+      0 6px 14px rgba(10, 20, 40, 0.3);
+    border: 2px solid rgba(255,255,255,0.7);
+  }
+  .event-icon svg { width: 22px; height: 22px; }
+  .event-time {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--navy-deep);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+  .event-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--navy-mid);
+    line-height: 1.35;
+  }
+  .event-title strong { color: var(--navy-deep); font-weight: 600; }
+  .event-qa {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--silver-dim);
+    margin-top: 0.1rem;
+  }
+
+  /* Acto social card */
+  .acto-social {
+    background: linear-gradient(160deg, var(--navy-deep) 0%, var(--navy) 100%);
+    color: var(--silver-bright);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.15) inset,
+      0 20px 40px rgba(10, 20, 40, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  .acto-social::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(212, 200, 150, 0.15), transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(74, 123, 200, 0.25), transparent 50%);
+    pointer-events: none;
+  }
+  .acto-social .icon-circle {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.2rem;
+    background: radial-gradient(circle, var(--navy-mid), var(--navy-deep));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--gold-soft);
+    box-shadow: 0 0 24px rgba(212, 200, 150, 0.4);
+  }
+  .acto-social h3 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-soft);
+    margin-bottom: 0.4rem;
+    position: relative;
+  }
+  .acto-social h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--gold-soft);
+    margin: 0.8rem auto 0;
+  }
+  .acto-social .time {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    color: var(--silver);
+  }
+  .acto-social .address {
+    margin-top: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--silver);
+    position: relative;
+  }
+
+  /* ─── LOCATIONS ───────────────────────────────────── */
+  .locations-section {
+    padding: 5rem 1.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .location-card {
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0.85),
+      rgba(232,238,247,0.6));
+    backdrop-filter: blur(10px);
+    border-radius: 6px;
+    padding: 2.2rem 1.8rem;
+    border: 1px solid var(--line);
+    box-shadow: 0 14px 36px rgba(10, 20, 40, 0.12);
+    transition: all 0.4s ease;
+    text-align: center;
+    position: relative;
+  }
+  .location-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 50px rgba(10, 20, 40, 0.2);
+  }
+  .location-card .pin {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(180deg, var(--navy), var(--navy-deep));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255,255,255,0.6);
+    box-shadow: 0 8px 18px rgba(10, 20, 40, 0.25);
+  }
+  .location-card h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    color: var(--navy-deep);
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+  }
+  .location-card p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--navy-mid);
+    margin-bottom: 0.4rem;
+  }
+  .location-card .days {
+    margin-top: 1rem;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--silver-dim);
+    padding-top: 0.8rem;
+    border-top: 1px dashed var(--line);
+  }
+  .location-card a {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--navy);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid var(--navy);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+  .location-card a:hover {
+    background: var(--navy);
+    color: var(--silver-bright);
+  }
+
+  /* ─── CLOSING QUOTE ──────────────────────────────── */
+  .closing {
+    padding: 6rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .quote {
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--navy-deep);
+    line-height: 1.4;
+    position: relative;
+    padding: 2rem 3rem;
+  }
+  .quote::before, .quote::after {
+    font-family: 'Pinyon Script', cursive;
+    color: var(--navy-light);
+    font-size: 5rem;
+    line-height: 1;
+    position: absolute;
+    opacity: 0.4;
+  }
+  .quote::before { content: '“'; top: -0.3em; left: 0; }
+  .quote::after  { content: '”'; bottom: -0.6em; right: 0; }
+
+  .footer {
+    margin-top: 4rem;
+    padding: 2rem 1rem 3rem;
+    text-align: center;
+    color: var(--navy-mid);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+  .footer .divider {
+    width: 80px;
+    height: 1px;
+    background: var(--line-strong);
+    margin: 0 auto 1.5rem;
+  }
+  .footer .pills {
+    margin-top: 1rem;
+    color: var(--silver-dim);
+    font-size: 0.62rem;
+    letter-spacing: 0.4em;
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.16,.84,.44,1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 600px) {
+    .ornament-top, .ornament-bot { width: 130px; opacity: 0.25; }
+    .emblem { width: 170px; height: 170px; }
+    .timeline { padding-left: 3rem; }
+    .event-icon { left: -3rem; width: 38px; height: 38px; }
+    .event-icon svg { width: 18px; height: 18px; }
+    .bloque { padding: 1.5rem 1.2rem; }
+    .day-banner-title { padding: 0.7rem 1.5rem; font-size: 1.3rem; letter-spacing: 0.15em;}
+    .count-cell { min-width: 80px; padding: 1rem 0.8rem 0.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mountains"></div>
+<div class="particles" id="particles"></div>
+
+<!-- ──────── HERO ──────── -->
+<section class="hero">
+  <!-- Decorative laurels -->
+  <svg class="ornament-top ornament-left" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#4a7bc8" stroke-width="1.2" opacity="0.7">
+      <path d="M10,100 Q40,80 80,60 T180,20"/>
+      <g fill="#4a7bc8" opacity="0.6">
+        <ellipse cx="30" cy="92" rx="8" ry="4" transform="rotate(-30 30 92)"/>
+        <ellipse cx="55" cy="78" rx="9" ry="4" transform="rotate(-25 55 78)"/>
+        <ellipse cx="85" cy="62" rx="10" ry="4" transform="rotate(-22 85 62)"/>
+        <ellipse cx="120" cy="48" rx="10" ry="4" transform="rotate(-18 120 48)"/>
+        <ellipse cx="155" cy="32" rx="9" ry="4" transform="rotate(-15 155 32)"/>
+      </g>
+    </g>
+  </svg>
+  <svg class="ornament-top ornament-right" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+    <g fill="none" stroke="#4a7bc8" stroke-width="1.2" opacity="0.7">
+      <path d="M10,100 Q40,80 80,60 T180,20"/>
+      <g fill="#4a7bc8" opacity="0.6">
+        <ellipse cx="30" cy="92" rx="8" ry="4" transform="rotate(-30 30 92)"/>
+        <ellipse cx="55" cy="78" rx="9" ry="4" transform="rotate(-25 55 78)"/>
+        <ellipse cx="85" cy="62" rx="10" ry="4" transform="rotate(-22 85 62)"/>
+        <ellipse cx="120" cy="48" rx="10" ry="4" transform="rotate(-18 120 48)"/>
+        <ellipse cx="155" cy="32" rx="9" ry="4" transform="rotate(-15 155 32)"/>
+      </g>
+    </g>
+  </svg>
+
+  <!-- EMBLEM -->
+  <div class="emblem">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="gearGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#d8e2f0"/>
+          <stop offset="0.5" stop-color="#8fa2bf"/>
+          <stop offset="1" stop-color="#5d7396"/>
+        </linearGradient>
+        <linearGradient id="navyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2a4f8f"/>
+          <stop offset="1" stop-color="#0a1d3f"/>
+        </linearGradient>
+        <radialGradient id="centerGlow" cx="0.5" cy="0.3" r="0.7">
+          <stop offset="0" stop-color="#4a7bc8"/>
+          <stop offset="1" stop-color="#0a1d3f"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Outer rotating gear -->
+      <g class="gear-outer">
+        <g fill="url(#gearGrad)" stroke="#5d7396" stroke-width="0.5">
+          <!-- 12 teeth around the gear -->
+          <g>
+            <rect x="96" y="6" width="8" height="14" rx="1"/>
+            <rect x="96" y="180" width="8" height="14" rx="1"/>
+            <rect x="6" y="96" width="14" height="8" rx="1"/>
+            <rect x="180" y="96" width="14" height="8" rx="1"/>
+            <g transform="rotate(30 100 100)"><rect x="96" y="6" width="8" height="14" rx="1"/></g>
+            <g transform="rotate(60 100 100)"><rect x="96" y="6" width="8" height="14" rx="1"/></g>
+            <g transform="rotate(120 100 100)"><rect x="96" y="6" width="8" height="14" rx="1"/></g>
+            <g transform="rotate(150 100 100)"><rect x="96" y="6" width="8" height="14" rx="1"/></g>
+            <g transform="rotate(210 100 100)"><rect x="96" y="6" width="8" height="14" rx="1"/></g>
+            <g transform="rotate(240 100 100)"><rect x="96" y="6" width="8" height="14" rx="1"/></g>
+            <g transform="rotate(300 100 100)"><rect x="96" y="6" width="8" height="14" rx="1"/></g>
+            <g transform="rotate(330 100 100)"><rect x="96" y="6" width="8" height="14" rx="1"/></g>
+          </g>
+        </g>
+        <circle cx="100" cy="100" r="84" fill="url(#gearGrad)" stroke="#5d7396" stroke-width="1"/>
+        <circle cx="100" cy="100" r="76" fill="url(#navyGrad)"/>
+        <!-- Rivets -->
+        <g fill="#1a3668">
+          <circle cx="100" cy="30" r="2.5"/>
+          <circle cx="100" cy="170" r="2.5"/>
+          <circle cx="30" cy="100" r="2.5"/>
+          <circle cx="170" cy="100" r="2.5"/>
+          <circle cx="50" cy="50" r="2"/>
+          <circle cx="150" cy="50" r="2"/>
+          <circle cx="50" cy="150" r="2"/>
+          <circle cx="150" cy="150" r="2"/>
+        </g>
+      </g>
+
+      <!-- Curved text "GRUPO DÉCIMA CONVENCIÓN" top -->
+      <defs>
+        <path id="topArc" d="M 30,100 A 70,70 0 0 1 170,100" fill="none"/>
+        <path id="botArc" d="M 30,100 A 70,70 0 0 0 170,100" fill="none"/>
+      </defs>
+      <text font-family="Cinzel, serif" font-size="11" font-weight="700" fill="#e8eef7" letter-spacing="2">
+        <textPath href="#topArc" startOffset="50%" text-anchor="middle">GRUPO DÉCIMA CONVENCIÓN</textPath>
+      </text>
+      <text font-family="Cinzel, serif" font-size="9" font-weight="600" fill="#d4c896" letter-spacing="3">
+        <textPath href="#botArc" startOffset="50%" text-anchor="middle">13 AÑOS EN ACCIÓN</textPath>
+      </text>
+
+      <!-- Center triangle with AA -->
+      <g transform="translate(100,100)">
+        <polygon points="0,-30 26,18 -26,18" fill="url(#centerGlow)" stroke="#c5d2e4" stroke-width="1.5"/>
+        <polygon points="0,-24 21,14 -21,14" fill="none" stroke="#8fa2bf" stroke-width="0.5"/>
+        <text y="8" text-anchor="middle" font-family="Cinzel, serif" font-weight="800" font-size="13" fill="#e8eef7" letter-spacing="2">AA</text>
+      </g>
+
+      <!-- 13 above triangle -->
+      <text x="100" y="68" text-anchor="middle" font-family="Cinzel, serif" font-weight="800" font-size="22" fill="#e8eef7">13</text>
+    </svg>
+  </div>
+
+  <div class="hero-titles">
+    <div class="badge-line">Bogotá · Colombia · 2026</div>
+    <div class="hero-name">Grupo Décima Convención de Bogotá</div>
+    <div class="hero-invita">invita a su</div>
+    <h1 class="hero-main-title">Aniversario&nbsp;#13</h1>
+    <div class="hero-sub-pills">
+      <span>Unidad</span>
+      <span class="dot"></span>
+      <span>Servicio</span>
+      <span class="dot"></span>
+      <span>Recuperación</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue">desliza para descubrir</div>
+</section>
+
+<!-- ──────── COUNTDOWN ──────── -->
+<section class="countdown-section reveal">
+  <div class="section-label">Faltan</div>
+  <h2 class="section-heading">La Cuenta Regresiva</h2>
+  <div class="countdown" id="countdown">
+    <div class="count-cell"><div class="count-num" id="cd-days">--</div><div class="count-label">Días</div></div>
+    <div class="count-cell"><div class="count-num" id="cd-hours">--</div><div class="count-label">Horas</div></div>
+    <div class="count-cell"><div class="count-num" id="cd-mins">--</div><div class="count-label">Minutos</div></div>
+    <div class="count-cell"><div class="count-num" id="cd-secs">--</div><div class="count-label">Segundos</div></div>
+  </div>
+</section>
+
+<!-- ──────── PROGRAM ──────── -->
+<section class="program-section reveal">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="section-label">Tres Días de Encuentro</div>
+      <h2 class="section-heading">Programación</h2>
+    </div>
+
+    <!-- DAY TABS -->
+    <div class="day-nav" role="tablist">
+      <button class="day-tab active" data-day="jueves">Jueves<span class="day-date">28 de Mayo</span></button>
+      <button class="day-tab" data-day="viernes">Viernes<span class="day-date">29 de Mayo</span></button>
+      <button class="day-tab" data-day="sabado">Sábado<span class="day-date">30 de Mayo</span></button>
+    </div>
+
+    <!-- JUEVES -->
+    <div class="day-panel active" data-day="jueves">
+      <div class="day-banner">
+        <div class="day-banner-title">JUEVES 28 DE MAYO</div>
+        <div class="day-banner-subtitle">
+          <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 16,14"/></svg>
+          de 5:00 a 9:00 PM
+        </div>
+      </div>
+
+      <div class="bloques">
+        <div class="bloque">
+          <div class="bloque-header">
+            <div class="bloque-tag">BLOQUE 1</div>
+            <div class="bloque-time">⏱ 5:00 – 6:45 PM</div>
+          </div>
+          <div class="timeline">
+            <div class="event">
+              <div class="event-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5v1H3z"/><path d="M14 14c2 0 6 1.5 6 4v2h-5"/></svg>
+              </div>
+              <div class="event-time">05:00 PM</div>
+              <div class="event-title"><strong>Apertura y bienvenida</strong><br>Palabras miembros de menos de un año</div>
+            </div>
+            <div class="event">
+              <div class="event-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <div class="event-time">5:45 PM</div>
+              <div class="event-title"><strong>Orador uno:</strong> servicio y conceptos</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h12v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4z"/><path d="M16 12h2a2 2 0 0 1 0 4h-2"/><path d="M7 6c0-1 1-1 1-2M11 6c0-1 1-1 1-2" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+              </div>
+              <div class="event-time">RECESO</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <div class="bloque-tag">BLOQUE 2</div>
+            <div class="bloque-time">⏱ 7:00 – 9:00 PM</div>
+          </div>
+          <div class="timeline">
+            <div class="event">
+              <div class="event-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <div class="event-time">7:00 PM</div>
+              <div class="event-title"><strong>Orador 2:</strong> del egoísmo al servicio</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <div class="event-time">7:45 PM</div>
+              <div class="event-title"><strong>Orador 3:</strong> oficinas</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIERNES -->
+    <div class="day-panel" data-day="viernes">
+      <div class="day-banner">
+        <div class="day-banner-title">VIERNES 29 DE MAYO</div>
+        <div class="day-banner-subtitle">
+          <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 16,14"/></svg>
+          de 4:00 a 10:00 PM
+        </div>
+      </div>
+
+      <div class="bloques">
+        <div class="bloque">
+          <div class="bloque-header">
+            <div class="bloque-tag">BLOQUE 1</div>
+            <div class="bloque-time">⏱ 4:00 – 7:00 PM</div>
+          </div>
+          <div class="timeline">
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5v1H3z"/><path d="M14 14c2 0 6 1.5 6 4v2h-5"/></svg></div>
+              <div class="event-time">4:00 PM</div>
+              <div class="event-title"><strong>Apertura y presentación</strong></div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">4:15 PM</div>
+              <div class="event-title"><strong>Orador 1:</strong> La unidad es nuestra supervivencia</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">5:00 PM</div>
+              <div class="event-title"><strong>Orador 2:</strong> Las tradiciones</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h12v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4z"/><path d="M16 12h2a2 2 0 0 1 0 4h-2"/></svg></div>
+              <div class="event-time">6:00 PM</div>
+              <div class="event-title">RECESO</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">6:15 PM</div>
+              <div class="event-title"><strong>Orador 3:</strong> Iguales en la unidad</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <div class="bloque-tag">BLOQUE 2</div>
+            <div class="bloque-time">⏱ 7:00 – 10:00 PM</div>
+          </div>
+          <div class="timeline">
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5v1H3z"/><path d="M14 14c2 0 6 1.5 6 4v2h-5"/></svg></div>
+              <div class="event-time">7:00 PM</div>
+              <div class="event-title"><strong>Apertura y presentación</strong></div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">7:15 PM</div>
+              <div class="event-title"><strong>Orador 1:</strong> Mi grupo y yo</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h12v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4z"/><path d="M16 12h2a2 2 0 0 1 0 4h-2"/></svg></div>
+              <div class="event-time">8:15 PM</div>
+              <div class="event-title">RECESO</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">8:30 PM</div>
+              <div class="event-title"><strong>Orador 2:</strong> Padrino y Unidad</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">9:15 PM</div>
+              <div class="event-title"><strong>Orador 3:</strong> Un Grupo Exitoso</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SÁBADO -->
+    <div class="day-panel" data-day="sabado">
+      <div class="day-banner">
+        <div class="day-banner-title">SÁBADO 30 DE MAYO</div>
+        <div class="day-banner-subtitle">
+          <svg class="clock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 16,14"/></svg>
+          12:30 PM – 2:00 AM
+        </div>
+      </div>
+
+      <div class="bloques">
+        <div class="bloque">
+          <div class="bloque-header">
+            <div class="bloque-tag">BLOQUE 1</div>
+            <div class="bloque-time">⏱ 12:30 – 3:00 PM</div>
+          </div>
+          <div class="timeline">
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5v1H3z"/><path d="M14 14c2 0 6 1.5 6 4v2h-5"/></svg></div>
+              <div class="event-time">12:30 PM</div>
+              <div class="event-title"><strong>Reunión habitual</strong></div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">2:00 PM</div>
+              <div class="event-title"><strong>Orador 1:</strong> Recuperación NA</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h12v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4z"/><path d="M16 12h2a2 2 0 0 1 0 4h-2"/></svg></div>
+              <div class="event-time">3:00 PM</div>
+              <div class="event-title">RECESO</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <div class="bloque-tag">BLOQUE 2</div>
+            <div class="bloque-time">⏱ 3:15 – 6:00 PM</div>
+          </div>
+          <div class="timeline">
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5v1H3z"/><path d="M14 14c2 0 6 1.5 6 4v2h-5"/></svg></div>
+              <div class="event-time">3:15 PM</div>
+              <div class="event-title"><strong>Apertura y presentación</strong></div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">3:30 PM</div>
+              <div class="event-title"><strong>Orador 1:</strong> Recuperación en ALANON</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">4:15 PM</div>
+              <div class="event-title"><strong>Orador 2:</strong> Recuperación Instituciones</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">5:00 PM</div>
+              <div class="event-title"><strong>Orador 3:</strong> El Duelo Sobrio</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h12v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4z"/><path d="M16 12h2a2 2 0 0 1 0 4h-2"/></svg></div>
+              <div class="event-time">6:00 PM</div>
+              <div class="event-title">RECESO</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <div class="bloque-header">
+            <div class="bloque-tag">BLOQUE 3</div>
+            <div class="bloque-time">⏱ 6:15 – 8:00 PM</div>
+          </div>
+          <div class="timeline">
+            <div class="event">
+              <div class="event-icon"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="9" y="3" width="6" height="11" rx="2"/><path d="M5 10v2a7 7 0 0 0 14 0v-2"/><line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg></div>
+              <div class="event-time">6:15 PM</div>
+              <div class="event-title"><strong>Orador 1:</strong> Herramientas del Programa</div>
+              <div class="event-qa">Preguntas y respuestas</div>
+            </div>
+            <div class="event">
+              <div class="event-icon" style="font-family: Cinzel, serif; font-weight:800; font-size: 0.75rem;">AA</div>
+              <div class="event-time">7:00 PM</div>
+              <div class="event-title"><strong>Conteo de sobriedad</strong></div>
+            </div>
+            <div class="event">
+              <div class="event-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-1 2 1 3 0 5s-2 2-2 4a2 2 0 0 0 4 0c0-2-1-2-2-4 1-2 3-3 2-5h-2z"/><rect x="9" y="11" width="6" height="9" rx="1"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <div class="event-time">7:20 PM</div>
+              <div class="event-title"><strong>Ceremonia de la Luz</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="acto-social" style="grid-column: 1 / -1;">
+          <div class="icon-circle">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="#d4c896">
+              <circle cx="8" cy="6" r="2"/>
+              <circle cx="16" cy="6" r="2"/>
+              <circle cx="12" cy="5" r="2"/>
+              <path d="M5 22c0-4 3-7 7-7s7 3 7 7"/>
+              <path d="M14 4l1-3" stroke="#d4c896" stroke-width="0.8" fill="none"/>
+              <path d="M17 5l2-2" stroke="#d4c896" stroke-width="0.8" fill="none"/>
+              <circle cx="15" cy="2" r="0.6"/>
+              <circle cx="19" cy="3" r="0.6"/>
+            </svg>
+          </div>
+          <div style="font-family:'Cinzel',serif; font-size:0.72rem; letter-spacing:0.4em; color: var(--silver); margin-bottom:0.6rem; position:relative;">BLOQUE 4 · 8:00 PM – 2:00 AM</div>
+          <h3>ACTO SOCIAL</h3>
+          <div class="time">Una noche de celebración, gratitud y compañerismo</div>
+          <div class="address">
+            <strong style="display:block; font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:0.3em; color:var(--gold-soft); margin-bottom:0.5rem;">DIRECCIÓN</strong>
+            Salón comunal Las Quintas<br>Calle 63B #27B-14
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────── LOCATIONS ──────── -->
+<section class="locations-section reveal">
+  <div class="section-label">Dónde nos vemos</div>
+  <h2 class="section-heading">Direcciones</h2>
+  <div class="locations-grid">
+    <div class="location-card">
+      <div class="pin">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#e8eef7"><path d="M12 2C7.5 2 4 5.5 4 10c0 6 8 12 8 12s8-6 8-12c0-4.5-3.5-8-8-8z"/><circle cx="12" cy="10" r="3" fill="#1a3668"/></svg>
+      </div>
+      <h4>Sede Principal</h4>
+      <p>Calle 63a #24-81</p>
+      <p style="font-size:0.95rem; color:var(--silver-dim); margin-top:0.4rem;">Bogotá D.C.</p>
+      <div class="days">Jueves · Viernes</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Calle+63a+%2324-81+Bogot%C3%A1" target="_blank" rel="noopener">Ver en mapa →</a>
+    </div>
+    <div class="location-card">
+      <div class="pin">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#e8eef7"><path d="M12 2C7.5 2 4 5.5 4 10c0 6 8 12 8 12s8-6 8-12c0-4.5-3.5-8-8-8z"/><circle cx="12" cy="10" r="3" fill="#1a3668"/></svg>
+      </div>
+      <h4>Salón Comunal Las Quintas</h4>
+      <p>Calle 63B #27B-14</p>
+      <p style="font-size:0.95rem; color:var(--silver-dim); margin-top:0.4rem;">Bogotá D.C.</p>
+      <div class="days">Sábado · Acto Social</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Calle+63B+%2327B-14+Bogot%C3%A1" target="_blank" rel="noopener">Ver en mapa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ──────── CLOSING ──────── -->
+<section class="closing reveal">
+  <div class="quote">
+    Unidad para servir, servir para crecer,<br>crecer para llevar el mensaje.
+  </div>
+
+  <div class="footer">
+    <div class="divider"></div>
+    Grupo Décima Convención de Bogotá<br>
+    <div class="pills">· 13 Años en Acción ·</div>
+  </div>
+</section>
+
+<script>
+  // ─── Particles ───
+  (function makeParticles() {
+    const container = document.getElementById('particles');
+    const count = window.innerWidth < 600 ? 18 : 36;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top  = (60 + Math.random() * 40) + '%';
+      p.style.animationDelay  = (Math.random() * 14) + 's';
+      p.style.animationDuration = (10 + Math.random() * 12) + 's';
+      p.style.opacity = (0.3 + Math.random() * 0.5);
+      const size = 2 + Math.random() * 3;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      container.appendChild(p);
+    }
+  })();
+
+  // ─── Day tabs ───
+  const tabs   = document.querySelectorAll('.day-tab');
+  const panels = document.querySelectorAll('.day-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const day = tab.dataset.day;
+      tabs.forEach(t => t.classList.toggle('active', t === tab));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.day === day));
+      // soft scroll back to top of program
+      tab.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  // ─── Countdown ───
+  // The event begins Thursday May 28, 2026 at 5:00 PM Bogotá time (UTC-5)
+  const target = new Date('2026-05-28T17:00:00-05:00').getTime();
+  function tick() {
+    const now = Date.now();
+    let diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent  = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent  = '00';
+      document.getElementById('cd-secs').textContent  = '00';
+      document.querySelector('.countdown-section .section-heading').textContent = '¡Ya estamos en Acción!';
+      return;
+    }
+    const days  = Math.floor(diff / 86400000); diff -= days  * 86400000;
+    const hours = Math.floor(diff / 3600000);  diff -= hours * 3600000;
+    const mins  = Math.floor(diff / 60000);    diff -= mins  * 60000;
+    const secs  = Math.floor(diff / 1000);
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('cd-days').textContent  = pad(days);
+    document.getElementById('cd-hours').textContent = pad(hours);
+    document.getElementById('cd-mins').textContent  = pad(mins);
+    document.getElementById('cd-secs').textContent  = pad(secs);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ─── Reveal on scroll ───
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
