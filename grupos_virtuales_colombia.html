@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="theme-color" content="#7F1D1D" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Grupos Virtuales en AA Colombia — 62ª RAC 2026</title>
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --rojo:      #7F1D1D;
+      --rojo-med:  #991B1B;
+      --rojo-claro:#FEE2E2;
+      --rojo-borde:#FECACA;
+      --crema:     #FFF7ED;
+      --gris-texto:#374151;
+      --gris-suave:#6B7280;
+      --gris-linea:#E5E7EB;
+      --negro:     #111827;
+      --blanco:    #FFFFFF;
+      --verde:     #14532D;
+      --verde-claro:#DCFCE7;
+      --amarillo:  #713F12;
+      --amarillo-claro:#FEF9C3;
+      --azul:      #1E3A5F;
+      --azul-claro:#DBEAFE;
+    }
+
+    /* ── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--crema);
+      color: var(--gris-texto);
+      font-size: 16px;
+      line-height: 1.7;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 0 3rem;
+    }
+
+    /* ── CABECERA ────────────────────────────────────────────── */
+    header {
+      background: var(--rojo);
+      color: var(--blanco);
+      padding: 2rem 1.25rem 1.5rem;
+      text-align: center;
+    }
+    header .eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 0.6rem;
+      font-family: 'Arial', sans-serif;
+    }
+    header h1 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    header .subtitulo {
+      font-size: 0.88rem;
+      opacity: 0.85;
+      font-style: italic;
+      line-height: 1.4;
+    }
+    header .badge {
+      display: inline-block;
+      margin-top: 1rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.75rem;
+      font-family: 'Arial', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── INTRO ───────────────────────────────────────────────── */
+    .intro {
+      background: var(--blanco);
+      border-left: 4px solid var(--rojo);
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 1rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: var(--gris-texto);
+      line-height: 1.65;
+    }
+
+    /* ── CONTROLES ───────────────────────────────────────────── */
+    .controles {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .controles button {
+      flex: 1;
+      background: var(--rojo);
+      color: var(--blanco);
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 0;
+      font-size: 0.8rem;
+      font-family: 'Arial', sans-serif;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+    }
+    .controles button:hover { background: var(--rojo-med); }
+
+    /* ── SECCIÓN ACORDEÓN ────────────────────────────────────── */
+    .seccion {
+      margin: 0.6rem 1rem;
+      border: 1px solid var(--gris-linea);
+      border-radius: 8px;
+      background: var(--blanco);
+      overflow: hidden;
+    }
+
+    .seccion-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    .seccion-header:hover { background: var(--rojo-claro); }
+
+    .num {
+      flex-shrink: 0;
+      width: 1.7rem;
+      height: 1.7rem;
+      background: var(--rojo);
+      color: var(--blanco);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-family: 'Arial', sans-serif;
+      font-weight: 700;
+      margin-top: 0.1rem;
+    }
+
+    .seccion-titulo {
+      flex: 1;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--rojo);
+      line-height: 1.35;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .chevron {
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      color: var(--rojo);
+      margin-top: 0.25rem;
+      transition: transform 0.25s;
+      font-style: normal;
+    }
+    .seccion.abierta .chevron { transform: rotate(180deg); }
+
+    .seccion-cuerpo {
+      display: none;
+      padding: 0 1.1rem 1.1rem;
+      border-top: 1px solid var(--gris-linea);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--gris-texto);
+    }
+    .seccion.abierta .seccion-cuerpo { display: block; }
+
+    /* ── TIPOGRAFÍA INTERNA ──────────────────────────────────── */
+    .seccion-cuerpo p { margin-bottom: 0.75rem; }
+    .seccion-cuerpo p:last-child { margin-bottom: 0; }
+
+    .seccion-cuerpo strong { color: var(--negro); }
+
+    blockquote {
+      border-left: 3px solid var(--rojo);
+      margin: 0.8rem 0;
+      padding: 0.5rem 0.9rem;
+      background: var(--rojo-claro);
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      font-size: 0.86rem;
+      color: var(--rojo);
+      line-height: 1.6;
+    }
+
+    .lista-check {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0;
+    }
+    .lista-check li {
+      padding: 0.25rem 0 0.25rem 1.5rem;
+      position: relative;
+      font-size: 0.87rem;
+    }
+    .lista-check li::before {
+      content: '·';
+      position: absolute;
+      left: 0.4rem;
+      color: var(--rojo);
+      font-weight: 700;
+    }
+
+    /* ── CAJAS DE COLOR ──────────────────────────────────────── */
+    .caja {
+      border-radius: 6px;
+      padding: 0.7rem 0.9rem;
+      margin: 0.7rem 0;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .caja-verde  { background: var(--verde-claro);    border-left: 3px solid var(--verde); }
+    .caja-amarilla{ background: var(--amarillo-claro); border-left: 3px solid var(--amarillo); }
+    .caja-azul   { background: var(--azul-claro);     border-left: 3px solid var(--azul); }
+    .caja-roja   { background: var(--rojo-claro);     border-left: 3px solid var(--rojo); }
+
+    .caja strong { display: block; margin-bottom: 0.25rem; }
+
+    /* ── PREGUNTA DESTACADA ──────────────────────────────────── */
+    .pregunta {
+      background: var(--negro);
+      color: var(--blanco);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      margin: 0.6rem 0;
+      font-size: 0.88rem;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.5;
+    }
+    .pregunta .etiqueta {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--rojo-borde);
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── TABLA ───────────────────────────────────────────────── */
+    .tabla-paises { width: 100%; border-collapse: collapse; margin: 0.6rem 0; font-size: 0.82rem; }
+    .tabla-paises th {
+      background: var(--rojo);
+      color: var(--blanco);
+      padding: 0.4rem 0.6rem;
+      text-align: left;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+    }
+    .tabla-paises td { padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--gris-linea); }
+    .tabla-paises tr:last-child td { border-bottom: none; }
+    .tabla-paises tr:nth-child(even) td { background: var(--crema); }
+
+    /* ── PIE ─────────────────────────────────────────────────── */
+    footer {
+      margin: 2rem 1rem 0;
+      padding: 1rem;
+      border-top: 2px solid var(--rojo);
+      font-size: 0.78rem;
+      color: var(--gris-suave);
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      line-height: 1.6;
+    }
+    footer strong { color: var(--rojo); }
+  </style>
+</head>
+<body>
+
+<!-- CABECERA -->
+<header>
+  <p class="eyebrow">Corporación Nacional de AA · Colombia</p>
+  <h1>Grupos Virtuales en AA Colombia</h1>
+  <p class="subtitulo">Avance, posición oficial y problema de fondo<br>para la incorporación a la estructura</p>
+  <span class="badge">62ª RAC · Bogotá 2026</span>
+</header>
+
+<!-- INTRO -->
+<div class="intro">
+  Síntesis de la posición de AA Colombia sobre los grupos virtuales, con base en los documentos oficiales: <strong>Informe de Colombia ante la 24.ª REDELA Bolivia 2025</strong>, la <strong>Recomendación aprobada en la 61.ª CSG (2025)</strong> y el <strong>Manual de Servicio 2025</strong>. Preparado para compartimiento en grupos, MCD y Asamblea de Área.
+</div>
+
+<!-- CONTROLES -->
+<div class="controles">
+  <button onclick="abrirTodo()">📖 Abrir todo</button>
+  <button onclick="cerrarTodo()">📕 Cerrar todo</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECCIÓN 1 — CRONOLOGÍA
+════════════════════════════════════════════ -->
+<div class="seccion">
+  <div class="seccion-header" onclick="toggle(this)">
+    <span class="num">1</span>
+    <span class="seccion-titulo">Cronología: cómo llegamos hasta aquí</span>
+    <i class="chevron">▼</i>
+  </div>
+  <div class="seccion-cuerpo">
+    <div class="caja caja-amarilla">
+      <strong>Recomendación 61.ª CSG — 2025 (Comité de Política y Admisiones)</strong>
+      La Conferencia recomendó a la JSG <em>«consultar a la estructura de Estados Unidos y Canadá la forma como se reconocieron y estructuraron los grupos virtuales, para que presenten un proyecto de recomendación a la 61 Conferencia sobre si es viable o no el reconocimiento de estos grupos virtuales en nuestra estructura»</em>.
+    </div>
+
+    <div class="caja caja-roja">
+      <strong>Informe de Colombia — 24.ª REDELA Bolivia (octubre 2025)</strong>
+      La delegación colombiana reportó ante 20 países: <em>«No consideramos a los nacientes grupos de compartimiento online como parte de nuestra estructura, solo le damos carácter de reuniones porque, en la 61.ª Conferencia de Servicios Generales de 2025, se rindió un informe de la situación actual de los grupos virtuales en el mundo y, resultado de esto, aún no se incluyen dentro de nuestra estructura».</em>
+    </div>
+
+    <div class="caja caja-verde">
+      <strong>Estado actual — 62.ª RAC (mayo 2026)</strong>
+      Los grupos virtuales <strong>no están reconocidos como grupos en la estructura de AA Colombia</strong>. Se les reconoce carácter de <em>reuniones</em>. El tema permanece en agenda de la Conferencia.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECCIÓN 2 — POSICIÓN COLOMBIA
+════════════════════════════════════════════ -->
+<div class="seccion">
+  <div class="seccion-header" onclick="toggle(this)">
+    <span class="num">2</span>
+    <span class="seccion-titulo">Posición oficial de Colombia: tres elementos</span>
+    <i class="chevron">▼</i>
+  </div>
+  <div class="seccion-cuerpo">
+    <ul class="lista-check">
+      <li><strong>Se sugiere</strong> aprovechar la virtualidad como herramienta de servicio en todos los niveles de la estructura.</li>
+      <li><strong>Se advierte</strong> cuidado especial del anonimato (Undécima y Duodécima Tradiciones) en el entorno digital.</li>
+      <li><strong>Los grupos de compartimiento online no son parte de la estructura nacional</strong>; se les reconoce carácter de reuniones.</li>
+    </ul>
+
+    <p>La 24.ª REDELA concluyó —con la participación de 20 países— que el problema no es aceptar la virtualidad, sino <strong>cómo se trabaja dentro de los principios de AA</strong>:</p>
+
+    <blockquote>
+      «La tecnología y la virtualidad son herramientas valiosas que debemos aprovechar. Se debe comprender la diferencia entre un grupo y una reunión virtual: un grupo presencial puede brindar el servicio en lo virtual, con base en los principios de AA para que no se distorsione el mensaje ni la forma que trabaja AA, en un espíritu de ayuda mutua y no de autoayuda.»
+      <br>— Conclusión Mesa de Trabajo 1, 24.ª REDELA, Bolivia 2025
+    </blockquote>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECCIÓN 3 — ARGUMENTO A DEFENSORES
+════════════════════════════════════════════ -->
+<div class="seccion">
+  <div class="seccion-header" onclick="toggle(this)">
+    <span class="num">3</span>
+    <span class="seccion-titulo">¿Qué decirle a quien los defiende al 100%?</span>
+    <i class="chevron">▼</i>
+  </div>
+  <div class="seccion-cuerpo">
+    <p>La estructura colombiana <strong>no rechaza los grupos virtuales por dogmatismo</strong>. Hay cuatro argumentos para un diálogo honesto:</p>
+
+    <div class="caja caja-verde">
+      <strong>1. La utilidad de la virtualidad sí está reconocida</strong>
+      La propia REDELA afirma que «la virtualidad ha servido para el apadrinamiento en la recuperación y el servicio de la gente que no está cerca». Nadie en la estructura niega su valor.
+    </div>
+
+    <div class="caja caja-azul">
+      <strong>2. La distinción clave es grupo ≠ reunión virtual</strong>
+      Un grupo de AA asume responsabilidades concretas: RSG, voto en Distrito y Área, aporte por Séptima Tradición, conciencia de grupo formal. Una reunión virtual puede llevar el mensaje sin asumir esas responsabilidades estructurales.
+    </div>
+
+    <div class="caja caja-amarilla">
+      <strong>3. El proceso está en curso, no cerrado</strong>
+      La Recomendación 2024 mandató un estudio serio; la 61.ª CSG recibió el informe mundial. La conclusión provisional es prudencia, no negación. Es un proceso vivo.
+    </div>
+
+    <div class="caja caja-roja">
+      <strong>4. El fondo es el «cómo», no el «si»</strong>
+      Como resume la 24.ª REDELA: <em>«nuestro problema no es aceptar, sino cómo lo vamos a trabajar; es responsabilidad de la estructura de cada país»</em>. Esa pregunta del «cómo» es la que Colombia todavía no ha podido responder satisfactoriamente.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECCIÓN 4 — PROBLEMA DE FONDO
+════════════════════════════════════════════ -->
+<div class="seccion">
+  <div class="seccion-header" onclick="toggle(this)">
+    <span class="num">4</span>
+    <span class="seccion-titulo">El problema de fondo: la estructura fue diseñada sobre la geografía</span>
+    <i class="chevron">▼</i>
+  </div>
+  <div class="seccion-cuerpo">
+    <p>Todo el edificio del Tercer Legado —RSG → Distrito → Área → Delegado → Conferencia— tiene como columna vertebral la <strong>presencia territorial</strong>. El Manual de Servicio 2025 lo define con precisión:</p>
+
+    <blockquote>
+      «Un distrito es una entidad geográfica compuesta del número apropiado de grupos.»<br>
+      «El RSG tiene la responsabilidad de estar presente en las Asambleas del Área.»
+    </blockquote>
+
+    <p>Un grupo virtual <strong>no tiene territorio</strong>. Ahí nace la contradicción estructural: la incorporación plena requeriría modificar supuestos que no son caprichosos, sino que sostienen la representatividad democrática de toda la Comunidad.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECCIÓN 5 — LAS 3 PREGUNTAS CENTRALES
+════════════════════════════════════════════ -->
+<div class="seccion">
+  <div class="seccion-header" onclick="toggle(this)">
+    <span class="num">5</span>
+    <span class="seccion-titulo">Las 3 preguntas que dificultan la incorporación</span>
+    <i class="chevron">▼</i>
+  </div>
+  <div class="seccion-cuerpo">
+
+    <div class="pregunta">
+      <span class="etiqueta">Pregunta 1 — Estructura y voto</span>
+      ¿A qué Área y Distrito pertenece un grupo virtual, y quién vota?
+    </div>
+    <p>El RSG tiene voz y voto en el Distrito y en la Asamblea de Área. Esos derechos están atados a que el grupo pertenezca a un Área geográfica. Un grupo virtual cuyos miembros están en Bogotá, Barranquilla, Cali y Miami simultáneamente, ¿a cuál Área tributa su conciencia de grupo? Si se le asigna una Área arbitrariamente, ese RSG podría inclinar una votación o influir en la elección de un Delegado en un territorio donde físicamente no existe. El voto de la conciencia de grupo —fundamento del Concepto I— perdería su anclaje real.</p>
+
+    <div class="pregunta">
+      <span class="etiqueta">Pregunta 2 — Identidad, sobriedad y anonimato</span>
+      ¿Cómo se verifican la identidad, la sobriedad continua y el anonimato del RSG y sus miembros?
+    </div>
+    <p>El Manual exige que el RSG tenga al menos dos años de sobriedad continua, sea elegido en reunión de trabajo y notifique a la OSG con nombre, dirección y teléfono. En el espacio digital el anonimato es más difícil de proteger, los miembros pueden ser anónimos entre sí y la verificación de sobriedad es prácticamente imposible sin presencia física. El informe de Colombia a la REDELA señala expresamente la preocupación de <em>«no violar nuestras Undécima y Duodécima Tradiciones»</em> como condición irrenunciable.</p>
+
+    <div class="pregunta">
+      <span class="etiqueta">Pregunta 3 — Séptima Tradición y automantenimiento</span>
+      ¿Cómo cumple un grupo virtual la Séptima Tradición frente a la estructura?
+    </div>
+    <p>El RSG debe <em>«trabajar junto con el tesorero del grupo para generar apoyo para la JSG, el Área y el Distrito mediante la Séptima Tradición»</em>. Un grupo virtual no tiene sede física ni gastos de local, y sus miembros pueden estar dispersos en varias Áreas o en el exterior. ¿A cuál OSG aporta? ¿Con qué criterio? Sin aportes territorialmente asignados, un grupo virtual tendría representación en la estructura sin la correspondiente responsabilidad financiera, lo que viola el espíritu de la Séptima Tradición y desequilibra el automantenimiento de las Áreas.</p>
+
+    <div class="caja caja-verde">
+      <strong>Síntesis</strong>
+      El problema no es tecnológico ni espiritual. La estructura entera (RSG → Distrito → Área → Delegado → Conferencia) está diseñada sobre tres supuestos que el grupo virtual quiebra: <strong>territorio, verificación presencial e identidad financiera</strong>. Resolver eso sin distorsionar el Mensaje ni las Tradiciones es lo que la Conferencia aún no ha podido responder.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECCIÓN 6 — CÓMO LO RESUELVEN OTROS
+════════════════════════════════════════════ -->
+<div class="seccion">
+  <div class="seccion-header" onclick="toggle(this)">
+    <span class="num">6</span>
+    <span class="seccion-titulo">Cómo lo han resuelto otros países (REDELA 2025)</span>
+    <i class="chevron">▼</i>
+  </div>
+  <div class="seccion-cuerpo">
+    <p>Cada estructura ha respondido según su autonomía (Cuarta Tradición). El contraste es útil para el debate:</p>
+
+    <table class="tabla-paises">
+      <thead>
+        <tr><th>País</th><th>Situación</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🇨🇱 Chile</td>
+          <td>121 grupos: 110 presenciales y <strong>11 en línea</strong>. Ya funciona un <strong>Área virtual</strong> con RSG de grupos virtuales, según acción recomendable de su Conferencia 2025.</td>
+        </tr>
+        <tr>
+          <td>🇦🇷 Argentina</td>
+          <td>460 grupos presenciales y <strong>~60 grupos en línea</strong> reconocidos en la estructura.</td>
+        </tr>
+        <tr>
+          <td>🇺🇸🇨🇦 EE. UU. / Canadá</td>
+          <td>Al 31/12/2022, <strong>68 476 grupos inscritos</strong> en la OSG, incluyendo grupos en línea con sede geográfica asignada. «Cada grupo es autónomo y su participación en la estructura es decisión de su conciencia de grupo.»</td>
+        </tr>
+        <tr>
+          <td>🇬🇹 Guatemala</td>
+          <td>1 011 grupos; desde la pandemia funcionan <strong>6 grupos virtuales</strong>.</td>
+        </tr>
+        <tr>
+          <td>🇬🇾 Guyana</td>
+          <td>De cinco juntas activas, <strong>dos son híbridas</strong> (en persona y en línea).</td>
+        </tr>
+        <tr>
+          <td>🇨🇴 Colombia</td>
+          <td>Grupos virtuales con carácter de <strong>reuniones, no de grupos</strong> parte de la estructura. Decisión provisional basada en el informe de la 61.ª CSG (2025).</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>El caso de <strong>EE. UU. y Canadá</strong> —referencia mandatada por la Recomendación 2024— resuelve el problema de la geografía asignando a cada grupo virtual una <em>sede geográfica</em> (la dirección del servidor o del miembro que lo administra) dentro de la estructura de Área existente. Esta solución técnica no resuelve por sí sola los problemas de verificación de sobriedad ni de automantenimiento.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECCIÓN 7 — PREGUNTAS COMPARTIMIENTO
+════════════════════════════════════════════ -->
+<div class="seccion">
+  <div class="seccion-header" onclick="toggle(this)">
+    <span class="num">7</span>
+    <span class="seccion-titulo">Preguntas para el compartimiento</span>
+    <i class="chevron">▼</i>
+  </div>
+  <div class="seccion-cuerpo">
+    <ul class="lista-check">
+      <li>¿Cómo entendemos en nuestro grupo la diferencia entre «grupo» y «reunión virtual» tal como la formuló la 24.ª REDELA?</li>
+      <li>¿De qué manera la virtualidad nos ha permitido llevar el mensaje a quienes están lejos o no tienen un grupo cercano?</li>
+      <li>¿Cómo estamos cuidando el anonimato (Undécima y Duodécima Tradiciones) cuando usamos plataformas digitales?</li>
+      <li>¿Cómo apadrinamos al recién llegado que se acerca por primera vez a una reunión virtual de AA?</li>
+      <li>¿Compartimos la posición de Colombia —no incluir los grupos online en la estructura— o, como en Chile y Argentina, deberíamos considerar otra forma?</li>
+      <li>¿La virtualidad fortalece o distorsiona el espíritu de «ayuda mutua y no de autoayuda» del que habla la REDELA?</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SECCIÓN 8 — CIERRE
+════════════════════════════════════════════ -->
+<div class="seccion">
+  <div class="seccion-header" onclick="toggle(this)">
+    <span class="num">8</span>
+    <span class="seccion-titulo">Cierre</span>
+    <i class="chevron">▼</i>
+  </div>
+  <div class="seccion-cuerpo">
+    <p>La 24.ª REDELA y la propia posición de Colombia confirman que la virtualidad es una <strong>herramienta legítima y útil</strong> para el servicio de AA. La distinción que la estructura defiende no es un rechazo ideológico: es prudencia mientras se resuelven tres preguntas concretas que ninguna Conferencia ha respondido aún de forma satisfactoria.</p>
+
+    <blockquote>
+      «Nuestro problema no es aceptar, sino cómo lo vamos a trabajar; es responsabilidad de la estructura de cada país.»<br>
+      — Mesa de Trabajo 1, 24.ª REDELA, Bolivia 2025
+    </blockquote>
+
+    <p>La invitación es que, sin importar el formato, <strong>el padrinazgo, la formación en los principios y el cuidado del anonimato</strong> permanezcan como ejes irrenunciables de nuestra recuperación, unidad y servicio.</p>
+
+    <div class="caja caja-azul">
+      <strong>📚 Fuentes documentales</strong>
+      Manual de Servicio AA Colombia 2025 · Informe Final 24.ª REDELA Bolivia 2025 · Recomendaciones Vigentes 1965–2025 · Carpeta de Delegados 62.ª RAC 2026
+    </div>
+  </div>
+</div>
+
+<!-- PIE -->
+<footer>
+  Compilado para el compartimiento en grupos, MCD y Asamblea por:<br>
+  <strong>William — Delegado, Área 3, Región C, Territorio Sur</strong><br>
+  Bogotá, mayo de 2026<br><br>
+  «La Recuperación y la Práctica de las Tradiciones garantizan un mejor Servicio»<br>
+  62.ª Reunión Anual de la Conferencia · AA Colombia
+</footer>
+
+<script>
+  function toggle(header) {
+    header.parentElement.classList.toggle('abierta');
+  }
+  function abrirTodo() {
+    document.querySelectorAll('.seccion').forEach(s => s.classList.add('abierta'));
+  }
+  function cerrarTodo() {
+    document.querySelectorAll('.seccion').forEach(s => s.classList.remove('abierta'));
+  }
+</script>
+</body>
+</html>
