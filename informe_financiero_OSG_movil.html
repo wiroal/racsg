@@ -116,6 +116,7 @@ html,body{height:100%;overflow:hidden;font-family:'Source Sans 3',sans-serif;bac
 .fin-table .neg{color:var(--accent);font-weight:700;}
 .fin-table .deficit-row td{background:#fee2e2;font-weight:700;color:#7f1d1d;border-top:2px solid var(--accent);}
 .fin-table .section-head td{background:rgba(26,36,86,.06);font-size:.62rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;padding:5px 10px;}
+.fin-table .surplus-row td{background:#d1fae5;font-weight:700;color:#065f46;border-top:2px solid var(--green);}
 
 /* ══ REGION TABLE ══ */
 .reg-table{width:100%;border-collapse:collapse;font-size:.78rem;}
@@ -134,6 +135,19 @@ html,body{height:100%;overflow:hidden;font-family:'Source Sans 3',sans-serif;bac
 .bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;}
 .bar-fill span{font-size:.65rem;font-weight:700;color:var(--white);white-space:nowrap;}
 .bar-val{font-size:.7rem;color:var(--muted);min-width:52px;flex-shrink:0;font-family:'Playfair Display',serif;}
+
+/* ══ Q1 TREND BARS ══ */
+.trend-block{display:flex;flex-direction:column;gap:6px;}
+.trend-month{display:flex;align-items:center;gap:7px;}
+.trend-mes{font-size:.68rem;color:var(--muted);min-width:34px;flex-shrink:0;text-align:right;font-weight:600;}
+.trend-bars{flex:1;display:flex;flex-direction:column;gap:3px;}
+.trend-ing{height:13px;border-radius:3px;display:flex;align-items:center;padding-left:6px;}
+.trend-gas{height:13px;border-radius:3px;display:flex;align-items:center;padding-left:6px;}
+.trend-ing span,.trend-gas span{font-size:.6rem;font-weight:700;color:var(--white);white-space:nowrap;}
+.trend-num{font-size:.68rem;min-width:50px;flex-shrink:0;font-family:'Playfair Display',serif;color:var(--text);}
+.trend-legend{display:flex;gap:12px;justify-content:flex-end;margin-bottom:2px;}
+.legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.legend-item{display:flex;align-items:center;gap:4px;font-size:.65rem;color:var(--muted);}
 
 /* ══ CLOSING ══ */
 .closing-hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-mid) 55%,var(--navy-lt) 100%);padding:34px 22px 26px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;}
@@ -156,7 +170,7 @@ html,body{height:100%;overflow:hidden;font-family:'Source Sans 3',sans-serif;bac
 
 <div id="timer-bar">
   <div id="timer-display">20:00</div>
-  <div id="slide-info">Diap. <span id="cur">1</span>/<span id="tot">7</span></div>
+  <div id="slide-info">Diap. <span id="cur">1</span>/<span id="tot">8</span></div>
   <div id="timer-controls">
     <button class="tbtn" id="btnStart">▶</button>
     <button class="tbtn" id="btnPause">⏸</button>
@@ -338,8 +352,104 @@ html,body{height:100%;overflow:hidden;font-family:'Source Sans 3',sans-serif;bac
   </div>
 </div>
 
-<!-- ⑦ CIERRE -->
+<!-- ⑦ PRIMER TRIMESTRE 2026 — NUEVO -->
 <div class="slide" id="s7">
+  <div class="s-header">
+    <div class="s-tag">Primer Trimestre 2026 · ¿Estamos mejorando?</div>
+    <div class="s-title">Señales de Recuperación</div>
+    <div class="s-sub">Enero – Marzo 2026 vs. mismo período 2025 · Cifras en miles de pesos</div>
+  </div>
+  <div class="s-body">
+
+    <!-- KPIs superiores -->
+    <div class="card-grid g2">
+      <div class="card green">
+        <div class="card-lbl">Ingresos crecen</div>
+        <div class="card-val green">+28%</div>
+        <div class="card-desc">De $193,9M a <strong>$248,1M</strong></div>
+      </div>
+      <div class="card gold">
+        <div class="card-lbl">Gastos suben solo</div>
+        <div class="card-val gold">+12,5%</div>
+        <div class="card-desc">De $264,5M a <strong>$297,6M</strong></div>
+      </div>
+    </div>
+
+    <div class="hbox green-bg">Los ingresos crecen al <strong>doble de velocidad</strong> que los gastos. Esa diferencia es la señal más importante de recuperación.</div>
+
+    <!-- Tabla comparativa mes a mes -->
+    <div class="sec-lbl">Detalle mensual · Ingresos y Gastos</div>
+    <table class="fin-table">
+      <thead>
+        <tr>
+          <th>Mes</th>
+          <th class="r">Ing. 2026</th>
+          <th class="r">Ing. 2025</th>
+          <th class="r">Var.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Enero</td><td class="r">$49.430</td><td class="r">$43.941</td><td class="r pos">+$5.489</td></tr>
+        <tr><td>Febrero</td><td class="r">$74.940</td><td class="r">$63.998</td><td class="r pos">+$10.942</td></tr>
+        <tr><td>Marzo</td><td class="r">$123.675</td><td class="r">$85.967</td><td class="r pos">+$37.708</td></tr>
+        <tr class="sub"><td><strong>Total</strong></td><td class="r"><strong>$248.135</strong></td><td class="r"><strong>$193.906</strong></td><td class="r pos"><strong>+$54.229</strong></td></tr>
+      </tbody>
+    </table>
+
+    <!-- Gráfico de tendencia visual -->
+    <div class="sec-lbl">Tendencia mes a mes · Ingresos vs. Gastos</div>
+    <div class="trend-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div><span>Ingresos 2026</span></div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div><span>Gastos 2026</span></div>
+    </div>
+    <div class="trend-block">
+      <div class="trend-month">
+        <div class="trend-mes">Ene</div>
+        <div class="trend-bars" style="flex:1">
+          <div class="trend-ing" style="width:40%;background:var(--green)"><span style="font-size:.6rem;font-weight:700;color:#fff;padding-left:5px">$49,4M</span></div>
+          <div class="trend-gas" style="width:63%;background:var(--accent)"><span style="font-size:.6rem;font-weight:700;color:#fff;padding-left:5px">$78,1M</span></div>
+        </div>
+      </div>
+      <div class="trend-month">
+        <div class="trend-mes">Feb</div>
+        <div class="trend-bars" style="flex:1">
+          <div class="trend-ing" style="width:60%;background:var(--green)"><span style="font-size:.6rem;font-weight:700;color:#fff;padding-left:5px">$74,9M</span></div>
+          <div class="trend-gas" style="width:77%;background:var(--accent)"><span style="font-size:.6rem;font-weight:700;color:#fff;padding-left:5px">$95,1M</span></div>
+        </div>
+      </div>
+      <div class="trend-month">
+        <div class="trend-mes">Mar</div>
+        <div class="trend-bars" style="flex:1">
+          <div class="trend-ing" style="width:100%;background:var(--green)"><span style="font-size:.6rem;font-weight:700;color:#fff;padding-left:5px">$123,7M</span></div>
+          <div class="trend-gas" style="width:100%;background:var(--accent)"><span style="font-size:.6rem;font-weight:700;color:#fff;padding-left:5px">$124,3M</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Déficit del trimestre vs año anterior -->
+    <div class="card-grid g2">
+      <div class="card red">
+        <div class="card-lbl">Déficit Q1 2026</div>
+        <div class="card-val red">−$49,4M</div>
+        <div class="card-desc">Primer trimestre es estacionalmente deficitario</div>
+      </div>
+      <div class="card green">
+        <div class="card-lbl">Mejora vs. Q1 2025</div>
+        <div class="card-val green">+$21,1M</div>
+        <div class="card-desc">El déficit se redujo 30% frente al año anterior</div>
+      </div>
+    </div>
+
+    <div class="hbox cream">
+      <strong>¿Por qué hay déficit si mejoramos?</strong><br>
+      El primer trimestre siempre es deficitario: los aportes de enero apenas alcanzan el 40% del presupuesto mensual. Lo importante es que <strong>la brecha se cierra progresivamente</strong> — en marzo los ingresos casi igualaron los gastos.
+    </div>
+
+  </div>
+</div>
+
+<!-- ⑧ CIERRE -->
+<div class="slide" id="s8">
   <div class="closing-hero">
     <div class="cover-badge">ÁREA 3, REGIÓN C · TERRITORIO SUR · BOGOTÁ · CONFIDENCIAL</div>
     <h1 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--white);line-height:1.2">Informe Financiero OSG 2025</h1>
@@ -361,7 +471,7 @@ html,body{height:100%;overflow:hidden;font-family:'Source Sans 3',sans-serif;bac
 </div>
 
 <script>
-const TOTAL=7, MINS=20;
+const TOTAL=8, MINS=20;
 let current=1, timeLeft=MINS*60, timerInterval=null, running=false, tx=0;
 const slides=Array.from({length:TOTAL},(_,i)=>document.getElementById('s'+(i+1)));
 const dotsEl=document.getElementById('dots');
