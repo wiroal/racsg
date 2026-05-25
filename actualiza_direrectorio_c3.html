@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actualización Directorio AA Bogotá</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f0f4f8;color:#222;padding:12px;max-width:700px;margin:0 auto}
+h1{color:#1a3a5c;font-size:1.05rem;margin-bottom:2px}
+.sub{color:#666;font-size:0.8rem;margin-bottom:12px}
+.tabs{display:flex;gap:6px;margin-bottom:14px}
+.tab{flex:1;padding:9px;border:2px solid #1a3a5c;border-radius:7px;background:#fff;color:#1a3a5c;font-size:0.88rem;font-weight:bold;cursor:pointer;text-align:center;transition:all .15s}
+.tab.active{background:#1a3a5c;color:#fff}
+.panel{display:none}
+.panel.active{display:block}
+
+/* Búsqueda */
+input[type=text],select,textarea{border:1px solid #bbb;border-radius:6px;padding:7px 10px;font-size:0.88rem;width:100%}
+input[type=text]:focus,select:focus,textarea:focus{outline:2px solid #1a3a5c}
+label{font-size:0.8rem;font-weight:bold;display:block;margin:9px 0 3px;color:#333}
+
+/* Tarjetas grupo */
+#lista-grupos{max-height:300px;overflow-y:auto;margin-bottom:10px}
+.grupo-card{background:#fff;border-radius:7px;padding:10px 12px;margin-bottom:7px;border-left:4px solid #1a3a5c;cursor:pointer;transition:box-shadow .15s}
+.grupo-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.grupo-card .gn{font-weight:bold;font-size:0.9rem;color:#1a3a5c}
+.grupo-card .gd{font-size:0.78rem;color:#888}
+
+/* Detalle corrección */
+#detalle{display:none;background:#fff;border-radius:8px;padding:13px;margin-bottom:12px}
+#detalle h2{font-size:0.95rem;color:#1a3a5c;margin-bottom:8px}
+.dato-actual{background:#f7f7f7;border-radius:6px;padding:7px 10px;margin-bottom:8px;font-size:0.83rem}
+.dato-actual strong{display:block;color:#555;font-size:0.74rem;text-transform:uppercase;margin-bottom:2px}
+
+/* Formulario nuevo grupo */
+#form-nuevo{background:#fff;border-radius:8px;padding:13px;margin-bottom:12px}
+#form-nuevo h2{font-size:0.95rem;color:#1a3a5c;margin-bottom:10px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* Botones */
+.btn{background:#1a3a5c;color:#fff;border:none;border-radius:6px;padding:9px 16px;cursor:pointer;font-size:0.88rem;margin-top:10px}
+.btn:hover{background:#2a5a8c}
+.btn-sec{background:#888;margin-left:6px}
+.btn-sec:hover{background:#555}
+.btn-green{background:#28a745}
+.btn-green:hover{background:#1e7e34}
+.btn-red{background:#c0392b;font-size:0.75rem;padding:4px 10px;margin:0;margin-left:6px}
+
+/* Panel resultados */
+#panel-res{background:#fff;border-radius:8px;padding:13px}
+#panel-res h2{font-size:0.95rem;color:#1a3a5c;margin-bottom:10px}
+.badge{display:inline-block;background:#1a3a5c;color:#fff;border-radius:12px;padding:1px 8px;font-size:0.73rem;margin-left:5px}
+.badge-green{background:#28a745}
+.item-card{border:1px solid #e0e0e0;border-radius:6px;padding:9px 11px;margin-bottom:8px;font-size:0.82rem}
+.item-card .ic-head{font-weight:bold;color:#1a3a5c;font-size:0.88rem}
+.item-card .ic-tipo{font-size:0.73rem;color:#888;margin-left:5px}
+.antes{color:#c00}
+.despues{color:#060}
+.nuevo-tag{display:inline-block;background:#e8f5e9;color:#2e7d32;border-radius:4px;padding:1px 7px;font-size:0.73rem;font-weight:bold;margin-left:5px}
+.empty{color:#aaa;font-size:0.85rem;text-align:center;padding:16px 0}
+.loading{color:#1a3a5c;font-size:0.85rem;text-align:center;padding:12px 0}
+.alert{background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:8px 11px;font-size:0.82rem;margin-bottom:10px}
+.alert-info{background:#d1ecf1;border-color:#bee5eb}
+.tabs-res{display:flex;gap:5px;margin-bottom:10px}
+.tab-res{padding:5px 12px;border:1px solid #1a3a5c;border-radius:5px;background:#fff;color:#1a3a5c;font-size:0.8rem;cursor:pointer}
+.tab-res.active{background:#1a3a5c;color:#fff}
+</style>
+</head>
+<body>
+
+<h1>📋 Directorio AA Bogotá — Actualización colaborativa</h1>
+<p class="sub">Comparte este enlace con tus compañeros. Los datos se guardan para todos.</p>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('corregir',this)">✏️ Corregir grupo</div>
+  <div class="tab" onclick="switchTab('nuevo',this)">➕ Grupo nuevo</div>
+  <div class="tab" onclick="switchTab('ver',this)">📊 Ver reportes</div>
+</div>
+
+<!-- PANEL 1: CORREGIR -->
+<div class="panel active" id="panel-corregir">
+  <input type="text" id="buscar" placeholder="🔍 Buscar grupo por nombre o distrito..." oninput="filtrar()">
+  <div id="lista-grupos" style="margin-top:8px"></div>
+
+  <div id="detalle">
+    <h2 id="det-nombre"></h2>
+    <div class="dato-actual"><strong>Dirección</strong><span id="det-dir"></span></div>
+    <div class="dato-actual"><strong>Reuniones</strong><span id="det-reu"></span></div>
+    <div class="dato-actual"><strong>Contacto</strong><span id="det-con"></span></div>
+
+    <label>Campo a corregir</label>
+    <select id="campo-sel">
+      <option value="">-- Seleccione --</option>
+      <option>Nombre del grupo</option>
+      <option>Distrito</option>
+      <option>Dirección</option>
+      <option>Horario / Reuniones</option>
+      <option>Contacto</option>
+      <option>El grupo ya no existe</option>
+      <option>Otro</option>
+    </select>
+
+    <label>Dato incorrecto (actual)</label>
+    <textarea id="val-antes" rows="2" placeholder="Copia el dato que está mal..."></textarea>
+
+    <label>Dato correcto (nuevo)</label>
+    <textarea id="val-despues" rows="2" placeholder="Escribe el dato correcto..."></textarea>
+
+    <label>Tu nombre (opcional)</label>
+    <input type="text" id="reporter-c" placeholder="Ej: Carlos R., RSG Distrito 3">
+
+    <div>
+      <button class="btn" onclick="guardarCorreccion()">✅ Enviar corrección</button>
+      <button class="btn btn-sec" onclick="cerrarDetalle()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL 2: NUEVO GRUPO -->
+<div class="panel" id="panel-nuevo">
+  <div id="form-nuevo">
+    <h2>➕ Registrar grupo nuevo</h2>
+    <div class="alert alert-info">Completa los datos que conozcas. Los campos marcados * son obligatorios.</div>
+
+    <div class="row2">
+      <div>
+        <label>Distrito *</label>
+        <select id="ng-dist">
+          <option value="">--</option>
+          <option>1</option><option>2</option><option>3</option>
+          <option>4</option><option>5</option><option>6</option>
+          <option>7</option><option>8</option><option>9</option>
+          <option>Nuevo distrito</option>
+        </select>
+      </div>
+      <div>
+        <label>Tipo</label>
+        <select id="ng-tipo">
+          <option>Regular</option>
+          <option>Experimental</option>
+        </select>
+      </div>
+    </div>
+
+    <label>Nombre del grupo *</label>
+    <input type="text" id="ng-nombre" placeholder="Ej: LA ESPERANZA">
+
+    <label>Dirección</label>
+    <input type="text" id="ng-dir" placeholder="Ej: Calle 45 # 12-34 piso 2">
+
+    <label>Barrio / Referencia</label>
+    <input type="text" id="ng-barrio" placeholder="Ej: barrio Chapinero, cerca al CAI">
+
+    <label>Horario de reuniones</label>
+    <textarea id="ng-reu" rows="2" placeholder="Ej: lunes a viernes 7:00 pm, domingos 10:00 am"></textarea>
+
+    <label>Contacto (teléfono / correo)</label>
+    <input type="text" id="ng-con" placeholder="Ej: 310 1234567">
+
+    <label>¿Tiene reuniones virtuales?</label>
+    <input type="text" id="ng-virtual" placeholder="Ej: Zoom código 123456 / Meet link...">
+
+    <label>Observaciones</label>
+    <input type="text" id="ng-obs" placeholder="Ej: fundado en enero 2026, aún en proceso de registro">
+
+    <label>Tu nombre *</label>
+    <input type="text" id="ng-reporter" placeholder="Ej: María S., RSG Distrito 2">
+
+    <button class="btn btn-green" onclick="guardarNuevo()">➕ Registrar grupo nuevo</button>
+  </div>
+</div>
+
+<!-- PANEL 3: VER REPORTES -->
+<div class="panel" id="panel-ver">
+  <div class="tabs-res">
+    <div class="tab-res active" onclick="switchTabRes('correcciones',this)">✏️ Correcciones <span class="badge" id="badge-c">0</span></div>
+    <div class="tab-res" onclick="switchTabRes('nuevos',this)">➕ Nuevos <span class="badge badge-green" id="badge-n">0</span></div>
+  </div>
+  <div id="res-correcciones"></div>
+  <div id="res-nuevos" style="display:none"></div>
+  <button class="btn btn-green" onclick="exportarTodo()" style="margin-top:4px">📥 Exportar todo</button>
+</div>
+
+<div id="toast" style="display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a3a5c;color:#fff;padding:10px 20px;border-radius:20px;font-size:0.85rem;z-index:999"></div>
+
+<script>
+const API_URL = 'https://script.google.com/macros/s/AKfycbx38Ek-mzLKkYJZOhOdRjv5sUmecsoU6dLlMOPaYjY2CBWV4l7ie6YBQRkzlHlqEgT4Ew/exec';
+
+const grupos=[
+  {d:1,n:"TORCOROMA",dir:"Carrera 7 B Bis N°123-17",reu:"L-V 7:00am,12:30pm,5:30pm; sáb 7:00am,5:30pm; dom 7:00am,10am(familiar),5:30pm; fest 7:00am. Zoom: 987124",con:""},
+  {d:1,n:"SANTA MARIA DE LOS ANGELES",dir:"Calle 79b #7-52",reu:"L-sáb 12:00-1:30pm",con:"Sebastian R 314 2805108"},
+  {d:1,n:"SANTA MONICA",dir:"Calle 79b #7-52",reu:"L-V 6:00-7:30pm",con:"Gaston 3164957637"},
+  {d:1,n:"TERCER MILENIO",dir:"Calle 135 N°15-35",reu:"L-V 7:00am,12:00pm,6:00pm; sáb/dom/fest 9:00am. Zoom: 987124",con:"311 4280945"},
+  {d:1,n:"PAJAROS MADRUGADORES",dir:"Carrera 14B N° 106-63",reu:"L/mié/vie 6:00am",con:""},
+  {d:1,n:"EL BUEN CONSEJO",dir:"Cra 8D N° 106-50",reu:"jue 5:00pm",con:"WA 3153473029"},
+  {d:1,n:"LA RED",dir:"Cra 11A # 116-53 Piso 2",reu:"Híbridas Zoom 385487; L-sáb 7:00am y 6pm; dom 7:00am y 10:00am",con:"Virgilio 3102551739"},
+  {d:1,n:"EL CEDRO",dir:"Calle 145 N° 9-90",reu:"L-V 7:00pm; sáb/dom/fest 5:00pm",con:"William A 300 7385963"},
+  {d:2,n:"DIEZ DE JUNIO",dir:"Calle 129 # 46 A-47 Piso 3",reu:"L-sáb 7:30am y 7:00pm; dom 9:00am",con:"Henry B. 3105738822 / Manuel A. 3138133779"},
+  {d:2,n:"GRANADA NORTE",dir:"Calle 168 # 49B-12",reu:"L-V 6:30pm; sáb 6:00pm; dom/fest 11:30am",con:"Arcadio 3002114842"},
+  {d:2,n:"MAZUREN",dir:"Calle 152 # 50-89 Parroquia Jesucristo Redentor",reu:"L-V 7:00pm",con:"3127998970 / Lidia 3174352073"},
+  {d:2,n:"PASADENA",dir:"Carrera 53 # 104B-58",reu:"L-V 7pm; L/vie 12m virtual; mié 12m femenino; jue 5:30pm virtual; sáb/dom/fest 5:30pm. Zoom: us02web.zoom.us/j/3476377280",con:"aa.grupopasadenabogota@gmail.com"},
+  {d:2,n:"PUERTA A LA ESPERANZA",dir:"Calle 94 con Cra 69 Salón Comunal Barrio Julio Flórez",reu:"L/mié/vie 6:30pm; dom/fest 9:00am",con:"Sandy G 3214926881"},
+  {d:2,n:"RINCÓN",dir:"Calle 130C # 93-17 Piso 2 Salón Comunal Costa Rica",reu:"Mar/mié/jue/vie/sáb 6:30pm; dom 9:00am",con:"Luis Antonio L. 3142706481 / Henry T. 3172746835"},
+  {d:2,n:"SAN BARTOLOMÉ",dir:"Carrera 59B # 129-45",reu:"L-V 6:00pm; sáb 5:00pm; dom/fest 11:00am",con:"Angela C 3177668863"},
+  {d:2,n:"SUBA",dir:"Carrera 90 # 145-91 piso 2",reu:"L-sáb 7:00am y 7:00pm; mié/vie 12m; dom/fest 9:00am y 6:00pm",con:"German R. 3017552453 / Mauricio G. 3004125437"},
+  {d:2,n:"VALOR PARA CAMBIAR",dir:"Carrera 98C # 131 C-58",reu:"L-sáb 6:30pm; L/mié/vie 7:00am; dom/fest 9:00am",con:"Leidy P. 3197184675 / Luis R. 3134371060 / Carlos L 3134041741"},
+  {d:2,n:"SIN FRONTERA (Experimental)",dir:"Calle 132D #151-15 piso 2 Salón Comunal Suba Lisboa",reu:"L/mié/vie 6:30pm",con:""},
+  {d:2,n:"EN ACCIÓN (Experimental)",dir:"Carrera 62 # 161C-33 Salón Comunal Barrio Gilmar",reu:"L/mié/vie 6:30-8:00pm",con:"3227575331"},
+  {d:3,n:"DECIMA CONVENCION",dir:"Calle 63 A N°24-81 local 1",reu:"L-sáb 12:30pm y 6:00pm; dom/fest 10:00am",con:"3114813000 / 3169542309 / aadecimaconvencion290513@gmail.com"},
+  {d:3,n:"INTERNACIONAL",dir:"Calle 33 N°16-25",reu:"L-sáb 7:30am,12:30pm,3:00pm,7:00pm; dom/fest 10:00am y 5:00pm",con:"3112713401"},
+  {d:3,n:"LA SALIDA",dir:"Carrera 27A N°43-08 esquina",reu:"L/mié/vie 7:00am(híbrida); L-V 7:00pm; sáb 5:00pm; dom 10am y 7pm virtual. Meet: meet.google.com/oqx-aior-zui",con:"3105653374"},
+  {d:3,n:"LA VID",dir:"Calle 57A N°30-45",reu:"L-V 7:00am,12:30pm,6:30pm; sáb/fest 8:00am,12:30pm,5:00pm; dom 8:00am",con:"David A. 3507853297"},
+  {d:3,n:"MODELO NORTE",dir:"Carrera 60 N° 70D-24",reu:"L-sáb 7:00am y 6:00pm; dom 10:30am",con:"3112489614 / 3106199165"},
+  {d:3,n:"LA UNIDAD (Experimental)",dir:"Carrera 29B # 66-51",reu:"vie y dom 5:00pm",con:""},
+  {d:3,n:"SANTO TOMAS DE LAS PALMAS",dir:"Calle 58 N° 14A-37",reu:"L-dom 7:00am,12:00m,3:00pm,7:00pm",con:"3228973909"},
+  {d:3,n:"SANTO TOMAS LA PLAYA",dir:"Calle 54 N° 13-43 piso 2",reu:"L-sáb 12:30pm,3:00pm,6:30pm",con:"3214147225 / 3243371861"},
+  {d:4,n:"BACHUE",dir:"Calle 89 N° 95F-30",reu:"L/mié/vie 12:30pm; L/jue/sáb 7:00pm",con:"3132921543"},
+  {d:4,n:"EL CAMINO",dir:"Carrera 73A N°53-33 piso 2",reu:"L-dom 6:30pm",con:"3159263635 / 3102455919"},
+  {d:4,n:"LA ESTRADA",dir:"Carrera 69K N° 68-58",reu:"L-sáb 7:00pm; dom 10:00am",con:"3102949681"},
+  {d:4,n:"ENGATIVA",dir:"Calle 64 N° 117-12 piso 3",reu:"L-sáb 7:30pm; dom/fest 6:30pm",con:"3123135586"},
+  {d:4,n:"INFORMACION",dir:"Av calle 72 N° 101A-05 piso 2",reu:"L-V y dom 7:00am y 7:00pm; sáb 4:00pm",con:"3123215351"},
+  {d:4,n:"LENGUAJE DEL CORAZON",dir:"Calle 68 N° 80-15",reu:"L-sáb 7:00am y 7:00pm; dom/fest 8:00am,9:00am,6:00pm",con:"3102846717"},
+  {d:4,n:"LUZ Y ESPERANZA",dir:"Calle 72F N° 111-20",reu:"L-dom 7:00pm",con:"Orlando A. 3108191133"},
+  {d:4,n:"QUIRIGUA",dir:"Carrera 93 N° 80C-11",reu:"L-V 6:00pm; mar/jue/sáb/dom 7:30am",con:"3173179943"},
+  {d:4,n:"LA TOLERANCIA",dir:"Calle 69A 73A-88 barrio Boyaca Real",reu:"L-sáb 7:00pm; vie 7:00am",con:"3128476456"},
+  {d:4,n:"TRANSMITELO",dir:"Carrera 91A # 75-57",reu:"mar-dom 6:00pm",con:"Rodulfo R. 3195707803"},
+  {d:4,n:"UNA NUEVA VIDA",dir:"Carrera 88A N° 69A-53 salón comunal Florida Blanca",reu:"L-sáb 6:30pm; dom 10:00am",con:"3138450897 / 3222060218"},
+  {d:4,n:"DE LAS TINIEBLAS HACIA LA LUZ",dir:"Calle 66A N°97-64 piso 2",reu:"L/mié/vie 7:00pm",con:"3102676341 / 3006861799"},
+  {d:5,n:"FONTIBON",dir:"Calle 16 I N°103 A-51 Fontibón centro",reu:"L-sáb 7:00am,11:00am,6:00pm; dom 10:00am",con:"Román J 3202485833"},
+  {d:5,n:"MODELIA",dir:"Calle 24B #74-29 local 2 barrio Modelia",reu:"L-dom 7:00pm; L/mié/vie 7:00am; dom/fest 8:00am",con:"Elías G 3014484702"},
+  {d:5,n:"LOS OLIVOS",dir:"Calle 23 F #107-55 barrio los Cámbulos",reu:"L-V 6:00pm; dom/fest 10:00am",con:"Edwin F. 3176999610"},
+  {d:5,n:"CASTILLA",dir:"Calle 8 N° 72c 25 piso 2",reu:"L-dom 7:30pm; dom/fest 10:00am; mié/vie 7:30am; mié mujeres 5:30pm",con:"Erika 3102635583 / Alvaro 3208175967"},
+  {d:5,n:"GRATITUD VISION COLOMBIA",dir:"Carrera 79C N° 13 A 30 Parroquia San Juan Macías Casa Cural",reu:"L/mar/vie/sáb 7:00pm",con:""},
+  {d:6,n:"DE LAS TINIEBLAS A LA LUZ",dir:"Carrera 26 N° 22B 48",reu:"L/mié/vie 5:30pm",con:""},
+  {d:6,n:"RESTREPO",dir:"Carrera 22 # 14 A 31 sur, oficina 302",reu:"L-sáb 7:00pm; fest 12:30pm; dom no hay reunión",con:"Hernando L. 3504414904 / Emma S. 3108162694 / WA: 3124847615 / aagruporestrepo@gmail.com"},
+  {d:6,n:"COLOMBIA",dir:"Carrera 11 # 17-36 sur, barrio Ciudad Jardín Sur",reu:"L-sáb 7:00pm; dom/fest 12:00m",con:"David 3134088287"},
+  {d:6,n:"RENACIENDO 24 HORAS",dir:"Calle 2G #39A-87",reu:"L-sáb 7:00pm; dom/fest 11:00am y 6:00pm",con:"Wilber 3125943430"},
+  {d:6,n:"SEXTA CONVENCION",dir:"Transversal 18 # 14-46 sur, barrio Restrepo",reu:"L-sáb 7:00am,12:30pm,7:00pm; dom/fest 10:00am y 4:00pm",con:"Edna H. 3133722275"},
+  {d:6,n:"RICAURTE",dir:"Carrera 28 # 9-10 contiguo a la iglesia",reu:"L-V 6:00pm",con:"Jaime A. 3213557998"},
+  {d:6,n:"SANTA ISABEL",dir:"Carrera 27 # 1 D 20 tercer piso",reu:"L-sáb 7:00pm; dom/fest 10:00am",con:"Norberto B. 3112516448 / José Adonay B. 3132093649"},
+  {d:6,n:"GALAN",dir:"Av Carrera 50 # 4 a 23 segundo piso",reu:"L-sáb 7:00pm; dom/fest 11:00am",con:"Juan Pablo P. 3114684856 / Dionicio Z. 3118051797"},
+  {d:7,n:"BELEN",dir:"Calle 6 D 4 63 edificio Nueva Santafé",reu:"L-V 7:00-8:30pm",con:"3147343344"},
+  {d:7,n:"20 DE JULIO",dir:"Calle 23 sur # 8 23",reu:"L-sáb 7:00am y 7:00pm; dom/fest 9:00am y 5:00pm",con:"321 9767531"},
+  {d:7,n:"FUENTE DE VIDA",dir:"Carrera 9 # 12b 12 of 207",reu:"L-V 12:30-2:00pm; sáb 10:00-11:30am",con:""},
+  {d:7,n:"SUR ORIENTE",dir:"Calle 39A sur # 3C-80 este 2 piso, barrio La Victoria",reu:"L-sáb 7:00-8:30pm; dom/fest 4:00-5:30pm",con:"322 4232075"},
+  {d:7,n:"ESPERANZA DE FE (Experimental)",dir:"Capilla Santa Paula Montal / Iglesia Santa Catalina Laboure Barrio Los Libertadores",reu:"jue 7:00pm; sáb 5:00pm",con:"Elizabeth M. 313 4595286"},
+  {d:7,n:"RUMBO A LA LIBERTAD (Experimental)",dir:"Calle 17A sur # 3D-81 Este (Iglesia San Cristóbal)",reu:"jue 7:00pm",con:""},
+  {d:7,n:"COMITÉ",dir:"Avenida Jimenez # 8 49 of 609",reu:"L-V 6:30-8:00pm",con:""},
+  {d:8,n:"VOLVER A VIVIR",dir:"Diagonal 71b N° 18 I-65 sur frente al CAI Vista Hermosa",reu:"L-sáb 7:00pm; dom/fest 3:00pm",con:"Meller R. 3165726434"},
+  {d:8,n:"AMOR Y SERVICIO",dir:"Carrera 5U # 49C-42, piso 2",reu:"L-dom 6:30pm",con:"3118222585 / 3016309819 / 3138286465"},
+  {d:8,n:"VENECIA",dir:"Autopista sur N° 53B 25 piso 2 barrio Venecia",reu:"L-sáb 7:00pm (jue cerrada, vie estructuración); dom/fest 10:00am",con:"3133844842"},
+  {d:8,n:"RENOVACION",dir:"Calle 47 sur #27-45 barrio Claret",reu:"mié/vie/sáb 7:00pm; dom/fest 10:00am",con:""},
+  {d:8,n:"NUEVO DESPERTAR",dir:"Carrera 19B #61A-07 segundo piso barrio Las Acacias",reu:"L-sáb 7:00pm; dom/fest 11:00am",con:"Mayerly 3202649953 / Saulo N 3132350505"},
+  {d:8,n:"NUEVA LUZ",dir:"Calle 88A sur 0 este 95",reu:"L-sáb 7:00pm; L/mié/vie 7:00am; dom/fest 12:30pm",con:"Clara I 320 8365701 / Enrique C 133764831"},
+  {d:8,n:"EL CARMEN",dir:"Carrera 33 #52f-63",reu:"L-sáb 7:30pm; dom/fest 6:30pm",con:"314-2903032"},
+  {d:8,n:"PARAISO",dir:"Carrera 27c No 71h-11 sur Parroquia San Pedro Julian Eymard barrio Paraíso",reu:"L/mié/vie 7:00pm; dom/fest 2:00pm",con:"Luis Aponte 3163751711"},
+  {d:8,n:"NUEVO QUIROGA",dir:"Calle 41B #21-39 sur",reu:"L-sáb 7:00pm; dom/fest 2:00pm",con:"3114046609"},
+  {d:9,n:"CENTRAL",dir:"Calle 9A sur # 68C-34 (Villa Claudia)",reu:"L-sáb 7:00pm; fest 6:00pm",con:"Fernando S. 311 5298915 / Martha H. 312 4268743"},
+  {d:9,n:"KENNEDY",dir:"Calle 38 B sur # 78-35. Piso 2",reu:"L-sáb 7:00pm; dom/fest 10:30am y 6:00pm",con:"Victor P. 312 5573103 / Rafael G. 300 5086704"},
+  {d:9,n:"NUEVO AMANECER",dir:"Diagonal 49 # 86 A-9 sur (Bosa Betania)",reu:"L-sáb 7:00pm; dom/fest 6:00pm; L/mié/vie 7:00am",con:"Flor P. 3115396696"},
+  {d:9,n:"PIAMONTE",dir:"Transversal 78L # 69c-20 sur piso 3",reu:"L-sáb 7:00pm; dom 10:00am y 6:00pm",con:"Arcelito S. 310 3164664"},
+  {d:9,n:"SOCORRO",dir:"Transversal 79 # 47-41 sur",reu:"L-sáb 7:00am y 7:30pm; dom 6:00pm",con:"José U. 314 462 1813"},
+  {d:9,n:"TRECE DE ABRIL",dir:"Calle 62 sur # 84-39 piso 2",reu:"L-V 7:00pm; sáb 7:00am y 7:00pm; dom 9:30am,11:30am,5:00pm",con:"Jose S. 3204451432 / William Ch. 3016247745"},
+  {d:9,n:"TRIÁNGULO DEL SOL",dir:"Calle 39 Bis sur #84f-26 piso 2",reu:"L-sáb 7:00pm; dom/fest 5:00pm",con:"Henry R. 312 4431079"},
+  {d:9,n:"VIVIENDO EN SOBRIEDAD",dir:"Calle 55 #10-39 sur (parroquia Bosa La Despensa)",reu:"L/mié/jue/vie/sáb 7:00pm",con:"Juan Carlos B. 314 233 9707 / Juan B. 316 7271717"},
+  {d:9,n:"VOLVER A VIVIR BOSA",dir:"Calle 63 sur #80h-05. Piso 3",reu:"L-sáb 7:00pm; dom 9:00am,11:00am,5:00pm; fest 10:00am y 5:00pm",con:"Raúl G. 304 5401991 / Harold C. 311 5636764"},
+];
+
+let grupoActual=null;
+let correcciones=[];
+let nuevos=[];
+let tabRes='correcciones';
+
+// ---- STORAGE ----
+async function cargarDatos(){
+  actualizarBadges();
+  renderRes();
+}
+
+async function enviarAPI(payload){
+  const resp = await fetch(API_URL, {
+    method:'POST',
+    body: JSON.stringify(payload)
+  });
+  const json = await resp.json();
+  if(json.status !== 'ok') throw new Error(json.msg || 'Error desconocido');
+}
+
+// ---- TABS ----
+function switchTab(id,el){
+  document.querySelectorAll('.tabs .tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-'+id).classList.add('active');
+  if(id==='ver') renderRes();
+}
+function switchTabRes(id,el){
+  document.querySelectorAll('.tab-res').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  tabRes=id;
+  document.getElementById('res-correcciones').style.display=id==='correcciones'?'block':'none';
+  document.getElementById('res-nuevos').style.display=id==='nuevos'?'block':'none';
+}
+
+// ---- FILTRAR ----
+function filtrar(){
+  const q=document.getElementById('buscar').value.toLowerCase();
+  renderLista(q?grupos.filter(g=>g.n.toLowerCase().includes(q)||String(g.d).includes(q)):grupos);
+}
+function renderLista(lista){
+  const el=document.getElementById('lista-grupos');
+  if(!lista.length){el.innerHTML='<p class="empty">No se encontraron grupos.</p>';return;}
+  el.innerHTML=lista.map(g=>`
+    <div class="grupo-card" onclick="abrirDetalle(${grupos.indexOf(g)})">
+      <span class="gn">D${g.d} — ${g.n}</span>
+      <span class="gd"> · ${g.dir}</span>
+    </div>`).join('');
+}
+
+// ---- DETALLE ----
+function abrirDetalle(i){
+  grupoActual=i;
+  const g=grupos[i];
+  document.getElementById('det-nombre').textContent=`D${g.d} — ${g.n}`;
+  document.getElementById('det-dir').textContent=g.dir;
+  document.getElementById('det-reu').textContent=g.reu;
+  document.getElementById('det-con').textContent=g.con||'(sin dato)';
+  ['campo-sel','val-antes','val-despues','reporter-c'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('detalle').style.display='block';
+  document.getElementById('detalle').scrollIntoView({behavior:'smooth'});
+}
+function cerrarDetalle(){
+  document.getElementById('detalle').style.display='none';
+  grupoActual=null;
+}
+
+// ---- GUARDAR CORRECCIÓN ----
+async function guardarCorreccion(){
+  if(grupoActual===null) return;
+  const campo=document.getElementById('campo-sel').value;
+  const despues=document.getElementById('val-despues').value.trim();
+  if(!campo){toast('Selecciona el campo a corregir',true);return;}
+  if(!despues){toast('Escribe el dato correcto',true);return;}
+  const g=grupos[grupoActual];
+  const payload={
+    tipo:'correccion',
+    grupo:g.n, distrito:g.d,
+    campo,
+    antes:document.getElementById('val-antes').value.trim(),
+    despues,
+    reporter:document.getElementById('reporter-c').value.trim()||'Anónimo'
+  };
+  try{
+    toast('Enviando...');
+    await enviarAPI(payload);
+    correcciones.push(payload);
+    actualizarBadges();
+    cerrarDetalle();
+    toast('✅ Corrección guardada en Google Sheets');
+  }catch(e){toast('⚠️ Error al enviar: '+e.message,true);}
+}
+
+// ---- GUARDAR NUEVO ----
+async function guardarNuevo(){
+  const nombre=document.getElementById('ng-nombre').value.trim();
+  const dist=document.getElementById('ng-dist').value;
+  const reporter=document.getElementById('ng-reporter').value.trim();
+  if(!nombre){toast('Escribe el nombre del grupo',true);return;}
+  if(!dist){toast('Selecciona el distrito',true);return;}
+  if(!reporter){toast('Escribe tu nombre',true);return;}
+  const payload={
+    tipo:'nuevo',
+    nombre:nombre.toUpperCase(),
+    distrito:dist,
+    tipog:document.getElementById('ng-tipo').value,
+    dir:document.getElementById('ng-dir').value.trim(),
+    barrio:document.getElementById('ng-barrio').value.trim(),
+    reu:document.getElementById('ng-reu').value.trim(),
+    con:document.getElementById('ng-con').value.trim(),
+    virtual:document.getElementById('ng-virtual').value.trim(),
+    obs:document.getElementById('ng-obs').value.trim(),
+    reporter
+  };
+  try{
+    toast('Enviando...');
+    await enviarAPI(payload);
+    nuevos.push(payload);
+    actualizarBadges();
+    ['ng-nombre','ng-dir','ng-barrio','ng-reu','ng-con','ng-virtual','ng-obs','ng-reporter'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('ng-dist').value='';
+    toast('✅ Grupo nuevo registrado en Google Sheets');
+  }catch(e){toast('⚠️ Error al enviar: '+e.message,true);}
+}
+
+// ---- RENDER RESULTADOS ----
+function actualizarBadges(){
+  document.getElementById('badge-c').textContent=correcciones.length;
+  document.getElementById('badge-n').textContent=nuevos.length;
+}
+function renderRes(){
+  actualizarBadges();
+  // Correcciones
+  const elc=document.getElementById('res-correcciones');
+  if(!correcciones.length){elc.innerHTML='<p class="empty">Sin correcciones aún.</p>';}
+  else elc.innerHTML=correcciones.map((c,i)=>`
+    <div class="item-card">
+      <span class="ic-head">D${c.distrito} — ${c.grupo}</span>
+      <span class="ic-tipo">[${c.campo}]</span>
+      <span style="font-size:.72rem;color:#aaa;float:right">${fmtDate(c.ts)}</span><br>
+      ${c.antes?`<span class="antes">❌ ${c.antes}</span><br>`:''}
+      <span class="despues">✅ ${c.despues}</span><br>
+      <small style="color:#999">— ${c.reporter}</small>
+      <button class="btn btn-red" onclick="eliminar('c',${i})">🗑</button>
+    </div>`).join('');
+  // Nuevos
+  const eln=document.getElementById('res-nuevos');
+  if(!nuevos.length){eln.innerHTML='<p class="empty">Sin grupos nuevos aún.</p>';}
+  else eln.innerHTML=nuevos.map((n,i)=>`
+    <div class="item-card">
+      <span class="ic-head">D${n.distrito} — ${n.nombre}</span>
+      <span class="nuevo-tag">NUEVO</span>
+      <span class="ic-tipo">${n.tipog}</span>
+      <span style="font-size:.72rem;color:#aaa;float:right">${fmtDate(n.ts)}</span><br>
+      ${n.dir?`📍 ${n.dir}${n.barrio?' ('+n.barrio+')':''}<br>`:''}
+      ${n.reu?`🕐 ${n.reu}<br>`:''}
+      ${n.con?`📞 ${n.con}<br>`:''}
+      ${n.virtual?`💻 ${n.virtual}<br>`:''}
+      ${n.obs?`📝 ${n.obs}<br>`:''}
+      <small style="color:#999">— ${n.reporter}</small>
+      <button class="btn btn-red" onclick="eliminar('n',${i})">🗑</button>
+    </div>`).join('');
+}
+
+async function eliminar(tipo,i){
+  if(!confirm('¿Eliminar este registro localmente?')) return;
+  if(tipo==='c') correcciones.splice(i,1);
+  else nuevos.splice(i,1);
+  renderRes();
+}
+
+function fmtDate(iso){
+  const d=new Date(iso);
+  return `${d.getDate()}/${d.getMonth()+1} ${d.getHours()}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+
+function exportarTodo(){
+  const all=[...correcciones,...nuevos];
+  if(!all.length){toast('No hay datos para exportar',true);return;}
+  let txt=`ACTUALIZACIÓN DIRECTORIO AA BOGOTÁ\nFecha exportación: ${new Date().toLocaleDateString('es-CO')}\n${'='.repeat(45)}\n\n`;
+  txt+=`CORRECCIONES (${correcciones.length})\n${'-'.repeat(30)}\n`;
+  correcciones.forEach((c,i)=>{
+    txt+=`${i+1}. D${c.distrito} — ${c.grupo} [${c.campo}]\n`;
+    if(c.antes) txt+=`   Incorrecto: ${c.antes}\n`;
+    txt+=`   Correcto: ${c.despues}\n`;
+    txt+=`   Reportado por: ${c.reporter} (${fmtDate(c.ts)})\n\n`;
+  });
+  txt+=`\nGRUPOS NUEVOS (${nuevos.length})\n${'-'.repeat(30)}\n`;
+  nuevos.forEach((n,i)=>{
+    txt+=`${i+1}. D${n.distrito} — ${n.nombre} (${n.tipog})\n`;
+    if(n.dir) txt+=`   Dirección: ${n.dir}${n.barrio?' / '+n.barrio:''}\n`;
+    if(n.reu) txt+=`   Horario: ${n.reu}\n`;
+    if(n.con) txt+=`   Contacto: ${n.con}\n`;
+    if(n.virtual) txt+=`   Virtual: ${n.virtual}\n`;
+    if(n.obs) txt+=`   Obs: ${n.obs}\n`;
+    txt+=`   Reportado por: ${n.reporter} (${fmtDate(n.ts)})\n\n`;
+  });
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));
+  a.download='actualizacion_directorio_aa_bogota.txt';
+  a.click();
+  toast('📥 Archivo descargado');
+}
+
+function toast(msg,err=false){
+  const el=document.getElementById('toast');
+  el.textContent=msg;
+  el.style.background=err?'#c0392b':'#1a3a5c';
+  el.style.display='block';
+  setTimeout(()=>el.style.display='none',2800);
+}
+
+// INIT
+renderLista(grupos);
+cargarDatos();
+</script>
+</body>
+</html>
