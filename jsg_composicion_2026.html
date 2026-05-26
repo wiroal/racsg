@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSG — Composición Post 62ª RAC 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F5E9C4;
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E45;
+    --cream: #FAF7F0;
+    --text-light: #F0EAD6;
+    --accent: #8B2020;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Decorative background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 90% 100%, rgba(139,32,32,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Triangle AA watermark */
+  body::after {
+    content: '△';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 60vw;
+    opacity: 0.018;
+    color: var(--gold);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .slide {
+    width: 100%;
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 1.6rem;
+    margin-bottom: 2rem;
+    animation: fadeDown 0.7s ease both;
+  }
+
+  .header .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .header .subtitle {
+    font-size: 0.82rem;
+    color: rgba(240,234,214,0.55);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── PRESIDENCIA ── */
+  .presidencia {
+    background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.04));
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 3px;
+    padding: 1.4rem 1.8rem;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .presidencia .role-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .role-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .role-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+
+  .role-tag {
+    font-size: 0.68rem;
+    color: rgba(201,168,76,0.7);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── GRID CUSTOIDOS ── */
+  .grid-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 3px;
+    padding: 1.2rem 1.4rem;
+  }
+
+  .card-title {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .member-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .member-item:last-child { border-bottom: none; }
+
+  .member-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 0.42rem;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .member-info { flex: 1; }
+
+  .member-name {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    line-height: 1.3;
+  }
+
+  .member-sub {
+    font-size: 0.68rem;
+    color: rgba(240,234,214,0.45);
+    margin-top: 0.1rem;
+  }
+
+  .badge-new {
+    font-size: 0.6rem;
+    background: rgba(139,32,32,0.5);
+    border: 1px solid rgba(139,32,32,0.8);
+    color: #E8A0A0;
+    padding: 0.05rem 0.4rem;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 0.15rem;
+    display: inline-block;
+  }
+
+  .badge-cont {
+    font-size: 0.6rem;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    padding: 0.05rem 0.4rem;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 0.15rem;
+    display: inline-block;
+  }
+
+  /* ── TERRITORIOS + CSG ── */
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  .territorios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .territorio-item {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 3px;
+    padding: 0.8rem 1rem;
+  }
+
+  .territorio-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(201,168,76,0.65);
+    margin-bottom: 0.25rem;
+  }
+
+  .territorio-name {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.3;
+  }
+
+  .territorio-period {
+    font-size: 0.65rem;
+    color: rgba(240,234,214,0.4);
+    margin-top: 0.15rem;
+  }
+
+  .csg-card {
+    background: linear-gradient(160deg, rgba(139,32,32,0.18), rgba(139,32,32,0.06));
+    border: 1px solid rgba(139,32,32,0.4);
+    border-radius: 3px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+  }
+
+  .csg-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: #E8A0A0;
+    font-weight: 600;
+  }
+
+  .csg-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 1rem;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  .footer-left {
+    font-size: 0.68rem;
+    color: rgba(240,234,214,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-aa {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-right {
+    font-size: 0.68rem;
+    color: rgba(240,234,214,0.35);
+    letter-spacing: 0.05em;
+    text-align: right;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .presidencia { grid-template-columns: 1fr; }
+    .grid-section { grid-template-columns: 1fr; }
+    .bottom-row { grid-template-columns: 1fr; }
+    .territorios-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slide">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="eyebrow">Alcohólicos Anónimos Colombia · CSG</div>
+    <h1>Junta de Servicios Generales<br>Composición Completa</h1>
+    <div class="subtitle">Post 62ª Reunión Anual de la Conferencia · Mayo 2026</div>
+  </div>
+
+  <!-- PRESIDENCIA -->
+  <div class="presidencia">
+    <div class="role-block">
+      <span class="role-label">Presidenta</span>
+      <span class="role-name">Dra. Martha Cecilia Lobo Celis</span>
+      <span class="role-tag">Custodio Clase A</span>
+      <span class="badge-cont">Continúa</span>
+    </div>
+    <div class="role-block">
+      <span class="role-label">Vicepresidenta</span>
+      <span class="role-name">Dra. Mireya Andrea Mora Varón</span>
+      <span class="role-tag">Custodio Clase A</span>
+      <span class="badge-new">Nueva</span>
+    </div>
+  </div>
+
+  <!-- CUSTODIOS CLASE A y CLASE B -->
+  <div class="grid-section">
+
+    <!-- Clase A -->
+    <div class="card">
+      <div class="card-title">Custodios Clase A — Adicionales</div>
+
+      <div class="member-item">
+        <div class="member-dot"></div>
+        <div class="member-info">
+          <div class="member-name">Dr. Isaac Roa Cruz</div>
+          <div class="member-sub">Clase A</div>
+          <span class="badge-new">Nuevo</span>
+        </div>
+      </div>
+
+      <div class="member-item">
+        <div class="member-dot"></div>
+        <div class="member-info">
+          <div class="member-name">Dra. Leidy Viviana Godoy Sarmiento</div>
+          <div class="member-sub">Clase A</div>
+          <span class="badge-new">Nueva</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clase B Regiones -->
+    <div class="card">
+      <div class="card-title">Custodios Clase B — Regiones</div>
+
+      <div class="member-item">
+        <div class="member-dot"></div>
+        <div class="member-info">
+          <div class="member-name">Olmedo M.</div>
+          <div class="member-sub">Región A</div>
+          <span class="badge-cont">Continúa</span>
+        </div>
+      </div>
+
+      <div class="member-item">
+        <div class="member-dot"></div>
+        <div class="member-info">
+          <div class="member-name">José Alfonso C.</div>
+          <div class="member-sub">Región B · 2026–2030</div>
+          <span class="badge-new">Nuevo</span>
+        </div>
+      </div>
+
+      <div class="member-item">
+        <div class="member-dot"></div>
+        <div class="member-info">
+          <div class="member-name">Nancy Antonia C.</div>
+          <div class="member-sub">Región C</div>
+          <span class="badge-cont">Continúa</span>
+        </div>
+      </div>
+
+      <div class="member-item">
+        <div class="member-dot"></div>
+        <div class="member-info">
+          <div class="member-name">José Pio C.</div>
+          <div class="member-sub">Región D</div>
+          <span class="badge-cont">Continúa</span>
+        </div>
+      </div>
+
+      <div class="member-item">
+        <div class="member-dot"></div>
+        <div class="member-info">
+          <div class="member-name">Diego Alonso A.</div>
+          <div class="member-sub">Región E · 2026–2030</div>
+          <span class="badge-new">Nuevo</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /grid-section -->
+
+  <!-- TERRITORIOS + CSG -->
+  <div class="bottom-row">
+
+    <div class="card">
+      <div class="card-title">Custodios Generales — Territorios</div>
+      <div class="territorios-grid">
+
+        <div class="territorio-item">
+          <div class="territorio-label">Territorio Norte</div>
+          <div class="territorio-name">José Domingo C.</div>
+          <div class="territorio-period">2026–2030</div>
+        </div>
+
+        <div class="territorio-item">
+          <div class="territorio-label">Territorio Sur</div>
+          <div class="territorio-name">Martha Cecilia B.</div>
+          <div class="territorio-period">2026–2028</div>
+          <span class="badge-new">Nueva · 2 años</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="csg-card">
+      <span class="csg-label">Custodio de Servicios Generales</span>
+      <span class="csg-name">Juan Guillermo Y.</span>
+      <span class="badge-new">Nuevo</span>
+    </div>
+
+  </div><!-- /bottom-row -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">62ª RAC · Bogotá, mayo 2026</div>
+    <div class="footer-aa">AA</div>
+    <div class="footer-right">Conferencia de Servicios<br>Generales Colombia</div>
+  </div>
+
+</div><!-- /slide -->
+
+</body>
+</html>
