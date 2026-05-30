@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Grupo de A.A. Exitoso</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+  :root {
+    --azul-aa: #1a3a5c;
+    --azul-claro: #2563a8;
+    --dorado: #c9a84c;
+    --dorado-claro: #f0d080;
+    --crema: #faf7f0;
+    --gris: #e8e2d8;
+    --texto: #1a1a1a;
+    --blanco: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--crema);
+    color: var(--texto);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--azul-aa) 0%, #0d2540 60%, #1a3a5c 100%);
+    color: var(--blanco);
+    padding: 40px 32px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: 3px solid rgba(201,168,76,0.25);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    border: 2px solid rgba(201,168,76,0.15);
+  }
+
+  .aa-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .logo-circle {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    border: 3px solid var(--dorado);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 900;
+    color: var(--dorado);
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    color: var(--blanco);
+  }
+
+  .header h1 span {
+    color: var(--dorado-claro);
+    display: block;
+  }
+
+  .header-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    line-height: 1.5;
+    border-left: 2px solid var(--dorado);
+    padding-left: 12px;
+    margin-top: 14px;
+  }
+
+  /* PILARES */
+  .section {
+    padding: 28px 20px 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--azul-aa);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--dorado), transparent);
+  }
+
+  /* PILARES GRID */
+  .pilares-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .pilar-card {
+    background: var(--blanco);
+    border-radius: 14px;
+    padding: 18px 14px;
+    border-top: 4px solid;
+    box-shadow: 0 2px 12px rgba(26,58,92,0.08);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .pilar-card:nth-child(1) { border-color: #2563a8; animation-delay: 0.1s; }
+  .pilar-card:nth-child(2) { border-color: #c9a84c; animation-delay: 0.2s; }
+  .pilar-card:nth-child(3) { border-color: #2d8659; animation-delay: 0.3s; }
+  .pilar-card:nth-child(4) { border-color: #8b3a8b; animation-delay: 0.4s; }
+  .pilar-card:nth-child(5) { border-color: #c0392b; animation-delay: 0.5s; }
+
+  .pilar-icon {
+    font-size: 26px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .pilar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--azul-aa);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .pilar-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .pilar-items li {
+    font-size: 11px;
+    color: #444;
+    line-height: 1.4;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .pilar-items li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--dorado);
+    font-weight: 700;
+  }
+
+  /* FULL WIDTH CARD */
+  .pilar-card.full {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  /* COMITES */
+  .comites-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .comite-item {
+    background: var(--blanco);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(26,58,92,0.07);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .comite-item:nth-child(1) { animation-delay: 0.1s; }
+  .comite-item:nth-child(2) { animation-delay: 0.2s; }
+  .comite-item:nth-child(3) { animation-delay: 0.3s; }
+
+  .comite-badge {
+    background: linear-gradient(135deg, var(--azul-aa), var(--azul-claro));
+    color: var(--blanco);
+    border-radius: 8px;
+    width: 42px; height: 42px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .comite-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--azul-aa);
+    margin-bottom: 4px;
+  }
+
+  .comite-content p {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* REUNIONES */
+  .reuniones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .reunion-chip {
+    background: linear-gradient(135deg, var(--azul-aa) 0%, var(--azul-claro) 100%);
+    color: var(--blanco);
+    border-radius: 10px;
+    padding: 12px 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .reunion-chip:nth-child(odd) { background: linear-gradient(135deg, var(--azul-aa), #1e4e80); }
+  .reunion-chip:nth-child(even) { background: linear-gradient(135deg, #1e4e80, var(--azul-claro)); }
+
+  .reunion-chip span { font-size: 18px; }
+
+  /* INVENTARIO TEMAS */
+  .temas-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tema-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .tema-row:nth-child(1) { animation-delay: 0.05s; }
+  .tema-row:nth-child(2) { animation-delay: 0.1s; }
+  .tema-row:nth-child(3) { animation-delay: 0.15s; }
+  .tema-row:nth-child(4) { animation-delay: 0.2s; }
+  .tema-row:nth-child(5) { animation-delay: 0.25s; }
+
+  .tema-num {
+    background: var(--dorado);
+    color: var(--azul-aa);
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 18px;
+    width: 44px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px 0 0 10px;
+    margin-bottom: 4px;
+  }
+
+  .tema-body {
+    background: var(--blanco);
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 4px;
+    box-shadow: 0 1px 6px rgba(26,58,92,0.06);
+  }
+
+  .tema-body h4 {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--azul-aa);
+    margin-bottom: 3px;
+  }
+
+  .tema-body p {
+    font-size: 10.5px;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  /* FRASE FOOTER */
+  .frase-box {
+    margin: 20px 20px;
+    background: linear-gradient(135deg, var(--azul-aa), #0d2540);
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .frase-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 10px;
+    font-size: 100px;
+    font-family: 'Playfair Display', serif;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+  }
+
+  .frase-box p {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--blanco);
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .frase-box cite {
+    font-size: 11px;
+    color: var(--dorado-claro);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* INDICADORES */
+  .indicadores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 20px 8px;
+  }
+
+  .ind-box {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 16px 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(26,58,92,0.08);
+    border-bottom: 3px solid var(--dorado);
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .ind-box:nth-child(1) { animation-delay: 0.1s; }
+  .ind-box:nth-child(2) { animation-delay: 0.2s; }
+  .ind-box:nth-child(3) { animation-delay: 0.3s; }
+
+  .ind-icon { font-size: 22px; margin-bottom: 6px; }
+
+  .ind-label {
+    font-size: 10px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+  }
+
+  .ind-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--azul-aa);
+    line-height: 1;
+    margin: 4px 0;
+  }
+
+  .ind-desc {
+    font-size: 10px;
+    color: #777;
+    line-height: 1.3;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--azul-aa);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 16px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="aa-logo">
+    <div class="logo-circle">AA</div>
+    <div class="logo-text">Alcohólicos Anónimos<br>Colombia</div>
+  </div>
+  <h1>El Grupo de A.A. <span>Exitoso</span></h1>
+  <div class="header-sub">
+    "Cada Grupo tiene un solo objetivo primordial: llevar el mensaje al alcohólico que aún sufre." — Tradición Cinco
+  </div>
+</div>
+
+<!-- INDICADORES CLAVE -->
+<div class="section">
+  <div class="section-title">Señales de un Grupo Sólido</div>
+</div>
+<div class="indicadores">
+  <div class="ind-box">
+    <div class="ind-icon">🔄</div>
+    <div class="ind-value">Sí</div>
+    <div class="ind-label">Rotación de servidores</div>
+    <div class="ind-desc">Comité activo y renovado</div>
+  </div>
+  <div class="ind-box">
+    <div class="ind-icon">📅</div>
+    <div class="ind-value">1×</div>
+    <div class="ind-label">Evaluación mensual</div>
+    <div class="ind-desc">Reunión de servicios</div>
+  </div>
+  <div class="ind-box">
+    <div class="ind-icon">💰</div>
+    <div class="ind-value">7ª</div>
+    <div class="ind-label">Tradición activa</div>
+    <div class="ind-desc">Autosostenimiento propio</div>
+  </div>
+</div>
+
+<!-- 5 PILARES -->
+<div class="section">
+  <div class="section-title">Los 5 Pilares de Estructuración</div>
+  <div class="pilares-grid">
+
+    <div class="pilar-card">
+      <span class="pilar-icon">🏛️</span>
+      <div class="pilar-title">1. Liderazgo y Estructura</div>
+      <ul class="pilar-items">
+        <li>Junta de servidores conformada</li>
+        <li>Rotación periódica de cargos</li>
+        <li>Conciencia de Grupo activa</li>
+        <li>Servidores capacitados</li>
+      </ul>
+    </div>
+
+    <div class="pilar-card">
+      <span class="pilar-icon">💵</span>
+      <div class="pilar-title">2. Finanzas Transparentes</div>
+      <ul class="pilar-items">
+        <li>Presupuesto en cartelera</li>
+        <li>Informe de tesorería mensual</li>
+        <li>Aportes a OSG, Área, Intergrupos</li>
+        <li>Reserva financiera constituida</li>
+      </ul>
+    </div>
+
+    <div class="pilar-card">
+      <span class="pilar-icon">🏠</span>
+      <div class="pilar-title">3. Infraestructura Digna</div>
+      <ul class="pilar-items">
+        <li>Local cómodo e iluminado</li>
+        <li>Aviso visible de identificación</li>
+        <li>Espacio de recepción al nuevo</li>
+        <li>Independencia de otras causas</li>
+      </ul>
+    </div>
+
+    <div class="pilar-card">
+      <span class="pilar-icon">♻️</span>
+      <div class="pilar-title">4. Proceso de Recuperación</div>
+      <ul class="pilar-items">
+        <li>Temas de literatura programados</li>
+        <li>Reuniones cerradas y abiertas</li>
+        <li>Apadrinamiento activo</li>
+        <li>Compra y estudio de literatura</li>
+      </ul>
+    </div>
+
+    <div class="pilar-card full">
+      <span class="pilar-icon" style="font-size:32px">📣</span>
+      <div>
+        <div class="pilar-title" style="font-size:14px">5. Transmisión del Mensaje</div>
+        <ul class="pilar-items" style="display:grid; grid-template-columns:1fr 1fr; gap:5px 16px;">
+          <li>Comité de Paso Doce activo</li>
+          <li>Comité de Información Pública</li>
+          <li>Contacto con líderes comunitarios</li>
+          <li>Relación con Intergrupos y Área</li>
+          <li>Comité de Recepción al nuevo</li>
+          <li>Estadísticas de asistencia</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- COMITES CLAVE -->
+<div class="section">
+  <div class="section-title">Comités Clave del Grupo</div>
+  <div class="comites-row">
+    <div class="comite-item">
+      <div class="comite-badge">🤝</div>
+      <div class="comite-content">
+        <h4>Comité de Paso Doce</h4>
+        <p>Orienta al recién llegado, define el mensaje a transmitir, promueve el apadrinamiento temporal y organiza el trabajo con instituciones.</p>
+      </div>
+    </div>
+    <div class="comite-item">
+      <div class="comite-badge">📢</div>
+      <div class="comite-content">
+        <h4>Comité de Información al Público (C.I.P.)</h4>
+        <p>Mantiene informada a la comunidad, levanta el censo de instituciones del área de influencia e invita líderes a reuniones abiertas.</p>
+      </div>
+    </div>
+    <div class="comite-item">
+      <div class="comite-badge">🚪</div>
+      <div class="comite-content">
+        <h4>Comité de Recepción</h4>
+        <p>Da bienvenida a visitantes y posibles nuevos miembros, brinda información inicial sobre qué es, para qué es y cómo funciona un Grupo de A.A.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIPOS DE REUNIONES -->
+<div class="section">
+  <div class="section-title">Tipos de Reuniones</div>
+  <div class="reuniones-grid">
+    <div class="reunion-chip"><span>🔒</span> Reunión Cerrada (alcohólicos)</div>
+    <div class="reunion-chip"><span>🔓</span> Reunión Abierta (pública)</div>
+    <div class="reunion-chip"><span>📋</span> Reunión de Evaluación</div>
+    <div class="reunion-chip"><span>🗳️</span> Reunión Electiva</div>
+    <div class="reunion-chip"><span>🎤</span> Orador Invitado</div>
+    <div class="reunion-chip"><span>🌱</span> Reunión de Principiantes</div>
+    <div class="reunion-chip"><span>🎂</span> Aniversario de Miembro</div>
+    <div class="reunion-chip"><span>🏅</span> Aniversario del Grupo</div>
+  </div>
+</div>
+
+<!-- INVENTARIO: 5 TEMAS -->
+<div class="section">
+  <div class="section-title">Inventario Anual: 5 Temas de Evaluación</div>
+  <div class="temas-flow">
+    <div class="tema-row">
+      <div class="tema-num">1</div>
+      <div class="tema-body">
+        <h4>Estructuración y Liderazgo</h4>
+        <p>Rotación, participación de la conciencia de Grupo, ausencia de poder y prestigio entre servidores.</p>
+      </div>
+    </div>
+    <div class="tema-row">
+      <div class="tema-num">2</div>
+      <div class="tema-body">
+        <h4>Finanzas</h4>
+        <p>Presupuesto publicado, informe de tesorería, reserva económica y aportes a los cuerpos de servicio.</p>
+      </div>
+    </div>
+    <div class="tema-row">
+      <div class="tema-num">3</div>
+      <div class="tema-body">
+        <h4>Infraestructura</h4>
+        <p>Condiciones del local, aviso visible, anonimato garantizado y accesibilidad para visitantes.</p>
+      </div>
+    </div>
+    <div class="tema-row">
+      <div class="tema-num">4</div>
+      <div class="tema-body">
+        <h4>Proceso de Recuperación</h4>
+        <p>Temas programados de la literatura, apadrinamiento, respeto al anonimato e integridad de reuniones.</p>
+      </div>
+    </div>
+    <div class="tema-row">
+      <div class="tema-num">5</div>
+      <div class="tema-body">
+        <h4>Transmisión del Mensaje</h4>
+        <p>Comités activos, relación con líderes comunitarios, cooperación con Intergrupos y estadísticas de nuevos.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FRASE FINAL -->
+<div class="frase-box">
+  <p>"Necesitamos dar un viraje y regresar a la base de la estructura: el Grupo de A.A., donde todo empieza."</p>
+  <cite>— Manual del Grupo, OSG Colombia, Ed. 2022</cite>
+</div>
+
+<div class="footer">
+  Manual del Grupo · Plan para la Estructuración · Edición Actualizada 2022 · OSG Colombia
+</div>
+
+</body>
+</html>
