@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo BB84 — Criptografía Cuántica</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #04050d;
+    --surface: #0a0d1f;
+    --border: rgba(100,180,255,0.15);
+    --accent1: #00d4ff;
+    --accent2: #7b2fff;
+    --accent3: #ff2f8e;
+    --accent4: #00ffb0;
+    --text: #e8eeff;
+    --muted: #7080a0;
+    --gold: #ffd050;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Starfield */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 25%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 88%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 55%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(2px 2px at 45% 10%, rgba(0,212,255,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 85% 20%, rgba(123,47,255,0.5) 0%, transparent 100%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative; z-index: 1;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 60px 0 40px;
+    position: relative;
+  }
+  .header-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent1);
+    border: 1px solid var(--accent1);
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    animation: fadeIn 0.6s ease;
+  }
+  h1 {
+    font-size: clamp(2.6rem, 8vw, 5rem);
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeIn 0.8s ease 0.1s both;
+  }
+  .subtitle {
+    margin-top: 16px;
+    font-size: 1.1rem;
+    color: var(--muted);
+    animation: fadeIn 0.8s ease 0.2s both;
+  }
+  .authors {
+    margin-top: 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    animation: fadeIn 0.8s ease 0.3s both;
+  }
+
+  /* SECTION */
+  section { margin-bottom: 48px; animation: fadeIn 0.7s ease both; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  p { color: #b0bcd8; line-height: 1.7; font-size: 0.97rem; }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent1), transparent);
+  }
+
+  /* BASES TABLE */
+  .bases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .base-box {
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid;
+  }
+  .base-rect { border-color: rgba(0,212,255,0.4); background: rgba(0,212,255,0.06); }
+  .base-diag { border-color: rgba(123,47,255,0.4); background: rgba(123,47,255,0.06); }
+  .base-symbol {
+    font-size: 2.8rem;
+    line-height: 1;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .base-name { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+  .base-desc { font-size: 0.82rem; color: var(--muted); }
+  .bits-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .bit-chip {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .bit-0 { background: rgba(0,255,176,0.15); color: var(--accent4); border: 1px solid rgba(0,255,176,0.3); }
+  .bit-1 { background: rgba(255,47,142,0.15); color: var(--accent3); border: 1px solid rgba(255,47,142,0.3); }
+
+  /* STEPS TIMELINE */
+  .timeline { position: relative; padding-left: 36px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 13px; top: 0; bottom: 0; width: 2px;
+    background: linear-gradient(180deg, var(--accent1), var(--accent2), var(--accent3), var(--accent4));
+    border-radius: 2px;
+  }
+  .step {
+    position: relative;
+    margin-bottom: 28px;
+  }
+  .step::before {
+    content: attr(data-n);
+    position: absolute;
+    left: -36px;
+    top: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    border: 2px solid;
+  }
+  .step[data-n="1"]::before { background: rgba(0,212,255,0.2); border-color: var(--accent1); color: var(--accent1); }
+  .step[data-n="2"]::before { background: rgba(123,47,255,0.2); border-color: var(--accent2); color: var(--accent2); }
+  .step[data-n="3"]::before { background: rgba(255,47,142,0.2); border-color: var(--accent3); color: var(--accent3); }
+  .step[data-n="4"]::before { background: rgba(0,255,176,0.2); border-color: var(--accent4); color: var(--accent4); }
+  .step[data-n="5"]::before { background: rgba(255,208,80,0.2); border-color: var(--gold); color: var(--gold); }
+  .step-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+  .step-body { color: #8898bb; font-size: 0.88rem; line-height: 1.6; }
+
+  /* PHOTON GRID */
+  .photon-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.82rem;
+    margin-top: 16px;
+  }
+  .photon-table th {
+    padding: 10px 8px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .photon-table td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .photon-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .tag-match { background: rgba(0,255,176,0.15); color: var(--accent4); }
+  .tag-mismatch { background: rgba(255,47,142,0.12); color: var(--accent3); }
+  .tag-keep { background: rgba(0,212,255,0.15); color: var(--accent1); }
+  .tag-drop { background: rgba(120,120,120,0.15); color: var(--muted); }
+
+  /* EVE WARNING */
+  .eve-box {
+    border: 1px solid rgba(255,47,142,0.4);
+    background: rgba(255,47,142,0.05);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .eve-box::after {
+    content: '⚠';
+    position: absolute;
+    right: 20px; top: 16px;
+    font-size: 1.8rem;
+    opacity: 0.2;
+  }
+  .eve-title {
+    color: var(--accent3);
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* SECURITY THEOREM */
+  .theorem {
+    background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(123,47,255,0.08));
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 12px;
+    padding: 28px;
+    text-align: center;
+  }
+  .theorem-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .theorem-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #c0d0f0;
+  }
+  .theorem-text strong { color: var(--accent1); }
+
+  /* COMPARISON */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .compare-card {
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid;
+  }
+  .compare-card.classical {
+    border-color: rgba(255,208,80,0.3);
+    background: rgba(255,208,80,0.04);
+  }
+  .compare-card.quantum {
+    border-color: rgba(0,212,255,0.3);
+    background: rgba(0,212,255,0.04);
+  }
+  .compare-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .compare-title.classical { color: var(--gold); }
+  .compare-title.quantum { color: var(--accent1); }
+  .compare-item {
+    font-size: 0.82rem;
+    color: #8898bb;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    line-height: 1.5;
+  }
+  .compare-item:last-child { border-bottom: none; }
+
+  /* APPLICATIONS */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .app-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .app-card:hover { transform: translateY(-3px); border-color: var(--accent1); }
+  .app-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+  .app-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 4px; }
+  .app-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    border-top: 1px solid var(--border);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .bases-grid, .compare-grid { grid-template-columns: 1fr; }
+    .apps-grid { grid-template-columns: 1fr 1fr; }
+    h1 { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-tag">Criptografía Cuántica</div>
+    <h1>Protocolo BB84</h1>
+    <p class="subtitle">El primer protocolo de distribución cuántica de clave (QKD) de la historia</p>
+    <p class="authors">Charles H. Bennett &amp; Gilles Brassard — IBM, 1984</p>
+  </header>
+
+  <!-- QUÉ ES -->
+  <section style="animation-delay:0.1s">
+    <div class="section-label">Concepto fundamental</div>
+    <div class="card">
+      <h2>¿Qué es BB84?</h2>
+      <p style="margin-top:8px">BB84 es un protocolo criptográfico que usa principios de la <strong style="color:var(--accent1)">mecánica cuántica</strong> para generar y distribuir una clave secreta entre dos partes (Alice y Bob) de forma <strong style="color:var(--accent4)">incondicionalmente segura</strong>. A diferencia de la criptografía clásica, su seguridad no depende de la dificultad computacional de un problema matemático, sino de las leyes fundamentales de la física: cualquier intento de interceptación <strong style="color:var(--accent3)">perturbará irremediablemente</strong> los fotones transmitidos, delatando al espía.</p>
+    </div>
+  </section>
+
+  <!-- PRINCIPIOS CUÁNTICOS -->
+  <section style="animation-delay:0.15s">
+    <div class="section-label">Fundamentos físicos</div>
+    <div class="card">
+      <h2>Tres principios cuánticos clave</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px">
+        <div style="text-align:center;padding:16px;background:rgba(0,212,255,0.06);border-radius:8px;border:1px solid rgba(0,212,255,0.2)">
+          <div style="font-size:2rem;margin-bottom:8px">🔭</div>
+          <div style="font-weight:700;font-size:0.9rem;color:var(--accent1);margin-bottom:6px">Superposición</div>
+          <div style="font-size:0.78rem;color:var(--muted);line-height:1.5">Un fotón puede existir en múltiples estados simultáneos hasta ser medido</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:rgba(123,47,255,0.06);border-radius:8px;border:1px solid rgba(123,47,255,0.2)">
+          <div style="font-size:2rem;margin-bottom:8px">📏</div>
+          <div style="font-weight:700;font-size:0.9rem;color:var(--accent2);margin-bottom:6px">No-clonación</div>
+          <div style="font-size:0.78rem;color:var(--muted);line-height:1.5">Es imposible copiar un estado cuántico desconocido sin alterarlo</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:rgba(255,47,142,0.06);border-radius:8px;border:1px solid rgba(255,47,142,0.2)">
+          <div style="font-size:2rem;margin-bottom:8px">💥</div>
+          <div style="font-weight:700;font-size:0.9rem;color:var(--accent3);margin-bottom:6px">Colapso de onda</div>
+          <div style="font-size:0.78rem;color:var(--muted);line-height:1.5">Medir con la base incorrecta destruye la información original</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAS DOS BASES -->
+  <section style="animation-delay:0.2s">
+    <div class="section-label">Polarización de fotones</div>
+    <div class="card">
+      <h2>Las Dos Bases de Polarización</h2>
+      <p style="margin-top:6px">Alice codifica cada bit en la polarización de un fotón usando una de dos bases, elegida al azar:</p>
+      <div class="bases-grid">
+        <div class="base-box base-rect">
+          <span class="base-symbol">✛</span>
+          <div class="base-name" style="color:var(--accent1)">Base Rectilínea (+)</div>
+          <div class="base-desc">Polarización horizontal y vertical</div>
+          <div class="bits-row">
+            <span class="bit-chip bit-0">→  0</span>
+            <span class="bit-chip bit-1">↑  1</span>
+          </div>
+        </div>
+        <div class="base-box base-diag">
+          <span class="base-symbol">✕</span>
+          <div class="base-name" style="color:var(--accent2)">Base Diagonal (×)</div>
+          <div class="base-desc">Polarización a 45° y 135°</div>
+          <div class="bits-row">
+            <span class="bit-chip bit-0">↗  0</span>
+            <span class="bit-chip bit-1">↘  1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASOS DEL PROTOCOLO -->
+  <section style="animation-delay:0.25s">
+    <div class="section-label">Flujo del protocolo</div>
+    <div class="card">
+      <h2>Los 5 Pasos del Protocolo</h2>
+      <div class="timeline" style="margin-top:20px">
+        <div class="step" data-n="1">
+          <div class="step-title" style="color:var(--accent1)">Alice prepara y envía fotones</div>
+          <div class="step-body">Para cada bit de su cadena aleatoria, Alice elige al azar una base (+ o ×) y envía el fotón polarizado según esa base por el canal cuántico (fibra óptica o espacio libre). Nadie más sabe qué base usó.</div>
+        </div>
+        <div class="step" data-n="2">
+          <div class="step-title" style="color:var(--accent2)">Bob mide con base aleatoria</div>
+          <div class="step-body">Bob elige independientemente su base de medición para cada fotón. Si acierta la base de Alice (50% de probabilidad), obtiene el bit correcto. Si usa la base equivocada, el resultado es aleatorio e inútil.</div>
+        </div>
+        <div class="step" data-n="3">
+          <div class="step-title" style="color:var(--accent3)">Comparación pública de bases</div>
+          <div class="step-body">Alice y Bob anuncian públicamente (sin revelar los bits) qué base usaron en cada posición. Esta discusión puede ocurrir por un canal clásico sin comprometer la seguridad.</div>
+        </div>
+        <div class="step" data-n="4">
+          <div class="step-title" style="color:var(--accent4)">Tamizado (sifting) de la clave</div>
+          <div class="step-body">Conservan solo los bits donde ambos usaron la misma base (~50% del total). Estos bits forman la <strong>clave cruda</strong>. Los demás se descartan.</div>
+        </div>
+        <div class="step" data-n="5">
+          <div class="step-title" style="color:var(--gold)">Estimación de errores y destilación</div>
+          <div class="step-body">Comparan una muestra de la clave cruda. Si la tasa de error (QBER) es baja (≤ 11%), realizan corrección de errores y amplificación de privacidad para obtener la <strong>clave final secreta</strong>. Si es alta, Eve intervino: se aborta el protocolo.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EJEMPLO NUMÉRICO -->
+  <section style="animation-delay:0.3s">
+    <div class="section-label">Ejemplo paso a paso</div>
+    <div class="card">
+      <h2>Ejemplo con 8 fotones</h2>
+      <table class="photon-table">
+        <thead>
+          <tr>
+            <th>Fotón</th>
+            <th>Bit Alice</th>
+            <th>Base Alice</th>
+            <th>Fotón enviado</th>
+            <th>Base Bob</th>
+            <th>Resultado Bob</th>
+            <th>¿Bases iguales?</th>
+            <th>Clave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:'Space Mono',monospace;color:var(--muted)">1</td>
+            <td style="color:var(--accent4)">0</td>
+            <td>✛</td>
+            <td>→</td>
+            <td>✛</td>
+            <td style="color:var(--accent4)">0</td>
+            <td><span class="tag tag-match">✓</span></td>
+            <td><span class="tag tag-keep">0</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Space Mono',monospace;color:var(--muted)">2</td>
+            <td style="color:var(--accent3)">1</td>
+            <td>✕</td>
+            <td>↘</td>
+            <td>✛</td>
+            <td style="color:var(--muted)">?</td>
+            <td><span class="tag tag-mismatch">✗</span></td>
+            <td><span class="tag tag-drop">—</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Space Mono',monospace;color:var(--muted)">3</td>
+            <td style="color:var(--accent3)">1</td>
+            <td>✛</td>
+            <td>↑</td>
+            <td>✛</td>
+            <td style="color:var(--accent3)">1</td>
+            <td><span class="tag tag-match">✓</span></td>
+            <td><span class="tag tag-keep">1</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Space Mono',monospace;color:var(--muted)">4</td>
+            <td style="color:var(--accent4)">0</td>
+            <td>✕</td>
+            <td>↗</td>
+            <td>✕</td>
+            <td style="color:var(--accent4)">0</td>
+            <td><span class="tag tag-match">✓</span></td>
+            <td><span class="tag tag-keep">0</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Space Mono',monospace;color:var(--muted)">5</td>
+            <td style="color:var(--accent3)">1</td>
+            <td>✕</td>
+            <td>↘</td>
+            <td>✕</td>
+            <td style="color:var(--accent3)">1</td>
+            <td><span class="tag tag-match">✓</span></td>
+            <td><span class="tag tag-keep">1</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Space Mono',monospace;color:var(--muted)">6</td>
+            <td style="color:var(--accent4)">0</td>
+            <td>✛</td>
+            <td>→</td>
+            <td>✕</td>
+            <td style="color:var(--muted)">?</td>
+            <td><span class="tag tag-mismatch">✗</span></td>
+            <td><span class="tag tag-drop">—</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Space Mono',monospace;color:var(--muted)">7</td>
+            <td style="color:var(--accent3)">1</td>
+            <td>✛</td>
+            <td>↑</td>
+            <td>✛</td>
+            <td style="color:var(--accent3)">1</td>
+            <td><span class="tag tag-match">✓</span></td>
+            <td><span class="tag tag-keep">1</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:'Space Mono',monospace;color:var(--muted)">8</td>
+            <td style="color:var(--accent4)">0</td>
+            <td>✕</td>
+            <td>↗</td>
+            <td>✛</td>
+            <td style="color:var(--muted)">?</td>
+            <td><span class="tag tag-mismatch">✗</span></td>
+            <td><span class="tag tag-drop">—</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:16px;padding:14px;background:rgba(0,255,176,0.06);border-radius:8px;border:1px solid rgba(0,255,176,0.2);font-family:'Space Mono',monospace;font-size:0.85rem">
+        <span style="color:var(--muted)">Clave cruda resultante:</span>
+        <span style="color:var(--accent4);margin-left:10px;font-size:1.1rem;letter-spacing:4px">0 1 0 1 1</span>
+        <span style="color:var(--muted);margin-left:12px">(fotones 1, 3, 4, 5, 7)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVE & SEGURIDAD -->
+  <section style="animation-delay:0.35s">
+    <div class="section-label">Seguridad cuántica</div>
+    <div class="eve-box">
+      <div class="eve-title">⚠ Eve intenta espiar — y siempre falla</div>
+      <p style="color:#b0bcd8;font-size:0.92rem;line-height:1.7">Si un espía (Eve) intercepta un fotón, <strong>debe</strong> medirlo con alguna base. Como no sabe cuál base usó Alice, tiene 50% de probabilidad de elegir la incorrecta. Al reenviar el fotón a Bob, introduce un <strong style="color:var(--accent3)">error perturbador</strong>. Cuando Alice y Bob comparan su muestra de verificación, detectan una tasa de error (QBER) superior al umbral de ~11%, lo que revela la presencia del espía. El protocolo se aborta y no se comparte ninguna clave.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px">
+        <div style="text-align:center;padding:12px;background:rgba(255,47,142,0.08);border-radius:8px">
+          <div style="font-size:1.6rem">50%</div>
+          <div style="font-size:0.75rem;color:var(--muted);margin-top:4px">prob. de que Eve elija base incorrecta</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:rgba(255,47,142,0.08);border-radius:8px">
+          <div style="font-size:1.6rem">25%</div>
+          <div style="font-size:0.75rem;color:var(--muted);margin-top:4px">tasa de error por fotón introducida por Eve</div>
+        </div>
+        <div style="text-align:center;padding:12px;background:rgba(255,47,142,0.08);border-radius:8px">
+          <div style="font-size:1.6rem;color:var(--accent3)">≥11%</div>
+          <div style="font-size:0.75rem;color:var(--muted);margin-top:4px">QBER umbral para abortar el protocolo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEOREMA DE SEGURIDAD -->
+  <section style="animation-delay:0.4s">
+    <div class="theorem">
+      <div class="theorem-icon">🔐</div>
+      <p class="theorem-text">La seguridad de BB84 está garantizada por las <strong>leyes de la física cuántica</strong>, no por suposiciones computacionales. Es <strong>incondicionalmente seguro</strong> (information-theoretically secure) incluso contra un atacante con <strong>computación cuántica ilimitada</strong>.</p>
+    </div>
+  </section>
+
+  <!-- BB84 vs CLÁSICO -->
+  <section style="animation-delay:0.45s">
+    <div class="section-label">Comparativa</div>
+    <div class="compare-grid">
+      <div class="compare-card classical">
+        <div class="compare-title classical">⚙ Criptografía Clásica (RSA/ECC)</div>
+        <div class="compare-item">Seguridad basada en dificultad matemática</div>
+        <div class="compare-item">Vulnerable a computadoras cuánticas (algoritmo de Shor)</div>
+        <div class="compare-item">La clave puede copiarse sin que se note</div>
+        <div class="compare-item">No detecta interceptaciones</div>
+        <div class="compare-item">Puede comprometerse retroactivamente</div>
+      </div>
+      <div class="compare-card quantum">
+        <div class="compare-title quantum">⚛ BB84 / Criptografía Cuántica</div>
+        <div class="compare-item">Seguridad basada en leyes de la física</div>
+        <div class="compare-item">Seguro ante cualquier computador, cuántico o clásico</div>
+        <div class="compare-item">La clave no puede copiarse (no-clonación)</div>
+        <div class="compare-item">Detecta cualquier escucha automáticamente</div>
+        <div class="compare-item">Forward secrecy absoluto</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APLICACIONES -->
+  <section style="animation-delay:0.5s">
+    <div class="section-label">Implementaciones reales</div>
+    <div class="card">
+      <h2>Aplicaciones y Despliegues</h2>
+      <div class="apps-grid">
+        <div class="app-card">
+          <span class="app-icon">🏦</span>
+          <div class="app-name">Banca y Finanzas</div>
+          <div class="app-desc">Transferencias interbancarias con QKD en Europa y Asia</div>
+        </div>
+        <div class="app-card">
+          <span class="app-icon">🏛</span>
+          <div class="app-name">Gobiernos</div>
+          <div class="app-desc">Redes gubernamentales cuánticas en China, UE y EE.UU.</div>
+        </div>
+        <div class="app-card">
+          <span class="app-icon">🛰</span>
+          <div class="app-name">Satélites</div>
+          <div class="app-desc">Satélite Micius (China) demostró QKD intercontinental</div>
+        </div>
+        <div class="app-card">
+          <span class="app-icon">🏥</span>
+          <div class="app-name">Salud</div>
+          <div class="app-desc">Protección de registros médicos sensibles a largo plazo</div>
+        </div>
+        <div class="app-card">
+          <span class="app-icon">⚡</span>
+          <div class="app-name">Infraestructura crítica</div>
+          <div class="app-desc">Redes eléctricas y control industrial</div>
+        </div>
+        <div class="app-card">
+          <span class="app-icon">🌐</span>
+          <div class="app-name">Internet Cuántica</div>
+          <div class="app-desc">Base del futuro quantum internet global</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>BB84 · Bennett &amp; Brassard, 1984 · Infografía generada con Claude · 2026</p>
+    <p style="margin-top:6px;font-size:10px;color:#445">Criptografía cuántica — distribución de clave cuántica (QKD)</p>
+  </footer>
+
+</div>
+</body>
+</html>
