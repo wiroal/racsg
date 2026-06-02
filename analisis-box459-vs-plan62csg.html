@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#7F1D1D">
+<meta name="description" content="Análisis comparativo entre el Boletín Box 4-5-9 de la GSO de Nueva York (1982-2004) y el Plan Nacional de Acción aprobado por la 62ª CSG de Colombia (2026).">
+<meta name="author" content="William R. — Delegado Área 3, Región C, Bogotá">
+<title>Box 4-5-9 vs. Plan 62ª CSG — Análisis comparativo · AA Colombia</title>
+<style>
+  :root {
+    --burgundy: #7F1D1D;
+    --burgundy-dark: #5B1414;
+    --burgundy-soft: #9B2B2B;
+    --burgundy-tint: #FBF1F1;
+    --burgundy-tint2: #F4E2E2;
+    --ink: #1F1410;
+    --ink-soft: #4A3C36;
+    --ink-mute: #6B5B53;
+    --paper: #FBF7F2;
+    --paper-deep: #F4ECDF;
+    --rule: #E5D9C8;
+    --rule-soft: #EFE6D6;
+    --accent: #B8893A;
+    --ny: #1F3A5F;
+    --ny-tint: #EEF2F7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ============ HEADER ============ */
+  header.hero {
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+    color: var(--paper);
+    padding: 48px 20px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  header.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -30px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; }
+  .eyebrow {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  header.hero h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 6vw, 40px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  header.hero h1 em {
+    font-style: italic;
+    color: #F4D7A8;
+    font-weight: 600;
+  }
+  header.hero .sub {
+    font-size: clamp(15px, 2.2vw, 17px);
+    color: rgba(255,255,255,0.88);
+    line-height: 1.55;
+    max-width: 700px;
+  }
+  .hero-meta {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 28px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .hero-meta strong { color: #fff; font-weight: 700; }
+
+  /* ============ INTRO ============ */
+  .intro {
+    padding: 36px 20px 8px;
+  }
+  .intro p {
+    font-size: 17px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+  .intro p strong { color: var(--burgundy); }
+  .intro .lead {
+    font-size: 18.5px;
+    line-height: 1.65;
+  }
+
+  /* ============ TOGGLE ALL ============ */
+  .toggle-all {
+    display: flex;
+    gap: 10px;
+    margin: 24px 20px 8px;
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+  }
+  .toggle-all button {
+    background: var(--burgundy-tint);
+    border: 1px solid var(--burgundy);
+    color: var(--burgundy);
+    font-family: Georgia, serif;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    font-weight: 600;
+  }
+  .toggle-all button:hover {
+    background: var(--burgundy);
+    color: #fff;
+  }
+  .toggle-all button:active { transform: translateY(1px); }
+
+  /* ============ SECTIONS / ACCORDION ============ */
+  main { padding: 8px 0 32px; }
+
+  details.section {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    margin: 12px 20px;
+    box-shadow: 0 1px 2px rgba(31,20,16,0.04);
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+  details.section[open] {
+    border-color: var(--burgundy);
+    box-shadow: 0 2px 8px rgba(127,29,29,0.08);
+  }
+  details.section summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 38px 1fr 24px;
+    gap: 14px;
+    align-items: center;
+    user-select: none;
+    transition: background 0.15s ease;
+  }
+  details.section summary::-webkit-details-marker { display: none; }
+  details.section summary:hover { background: var(--burgundy-tint); }
+  details.section[open] summary { background: var(--burgundy-tint); border-bottom: 1px solid var(--rule); }
+  details.section summary .num {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--burgundy);
+    text-align: center;
+    line-height: 1;
+  }
+  details.section summary .title {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  details.section summary .title small {
+    display: block;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-top: 3px;
+    font-style: italic;
+  }
+  details.section summary .chev {
+    font-size: 14px;
+    color: var(--burgundy);
+    transition: transform 0.25s ease;
+    text-align: center;
+  }
+  details.section[open] summary .chev { transform: rotate(180deg); }
+  .section-body {
+    padding: 22px 24px 26px;
+  }
+  .section-body p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .section-body p:last-child { margin-bottom: 0; }
+  .section-body strong { color: var(--burgundy); font-weight: 700; }
+  .section-body em { color: var(--ink-soft); }
+
+  /* Blockquote */
+  .section-body blockquote {
+    border-left: 4px solid var(--burgundy);
+    background: var(--burgundy-tint);
+    padding: 16px 20px;
+    margin: 18px 0;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    border-radius: 0 4px 4px 0;
+  }
+  .section-body blockquote .author {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 600;
+  }
+
+  /* Listas dentro del body */
+  .section-body ul {
+    list-style: none;
+    margin: 14px 0;
+    padding: 0;
+  }
+  .section-body ul li {
+    position: relative;
+    padding: 6px 0 6px 22px;
+    line-height: 1.6;
+  }
+  .section-body ul li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: var(--burgundy);
+    font-size: 10px;
+  }
+
+  /* Bullets numerados */
+  .section-body ol.numbered {
+    list-style: none;
+    margin: 14px 0;
+    padding: 0;
+    counter-reset: num;
+  }
+  .section-body ol.numbered li {
+    counter-increment: num;
+    padding: 10px 0 10px 44px;
+    position: relative;
+    line-height: 1.6;
+    border-bottom: 1px dashed var(--rule);
+  }
+  .section-body ol.numbered li:last-child { border-bottom: none; }
+  .section-body ol.numbered li::before {
+    content: counter(num);
+    position: absolute;
+    left: 0; top: 8px;
+    width: 30px; height: 30px;
+    background: var(--burgundy);
+    color: #fff;
+    border-radius: 50%;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  /* Timeline */
+  .timeline {
+    margin: 18px 0 8px;
+    position: relative;
+    padding-left: 18px;
+    border-left: 2px solid var(--burgundy);
+  }
+  .tl-item {
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 6px;
+    width: 12px; height: 12px;
+    background: var(--paper);
+    border: 2px solid var(--burgundy);
+    border-radius: 50%;
+  }
+  .tl-date {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--burgundy);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .tl-title {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .tl-body {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* Ejes (2 columnas / 1 columna en móvil) */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 18px 0;
+  }
+  @media (max-width: 640px) { .ejes { grid-template-columns: 1fr; } }
+  .eje {
+    background: var(--burgundy-tint);
+    border: 1px solid var(--burgundy-tint2);
+    border-top: 3px solid var(--burgundy);
+    padding: 18px 18px 16px;
+    border-radius: 4px;
+  }
+  .eje-tag {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .eje-title {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .eje-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* Cascade list */
+  .cascade {
+    margin: 16px 0;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .cascade-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--rule-soft);
+    background: #fff;
+  }
+  .cascade-row:nth-child(odd) { background: var(--paper-deep); }
+  .cascade-row:last-child { border-bottom: none; }
+  .cascade-level {
+    font-family: -apple-system, system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--burgundy);
+    letter-spacing: 0.04em;
+  }
+  .cascade-text {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 540px) {
+    .cascade-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 14px; }
+  }
+
+  /* Comparativa NY vs CO */
+  .vs-table {
+    margin: 18px 0;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .vs-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--paper-deep);
+    border-bottom: 2px solid var(--ink);
+  }
+  .vs-head > div {
+    padding: 14px 16px;
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .vs-head .h-ny { background: var(--ny-tint); color: var(--ny); border-right: 1px solid var(--rule); }
+  .vs-head .h-co { background: var(--burgundy-tint); color: var(--burgundy); }
+
+  .vs-section-label {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 18px;
+    font-family: -apple-system, system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .vs-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .vs-row:last-child { border-bottom: none; }
+  .vs-row > div {
+    padding: 14px 16px;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .vs-row .c-ny { background: rgba(31,58,95,0.03); border-right: 1px solid var(--rule); }
+  .vs-row .c-co { background: rgba(127,29,29,0.03); }
+  @media (max-width: 640px) {
+    .vs-head { grid-template-columns: 1fr; }
+    .vs-head .h-ny { border-right: none; border-bottom: 1px solid var(--rule); }
+    .vs-row { grid-template-columns: 1fr; }
+    .vs-row .c-ny { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+
+  /* Pull / Highlight box */
+  .pull {
+    background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+    color: #fff;
+    padding: 22px 24px;
+    border-radius: 6px;
+    margin: 22px 0;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  .pull::before {
+    content: '“';
+    font-family: Georgia, serif;
+    font-style: normal;
+    font-size: 56px;
+    line-height: 0.4;
+    color: #F4D7A8;
+    display: block;
+    margin-bottom: 4px;
+    height: 24px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--paper-deep);
+    border-top: 1px solid var(--rule);
+    padding: 36px 20px 32px;
+    margin-top: 32px;
+    text-align: center;
+  }
+  footer .seal {
+    width: 56px; height: 56px;
+    border: 2px solid var(--burgundy);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--burgundy);
+    margin-bottom: 14px;
+  }
+  footer p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 4px; }
+  footer .sig { font-family: Georgia, serif; font-size: 18px; color: var(--ink); font-weight: 700; margin-bottom: 2px; }
+  footer .nav {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+  }
+  footer .nav a {
+    color: var(--burgundy);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+  }
+  footer .nav a:hover { border-bottom-color: var(--burgundy); }
+
+  /* ============ PRINT ============ */
+  @media print {
+    body { background: #fff; }
+    details.section { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+    details.section[open] summary .chev,
+    .toggle-all { display: none; }
+    details.section summary { background: #f5f5f5 !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Alcohólicos Anónimos · Colombia · Análisis Doctrinal</p>
+    <h1>Box 4-5-9 de la GSO <em>versus</em><br>Plan Nacional de la 62ª CSG</h1>
+    <p class="sub">Análisis comparativo entre la posición doctrinal de la Oficina de Servicios Generales de Nueva York (1982-2004) y el Plan de Acción aprobado por la Comunidad colombiana en 2026.</p>
+    <p class="hero-meta">
+      <span>📰 <strong>7 ediciones</strong> Box 4-5-9</span>
+      <span>📅 <strong>1982 — 2004</strong></span>
+      <span>🇨🇴 <strong>Plan 2027</strong> · 3 años</span>
+      <span>📍 <strong>62ª CSG</strong> · Rionegro 2026</span>
+    </p>
+  </div>
+</header>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap">
+    <p class="lead">Síntesis fiel del análisis comparativo entre <strong>siete ediciones del Boletín Box 4-5-9</strong>, publicación oficial de la GSO de Nueva York entre 1982 y 2004, y la <strong>Acción Recomendable del Comité de Políticas y Admisiones</strong> aprobada en la 62ª Conferencia de Servicios Generales de Colombia (Rionegro, abril 30 – mayo 3 de 2026). Material preparado para el compartimiento en grupos de Bogotá, MCD y Asamblea de Área.</p>
+    <p>Los Box 4-5-9 no constituyen respuestas a delegados particulares ni fallos institucionales: son la <strong>posición doctrinal de la GSO sobre la Unicidad de Propósito</strong>, sostenida con coherencia durante más de cuatro décadas. Cuando la GSO recibe consultas, remite a la literatura aprobada por la Conferencia. Eso es precisamente lo que reflejan estos documentos.</p>
+  </div>
+</section>
+
+<!-- ============ TOGGLE ALL ============ -->
+<div class="toggle-all">
+  <button id="open-all" type="button">📖 Abrir todo</button>
+  <button id="close-all" type="button">📕 Cerrar todo</button>
+</div>
+
+<!-- ============ MAIN ACCORDION ============ -->
+<main>
+
+  <!-- 1 -->
+  <details class="section">
+    <summary>
+      <span class="num">1</span>
+      <span class="title">Las siete ediciones del Box 4-5-9
+        <small>El hilo conductor: Bill W., Grapevine, febrero de 1958</small>
+      </span>
+      <span class="chev">⌄</span>
+    </summary>
+    <div class="section-body">
+      <p>El principio formulado por Bill W. en 1958 atraviesa todas las ediciones: «AA limita su membresía a los alcohólicos y sus grupos a un solo objetivo primordial». La evolución temática es la siguiente:</p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <p class="tl-date">Abril–Mayo · 1982</p>
+          <p class="tl-title">El influjo de drogadictos no alcohólicos en las reuniones</p>
+          <p class="tl-body">La GSO se niega a dictar «fallos» y remite a la literatura aprobada por la Conferencia.</p>
+          <blockquote>
+            No hay manera posible de que los no alcohólicos se vuelvan miembros de AA. Tenemos que limitar nuestra membresía a los alcohólicos y nuestros grupos a un propósito singular.
+            <span class="author">Bill W.</span>
+          </blockquote>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-date">Junio–Julio · 1988</p>
+          <p class="tl-title">«Nuestra Unicidad de Propósito, Clave de la Unidad»</p>
+          <p class="tl-body">Tema de la 38ª Conferencia EE.UU./Canadá. Distinción entre grupos y reuniones. El proyecto de automantenimiento y la 7ª Tradición como condición de independencia.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-date">Abril–Mayo · 1989</p>
+          <p class="tl-title">Los comités de custodios y los Conceptos de Servicio</p>
+          <p class="tl-body">El <strong>Segundo Concepto</strong>: delegación de autoridad con responsabilidad. El <strong>Tercer Concepto</strong>: el Derecho de Decisión de los fieles servidores como expresión de confianza colectiva.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-date">Edición Navideña · 1994</p>
+          <p class="tl-title">El «crosstalk» como amenaza a la identificación</p>
+          <p class="tl-body">Distinción entre directrices del grupo y reglas de control. La GSO aclara que esas directrices no provinieron de la Oficina de Servicios Generales.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-date">Verano · 2001 · «Acerca de AA»</p>
+          <p class="tl-title">Unicidad de propósito ante adicciones múltiples</p>
+          <p class="tl-body">La identificación como clave de la recuperación.</p>
+          <blockquote>
+            La auténtica fuerza de AA reside en la capacidad de los miembros para comprender y aferrarse a su objetivo primordial.
+            <span class="author">Elaine McDowell · Presidenta de la JSG</span>
+          </blockquote>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-date">Febrero–Marzo · 2003</p>
+          <p class="tl-title">17ª Reunión de Servicio Mundial · Oviedo, España</p>
+          <p class="tl-body">El mensaje de AA sin fronteras. El apadrinamiento entre países y el intercambio de experiencias como motor del servicio mundial.</p>
+        </div>
+
+        <div class="tl-item">
+          <p class="tl-date">Abril–Mayo · 2004</p>
+          <p class="tl-title">«Nuestra Unicidad de Propósito, la Piedra Angular de AA»</p>
+          <p class="tl-body">Tema de la 54ª Conferencia EE.UU./Canadá. La rigidez como peligro equivalente a la permisividad.</p>
+          <blockquote>
+            Tenemos demasiado miedo o rigidez, y no suficiente confianza y sentido común.
+            <span class="author">Bob P. · Gerente saliente de la GSO</span>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 2 -->
+  <details class="section">
+    <summary>
+      <span class="num">2</span>
+      <span class="title">Plan Nacional de la 62ª CSG · Diagnóstico
+        <small>Acción Recomendable del Comité de Políticas y Admisiones</small>
+      </span>
+      <span class="chev">⌄</span>
+    </summary>
+    <div class="section-body">
+      <p>La 62ª Conferencia de Servicios Generales de Colombia aprobó el <strong>Plan Nacional de Acción para Fortalecer la Unicidad de Propósito a partir de la Recuperación del Enfermo Alcohólico</strong>, con vigencia de 3 años a partir de 2027, prorrogable a criterio de la CSG.</p>
+
+      <blockquote>
+        Muchos miembros de AA en Colombia llegan, dejan de beber, pero <strong>no se recuperan espiritualmente</strong>. Continúan ingobernables, generan discordia y deserción. La causa: AA fue confundida como programa de abstinencia cuando es un programa de recuperación espiritual basado en los Doce Pasos.
+        <span class="author">Diagnóstico aprobado por la 62ª CSG</span>
+      </blockquote>
+
+      <p>El Plan reemplaza el Plan de Fortalecimiento 2015–2025 ya agotado y se articula sobre dos ejes centrales:</p>
+
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-tag">Eje 1 · Quinta Tradición</div>
+          <div class="eje-title">Unicidad de Propósito</div>
+          <div class="eje-text">AA atiende <em>únicamente</em> al alcohólico. Sin otras adicciones, sin actividades distractoras —rifas, paseos, bailes, concursos—. Nuestro objetivo es uno solo.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-tag">Eje 2 · Doce Pasos y Texto Básico</div>
+          <div class="eje-title">Recuperación Real</div>
+          <div class="eje-text">Superar el «pasodoble» —solo Pasos 1 y 2—. Meta: despertar espiritual, sano juicio, reencuentro con Dios, reincorporación a la familia y la sociedad.</div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 3 -->
+  <details class="section">
+    <summary>
+      <span class="num">3</span>
+      <span class="title">Fines de la recuperación
+        <small>Cuatro horizontes articulados como uno solo</small>
+      </span>
+      <span class="chev">⌄</span>
+    </summary>
+    <div class="section-body">
+      <ol class="numbered">
+        <li><strong>Recobrar el sano juicio</strong> — Paso 2: transitar de la locura a la vida normal.</li>
+        <li><strong>Despertar espiritual</strong> — conocimiento y práctica íntegra de los Doce Pasos.</li>
+        <li><strong>Reencuentro con Dios</strong> — Paso 3, Texto Básico: experiencia espiritual real.</li>
+        <li><strong>Reincorporación a la vida</strong> — Paso 12: familia, trabajo y sociedad.</li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- 4 -->
+  <details class="section">
+    <summary>
+      <span class="num">4</span>
+      <span class="title">Implementación en cascada
+        <small>De la CSG al Grupo Base, sin saltarse ningún eslabón</small>
+      </span>
+      <span class="chev">⌄</span>
+    </summary>
+    <div class="section-body">
+      <div class="cascade">
+        <div class="cascade-row">
+          <div class="cascade-level">CSG</div>
+          <div class="cascade-text">Espacio en la agenda de cada RAC para evaluar, direccionar e impulsar el Plan.</div>
+        </div>
+        <div class="cascade-row">
+          <div class="cascade-level">Regiones A–E</div>
+          <div class="cascade-text">Igual abordaje en sus congresos y reuniones regionales.</div>
+        </div>
+        <div class="cascade-row">
+          <div class="cascade-level">Comités y Asambleas de Área</div>
+          <div class="cascade-text">Seguimiento y asignación de tareas a los grupos.</div>
+        </div>
+        <div class="cascade-row">
+          <div class="cascade-level">Distritos</div>
+          <div class="cascade-text">Articulación con los grupos de su jurisdicción.</div>
+        </div>
+        <div class="cascade-row">
+          <div class="cascade-level">Grupo Base</div>
+          <div class="cascade-text"><strong>Mínimo 2 reuniones semanales</strong> de estudio de Pasos y Texto Básico · padrinazgo para cada miembro · reunión cerrada mensual de seguimiento al Paso 4.</div>
+        </div>
+        <div class="cascade-row">
+          <div class="cascade-level">Intergrupos</div>
+          <div class="cascade-text">Apoyo en lo pertinente con las Áreas y la OSG.</div>
+        </div>
+      </div>
+
+      <p style="margin-top: 18px;"><strong>Responsables del Plan:</strong></p>
+      <ul>
+        <li><strong>OSG</strong> — liderazgo de la difusión nacional, espacio en el Boletín.</li>
+        <li><strong>JSG</strong> — evaluación semestral.</li>
+        <li><strong>Comités CTO</strong> — IP, CCP e Instituciones en todos los niveles de la estructura.</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- 5 -->
+  <details class="section">
+    <summary>
+      <span class="num">5</span>
+      <span class="title">Convergencias plenas
+        <small>Cuatro coincidencias sustanciales entre la GSO y la 62ª CSG</small>
+      </span>
+      <span class="chev">⌄</span>
+    </summary>
+    <div class="section-body">
+      <p>Tanto los Box 4-5-9 como el Plan parten del mismo fundamento doctrinal: el principio formulado por Bill W. en 1958 y recogido en las Tradiciones Tres y Cinco. Hay coincidencia plena en cuatro puntos:</p>
+
+      <ol class="numbered">
+        <li><strong>Base doctrinal idéntica</strong> — la Quinta Tradición como eje de identidad de AA.</li>
+        <li><strong>Rechazo a dictar «fallos» desde arriba</strong> — la GSO de Nueva York y la CSG de Colombia confían en los grupos autónomos para encontrar las respuestas. Ninguna instancia superior legisla sobre casos individuales.</li>
+        <li><strong>La identificación como clave de la recuperación</strong> — si el ambiente de identificación se diluye, el alcohólico que sufre pierde la posibilidad de reconocerse y recuperarse.</li>
+        <li><strong>Rigidez y permisividad como peligros equivalentes</strong> — el Box 4-5-9 de 2004 lo expresa con claridad; el Plan colombiano lo traduce en acciones concretas para evitar ambos extremos.</li>
+      </ol>
+    </div>
+  </details>
+
+  <!-- 6 -->
+  <details class="section">
+    <summary>
+      <span class="num">6</span>
+      <span class="title">Diferencias de énfasis
+        <small>Aquí radica la aportación distintiva del Plan colombiano</small>
+      </span>
+      <span class="chev">⌄</span>
+    </summary>
+    <div class="section-body">
+      <p>Misma doctrina, distinto enfoque operativo. Cuatro dimensiones donde el Plan de la 62ª CSG se diferencia del Boletín Box 4-5-9:</p>
+
+      <div class="vs-table">
+        <div class="vs-head">
+          <div class="h-ny">📘 Box 4-5-9 · GSO Nueva York</div>
+          <div class="h-co">🇨🇴 Plan Nacional · 62ª CSG Colombia</div>
+        </div>
+
+        <div class="vs-section-label">Amenaza principal</div>
+        <div class="vs-row">
+          <div class="c-ny"><strong>Externa</strong> — drogadictos no alcohólicos que presionan las reuniones y diluyen la identificación.</div>
+          <div class="c-co"><strong>Interna</strong> — miembros que llevan años en AA sin recuperarse espiritualmente. La deserción y la discordia vienen de adentro de la comunidad.</div>
+        </div>
+
+        <div class="vs-section-label">Contexto</div>
+        <div class="vs-row">
+          <div class="c-ny">La oleada de «dobleadictos» en EE.UU. y Canadá de los años 80–90. Respuesta al caso concreto del momento.</div>
+          <div class="c-co">La realidad colombiana: deserción, recaídas frecuentes, grupos debilitados. Diagnóstico basado en la experiencia nacional acumulada.</div>
+        </div>
+
+        <div class="vs-section-label">Naturaleza del documento</div>
+        <div class="vs-row">
+          <div class="c-ny"><strong>Posición doctrinal</strong> — explica y fundamenta el principio, remite a la literatura y a la experiencia de los grupos autónomos.</div>
+          <div class="c-co"><strong>Plan de acción estructurado</strong> — objetivos, ejes, acciones concretas, responsabilidades en cascada y mecanismos de seguimiento bimestral, trimestral, semestral y anual.</div>
+        </div>
+
+        <div class="vs-section-label">Alcance e instrumento</div>
+        <div class="vs-row">
+          <div class="c-ny">EE.UU. y Canadá. Instrumento: <strong>boletín informativo bimestral</strong> para delegados y custodios.</div>
+          <div class="c-co">Estructura nacional colombiana. Instrumento: <strong>plan trienal</strong> (2027) con evaluaciones periódicas en todos los niveles.</div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 7 -->
+  <details class="section" open>
+    <summary>
+      <span class="num">7</span>
+      <span class="title">Conclusión
+        <small>La conciencia de grupo colectiva, actuando</small>
+      </span>
+      <span class="chev">⌄</span>
+    </summary>
+    <div class="section-body">
+      <p>El Plan Nacional aprobado por la 62ª CSG <strong>no innova en la doctrina</strong>: recoge fielmente el principio que la GSO de Nueva York ha sostenido desde 1958 y que los Box 4-5-9 documentan a lo largo de más de dos décadas. Lo que sí aporta es un enfoque autóctono y una arquitectura operativa que la GSO de Nueva York nunca proporcionó, porque no le corresponde hacerlo: esa responsabilidad pertenece a cada estructura nacional y, en última instancia, a cada grupo autónomo.</p>
+
+      <div class="pull">
+        La 62ª CSG cumplió exactamente con ese principio de autonomía responsable: tomó la doctrina común de toda la Comunidad mundial, la aplicó al diagnóstico concreto de Colombia y la convirtió en un plan de acción con mecanismos de rendición de cuentas.
+      </div>
+
+      <p>Es la <strong>conciencia de grupo colectiva</strong> actuando conforme a los Conceptos de Servicio.</p>
+    </div>
+  </details>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="seal">AA</div>
+  <p class="sig">William R.</p>
+  <p>Delegado · Panel 62 · Área 3, Región C, Territorio Sur</p>
+  <p>Bogotá, Colombia · Mayo de 2026</p>
+  <p style="margin-top: 12px; font-style: italic; color: var(--burgundy);">«La Recuperación y la Práctica de las Tradiciones garantizan un mejor Servicio»</p>
+
+  <div class="nav">
+    <a href="index.html">← Volver al Informe 62ª RAC</a>
+  </div>
+</footer>
+
+<script>
+  // Toggle all
+  document.getElementById('open-all').addEventListener('click', () => {
+    document.querySelectorAll('details.section').forEach(d => d.open = true);
+  });
+  document.getElementById('close-all').addEventListener('click', () => {
+    document.querySelectorAll('details.section').forEach(d => d.open = false);
+  });
+</script>
+
+</body>
+</html>
