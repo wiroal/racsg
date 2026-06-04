@@ -434,6 +434,119 @@
     color: var(--gold-dark);
   }
 
+  /* ─── Prólogo cronológico ─── */
+  .prologue {
+    margin: 0 0 3rem;
+  }
+  .prologue-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .prologue-title::before, .prologue-title::after {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold-dark);
+    vertical-align: middle;
+    margin: 0 0.9rem;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 5.5rem;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--rule) 8%, var(--rule) 92%, transparent);
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    position: relative;
+  }
+  .tl-item + .tl-item { margin-top: 1.8rem; }
+
+  .tl-date {
+    flex: 0 0 5rem;
+    text-align: right;
+    padding-top: 0.1rem;
+  }
+  .tl-date .tl-month {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 600;
+    display: block;
+  }
+  .tl-date .tl-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--ink);
+    display: block;
+    line-height: 1.1;
+  }
+
+  .tl-dot {
+    flex: 0 0 1.1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    background: var(--burgundy);
+    border: 2px solid var(--paper);
+    outline: 1.5px solid var(--burgundy);
+    margin-top: 0.22rem;
+    position: relative;
+    z-index: 1;
+  }
+  .tl-item.secondary .tl-dot {
+    background: var(--gold-dark);
+    outline-color: var(--gold-dark);
+    width: 0.85rem;
+    height: 0.85rem;
+    margin-top: 0.35rem;
+  }
+
+  .tl-body {
+    flex: 1;
+    padding-bottom: 0.2rem;
+  }
+  .tl-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--burgundy-dark);
+    line-height: 1.25;
+    margin-bottom: 0.35rem;
+  }
+  .tl-item.secondary .tl-label { color: var(--gold-dark); font-weight: 600; font-size: 0.98rem; }
+  .tl-text {
+    font-size: 0.97rem;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.88;
+  }
+
   /* ─── Print ─── */
   @media print {
     body { background: white; padding: 0; }
@@ -457,7 +570,52 @@
     <span class="line"></span>
   </div>
 
+  <!-- ═══ PRÓLOGO: ANTECEDENTES ═══ -->
+  <div class="prologue">
+    <p class="prologue-title">Antecedentes · 1934–1935</p>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">
+          <span class="tl-month">Dic.</span>
+          <span class="tl-year">1934</span>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">Experiencia espiritual de Bill en el Hospital Towns</div>
+          <p class="tl-text">En el Hospital Towns de Nueva York, durante su cuarta y última internación, Bill W. vivió una experiencia espiritual súbita que describió como "una gran luz blanca". A partir de ese momento permaneció sobrio para siempre. Esa experiencia sería, más adelante, el núcleo del mensaje que llevaría a otros alcohólicos.</p>
+        </div>
+      </div>
+
+      <div class="tl-item secondary">
+        <div class="tl-date">
+          <span class="tl-month">Dic. 1934</span>
+          <span class="tl-year tl-year" style="font-size:0.85rem;font-weight:600;color:var(--gold-dark);">— May. 1935</span>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">Meses de trabajo sin fruto</div>
+          <p class="tl-text">Durante cerca de cinco meses, Bill intentó llevar el mensaje a otros alcohólicos en Nueva York. Trabajó con varios de ellos, pero ninguno logró mantenerse sobrio. La experiencia le enseñó que el alcohólico no se recupera trabajando solo; necesita la ayuda de otro alcohólico.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">
+          <span class="tl-month">12 Mayo</span>
+          <span class="tl-year">1935</span>
+        </div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-label">Bill y el Dr. Bob se conocen</div>
+          <p class="tl-text">En Akron, Ohio —adonde Bill había viajado por negocios que fracasaron—, la señora Henrietta Seiberling lo pone en contacto con el Dr. Bob Smith, médico cirujano con veinte años de lucha contra el alcohol. Ese encuentro, el 12 de mayo, cambiaría la historia.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ═══ EVENTOS ═══ -->
+
   <div class="events">
 
     <!-- Evento 1 -->
