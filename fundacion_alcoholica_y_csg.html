@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Fundación Alcohólica y la Conferencia de Servicios Generales · 91 años</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:        #f6f1e6;
+  --cream-deep:   #ede5d2;
+  --ink:          #1a1a1a;
+  --ink-soft:     #3a3633;
+  --rule:         #c9bfa6;
+  --red:          #7F1D1D;
+  --red-deep:     #5d1414;
+  --sepia:        #6b5d4f;
+  --gold:         #a07a32;
+  --serif-display: "Cormorant Garamond", "Times New Roman", serif;
+  --serif-body:   "EB Garamond", "Georgia", serif;
+  --sans:         "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--serif-body);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(127,29,29,0.025) 0%, transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(160,122,50,0.03) 0%, transparent 50%);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+/* ===== HEADER ===== */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.eyebrow::before, .eyebrow::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  max-width: 60px;
+}
+
+h1.title {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2rem;
+  color: var(--ink);
+}
+h1.title em {
+  font-style: italic;
+  color: var(--red);
+  font-weight: 400;
+}
+
+.subtitle {
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--sepia);
+  line-height: 1.5;
+  max-width: 560px;
+  margin-bottom: 2rem;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  margin-bottom: 4rem;
+}
+.meta-row span strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+}
+
+/* ===== ORNAMENT ===== */
+.ornament {
+  text-align: center;
+  font-family: var(--serif-display);
+  color: var(--red);
+  font-size: 1.4rem;
+  margin: 3.5rem 0;
+  letter-spacing: 0.5em;
+}
+
+/* ===== PART HEADERS ===== */
+.part-header {
+  text-align: center;
+  margin: 3rem 0 2.5rem;
+}
+.part-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.part-title {
+  font-family: var(--serif-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--ink);
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+}
+
+/* ===== SECTIONS ===== */
+section.q {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.q-num {
+  font-family: var(--serif-display);
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--red);
+  line-height: 1;
+  float: left;
+  margin: 0.2rem 1rem 0.2rem 0;
+  font-feature-settings: "lnum";
+}
+
+.q-title {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 1.55rem;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+section.q p {
+  margin-bottom: 1rem;
+  color: var(--ink-soft);
+}
+
+section.q p:first-of-type::first-letter {
+  /* subtle drop cap only for the very first paragraph of the page */
+}
+
+/* ===== SUB-SECTIONS ===== */
+h3.h3 {
+  font-family: var(--serif-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--red);
+  margin: 1.8rem 0 0.7rem;
+  letter-spacing: -0.005em;
+}
+
+/* ===== QUOTES ===== */
+blockquote {
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.6;
+  color: var(--ink);
+  border-left: 2px solid var(--red);
+  padding: 0.4rem 0 0.4rem 1.5rem;
+  margin: 1.5rem 0;
+  background: linear-gradient(90deg, rgba(127,29,29,0.04) 0%, transparent 60%);
+}
+blockquote cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  margin-top: 0.8rem;
+}
+
+.pullquote {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--red-deep);
+  padding: 2rem 1rem;
+  margin: 2.5rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.pullquote::before, .pullquote::after {
+  content: "❦";
+  display: block;
+  font-size: 1rem;
+  color: var(--gold);
+  font-style: normal;
+  margin: 0.4rem 0;
+}
+
+/* ===== KEY FACTS PANELS ===== */
+.fact-panel {
+  background: var(--cream-deep);
+  border-left: 3px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  font-family: var(--serif-body);
+  font-size: 0.98rem;
+}
+.fact-panel .fact-label {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+/* ===== ROSTER (list of trustees) ===== */
+.roster {
+  margin: 1.2rem 0 1.5rem;
+  padding: 1rem 1.5rem;
+  background: rgba(127,29,29,0.04);
+  border-radius: 2px;
+}
+.roster-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.roster ul {
+  list-style: none;
+}
+.roster li {
+  font-family: var(--serif-body);
+  padding: 0.25rem 0;
+  position: relative;
+  padding-left: 1.2rem;
+}
+.roster li::before {
+  content: "❧";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.85rem;
+  top: 0.35rem;
+}
+
+/* ===== IDENTITY CARDS ===== */
+.identities {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  margin: 1.5rem 0 2rem;
+}
+.identity {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--cream-deep);
+  border-radius: 2px;
+}
+.identity-num {
+  font-family: var(--serif-display);
+  font-size: 1.8rem;
+  color: var(--red);
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 1.6rem;
+}
+.identity-text {
+  font-family: var(--serif-body);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.identity-text strong {
+  font-weight: 600;
+  color: var(--red-deep);
+  font-style: italic;
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+/* ===== THREE CLOSING FORMULAS ===== */
+.formula {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--gold);
+}
+.formula-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.formula-text {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-size: 1.18rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+/* ===== SOURCES ===== */
+.sources {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.sources h4 {
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--red);
+  margin-bottom: 1rem;
+}
+.sources ul {
+  list-style: none;
+}
+.sources li {
+  font-family: var(--serif-body);
+  font-size: 0.95rem;
+  padding: 0.4rem 0 0.4rem 1.2rem;
+  position: relative;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.sources li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+.sources li em {
+  color: var(--red);
+  font-style: italic;
+}
+
+/* ===== AA MARK & FOOTER ===== */
+.aa-mark {
+  text-align: center;
+  margin: 4rem 0 1.5rem;
+}
+.aa-circle {
+  display: inline-block;
+  width: 56px;
+  height: 56px;
+  border: 1.5px solid var(--red);
+  border-radius: 50%;
+  font-family: var(--serif-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 54px;
+  color: var(--red);
+  letter-spacing: 0.05em;
+  position: relative;
+}
+.aa-circle::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+}
+
+.signature {
+  text-align: center;
+  font-family: var(--serif-body);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--sepia);
+  line-height: 1.7;
+}
+.signature strong {
+  display: block;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+/* ===== TENSION TIMELINE ===== */
+.tension-timeline {
+  margin: 1.5rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--cream-deep);
+}
+.tension-item {
+  position: relative;
+  padding: 0.4rem 0 0.8rem;
+}
+.tension-item::before {
+  content: "";
+  position: absolute;
+  left: -1.92rem;
+  top: 0.7rem;
+  width: 9px;
+  height: 9px;
+  background: var(--red);
+  border-radius: 50%;
+  border: 2px solid var(--cream);
+}
+.tension-year {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+.tension-desc {
+  font-family: var(--serif-body);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* ===== BRIDGE BANNER (Part II opener) ===== */
+.bridge {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 2.5rem 2rem;
+  margin: 3rem -2rem;
+  text-align: center;
+  position: relative;
+}
+.bridge-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.bridge-text {
+  font-family: var(--serif-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 3vw, 1.6rem);
+  line-height: 1.35;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.bridge-text strong {
+  font-weight: 600;
+  color: #f0d9a3;
+  font-style: normal;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .page { padding: 2.5rem 1.4rem 4rem; }
+  body { font-size: 17px; }
+  .q-num { font-size: 2.8rem; margin-right: 0.7rem; }
+  .q-title { font-size: 1.3rem; }
+  blockquote { padding-left: 1.1rem; font-size: 1rem; }
+  .bridge { margin: 3rem -1.4rem; padding: 2rem 1.4rem; }
+  .meta-row { gap: 1rem 1.5rem; font-size: 0.7rem; }
+  .pullquote { font-size: 1.35rem; padding: 1.5rem 0.5rem; }
+}
+
+/* Print friendliness */
+@media print {
+  body { background: white; }
+  .page { max-width: 100%; padding: 1.5rem; }
+  .bridge { background: var(--cream-deep); color: var(--ink); }
+  .bridge-text strong { color: var(--red); }
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<!-- HEADER -->
+<div class="eyebrow">Trasfondo Histórico · Documento de Servicio</div>
+
+<h1 class="title">La Fundación Alcohólica<br>y el camino hacia <em>la Conferencia</em></h1>
+
+<p class="subtitle">Cinco preguntas sobre la entidad fiduciaria que precedió a la CSG —y una reflexión, noventa y un años después, sobre por qué la Conferencia importa hoy.</p>
+
+<div class="meta-row">
+  <span>Año <strong>2026 · 91 años de AA</strong></span>
+  <span>Período <strong>1937 – 1955 → hoy</strong></span>
+  <span>Panel <strong>62 · Área 3 · Bogotá</strong></span>
+</div>
+
+<!-- ============================================ -->
+<!-- PARTE I — HISTORIA DE LA FUNDACIÓN           -->
+<!-- ============================================ -->
+
+<div class="part-header">
+  <div class="part-label">Parte I</div>
+  <div class="part-title">La Fundación Alcohólica</div>
+</div>
+
+<!-- Q1 -->
+<section class="q">
+  <div class="q-num">1</div>
+  <h2 class="q-title">Origen</h2>
+  <p>La Fundación nació de la búsqueda desesperada de dinero a finales de 1937. Tras la reunión de otoño en Akron entre Bill y el Dr. Bob, los grupos de Akron y Nueva York les autorizaron a crear servicios mundiales. Por gestión del Dr. Leonard Strong —cuñado de Bill— se contactó a Willard "Dick" Richardson, asociado de John D. Rockefeller, Jr.</p>
+  <p>En una histórica reunión de diciembre de 1937 en las oficinas de Rockefeller —donde Albert Scott pronunció su célebre pregunta <em>"¿No dañará todo esto el dinero?"</em>— se gestó la idea.</p>
+  <div class="fact-panel">
+    <div class="fact-label">Fechas clave</div>
+    El <strong>acuerdo fideicomisario</strong> se redactó y legalizó en mayo de 1938. La junta quedó <strong>formalmente integrada el 11 de agosto de 1938</strong>.
+  </div>
+  <p>La finalidad jurídica era ofrecer una entidad sin ánimo de lucro a la cual los contribuyentes ricos pudieran donar deduciendo de sus impuestos, y que custodiara el uso correcto de los fondos.</p>
+</section>
+
+<!-- Q2 -->
+<section class="q">
+  <div class="q-num">2</div>
+  <h2 class="q-title">Rol en el surgimiento de la fraternidad</h2>
+  <p>Aunque la Fundación recogió "muy escaso dinero" en sus primeros años —de hecho, hasta 1940 prácticamente no tuvo fondos—, su rol resultó decisivo:</p>
+
+  <h3 class="h3">Lo que hizo posible</h3>
+  <p>Se constituyó como vehículo fiduciario para recibir contribuciones libres de impuestos. En <strong>1940 asumió la propiedad de Works Publishing, Inc.</strong>, haciendo del Libro Grande propiedad de la Comunidad. Sucesivamente tomó a su cargo las relaciones públicas, la administración de la OSG y, más tarde, el Grapevine.</p>
+
+  <h3 class="h3">Lo que evitó</h3>
+  <p>Sobre todo, salvó a AA del profesionalismo. La decisión de Rockefeller de no dar grandes sumas —idea reforzada por Richardson y Amos— fue, en palabras de Bill, <em>"uno de los mejores golpes de suerte que haya tenido AA"</em>.</p>
+
+  <blockquote>
+    Este organismo que, en su comienzo, no era sino un simple comité establecido con el fin de ayudarnos a desenvolvernos al Dr. Bob y a mí, se ha convertido, desde entonces, en una junta de servicio de AA y guardiana administrativa de sus asuntos principales.
+    <cite>Bill W. · El Lenguaje del Corazón</cite>
+  </blockquote>
+</section>
+
+<!-- Q3 -->
+<section class="q">
+  <div class="q-num">3</div>
+  <h2 class="q-title">Quiénes la integraban</h2>
+  <p>Las fuentes muestran ligeras variantes según el momento que describen. Según <em>¡Transmítelo!</em>, el consejo quedó formalmente integrado el 11 de agosto de 1938 con cinco miembros, divididos en dos categorías por mandato legal.</p>
+
+  <div class="roster">
+    <div class="roster-label">No alcohólicos · 3</div>
+    <ul>
+      <li>Willard "Dick" Richardson</li>
+      <li>Frank Amos</li>
+      <li>John Wood — abogado redactor del acuerdo fiduciario</li>
+    </ul>
+  </div>
+
+  <div class="roster">
+    <div class="roster-label">Alcohólicos · 2</div>
+    <ul>
+      <li>Dr. Bob</li>
+      <li>Bill R. — miembro neoyorquino</li>
+    </ul>
+  </div>
+
+  <p>Otros actores no-alcohólicos centrales del círculo inicial fueron el <strong>Dr. Leonard V. Strong</strong> —cuñado de Bill, secretario de la Junta desde 1938 hasta su retiro en 1955— y <strong>A. LeRoy "Chip" Chipman</strong>, tesorero durante muchos años. Albert Scott presidió la histórica reunión inicial, pero no figuró entre los custodios fundadores.</p>
+</section>
+
+<!-- Q4 -->
+<section class="q">
+  <div class="q-num">4</div>
+  <h2 class="q-title">¿Los primeros Custodios eran alcohólicos?</h2>
+  <p>La junta fue mixta desde el origen, pero con <strong>mayoría no-alcohólica obligatoria</strong> por un margen de uno. Las razones fueron tres, según las propias palabras de Bill:</p>
+
+  <h3 class="h3">Razón legal y de confianza pública</h3>
+  <blockquote>
+    Se aseguraría a nuestra propia comunidad y a los otros contribuyentes que el manejo de los fondos estaría orientado por personas no alcohólicas.
+    <cite>AA llega a su Mayoría de Edad</cite>
+  </blockquote>
+
+  <h3 class="h3">Razón emocional —y muy humana— de los propios alcohólicos</h3>
+  <blockquote>
+    Ninguno de los miembros alcohólicos de la recién compuesta junta se sentía seguro de poder mantenerse sobrio. ¿Quién, entonces, vigilaría sobre nuestro dinero si todos los borrachos se emborracharan? Teniendo en mente esta posible catástrofe, agregamos al acuerdo fideicomisario la disposición de que el número de no-alcohólicos en la junta siempre debería exceder en uno al número de alcohólicos. <em>Por si acaso.</em>
+    <cite>Bill W. · El Lenguaje del Corazón</cite>
+  </blockquote>
+
+  <h3 class="h3">Cláusula de protección</h3>
+  <p>El convenio fiduciario estipulaba que un custodio alcohólico tenía que <strong>renunciar inmediatamente si se emborrachaba</strong> —y esto efectivamente ocurrió con el primer custodio alcohólico de Nueva York, que fue reemplazado.</p>
+</section>
+
+<!-- Q5 -->
+<section class="q">
+  <div class="q-num">5</div>
+  <h2 class="q-title">La tensión con Bill W. que impulsó la CSG</h2>
+  <p>Hacia 1946 se hicieron visibles realidades incómodas. Bill las sintetizó así:</p>
+
+  <blockquote>
+    Nuestra junta de custodios —conocida entonces como la Fundación Alcohólica— se iba encontrando cada vez más aislada a medida que nuestros grupos se expandían por el mundo entero.
+    <cite>Bill W. · El Lenguaje del Corazón</cite>
+  </blockquote>
+
+  <h3 class="h3">Cronología de la tensión</h3>
+  <div class="tension-timeline">
+    <div class="tension-item">
+      <div class="tension-year">1946 · Aislamiento estructural</div>
+      <div class="tension-desc">Los custodios eran "prácticamente desconocidos" para los grupos. El único vínculo era frágil: Bill, el Dr. Bob y unos pocos trabajadores de la OSG.</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-year">1947 · Mortalidad inminente</div>
+      <div class="tension-desc">El Dr. Bob había sido operado de cáncer. Bill sintió que el vínculo era "perecedero y demasiado frágil".</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-year">1947–1949 · Choque con la Tradición Dos</div>
+      <div class="tension-desc">La Fundación funcionaba como un "protectorado", sin conexión directa ni responsabilidad ante la conciencia de grupo. Ya no concordaba con el espíritu de la Segunda Tradición, recién articulada.</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-year">1948 · Memorandos viperinos y viaje</div>
+      <div class="tension-desc">Bill confiesa: "Con reacción típicamente alcohólica, me excité, y convertí la resistencia pasiva de mis amigos en sólida oposición". En febrero salió a sondear directamente a los grupos.</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-year">1946–1950 · Cuatro años, tres renuncias</div>
+      <div class="tension-desc">El conflicto incluyó las renuncias de tres custodios.</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-year">Otoño 1950 · La intervención de Bern Smith</div>
+      <div class="tension-desc">Bernard B. Smith, custodio no-alcohólico y presidente de la Junta —a quien Bill llamaría "el arquitecto de la Conferencia de Servicios Generales"— convenció al resto de los custodios.</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-year">Abril 1951 · Primera Conferencia experimental</div>
+      <div class="tension-desc">Bajo el lema "No para gobernar, sino para servir". Asistieron 35 delegados.</div>
+    </div>
+    <div class="tension-item">
+      <div class="tension-year">3 de julio de 1955 · St. Louis</div>
+      <div class="tension-desc">La Convención del Vigésimo Aniversario declara a la CSG sucesora permanente de los cofundadores.</div>
+    </div>
+  </div>
+
+  <p>La crisis no fue sólo administrativa, sino madurativa. Como Bill lo formula con claridad: los custodios <em>"eran sin duda servidores de confianza. Pero era cierto, no obstante, que estos custodios no tenían conexión directa con la conciencia de grupo de nuestra Sociedad, ni tampoco eran responsables ante ella"</em>.</p>
+
+  <p>La CSG nace, entonces, no <em>contra</em> la Fundación, sino para <strong>completar lo que la Fundación había hecho posible</strong>: una estructura de servicio que respondiera al espíritu de la Tradición Dos.</p>
+</section>
+
+<!-- ============================================ -->
+<!-- PUENTE / BRIDGE                              -->
+<!-- ============================================ -->
+
+<div class="bridge">
+  <div class="bridge-label">Puente · Del temor al destino</div>
+  <p class="bridge-text">Lo que en 1937–1950 fue un drama humano produjo, paradójicamente, <strong>la estructura que hoy nos permite responder en su nombre como Delegados</strong>. La crisis fue gestación.</p>
+</div>
+
+<!-- ============================================ -->
+<!-- PARTE II — LA CSG 91 AÑOS DESPUÉS            -->
+<!-- ============================================ -->
+
+<div class="part-header">
+  <div class="part-label">Parte II · 91 años después</div>
+  <div class="part-title">¿Cuál es la importancia<br>de la Conferencia hoy?</div>
+</div>
+
+<h3 class="h3">La respuesta canónica · Bernard Smith, 1954</h3>
+<p>Cada año, en la sesión inaugural de toda Conferencia —incluida nuestra propia RAC— se lee el discurso de Bernard Smith. No es una formalidad ritual: es <strong>el documento que articula por qué existe la CSG</strong>.</p>
+
+<blockquote>
+  Puede que no necesitemos una Conferencia de Servicios Generales para asegurar nuestra propia recuperación. <strong>La necesitamos para asegurar la recuperación del alcohólico que anda todavía tropezando por las tinieblas a unos pasos de este salón.</strong> La necesitamos para asegurar la recuperación del niño que nace esta noche destinado al alcoholismo. La necesitamos para poder proporcionar, de acuerdo con nuestro Paso Doce, un refugio permanente para todos los alcohólicos que, en las épocas por venir, puedan encontrar en AA ese renacimiento que nos ha dado una nueva vida.
+  <cite>Bernard B. Smith · Conferencia de 1954</cite>
+</blockquote>
+
+<blockquote>
+  La necesitamos porque nosotros, más que nadie, somos conscientes del efecto devastador del ansia humana de poder y prestigio, y tenemos que asegurar que este impulso nunca invada AA. La necesitamos para proteger AA contra el gobierno, mientras la defendemos de la anarquía; la necesitamos para proteger AA contra la desintegración, mientras evitamos la integración exagerada.
+  <cite>Bernard B. Smith · Conferencia de 1954</cite>
+</blockquote>
+
+<blockquote>
+  La necesitamos para asegurar que dentro de AA los cambios se efectúen únicamente para satisfacer las necesidades y deseos de toda la Comunidad de AA, no solo de unos pocos miembros. La necesitamos para asegurar que las puertas de las salas de AA nunca se cierren con llave. La necesitamos para asegurar que Alcohólicos Anónimos nunca le pregunte a nadie de qué raza es, o de qué credo o cuál es su condición social.
+  <cite>Bernard B. Smith · Conferencia de 1954</cite>
+</blockquote>
+
+<p>Esa respuesta no envejece. <strong>Nombra al alcohólico que todavía no ha llegado</strong> y lo coloca como el verdadero destinatario de la Conferencia.</p>
+
+<!-- IDENTITIES -->
+<h3 class="h3">Lo que la CSG <em>es</em> hoy · Cinco identidades simultáneas</h3>
+<p>La Resolución de St. Louis de 1955 le confirió cinco identidades indisolubles, todas vigentes en 2026:</p>
+
+<div class="identities">
+  <div class="identity">
+    <div class="identity-num">I</div>
+    <div class="identity-text"><strong>Protectora</strong> de las Doce Tradiciones y de las garantías del Artículo 12 de la Carta Constitutiva.</div>
+  </div>
+  <div class="identity">
+    <div class="identity-num">II</div>
+    <div class="identity-text"><strong>Perpetuadora</strong> de los Servicios Mundiales de la Comunidad.</div>
+  </div>
+  <div class="identity">
+    <div class="identity-num">III</div>
+    <div class="identity-text"><strong>Voz</strong> de la conciencia de grupo de AA en general.</div>
+  </div>
+  <div class="identity">
+    <div class="identity-num">IV</div>
+    <div class="identity-text"><strong>Sucesora única y permanente</strong> de los cofundadores, evitando "toda posibilidad de empeño en prestigio individual o autoridad personal".</div>
+  </div>
+  <div class="identity">
+    <div class="identity-num">V</div>
+    <div class="identity-text"><strong>Garante</strong> de la permanencia funcional de la Sociedad.</div>
+  </div>
+</div>
+
+<blockquote>
+  La conciencia de grupo no puede ser escuchada a menos que una Conferencia debidamente seleccionada tenga plena autoridad para hablar en su nombre acerca de la mayor parte de los temas de servicio mundial.
+  <cite>Bill W. · Concepto II</cite>
+</blockquote>
+
+<p>En otras palabras: <strong>sin Conferencia, la Tradición Dos es letra muerta a escala mundial</strong>. La conciencia colectiva existe, pero no tiene cómo hablar.</p>
+
+<!-- LEGADO CON ANEXO -->
+<h3 class="h3">Un legado con un anexo</h3>
+<blockquote>
+  El Legado de Servicio tiene un anexo. Ese anexo consiste en que se nos garantiza el uso de este legado durante toda nuestra vida pero con la condición de que nosotros no solamente lo preservemos sino que tratemos de incrementar su contenido espiritual para las generaciones que vendrán después de nosotros.
+  <cite>Bill W. · AA Llega a su Mayoría de Edad</cite>
+</blockquote>
+
+<p>Para nosotros como Área, esto significa: <strong>la CSG no es una herencia que se administra; es una herencia que se incrementa</strong>. Cada Conferencia —la 62ª que acabamos de celebrar, la 63ª que se acerca— es una oportunidad nueva de añadirle contenido espiritual al servicio.</p>
+
+<p>El Plan Nacional de Acción para la Unicidad de Propósito 2027–2031, el patrocinio a Bolivia, el trabajo sobre la MRAC, las decisiones pendientes sobre grupos virtuales: todo eso es, literalmente, <strong>el Tercer Legado incrementándose en nuestras manos</strong>.</p>
+
+<!-- THE STAKES -->
+<h3 class="h3">La frontera entre AA y su disolución</h3>
+<p>Bill, en <em>El Lenguaje del Corazón</em>, da una lectura que vale la pena leer despacio:</p>
+
+<blockquote>
+  A través del mundo entero, hoy estamos presenciando la desintegración de la "conciencia de grupo". Las naciones democráticas siempre han albergado la esperanza de que sus ciudadanos sean lo suficientemente ilustrados, lo suficientemente morales y lo suficientemente responsables como para manejar sus propios asuntos por medio de representantes elegidos. Pero en muchos países de gobierno autónomo, vemos el advenimiento de la ignorancia, la indolencia y la intriga por el poder en los sistemas democráticos.
+  <cite>Bill W. · El Lenguaje del Corazón</cite>
+</blockquote>
+
+<blockquote>
+  A esto se debe que nosotros, los primeros miembros de AA, hayamos investido a la Conferencia de Servicios Generales, con el sentimiento de mayor seguridad, la autoridad para dar forma —por medio del trabajo de sus delegados, custodios y trabajadores de servicio— al destino que Dios, según esperamos, en su infinita sabiduría nos tenga reservado para todos nosotros.
+  <cite>Bill W. · Concepto I</cite>
+</blockquote>
+
+<p>Somos parte del único experimento sostenido en el siglo XX y XXI de una democracia espiritual mundial que no se ha disuelto. <strong>La CSG es eso —no menos.</strong></p>
+
+<!-- PULL QUOTE -->
+<div class="pullquote">
+  La Conferencia nos representa,<br>nunca nos gobierna.
+</div>
+
+<!-- THREE FORMULAS -->
+<h3 class="h3">Tres formulaciones para llevar al grupo</h3>
+<p>Si tuviéramos que dejarle al grupo o al distrito tres frases para responder <em>"¿por qué nos importa hoy la CSG?"</em>, serían estas:</p>
+
+<div class="formula">
+  <div class="formula-label">1 · El destinatario · Bernard Smith</div>
+  <div class="formula-text">"La necesitamos para asegurar la recuperación del alcohólico que anda todavía tropezando por las tinieblas a unos pasos de este salón."</div>
+</div>
+
+<div class="formula">
+  <div class="formula-label">2 · La dirección espiritual · Bill W.</div>
+  <div class="formula-text">"Todo progreso en AA se puede calcular en términos de sólo dos palabras: humildad y responsabilidad."</div>
+</div>
+
+<div class="formula">
+  <div class="formula-label">3 · La naturaleza esencial · Manual de Servicio</div>
+  <div class="formula-text">"La Conferencia nos representa, nunca nos gobierna."</div>
+</div>
+
+<p style="margin-top:2rem;">A 91 años de la fundación de la Comunidad, la CSG sigue cumpliendo lo que en 1950 era apenas una intuición temerosa de Bill: que sin una conciencia colectiva capaz de hablar, AA no sobreviviría a sus propios cofundadores.</p>
+
+<p>Hoy lo sabemos: <strong>sobrevivió porque ellos tuvieron la humildad de pasarle la autoridad a la conciencia de grupo, y la sigue teniendo cada vez que un Delegado se sienta en la mesa de la RAC.</strong></p>
+
+<!-- SOURCES -->
+<div class="sources">
+  <h4>Fuentes consultadas</h4>
+  <ul>
+    <li><em>El Lenguaje del Corazón</em> — Capítulos sobre la formación de la Fundación Alcohólica, la cena de Rockefeller y la creación de la Conferencia.</li>
+    <li><em>AA Llega a su Mayoría de Edad</em> — Narrativa de Bill W. sobre 1937–1955; Resolución de St. Louis; reflexión de Bernard Smith.</li>
+    <li><em>¡Transmítelo!</em> — Capítulos sobre los memorandos de 1948, el papel de Bern Smith y la Primera Conferencia experimental.</li>
+    <li><em>Manual de Servicio 2025 · Doce Conceptos para el Servicio Mundial</em> — Conceptos I y II; Carta Constitutiva de la Conferencia (Apéndice K); discurso de Bernard Smith en la inauguración.</li>
+    <li><em>Doce Pasos y Doce Tradiciones</em> — Tradición Segunda y Tradición Quinta.</li>
+    <li><em>Texto Básico · Alcohólicos Anónimos</em> — Semblanza del Dr. Bob.</li>
+    <li><em>24 REDELA Bolivia 2025</em> — Compartimientos sobre la fundación, Bill W. y la 1ª CSG.</li>
+  </ul>
+</div>
+
+<!-- AA MARK -->
+<div class="aa-mark">
+  <div class="aa-circle">AA</div>
+</div>
+
+<div class="signature">
+  <strong>Delegado Panel 62 · Área 3 · Región C</strong>
+  Bogotá · Colombia · 91 años de la fundación de AA<br>
+  Preparado para servicio interno · Post 62ª RAC<br>
+  <em>Literatura aprobada por la Conferencia de Servicios Generales</em>
+</div>
+
+</main>
+</body>
+</html>
