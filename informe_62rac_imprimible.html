@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Informe 62ª RAC — AA Colombia 2026 · Versión Imprimible</title>
+<style>
+/* ============================================================
+   VERSIÓN IMPRIMIBLE · BLANCO Y NEGRO · TAMAÑO CARTA
+   62ª Reunión Anual de la Conferencia · AA Colombia 2026
+   ============================================================ */
+
+@page {
+  size: letter;
+  margin: 0.85in 0.75in 0.95in 0.75in;
+  @bottom-center {
+    content: "62ª RAC · AA Colombia 2026 · Página " counter(page) " de " counter(pages);
+    font-family: Georgia, serif;
+    font-size: 8pt;
+    color: #555;
+  }
+  @top-right {
+    content: "Delegado Panel 62 · Área 3, Región C";
+    font-family: Georgia, serif;
+    font-size: 8pt;
+    color: #555;
+    font-style: italic;
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #ffffff;
+  color: #000000;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Screen preview wrapper */
+@media screen {
+  body {
+    background: #e5e5e5;
+    padding: 20px;
+  }
+  .page-wrap {
+    background: white;
+    width: 8.5in;
+    min-height: 11in;
+    padding: 0.85in 0.75in 0.95in 0.75in;
+    margin: 0 auto 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+}
+@media print {
+  body { padding: 0; }
+  .page-wrap { padding: 0; min-height: auto; box-shadow: none; }
+  .no-print { display: none !important; }
+}
+
+.page-wrap { page-break-after: always; }
+.page-wrap:last-child { page-break-after: auto; }
+
+/* ============== TIPOGRAFÍA BASE ============== */
+h1, h2, h3, h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+  color: #000;
+  page-break-after: avoid;
+}
+
+p { margin-bottom: 0.5em; }
+
+strong { font-weight: bold; }
+em { font-style: italic; }
+
+/* ============== ENCABEZADO DE SECCIÓN ============== */
+.section-head {
+  border-bottom: 2pt solid #000;
+  padding-bottom: 6pt;
+  margin-bottom: 18pt;
+}
+.section-tag {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  font-weight: bold;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 4pt;
+}
+.section-title {
+  font-family: Georgia, serif;
+  font-size: 20pt;
+  font-weight: bold;
+  line-height: 1.15;
+  margin-bottom: 3pt;
+}
+.section-subtitle {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 11pt;
+  color: #333;
+}
+
+/* ============== PORTADA ============== */
+.cover {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 9in;
+}
+.cover-top { padding-top: 0.5in; }
+.cover-corp {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+  font-weight: bold;
+  letter-spacing: 4pt;
+  text-transform: uppercase;
+  padding-bottom: 14pt;
+  border-bottom: 1pt solid #000;
+  display: inline-block;
+}
+.cover h1 {
+  font-family: Georgia, serif;
+  font-size: 32pt;
+  font-weight: bold;
+  line-height: 1.1;
+  margin: 0.45in auto 0.25in;
+  max-width: 5.5in;
+}
+.cover-lema {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 12pt;
+  max-width: 5in;
+  margin: 0 auto;
+  line-height: 1.4;
+  padding-top: 12pt;
+  border-top: 1pt solid #888;
+}
+.cover-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14pt;
+  margin: 0.6in auto;
+  max-width: 5in;
+}
+.meta-cell {
+  border: 1pt solid #000;
+  padding: 14pt 10pt;
+  text-align: center;
+}
+.meta-val {
+  font-family: Georgia, serif;
+  font-size: 18pt;
+  font-weight: bold;
+  margin-bottom: 4pt;
+}
+.meta-lbl {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7.5pt;
+  letter-spacing: 1.5pt;
+  text-transform: uppercase;
+}
+.cover-bottom {
+  padding-top: 0.6in;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 10pt;
+  border-top: 1pt solid #000;
+}
+.cover-bottom strong {
+  font-style: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4pt;
+}
+
+/* ============== TABLA DE CONTENIDOS ============== */
+.toc {
+  margin-top: 18pt;
+}
+.toc-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6pt 0;
+  border-bottom: 1px dotted #999;
+  font-size: 11pt;
+}
+.toc-num {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  width: 28pt;
+}
+.toc-title { flex: 1; font-weight: bold; }
+.toc-page {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+  letter-spacing: 1pt;
+}
+
+/* ============== CARDS / GRID ============== */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10pt;
+  margin: 10pt 0;
+  page-break-inside: avoid;
+}
+.card-grid.c2 { grid-template-columns: 1fr 1fr; }
+.card-grid.c1 { grid-template-columns: 1fr; }
+.card {
+  border: 1pt solid #000;
+  padding: 10pt;
+  page-break-inside: avoid;
+}
+.card.emphasized {
+  border: 2pt solid #000;
+  background: #f4f4f4;
+}
+.card-lbl {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7.5pt;
+  font-weight: bold;
+  letter-spacing: 1.5pt;
+  text-transform: uppercase;
+  border-bottom: 1px solid #666;
+  padding-bottom: 3pt;
+  margin-bottom: 5pt;
+}
+.card-val {
+  font-family: Georgia, serif;
+  font-size: 13pt;
+  font-weight: bold;
+  margin-bottom: 4pt;
+  line-height: 1.15;
+}
+.card-desc {
+  font-size: 9pt;
+  line-height: 1.35;
+  color: #333;
+}
+
+/* ============== TABLA QUÓRUM ============== */
+.q-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10pt 0;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+.q-table th, .q-table td {
+  padding: 6pt 8pt;
+  border-bottom: 1px solid #999;
+  text-align: left;
+}
+.q-table th {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  font-weight: bold;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  background: #ebebeb;
+  border-bottom: 2px solid #000;
+}
+.q-table th.n, .q-table td.n { text-align: right; font-variant-numeric: tabular-nums; }
+.q-table tr.tot td {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  background: #ebebeb;
+  font-weight: bold;
+}
+
+/* ============== ITEM LIST ============== */
+.sec-lbl {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  font-weight: bold;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+  margin: 16pt 0 6pt;
+  border-bottom: 1pt solid #000;
+  padding-bottom: 3pt;
+}
+.item-list {
+  margin: 8pt 0;
+}
+.item-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 5pt 0;
+  border-bottom: 1px solid #ddd;
+  page-break-inside: avoid;
+}
+.item-marker {
+  flex-shrink: 0;
+  width: 14pt;
+  height: 14pt;
+  border: 1pt solid #000;
+  margin-right: 8pt;
+  margin-top: 2pt;
+  font-family: Arial, sans-serif;
+  font-size: 8pt;
+  font-weight: bold;
+  text-align: center;
+  line-height: 12pt;
+}
+.item-marker.filled { background: #000; color: #fff; }
+.item-text { flex: 1; font-size: 10pt; line-height: 1.4; }
+.item-badge {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7.5pt;
+  font-weight: bold;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  border: 1pt solid #000;
+  padding: 2pt 6pt;
+  margin-left: 8pt;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.item-badge.filled { background: #000; color: #fff; }
+
+/* ============== PERSON LIST ============== */
+.person-list { margin: 8pt 0; }
+.person-row {
+  display: flex;
+  align-items: center;
+  gap: 10pt;
+  padding: 6pt 0;
+  border-bottom: 1px solid #ddd;
+  page-break-inside: avoid;
+}
+.person-avatar {
+  flex-shrink: 0;
+  width: 32pt;
+  height: 32pt;
+  border: 1.5pt solid #000;
+  border-radius: 50%;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 10pt;
+  text-align: center;
+  line-height: 30pt;
+}
+.person-name { font-weight: bold; font-size: 11pt; }
+.person-role { font-size: 9pt; font-style: italic; color: #333; }
+
+/* ============== HBOX (callouts) ============== */
+.hbox {
+  border-left: 3pt solid #000;
+  background: #f4f4f4;
+  padding: 8pt 12pt;
+  margin: 10pt 0;
+  font-size: 10pt;
+  page-break-inside: avoid;
+}
+.hbox.emphasized {
+  border: 1.5pt solid #000;
+  border-left-width: 5pt;
+  background: #ebebeb;
+}
+
+/* ============== PLAN NACIONAL ============== */
+.plan-header {
+  text-align: center;
+  border: 2pt solid #000;
+  padding: 14pt;
+  margin: 10pt 0 14pt;
+  page-break-inside: avoid;
+}
+.plan-num {
+  font-family: Georgia, serif;
+  font-size: 48pt;
+  font-weight: bold;
+  line-height: 1;
+}
+.plan-sub {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8pt;
+  letter-spacing: 1.5pt;
+  text-transform: uppercase;
+  margin: 4pt 0;
+}
+.plan-title {
+  font-family: Georgia, serif;
+  font-size: 13pt;
+  font-weight: bold;
+  margin-top: 6pt;
+}
+.plan-diag {
+  border: 1.5pt solid #000;
+  padding: 10pt;
+  margin: 10pt 0;
+  font-size: 10pt;
+  background: #f4f4f4;
+}
+.eje-card {
+  border: 1.5pt solid #000;
+  padding: 10pt;
+  page-break-inside: avoid;
+}
+.eje-num {
+  font-family: Arial, sans-serif;
+  font-size: 8pt;
+  font-weight: bold;
+  letter-spacing: 2pt;
+  text-transform: uppercase;
+}
+.eje-name {
+  font-family: Georgia, serif;
+  font-size: 14pt;
+  font-weight: bold;
+  margin: 4pt 0 6pt;
+}
+.eje-desc { font-size: 10pt; line-height: 1.4; }
+
+.plan-quote {
+  border-top: 1pt solid #000;
+  border-bottom: 1pt solid #000;
+  padding: 12pt 14pt;
+  margin: 14pt 0;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 11pt;
+  text-align: center;
+  line-height: 1.4;
+  page-break-inside: avoid;
+}
+.plan-quote cite {
+  display: block;
+  font-style: normal;
+  font-family: Arial, sans-serif;
+  font-size: 8pt;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  margin-top: 8pt;
+  color: #444;
+}
+
+/* ============== SEGUIMIENTO ============== */
+.seg-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #999;
+  padding: 7pt 0;
+}
+.seg-icon {
+  font-family: Georgia, serif;
+  font-size: 10pt;
+  font-weight: bold;
+  width: 24pt;
+  height: 24pt;
+  border: 1.5pt solid #000;
+  text-align: center;
+  line-height: 21pt;
+  margin-right: 10pt;
+  flex-shrink: 0;
+}
+.seg-text { flex: 1; font-size: 10pt; font-weight: bold; }
+.seg-freq {
+  font-family: Arial, sans-serif;
+  font-size: 9pt;
+  letter-spacing: 1pt;
+  text-transform: uppercase;
+  border: 1pt solid #000;
+  padding: 3pt 8pt;
+}
+
+/* ============== GRUPOS COMPARTIMIENTO ============== */
+.grupo-block {
+  border: 1pt solid #000;
+  margin: 8pt 0;
+  page-break-inside: avoid;
+}
+.grupo-head {
+  background: #ebebeb;
+  border-bottom: 1pt solid #000;
+  padding: 8pt 10pt;
+  display: flex;
+  align-items: flex-start;
+  gap: 10pt;
+}
+.grupo-n {
+  font-family: Georgia, serif;
+  font-size: 20pt;
+  font-weight: bold;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.grupo-q {
+  font-family: Georgia, serif;
+  font-size: 11pt;
+  font-weight: bold;
+  line-height: 1.3;
+}
+.grupo-body {
+  padding: 10pt;
+  font-size: 10pt;
+  line-height: 1.45;
+}
+
+/* ============== TIMELINE ============== */
+.timeline {
+  border-left: 2pt solid #000;
+  padding-left: 14pt;
+  margin: 12pt 0;
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 12pt;
+  page-break-inside: avoid;
+}
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -19pt;
+  top: 5pt;
+  width: 8pt;
+  height: 8pt;
+  background: #000;
+  border-radius: 50%;
+  border: 2pt solid #fff;
+  box-shadow: 0 0 0 1pt #000;
+}
+.tl-label {
+  font-family: Arial, sans-serif;
+  font-size: 8pt;
+  font-weight: bold;
+  letter-spacing: 1.5pt;
+  text-transform: uppercase;
+  margin-bottom: 3pt;
+}
+.tl-text { font-size: 10pt; line-height: 1.4; }
+
+/* ============== ENLACES ============== */
+.link-list {
+  margin: 14pt 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6pt;
+}
+.link-row {
+  border: 1pt solid #000;
+  padding: 6pt 10pt;
+  display: flex;
+  align-items: center;
+  font-size: 9.5pt;
+  page-break-inside: avoid;
+}
+.link-row strong {
+  font-family: Arial, sans-serif;
+  font-size: 9pt;
+  letter-spacing: 0.5pt;
+  display: block;
+  margin-bottom: 2pt;
+}
+.link-row .url {
+  font-family: "Courier New", monospace;
+  font-size: 8pt;
+  color: #444;
+  word-break: break-all;
+}
+
+/* ============== AA MARK ============== */
+.aa-mark {
+  text-align: center;
+  margin: 20pt 0;
+}
+.aa-circle {
+  display: inline-block;
+  width: 50pt;
+  height: 50pt;
+  border: 2pt solid #000;
+  border-radius: 50%;
+  font-family: Georgia, serif;
+  font-weight: bold;
+  font-size: 16pt;
+  line-height: 46pt;
+  letter-spacing: 1pt;
+  position: relative;
+}
+.aa-circle::before {
+  content: "";
+  position: absolute;
+  top: -6pt; left: -6pt; right: -6pt; bottom: -6pt;
+  border: 0.5pt solid #000;
+  border-radius: 50%;
+}
+
+/* ============== FOOTER ============== */
+.section-foot {
+  margin-top: 18pt;
+  padding-top: 8pt;
+  border-top: 0.5pt solid #888;
+  font-size: 8pt;
+  font-style: italic;
+  color: #444;
+  text-align: center;
+}
+
+/* ============== UTILIDADES ============== */
+.no-break { page-break-inside: avoid; }
+.break-before { page-break-before: always; }
+
+.print-controls {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #000;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  z-index: 100;
+}
+.print-controls button {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 6px 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="print-controls no-print">
+  📄 Versión imprimible · Carta · B/N
+  &nbsp;&nbsp;<button onclick="window.print()">Imprimir / Guardar PDF</button>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 1 — PORTADA                           -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-corp">Corporación Nacional de AA · Colombia</div>
+      <h1>62ª Reunión Anual<br>de la Conferencia</h1>
+      <p class="cover-lema">"La Recuperación y la Práctica de las Tradiciones garantizan un mejor Servicio"</p>
+    </div>
+
+    <div class="cover-meta">
+      <div class="meta-cell">
+        <div class="meta-val">30 abr – 3 may</div>
+        <div class="meta-lbl">Fechas · 2026</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-val">Rionegro</div>
+        <div class="meta-lbl">Casa De La Salle</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-val">60</div>
+        <div class="meta-lbl">Conferencistas</div>
+      </div>
+      <div class="meta-cell">
+        <div class="meta-val">43</div>
+        <div class="meta-lbl">Delegados</div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <strong>Informe de Servicio</strong>
+      Delegado Panel 62 · Área 3, Región C<br>
+      Bogotá, Colombia · Post 62ª RAC, mayo 2026<br>
+      <em>Documento preparado para servicio interno · Literatura aprobada por la CSG</em>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 2 — CONTENIDO                         -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">Tabla de Contenidos</div>
+    <div class="section-title">Estructura del Informe</div>
+    <div class="section-subtitle">14 secciones · Desarrollo cronológico de la 62ª RAC</div>
+  </div>
+
+  <div class="toc">
+    <div class="toc-item"><div class="toc-num">1</div><div class="toc-title">Portada — 62ª Reunión Anual de la Conferencia</div><div class="toc-page">PÁG. 1</div></div>
+    <div class="toc-item"><div class="toc-num">2</div><div class="toc-title">Desarrollo de la 62ª RAC — Tres tipos de sesiones</div><div class="toc-page">PÁG. 3</div></div>
+    <div class="toc-item"><div class="toc-num">3</div><div class="toc-title">Reunión Inaugural — Establecimiento del Quórum</div><div class="toc-page">PÁG. 4</div></div>
+    <div class="toc-item"><div class="toc-num">4</div><div class="toc-title">Reunión Exclusiva — Sólo para Delegados</div><div class="toc-page">PÁG. 5</div></div>
+    <div class="toc-item"><div class="toc-num">5</div><div class="toc-title">Sesión Electiva — Custodios Elegidos y Ratificados</div><div class="toc-page">PÁG. 6</div></div>
+    <div class="toc-item"><div class="toc-num">6</div><div class="toc-title">Plenaria de Ratificación — Custodias Clase A</div><div class="toc-page">PÁG. 7</div></div>
+    <div class="toc-item"><div class="toc-num">7</div><div class="toc-title">Plan Nacional — Unicidad de Propósito</div><div class="toc-page">PÁG. 8</div></div>
+    <div class="toc-item"><div class="toc-num">8</div><div class="toc-title">Plan Nacional — Implementación en cascada</div><div class="toc-page">PÁG. 9</div></div>
+    <div class="toc-item"><div class="toc-num">9</div><div class="toc-title">Sesiones de Compartimiento — Cinco Grupos</div><div class="toc-page">PÁG. 10</div></div>
+    <div class="toc-item"><div class="toc-num">10</div><div class="toc-title">Reuniones Deliberativas — Acciones Aprobadas</div><div class="toc-page">PÁG. 11</div></div>
+    <div class="toc-item"><div class="toc-num">11</div><div class="toc-title">No Aprobados y Mociones de Piso</div><div class="toc-page">PÁG. 12</div></div>
+    <div class="toc-item"><div class="toc-num">12</div><div class="toc-title">Reunión de Clausura</div><div class="toc-page">PÁG. 13</div></div>
+    <div class="toc-item"><div class="toc-num">13</div><div class="toc-title">JSG — Composición Completa Post 62ª RAC</div><div class="toc-page">PÁG. 14</div></div>
+    <div class="toc-item"><div class="toc-num">14</div><div class="toc-title">Documentos Complementarios — Enlaces</div><div class="toc-page">PÁG. 15</div></div>
+  </div>
+
+  <div class="hbox" style="margin-top:24pt">
+    <strong>Material oficial de referencia:</strong> Carpeta de Delegados de la 62ª CSG · Manual de Servicio de AA 2025 · Boletín Trimestral de la JSG (marzo 2026) · Reporte Ocho · sitio web <em>aacolombia.org</em>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 3 — DESARROLLO                         -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">02 · Desarrollo de la 62ª RAC</div>
+    <div class="section-title">Tres Tipos de Sesiones</div>
+    <div class="section-subtitle">Estructura general del trabajo conferencial</div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-lbl">Sesión 1</div>
+      <div class="card-val">Informativa</div>
+      <div class="card-desc">Informes de carpeta, OSG, Entidades Operativas, REDELA e internacional.</div>
+    </div>
+    <div class="card emphasized">
+      <div class="card-lbl">Sesión 2</div>
+      <div class="card-val">Electiva</div>
+      <div class="card-desc">Custodios Clase B y A; servidores del panel delegados 2026–2027.</div>
+    </div>
+    <div class="card emphasized">
+      <div class="card-lbl">Sesión 3</div>
+      <div class="card-val">Deliberativa</div>
+      <div class="card-desc">Proyectos de recomendación por comités y mociones de piso.</div>
+    </div>
+  </div>
+
+  <div class="hbox emphasized">
+    <strong>Material oficial:</strong> Carpeta de delegados · Manual de Servicio AA · Boletín Trimestral JSG (mar. 2026) · Reporte Ocho · aacolombia.org
+  </div>
+
+  <div class="section-foot">
+    Tres tipos de sesiones que organizan el ciclo conferencial de cuatro días.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 4 — QUÓRUM                             -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">03 · Reunión Inaugural</div>
+    <div class="section-title">Establecimiento del Quórum</div>
+    <div class="section-subtitle">Por el Gerente (e) de la OSG</div>
+  </div>
+
+  <table class="q-table">
+    <thead>
+      <tr><th>Categoría</th><th class="n">N°</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Delegados</td><td class="n">43</td></tr>
+      <tr><td>Custodios Clase A</td><td class="n">1</td></tr>
+      <tr><td>Custodios Clase B</td><td class="n">7</td></tr>
+      <tr><td>Directores no Custodios — Servicios Generales</td><td class="n">3</td></tr>
+      <tr><td>Directores no Custodios — AA El Mensaje</td><td class="n">2</td></tr>
+      <tr><td>Personal de la OSG</td><td class="n">4</td></tr>
+      <tr class="tot"><td>TOTAL CONFERENCISTAS</td><td class="n">60</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card-grid c2">
+    <div class="card emphasized">
+      <div class="card-lbl">Quórum 2/3</div>
+      <div class="card-val">40 votos</div>
+      <div class="card-desc">Cálculo: 60 × 2/3 = 40 votos mínimos requeridos.</div>
+    </div>
+    <div class="card emphasized">
+      <div class="card-lbl">País invitado</div>
+      <div class="card-val">Bolivia</div>
+      <div class="card-desc">Manuel R. con voz y sin voto. Apadrinamiento estructural por parte de Colombia.</div>
+    </div>
+  </div>
+
+  <div class="section-foot">
+    Quórum verificado en sesión de apertura. Bolivia presente como país invitado bajo apadrinamiento estructural.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 5 — REUNIÓN EXCLUSIVA                  -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">04 · Reunión Exclusiva · 43 delegados</div>
+    <div class="section-title">Reunión Sólo para Delegados</div>
+    <div class="section-subtitle">Presidida por Blanca V. · Área 4, Región C</div>
+  </div>
+
+  <div class="item-list">
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text">Compartimiento entre paneles 61ª y 62ª CSG.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text">Apertura del chat de delegados aprobada; continuación del canal de difusión.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text">Asistencia del Custodio boliviano Manuel R. aprobada (voz, sin voto).</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Nuevos servidores elegidos 2026–2027</div>
+
+  <div class="person-list">
+    <div class="person-row">
+      <div class="person-avatar">AP</div>
+      <div>
+        <div class="person-name">Addler Edwin P.</div>
+        <div class="person-role">Coordinador de Delegados · Área 1, Región A</div>
+      </div>
+    </div>
+    <div class="person-row">
+      <div class="person-avatar">GS</div>
+      <div>
+        <div class="person-name">Giovanny S.</div>
+        <div class="person-role">Coordinador Suplente · Área 7, Región E</div>
+      </div>
+    </div>
+    <div class="person-row">
+      <div class="person-avatar">MD</div>
+      <div>
+        <div class="person-name">Manuel Antonio D.</div>
+        <div class="person-role">Secretario · Área 5, Región B</div>
+      </div>
+    </div>
+    <div class="person-row">
+      <div class="person-avatar">HT</div>
+      <div>
+        <div class="person-name">Hader Alberto T.</div>
+        <div class="person-role">Campanero · Área 3, Región D</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-foot">
+    Servidores elegidos para el período conferencial 2026–2027.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 6 — CUSTODIOS ELEGIDOS                 -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">05 · Sesión Electiva · Plenaria de Ratificación</div>
+    <div class="section-title">Custodios Elegidos y Ratificados</div>
+  </div>
+
+  <div class="sec-lbl">Clase B Elegidos · Período 2026–2030</div>
+  <div class="card-grid c2">
+    <div class="card">
+      <div class="card-lbl">Región B</div>
+      <div class="card-val" style="font-size:11pt">José Alfonso C.</div>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Región E</div>
+      <div class="card-val" style="font-size:11pt">Diego Alonso A.</div>
+    </div>
+    <div class="card">
+      <div class="card-lbl">Territorio Norte</div>
+      <div class="card-val" style="font-size:11pt">José Domingo C.</div>
+    </div>
+    <div class="card emphasized">
+      <div class="card-lbl">Territorio Sur · 2026–2028</div>
+      <div class="card-val" style="font-size:11pt">Martha Cecilia B.</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Servicios Generales · Ratificado</div>
+  <div class="card emphasized">
+    <div class="card-lbl">Custodio SG · Período 2026–2030</div>
+    <div class="card-val" style="font-size:12pt">Juan Guillermo Y.</div>
+  </div>
+
+  <div class="sec-lbl">Director no Custodio entrante · AA El Mensaje</div>
+  <div class="card">
+    <div class="card-val" style="font-size:11pt">Omar Alejandro B.</div>
+  </div>
+
+  <div class="section-foot">
+    Período regular de Custodios Clase B: cuatro años. Excepción: Territorio Sur (Martha Cecilia B.) por dos años, 2026–2028.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 7 — CUSTODIAS CLASE A                  -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">06 · Sesión Plenaria de Ratificación</div>
+    <div class="section-title">Custodias Clase A</div>
+  </div>
+
+  <div class="sec-lbl">Custodias Clase A actuales</div>
+
+  <div class="card emphasized">
+    <div class="card-lbl">✓ Ratificada por 3 años</div>
+    <div class="card-val" style="font-size:11pt">Dra. Martha Cecilia Lobo Celis</div>
+    <div class="card-desc"><strong>Presidenta de la JSG</strong> y Representante Legal de la Corporación Nacional de AA.</div>
+  </div>
+
+  <div class="card" style="border-width:2pt;margin-top:8pt">
+    <div class="card-lbl">✗ No ratificada</div>
+    <div class="card-val" style="font-size:11pt">Dra. Doris Yanet Velásquez Castaño</div>
+    <div class="card-desc">El Comité de Nominaciones gestionó la sustitución en plenaria.</div>
+  </div>
+
+  <div class="sec-lbl">Custodias Clase A entrantes</div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-val" style="font-size:10pt">Dra. Mireya Andrea Mora Varón</div>
+    </div>
+    <div class="card emphasized">
+      <div class="card-val" style="font-size:10pt">Dra. Leidy Viviana Godoy Sarmiento</div>
+      <div class="card-desc" style="font-size:8pt">Ratificada en sustitución.</div>
+    </div>
+    <div class="card">
+      <div class="card-val" style="font-size:10pt">Dr. Isacc Roa Cruz</div>
+    </div>
+  </div>
+
+  <div class="section-foot">
+    Las Custodias Clase A son los amigos no alcohólicos de la Junta de Servicios Generales.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 8 — PLAN NACIONAL UNICIDAD             -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">07 · Políticas y Admisiones · Acción Recomendable 7 de 13</div>
+    <div class="section-title">Plan Nacional — Unicidad de Propósito</div>
+    <div class="section-subtitle">Reemplaza el Plan de Fortalecimiento 2015–2025, ya agotado</div>
+  </div>
+
+  <div class="plan-header">
+    <div class="plan-num">5</div>
+    <div class="plan-sub">Años · Prorrogable a criterio de la CSG · Desde 2027</div>
+    <div class="plan-title">Plan Nacional de Acción sugerido</div>
+  </div>
+
+  <div class="plan-diag">
+    <strong>Diagnóstico:</strong> Muchos miembros dejan de beber, pero <strong>no se recuperan</strong> — siguen ingobernables, generan discordia y deserción. AA se confundió como programa de abstinencia cuando es un <strong>programa de recuperación espiritual</strong>.
+  </div>
+
+  <div class="sec-lbl">Dos ejes centrales</div>
+
+  <div class="card-grid c2">
+    <div class="eje-card">
+      <div class="eje-num">Eje 1</div>
+      <div class="eje-name">Unicidad de Propósito</div>
+      <div class="eje-desc">AA atiende <em>únicamente</em> al alcohólico. Sin otras adicciones, religiones, causas sociales, rifas ni actividades distractoras. <strong>Quinta Tradición.</strong></div>
+    </div>
+    <div class="eje-card">
+      <div class="eje-num">Eje 2</div>
+      <div class="eje-name">Recuperación Real</div>
+      <div class="eje-desc">Estudio y práctica de los <strong>Doce Pasos y el Texto Básico.</strong> Superar el "pasodoble" (sólo Pasos 1 y 12). Meta: despertar espiritual y sano juicio.</div>
+    </div>
+  </div>
+
+  <div class="plan-quote">
+    "AA tiene una sola y alta misión: ayudar al enfermo alcohólico donde quiera se encuentre y donde quiera pida ayuda."
+    <cite>Comité de Política y Admisiones · 62ª CSG · 2026</cite>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 9 — IMPLEMENTACIÓN                     -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">08 · Plan Nacional · Implementación · Acción Recomendable 8 de 13</div>
+    <div class="section-title">¿Cómo se implementa?</div>
+    <div class="section-subtitle">Responsabilidad en cascada: CSG → Regiones → Áreas → Distritos → Grupo Base</div>
+  </div>
+
+  <div class="sec-lbl">En el Grupo Base · núcleo del Plan</div>
+  <div class="item-list">
+    <div class="item-row">
+      <div class="item-marker filled">1</div>
+      <div class="item-text"><strong>Mínimo 2 reuniones semanales</strong> dedicadas al estudio de los Doce Pasos y el Texto Básico.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">2</div>
+      <div class="item-text"><strong>Padrino para cada miembro</strong> — nadie sin padrinazgo. El padrino comparte su experiencia habitualmente.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">3</div>
+      <div class="item-text"><strong>Seguimiento al Paso Cuarto</strong> — reunión cerrada mensual donde más se estanca la membresía.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">4</div>
+      <div class="item-text"><strong>Compartir centrado</strong> en lo que éramos, lo que pasó y lo que somos hoy. Sin protagonismo, fama ni resentimiento.</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Seguimiento periódico</div>
+  <div class="seg-row"><div class="seg-icon">G</div><div class="seg-text">Grupo Base</div><div class="seg-freq">Bimestral</div></div>
+  <div class="seg-row"><div class="seg-icon">A</div><div class="seg-text">Área (asamblea)</div><div class="seg-freq">Trimestral</div></div>
+  <div class="seg-row"><div class="seg-icon">R</div><div class="seg-text">Región y JSG</div><div class="seg-freq">Semestral</div></div>
+  <div class="seg-row"><div class="seg-icon">C</div><div class="seg-text">CSG · Avances en Boletín OSG</div><div class="seg-freq">Anual</div></div>
+
+  <div class="hbox emphasized" style="margin-top:14pt">
+    <strong>Resultado esperado:</strong> Menos deserción · Menos recaídas · Más unidad · Aumento de membresía · Nuevos grupos · AA acreditada ante la sociedad como respuesta efectiva al alcoholismo.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 10 — COMPARTIMIENTO 5 GRUPOS           -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">09 · Sesiones de Compartimiento</div>
+    <div class="section-title">Cinco Grupos — Conclusiones</div>
+    <div class="section-subtitle">Síntesis del trabajo en mesas</div>
+  </div>
+
+  <div class="grupo-block">
+    <div class="grupo-head">
+      <div class="grupo-n">1</div>
+      <div class="grupo-q">El papel de la Asamblea del Área — ¿Cómo está funcionando?</div>
+    </div>
+    <div class="grupo-body">
+      La Asamblea del Área es el corazón de la estructura: decide, corrige y da mandato al delegado. Donde hay asambleas activas y frecuentes, la voz de los grupos llega con fuerza a la Conferencia; donde son débiles o esporádicas, la representatividad se resiente. Se llamó a fortalecer la periodicidad y la participación de los RSG.
+    </div>
+  </div>
+
+  <div class="grupo-block">
+    <div class="grupo-head">
+      <div class="grupo-n">2</div>
+      <div class="grupo-q">¿El líder en AA se forma desde el Grupo Base o nace siendo líder?</div>
+    </div>
+    <div class="grupo-body">
+      El verdadero servidor de AA se forma, no nace: el grupo base moldea al servidor a través del ejemplo, la sponsorización y el ejercicio gradual de responsabilidades. El carisma personal puede abrir puertas, pero sin raíces en la recuperación y las Tradiciones, no sostiene un servicio sano.
+    </div>
+  </div>
+
+  <div class="grupo-block">
+    <div class="grupo-head">
+      <div class="grupo-n">3</div>
+      <div class="grupo-q">¿Cómo mantener la Unidad desde la divergencia?</div>
+    </div>
+    <div class="grupo-body">
+      La diversidad de opiniones es riqueza, no amenaza. Las Tradiciones Segunda y Cuarta son el ancla que permite disentir sin dividirse. Escuchar con respeto, votar con honestidad y acatar la consciencia de grupo son las herramientas concretas para mantener la unidad cuando hay divergencia genuina.
+    </div>
+  </div>
+
+  <div class="grupo-block">
+    <div class="grupo-head">
+      <div class="grupo-n">4</div>
+      <div class="grupo-q">¿Por qué los Planes de Automantenimiento deben ser conocidos por todos?</div>
+    </div>
+    <div class="grupo-body">
+      Un grupo que desconoce cómo se financia su estructura tiende a desresponsabilizarse económicamente. La Séptima Tradición no es sólo una colecta: es una declaración de independencia. Cuando los miembros entienden el plan de automantenimiento, contribuyen con conciencia y defienden la autonomía de AA frente a influencias externas.
+    </div>
+  </div>
+
+  <div class="grupo-block">
+    <div class="grupo-head">
+      <div class="grupo-n">5</div>
+      <div class="grupo-q">¿Cómo evitar vincular la Comunidad con otras causas?</div>
+    </div>
+    <div class="grupo-body">
+      La Décima Tradición es la guía: AA no tiene opinión sobre asuntos ajenos. Tres riesgos frecuentes: usar espacios de AA para causas sociales, permitir que líderes usen su posición para visibilidad política, y aceptar financiación externa condicionada. La defensa es la educación continua en las Tradiciones desde el grupo base.
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 11 — APROBADAS                         -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">10 · Reuniones Deliberativas · Resultados</div>
+    <div class="section-title">Acciones Recomendables Aprobadas</div>
+    <div class="section-subtitle">Síntesis de los proyectos aprobados por la 62ª CSG</div>
+  </div>
+
+  <div class="item-list">
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text"><strong>Correccionales:</strong> Renombrar a "Comité de Instituciones Carcelarias".</div>
+      <div class="item-badge filled">Aprobada</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text"><strong>MRAC:</strong> Prorrogar a 63ª RAC. Sugerencias hasta 31 julio 2026; tercer borrador al 15 octubre 2026.</div>
+      <div class="item-badge filled">Aprobada</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text"><strong>Finanzas:</strong> Excedentes regionales: 60% Corporación · 20% próximo evento · 20% área sede.</div>
+      <div class="item-badge filled">Aprobada</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text"><strong>IP:</strong> Plan para actualizar redes sociales y aacolombia.org.</div>
+      <div class="item-badge filled">Aprobada</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text"><strong>IP:</strong> Guía Nacional: agregar "Negación" (pág. 8) y cifras actuales (pág. 19).</div>
+      <div class="item-badge filled">Aprobada</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text"><strong>Políticas y Admisiones:</strong> Plan Nacional — Unicidad de Propósito. 3 años desde 2027, prorrogable. JSG responsable.</div>
+      <div class="item-badge filled">Aprobada</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">✓</div>
+      <div class="item-text"><strong>AA El Mensaje:</strong> Libro "Soy Mujer en AA" — testimonios de la Revista.</div>
+      <div class="item-badge filled">Aprobada</div>
+    </div>
+  </div>
+
+  <div class="section-foot">
+    Siete acciones recomendables aprobadas en la 62ª RAC, sobre un total de 13 proyectos considerados.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 12 — NO APROBADOS                      -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">11 · Deliberativas · Sin aprobación / Mociones de Piso</div>
+    <div class="section-title">No Aprobados y Mociones de Piso</div>
+  </div>
+
+  <div class="item-list">
+    <div class="item-row">
+      <div class="item-marker">✗</div>
+      <div class="item-text"><strong>Literatura:</strong> 3 proyectos — 2 no aprobados, 1 retirado.</div>
+      <div class="item-badge">No Aprob.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker">✗</div>
+      <div class="item-text"><strong>CCP e Instituciones de Tratamiento:</strong> 2 proyectos.</div>
+      <div class="item-badge">No Aprob.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker">✗</div>
+      <div class="item-text"><strong>Informe y Carta Constitutiva:</strong> 4 proyectos.</div>
+      <div class="item-badge">No Aprob.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker">—</div>
+      <div class="item-text"><strong>Archivos Históricos:</strong> Sin proyectos presentados.</div>
+      <div class="item-badge">Sin Proy.</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker">—</div>
+      <div class="item-text"><strong>Congresos, Foros y Eventos Nacionales:</strong> Sin proyectos presentados.</div>
+      <div class="item-badge">Sin Proy.</div>
+    </div>
+  </div>
+
+  <div class="hbox">
+    <strong>4 mociones de piso</strong> secundadas y aprobadas por mayoría simple. Pasan a los comités correspondientes de la <strong>63ª RAC – 2027</strong> para su tratamiento.
+  </div>
+
+  <div class="hbox emphasized">
+    <strong>Moción de recordación — Finanzas:</strong> Recordación de la Recomendación de 1973: aporte voluntario mensual de todos los miembros con destino a la OSG.
+  </div>
+
+  <div class="section-foot">
+    Los proyectos no aprobados serán revisados o reformulados por los comités y áreas para futuras conferencias.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 13 — CLAUSURA                          -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">12 · Reunión de Clausura</div>
+    <div class="section-title">Clausura y Próxima Conferencia</div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-label">Despedidas de custodios salientes</div>
+      <div class="tl-text">Jorge Eliecer D. (Región B) · Miguel Ángel B. (Región E) · Óscar Alberto A. (Servicios Generales) · Misael Alfonso O. (Territorio Norte). Denominador común: gratitud por la experiencia vivida.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Palabras de cierre</div>
+      <div class="tl-text">La Dra. Martha Cecilia Lobo Celis agradeció a todos los conferencistas y convocó a trabajar por el alcohólico que sufre. Cerró con la <strong>Declaración de la Responsabilidad</strong>.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Informe final</div>
+      <div class="tl-text">Próximamente en PDF en <strong>aacolombia.org</strong>, con detalle completo de los cuatro días de trabajo.</div>
+    </div>
+  </div>
+
+  <div class="hbox emphasized" style="margin-top:24pt;text-align:center">
+    <div style="font-family:Arial,sans-serif;font-size:9pt;letter-spacing:2pt;text-transform:uppercase;margin-bottom:6pt">Próxima Conferencia</div>
+    <div style="font-family:Georgia,serif;font-size:18pt;font-weight:bold">63ª RAC – 2027</div>
+    <div style="font-style:italic;margin-top:6pt;font-size:11pt">"La Unidad, la Confianza y la Comunicación fortalecen nuestra Estructura"</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 14 — JSG COMPOSICIÓN                   -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">13 · Post 62ª RAC · Mayo 2026</div>
+    <div class="section-title">JSG — Composición Completa</div>
+    <div class="section-subtitle">Junta de Servicios Generales de AA Colombia</div>
+  </div>
+
+  <div class="sec-lbl">Presidencia</div>
+  <div class="person-list">
+    <div class="person-row">
+      <div class="person-avatar">ML</div>
+      <div>
+        <div class="person-name">Dra. Martha Cecilia Lobo Celis</div>
+        <div class="person-role">Presidenta · Custodio Clase A · <strong>Continúa</strong></div>
+      </div>
+    </div>
+    <div class="person-row">
+      <div class="person-avatar">MM</div>
+      <div>
+        <div class="person-name">Dra. Mireya Andrea Mora Varón</div>
+        <div class="person-role">Vicepresidenta · Custodio Clase A · <strong>Nueva</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Custodios Clase A entrantes</div>
+  <div class="card-grid c2">
+    <div class="card emphasized">
+      <div class="card-lbl">Clase A · Nuevo</div>
+      <div class="card-val" style="font-size:11pt">Dr. Isaac Roa Cruz</div>
+    </div>
+    <div class="card emphasized">
+      <div class="card-lbl">Clase A · Nueva</div>
+      <div class="card-val" style="font-size:11pt">Dra. Leidy Viviana Godoy Sarmiento</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Custodios Clase B — Regiones</div>
+  <div class="item-list">
+    <div class="item-row">
+      <div class="item-marker">A</div>
+      <div class="item-text"><strong>Región A:</strong> Olmedo M.</div>
+      <div class="item-badge">Continúa</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">B</div>
+      <div class="item-text"><strong>Región B:</strong> José Alfonso C. · 2026–2030</div>
+      <div class="item-badge filled">Nuevo</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker">C</div>
+      <div class="item-text"><strong>Región C:</strong> Nancy Antonia C.</div>
+      <div class="item-badge">Continúa</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker">D</div>
+      <div class="item-text"><strong>Región D:</strong> José Pio C.</div>
+      <div class="item-badge">Continúa</div>
+    </div>
+    <div class="item-row">
+      <div class="item-marker filled">E</div>
+      <div class="item-text"><strong>Región E:</strong> Diego Alonso A. · 2026–2030</div>
+      <div class="item-badge filled">Nuevo</div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Custodios Generales — Territorios</div>
+  <div class="card-grid c2">
+    <div class="card emphasized">
+      <div class="card-lbl">Territorio Norte · 2026–2030 · Nuevo</div>
+      <div class="card-val" style="font-size:11pt">José Domingo C.</div>
+    </div>
+    <div class="card emphasized">
+      <div class="card-lbl">Territorio Sur · 2026–2028 · Nueva · 2 años</div>
+      <div class="card-val" style="font-size:11pt">Martha Cecilia B.</div>
+    </div>
+  </div>
+
+  <div class="hbox emphasized" style="text-align:center;margin-top:16pt">
+    <div style="font-family:Arial,sans-serif;font-size:8pt;letter-spacing:2pt;text-transform:uppercase;margin-bottom:4pt">Custodio de Servicios Generales · Nuevo</div>
+    <div style="font-family:Georgia,serif;font-size:14pt;font-weight:bold">Juan Guillermo Y.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PÁGINA 15 — ENLACES / DOCUMENTOS              -->
+<!-- ════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <div class="section-head">
+    <div class="section-tag">14 · Documentos Complementarios</div>
+    <div class="section-title">Cierre y Enlaces</div>
+    <div class="section-subtitle">Materiales adicionales del Delegado · Área 3, Región C</div>
+  </div>
+
+  <p style="text-align:center;font-style:italic;font-size:11pt;margin:16pt 0">
+    Cuatro días de intenso trabajo al servicio del alcohólico que todavía sufre.
+  </p>
+
+  <div class="sec-lbl">Documentos en línea — wiroal.github.io/racsg</div>
+
+  <div class="link-list">
+    <div class="link-row">
+      <div>
+        <strong>📜 Fundación Alcohólica y CSG</strong>
+        <div class="url">wiroal.github.io/racsg/fundacion_alcoholica_y_csg.html</div>
+      </div>
+    </div>
+    <div class="link-row">
+      <div>
+        <strong>Nacimiento de AA</strong>
+        <div class="url">wiroal.github.io/racsg/nacimiento_aa.html</div>
+      </div>
+    </div>
+    <div class="link-row">
+      <div>
+        <strong>Sobre la Unicidad de Propósito</strong>
+        <div class="url">wiroal.github.io/racsg/analisis-box459-vs-plan62csg.html</div>
+      </div>
+    </div>
+    <div class="link-row">
+      <div>
+        <strong>REDELA — Grupos Virtuales</strong>
+        <div class="url">wiroal.github.io/racsg/grupos_virtuales_movil.html</div>
+      </div>
+    </div>
+    <div class="link-row">
+      <div>
+        <strong>Grupos Virtuales — Posición y Problema de Fondo</strong>
+        <div class="url">wiroal.github.io/racsg/grupos_virtuales_colombia.html</div>
+      </div>
+    </div>
+    <div class="link-row">
+      <div>
+        <strong>Informe Financiero OSG</strong>
+        <div class="url">wiroal.github.io/racsg/informe_financiero_OSG_movil.html</div>
+      </div>
+    </div>
+    <div class="link-row">
+      <div>
+        <strong>Grupos de Éxito</strong>
+        <div class="url">wiroal.github.io/racsg/14_grupo_exitoso.html</div>
+      </div>
+    </div>
+    <div class="link-row">
+      <div>
+        <strong>🏛️ JSG — Composición Post 62ª RAC</strong>
+        <div class="url">wiroal.github.io/racsg/jsg_composicion_2026.html</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aa-mark">
+    <div class="aa-circle">AA</div>
+  </div>
+
+  <div style="text-align:center;font-style:italic;font-size:11pt;line-height:1.5;margin-top:8pt">
+    "La Recuperación y la Práctica de las Tradiciones<br>garantizan un mejor Servicio"
+  </div>
+
+  <div style="text-align:center;margin-top:24pt;font-size:9pt;line-height:1.5">
+    <strong style="font-family:Arial,sans-serif;font-size:8pt;letter-spacing:2pt;text-transform:uppercase">Delegado Panel 62 · Área 3, Región C</strong><br>
+    Bogotá, Colombia<br>
+    Post 62ª RAC · Mayo 2026<br>
+    <em style="color:#555">Literatura aprobada por la Conferencia de Servicios Generales</em>
+  </div>
+</div>
+
+<script>
+// Atajo de teclado: Ctrl+P / Cmd+P ya funciona nativamente
+// Ocultar barra de controles al imprimir
+window.addEventListener('beforeprint', () => {
+  document.querySelector('.print-controls')?.style.setProperty('display', 'none');
+});
+window.addEventListener('afterprint', () => {
+  document.querySelector('.print-controls')?.style.removeProperty('display');
+});
+</script>
+
+</body>
+</html>
