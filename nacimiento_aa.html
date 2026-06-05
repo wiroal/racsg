@@ -22,7 +22,6 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -38,7 +37,6 @@
     padding: 3rem 1.5rem;
   }
 
-  /* subtle paper grain */
   body::before {
     content: '';
     position: fixed;
@@ -93,11 +91,7 @@
     color: var(--ink);
     letter-spacing: -0.015em;
   }
-  h1 em {
-    font-style: italic;
-    font-weight: 400;
-    color: var(--burgundy);
-  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--burgundy); }
 
   .dek {
     font-family: 'Cormorant Garamond', serif;
@@ -121,11 +115,7 @@
     max-width: 280px;
   }
   .divider .line { flex: 1; height: 1px; background: var(--rule); }
-  .divider .ornament {
-    color: var(--gold-dark);
-    font-size: 1.4rem;
-    line-height: 1;
-  }
+  .divider .ornament { color: var(--gold-dark); font-size: 1.4rem; line-height: 1; }
 
   /* ─── Event cards ─── */
   .events {
@@ -222,20 +212,12 @@
     margin-bottom: 0.15rem;
   }
   .event.right .meta dt { color: var(--sage); }
-  .meta dd {
-    font-size: 1.02rem;
-    margin-bottom: 0.7rem;
-    line-height: 1.4;
-  }
+  .meta dd { font-size: 1.02rem; margin-bottom: 0.7rem; line-height: 1.4; }
 
-  .narrative {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-top: 0.6rem;
-  }
+  .narrative { font-size: 1rem; line-height: 1.6; margin-top: 0.6rem; }
   .narrative + .narrative { margin-top: 0.7rem; }
 
-  /* ─── Photographs (replacing SVG scenes) ─── */
+  /* ─── Photographs ─── */
   .photo-frame {
     position: relative;
     margin: 0 auto 1.4rem;
@@ -250,16 +232,13 @@
       0 2px 6px -2px var(--shadow);
   }
   .photo-frame::after {
-    /* subtle inner border line, like a passe-partout */
     content: '';
     position: absolute;
     inset: 4px;
     border: 1px solid rgba(110, 31, 37, 0.18);
     pointer-events: none;
   }
-  .event.right .photo-frame::after {
-    border-color: rgba(74, 90, 61, 0.22);
-  }
+  .event.right .photo-frame::after { border-color: rgba(74, 90, 61, 0.22); }
   .photo-frame img {
     display: block;
     width: 100%;
@@ -268,9 +247,7 @@
     filter: sepia(0.18) saturate(0.92) contrast(1.02);
     transition: filter 0.5s ease;
   }
-  .photo-frame:hover img {
-    filter: sepia(0) saturate(1) contrast(1);
-  }
+  .photo-frame:hover img { filter: sepia(0) saturate(1) contrast(1); }
   .photo-caption {
     display: block;
     margin-top: 0.7rem;
@@ -291,12 +268,9 @@
     padding: 1rem 0;
     text-align: center;
   }
-  @media (max-width: 759px) {
-    .connector { padding: 0.5rem 0; }
-  }
+  @media (max-width: 759px) { .connector { padding: 0.5rem 0; } }
   .connector .line {
-    width: 1px;
-    flex: 1;
+    width: 1px; flex: 1;
     background: var(--rule);
     min-height: 30px;
   }
@@ -313,8 +287,7 @@
     background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 50%;
-    width: 110px;
-    height: 110px;
+    width: 110px; height: 110px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -422,8 +395,7 @@
   .colophon .seal {
     display: inline-block;
     margin: 0 auto 0.8rem;
-    width: 56px;
-    height: 56px;
+    width: 56px; height: 56px;
     border: 1.5px solid var(--gold-dark);
     border-radius: 50%;
     line-height: 53px;
@@ -435,9 +407,7 @@
   }
 
   /* ─── Prólogo cronológico ─── */
-  .prologue {
-    margin: 0 0 3rem;
-  }
+  .prologue { margin: 0 0 3rem; }
   .prologue-title {
     font-family: 'Playfair Display', serif;
     font-size: 0.78rem;
@@ -451,8 +421,7 @@
   .prologue-title::before, .prologue-title::after {
     content: '';
     display: inline-block;
-    width: 24px;
-    height: 1px;
+    width: 24px; height: 1px;
     background: var(--gold-dark);
     vertical-align: middle;
     margin: 0 0.9rem;
@@ -469,9 +438,7 @@
   .timeline::before {
     content: '';
     position: absolute;
-    left: 5.5rem;
-    top: 0;
-    bottom: 0;
+    left: 5.5rem; top: 0; bottom: 0;
     width: 1px;
     background: linear-gradient(180deg, transparent, var(--rule) 8%, var(--rule) 92%, transparent);
   }
@@ -509,8 +476,7 @@
 
   .tl-dot {
     flex: 0 0 1.1rem;
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1.1rem; height: 1.1rem;
     border-radius: 50%;
     background: var(--burgundy);
     border: 2px solid var(--paper);
@@ -522,15 +488,11 @@
   .tl-item.secondary .tl-dot {
     background: var(--gold-dark);
     outline-color: var(--gold-dark);
-    width: 0.85rem;
-    height: 0.85rem;
+    width: 0.85rem; height: 0.85rem;
     margin-top: 0.35rem;
   }
 
-  .tl-body {
-    flex: 1;
-    padding-bottom: 0.2rem;
-  }
+  .tl-body { flex: 1; padding-bottom: 0.2rem; }
   .tl-label {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
@@ -545,6 +507,172 @@
     line-height: 1.55;
     color: var(--ink);
     opacity: 0.88;
+  }
+
+  /* ═══════════════════════════════════════
+     ─── CADENA DE CONTACTOS ───
+     ═══════════════════════════════════════ */
+  .cadena {
+    margin: 0 0 3rem;
+  }
+  .cadena-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 0.6rem;
+  }
+  .cadena-title::before, .cadena-title::after {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--gold-dark);
+    vertical-align: middle;
+    margin: 0 0.9rem;
+  }
+  .cadena-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--burgundy);
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+
+  /* Eslabones */
+  .eslabones {
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  /* línea vertical continua */
+  .eslabones::before {
+    content: '';
+    position: absolute;
+    left: 1.35rem;
+    top: 1.1rem;
+    bottom: 1.1rem;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--rule) 8%, var(--rule) 92%, transparent);
+    z-index: 0;
+  }
+
+  .eslabon {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    position: relative;
+  }
+  .eslabon + .eslabon { margin-top: 1.6rem; }
+
+  /* Círculo numerado — mismo diámetro que tl-dot pero con número */
+  .eslabon-num {
+    flex: 0 0 2.7rem;
+    width: 2.7rem; height: 2.7rem;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--burgundy);
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--burgundy);
+    position: relative;
+    z-index: 1;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+  }
+  .eslabon.final .eslabon-num {
+    background: var(--burgundy);
+    color: var(--paper);
+    font-style: normal;
+    font-size: 1rem;
+    border-color: var(--burgundy-dark);
+  }
+
+  /* Tarjeta de cada eslabón */
+  .eslabon-body {
+    flex: 1;
+    border-left: 2px solid var(--rule);
+    padding: 0.15rem 0 0.15rem 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .eslabon.final .eslabon-body {
+    border-left-color: var(--burgundy);
+  }
+
+  .eslabon-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  .eslabon-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--burgundy-dark);
+    line-height: 1.25;
+    margin-bottom: 0.35rem;
+  }
+  .eslabon.final .eslabon-label { color: var(--burgundy); }
+  .eslabon-text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink);
+    opacity: 0.88;
+  }
+  .eslabon-text em { font-style: italic; color: var(--burgundy-dark); }
+
+  /* Cita dentro del eslabón */
+  .eslabon-quote {
+    margin-top: 0.7rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--rule);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--ink);
+    opacity: 0.82;
+  }
+  .eslabon-quote cite {
+    display: block;
+    font-style: normal;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 600;
+    margin-top: 0.4rem;
+    opacity: 0.85;
+  }
+
+  /* Cierre de la cadena */
+  .cadena-cierre {
+    max-width: 640px;
+    margin: 2rem auto 0;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--ink);
+    opacity: 0.72;
+    border-top: 1px dashed var(--rule);
+    padding-top: 1.2rem;
   }
 
   /* ─── Print ─── */
@@ -590,7 +718,7 @@
       <div class="tl-item secondary">
         <div class="tl-date">
           <span class="tl-month">Dic. 1934</span>
-          <span class="tl-year tl-year" style="font-size:0.85rem;font-weight:600;color:var(--gold-dark);">— May. 1935</span>
+          <span class="tl-year" style="font-size:0.85rem;font-weight:600;color:var(--gold-dark);">— May. 1935</span>
         </div>
         <div class="tl-dot"></div>
         <div class="tl-body">
@@ -601,24 +729,91 @@
 
       <div class="tl-item">
         <div class="tl-date">
-          <span class="tl-month">12 Mayo</span>
+          <span class="tl-month">10 Mayo</span>
           <span class="tl-year">1935</span>
         </div>
         <div class="tl-dot"></div>
         <div class="tl-body">
-          <div class="tl-label">Bill y el Dr. Bob se conocen</div>
-          <p class="tl-text">En Akron, Ohio —adonde Bill había viajado por negocios que fracasaron—, la señora Henrietta Seiberling lo pone en contacto con el Dr. Bob Smith, médico cirujano con veinte años de lucha contra el alcohol. Ese encuentro, el 12 de mayo, cambiaría la historia.</p>
+          <div class="tl-label">Una llamada al azar en el Hotel Mayflower</div>
+          <p class="tl-text">En Akron para un negocio que fracasó, solo y tentado por el bar del hotel, Bill recurre al directorio de iglesias. Lo que sucede en los siguientes minutos encadenará una serie de hechos que darían nacimiento a la Comunidad.</p>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- ═══ EVENTOS ═══ -->
+  <!-- ═══ CADENA DE CONTACTOS ═══ -->
+  <div class="cadena">
+    <p class="cadena-title">La cadena de contactos · 10 de mayo de 1935</p>
+    <p class="cadena-subtitle">Sábado · Hotel Mayflower · Akron, Ohio</p>
 
+    <div class="eslabones">
+
+      <div class="eslabon">
+        <div class="eslabon-num">1</div>
+        <div class="eslabon-body">
+          <span class="eslabon-tag">El directorio de iglesias</span>
+          <div class="eslabon-label">Reverendo Walter F. Tunks</div>
+          <p class="eslabon-text">Bill escogió al azar del directorio de iglesias el nombre del pastor episcopal <em>Walter F. Tunks</em>. Le explicó su necesidad de hablar con otro alcohólico. Tunks entendió y le entregó una lista de <em>diez nombres</em>. Sin saberlo, Bill había elegido al hombre más influyente del Grupo Oxford entre todos los clérigos de Akron.</p>
+        </div>
+      </div>
+
+      <div class="eslabon">
+        <div class="eslabon-num">2</div>
+        <div class="eslabon-body">
+          <span class="eslabon-tag">Nueve intentos fallidos</span>
+          <div class="eslabon-label">Las primeras nueve llamadas</div>
+          <p class="eslabon-text">Bill llamó uno por uno a los nombres de la lista. Algunos no estaban en casa; otros no mostraron interés o no pudieron ayudar. La lista se redujo hasta que quedó un solo nombre al final — el que más dudaba en marcar.</p>
+        </div>
+      </div>
+
+      <div class="eslabon">
+        <div class="eslabon-num">3</div>
+        <div class="eslabon-body">
+          <span class="eslabon-tag">El último nombre</span>
+          <div class="eslabon-label">Henrietta Seiberling</div>
+          <p class="eslabon-text">El apellido intimidaba a Bill por su vínculo con la Goodyear. Bajó al vestíbulo, miró el bar, y algo en su interior le dijo <em>"más vale que lo hagas"</em>. Llamó. Una voz cálida con acento sureño respondió — era la nuera del Sr. Seiberling. Lo escuchó, lo comprendió de inmediato y lo invitó a la Quinta Seiberling.</p>
+          <div class="eslabon-quote">
+            "Henrietta recibió la histórica llamada de Bill como maná del cielo y en seguida lo puso en contacto con el Dr. Bob."
+            <cite>¡Transmítelo! · Cap. 6</cite>
+          </div>
+        </div>
+      </div>
+
+      <div class="eslabon">
+        <div class="eslabon-num">4</div>
+        <div class="eslabon-body">
+          <span class="eslabon-tag">El puente hacia el Dr. Bob</span>
+          <div class="eslabon-label">Anne Smith — esposa del Dr. Bob</div>
+          <p class="eslabon-text">Henrietta le contó a Bill la situación crítica del Dr. Bob y llamó a <em>Anne</em>. Era víspera del Día de las Madres; el Dr. Bob había llegado a casa con una maceta para su esposa y pronto quedó inconsciente. La reunión se acordó para la tarde del día siguiente.</p>
+        </div>
+      </div>
+
+      <div class="eslabon final">
+        <div class="eslabon-num">★</div>
+        <div class="eslabon-body">
+          <span class="eslabon-tag">12 de mayo · Día de las Madres</span>
+          <div class="eslabon-label">El encuentro en Stan Hywet Hall</div>
+          <p class="eslabon-text">En la <em>Gate Lodge</em> de la mansión Stan Hywet — cuyo nombre galés significa <em>"Aquí se encuentra la roca"</em> — Henrietta los llevó a su pequeña biblioteca. El Dr. Bob planeaba quedarse quince minutos. Habló con Bill <em>hasta las once de la noche</em>.</p>
+          <div class="eslabon-quote">
+            "De las diez personas indicadas por el Reverendo Walter Tunks, Henrietta fue la única que tuvo suficiente cuidado y comprensión. Las deudas de gratitud del Dr. Bob y mía son las mayores de todas."
+            <cite>Bill W. · AA llega a su Mayoría de Edad</cite>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /eslabones -->
+
+    <p class="cadena-cierre">
+      Una llamada al azar · diez nombres · nueve puertas cerradas · una voz cálida.<br>
+      Así comenzó Alcohólicos Anónimos.
+    </p>
+  </div>
+  <!-- ═══ FIN CADENA DE CONTACTOS ═══ -->
+
+  <!-- ═══ EVENTOS ═══ -->
   <div class="events">
 
-    <!-- Evento 1 -->
     <section class="event left">
       <div class="event-num">— Primer encuentro —</div>
 
@@ -647,10 +842,9 @@
         <dd>Día de las Madres en Estados Unidos. La reunión, planeada para la víspera, se aplazó porque el Dr. Bob llegó a su casa llevando una maceta para Anne y pronto quedó inconsciente.</dd>
       </dl>
 
-      <p class="narrative">El nombre galés de la mansión, <em>Stan Hywet</em>, significa “Aquí se encuentra la roca” — un detalle que Bill recordaría siempre como signo de una cita providencial.</p>
+      <p class="narrative">El nombre galés de la mansión, <em>Stan Hywet</em>, significa "Aquí se encuentra la roca" — un detalle que Bill recordaría siempre como signo de una cita providencial.</p>
     </section>
 
-    <!-- Conector -->
     <div class="connector">
       <div class="line"></div>
       <div class="days">
@@ -660,7 +854,6 @@
       <div class="line"></div>
     </div>
 
-    <!-- Evento 2 -->
     <section class="event right">
       <div class="event-num">— Se funda la Comunidad —</div>
 
@@ -696,7 +889,7 @@
 
   <!-- Cita destacada -->
   <blockquote class="quote">
-    “Era el 10 de junio de 1935, que ahora se respeta como la fecha en que en realidad empezó A.A. La botella de cerveza que le dio Bill esa mañana fue su último trago.”
+    "Era el 10 de junio de 1935, que ahora se respeta como la fecha en que en realidad empezó A.A. La botella de cerveza que le dio Bill esa mañana fue su último trago."
     <cite>¡Transmítelo! · Capítulo 7</cite>
   </blockquote>
 
@@ -704,18 +897,19 @@
   <div class="sources">
     <h3>Fuentes consultadas</h3>
     <ul>
-      <li><strong>Texto Básico</strong> — Semblanza del Dr. Bob: <em>“El nacimiento de nuestra Comunidad data del primer día de su sobriedad permanente: el 10 de junio de 1935.”</em></li>
-      <li><strong>AA Llega a su Mayoría de Edad</strong> — Acontecimientos Significativos: <em>“1935, Mayo. El Dr. Bob y Bill se conocen en Akron.”</em> · <em>“1935, 10 de Jun. El Dr. Bob bebe su último trago. Se funda Alcohólicos Anónimos.”</em></li>
-      <li><strong>¡Transmítelo!</strong>, cap. 6 — La cita en la Gate Lodge de Stan Hywet Hall, el Día de las Madres.</li>
+      <li><strong>Texto Básico</strong> — Semblanza del Dr. Bob: <em>"El nacimiento de nuestra Comunidad data del primer día de su sobriedad permanente: el 10 de junio de 1935."</em></li>
+      <li><strong>AA Llega a su Mayoría de Edad</strong> — Bill W.: relato directo de la cadena de contactos y el encuentro con el Dr. Bob en Akron.</li>
+      <li><strong>¡Transmítelo!</strong>, cap. 6 — La cita en la Gate Lodge de Stan Hywet Hall, el Día de las Madres; Henrietta Seiberling y la cadena de llamadas.</li>
       <li><strong>¡Transmítelo!</strong>, cap. 7 — Relato del 10 de junio y la última cerveza del Dr. Bob.</li>
+      <li><strong>El Lenguaje del Corazón</strong> — Relato de Bill sobre el directorio de iglesias, el Rvdo. Tunks y Henrietta Seiberling.</li>
     </ul>
   </div>
 
-  <div class="colophon">
-    <div class="seal">AA</div>
+  <footer class="colophon">
+    <div class="seal">AA</div><br>
     Preparado para servicio interno · Área 3 · Región C · Bogotá<br>
     <em>Literatura aprobada por la Conferencia de Servicios Generales</em>
-  </div>
+  </footer>
 
 </article>
 </body>
