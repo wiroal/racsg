@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unicidad de Propósito — Qué no es y qué sí es</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,900&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#7F1D1D;
+    --red-deep:#5C1414;
+    --red-bright:#9B2C2C;
+    --ink:#2B2622;
+    --ink-soft:#5A5249;
+    --cream:#F4ECDB;
+    --cream-deep:#ECE0C9;
+    --paper:#FBF6EC;
+    --muted:#776C5F;
+    --muted-deep:#574E43;
+    --gold:#A6791C;
+    --line:rgba(43,38,34,.16);
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --body:'Spectral', Georgia, serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  html{-webkit-text-size-adjust:100%}
+
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:
+      radial-gradient(120% 90% at 50% -10%, #F8F1E2 0%, var(--cream) 42%, var(--cream-deep) 100%);
+    background-attachment:fixed;
+    line-height:1.5;
+    padding:clamp(14px,3vw,42px);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* faint paper grain */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    pointer-events:none;z-index:50;
+    opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;
+  }
+
+  .sheet{
+    max-width:980px;
+    margin:0 auto;
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 26px 60px -32px rgba(60,30,20,.55);
+    overflow:hidden;
+  }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{
+    position:relative;
+    background:
+      linear-gradient(180deg, var(--red) 0%, var(--red-deep) 100%);
+    color:#F6E9D6;
+    padding:clamp(26px,4.5vw,52px) clamp(22px,5vw,60px) clamp(28px,4.5vw,46px);
+    border-bottom:3px solid var(--gold);
+    text-align:center;
+    overflow:hidden;
+  }
+  .masthead::after{
+    content:"5";
+    position:absolute;
+    right:clamp(-10px,1vw,16px);
+    bottom:-44px;
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(180px,30vw,320px);
+    line-height:1;
+    color:rgba(246,233,214,.06);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:var(--body);
+    font-weight:500;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    font-size:clamp(9.5px,1.5vw,12px);
+    color:rgba(246,233,214,.78);
+    margin-bottom:clamp(14px,2.4vw,20px);
+    position:relative;
+  }
+  .masthead h1{
+    font-family:var(--serif);
+    font-optical-sizing:auto;
+    font-weight:900;
+    font-size:clamp(38px,9vw,82px);
+    line-height:.96;
+    letter-spacing:-.015em;
+    text-wrap:balance;
+    position:relative;
+  }
+  .masthead .sub{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(15px,2.7vw,23px);
+    margin-top:clamp(12px,2vw,18px);
+    color:rgba(246,233,214,.9);
+    position:relative;
+  }
+  .masthead .sub em{font-style:normal;font-weight:600;color:#fff}
+
+  /* ---------- ANCHOR QUOTE ---------- */
+  .anchor{
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    padding:clamp(24px,4vw,40px) clamp(22px,6vw,72px);
+    text-align:center;
+    position:relative;
+  }
+  .anchor .tag{
+    display:inline-block;
+    font-family:var(--body);
+    font-weight:600;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-size:11px;
+    color:#fff;
+    background:var(--red);
+    padding:5px 13px 6px;
+    margin-bottom:18px;
+  }
+  .anchor blockquote{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(20px,3.6vw,31px);
+    line-height:1.28;
+    color:var(--red-deep);
+    text-wrap:balance;
+    letter-spacing:-.01em;
+  }
+  .anchor cite{
+    display:block;
+    font-style:normal;
+    font-family:var(--body);
+    font-weight:500;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-size:11.5px;
+    color:var(--muted-deep);
+    margin-top:16px;
+  }
+
+  /* ---------- COMPARE ---------- */
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1px 1fr;
+  }
+  .col{padding:clamp(22px,3.4vw,40px) clamp(20px,3.4vw,38px) clamp(26px,3.4vw,42px)}
+  .col-no{background:var(--paper)}
+  .col-si{background:linear-gradient(180deg,#FDF9F0 0%, #FBF4E8 100%)}
+
+  .seam{background:var(--line)}
+
+  .col-head{
+    display:flex;align-items:center;gap:13px;
+    padding-bottom:16px;margin-bottom:20px;
+    border-bottom:2px solid;
+  }
+  .col-no .col-head{border-color:rgba(87,78,67,.28)}
+  .col-si .col-head{border-color:rgba(127,29,29,.32)}
+
+  .badge{
+    flex:0 0 auto;
+    width:42px;height:42px;border-radius:50%;
+    display:grid;place-items:center;
+    font-size:21px;font-weight:700;
+    color:#fff;
+  }
+  .badge-no{background:var(--muted);box-shadow:0 0 0 4px rgba(119,108,95,.13)}
+  .badge-si{background:var(--red);box-shadow:0 0 0 4px rgba(127,29,29,.13)}
+
+  .col-head h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(21px,3.6vw,30px);
+    line-height:1;
+    letter-spacing:-.01em;
+  }
+  .col-no h2{color:var(--muted-deep)}
+  .col-si h2{color:var(--red)}
+  .col-head h2 span{
+    font-weight:900;
+    font-style:italic;
+  }
+
+  ul.points{list-style:none;display:flex;flex-direction:column;gap:clamp(15px,2vw,20px)}
+  ul.points li{
+    display:flex;gap:13px;align-items:flex-start;
+    opacity:0;transform:translateY(10px);
+    animation:rise .55s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  .ic{
+    flex:0 0 auto;
+    width:23px;height:23px;border-radius:50%;
+    display:grid;place-items:center;
+    font-size:13px;font-weight:700;line-height:1;
+    margin-top:3px;
+  }
+  .col-no .ic{color:var(--muted-deep);border:1.5px solid rgba(119,108,95,.5);background:rgba(119,108,95,.07)}
+  .col-si .ic{color:#fff;background:var(--red)}
+
+  .li-title{
+    display:block;
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(15.5px,2.2vw,18px);
+    line-height:1.25;
+    letter-spacing:-.005em;
+  }
+  .col-no .li-title{color:var(--ink)}
+  .col-si .li-title{color:var(--red-deep)}
+  .li-text{
+    display:block;
+    font-size:clamp(13.5px,1.95vw,15px);
+    line-height:1.45;
+    color:var(--ink-soft);
+    margin-top:3px;
+  }
+  .li-src{
+    display:block;
+    font-family:var(--body);
+    font-weight:500;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:6px;
+  }
+  .col-no .li-src::before,.col-si .li-src::before{content:"— "}
+
+  /* ---------- BRIDGE ---------- */
+  .bridge{
+    background:var(--red-deep);
+    color:#F3E7D5;
+    padding:clamp(26px,4vw,44px) clamp(22px,6vw,70px);
+    position:relative;
+  }
+  .bridge::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold);
+  }
+  .bridge h3{
+    font-family:var(--serif);
+    font-weight:900;
+    font-style:italic;
+    font-size:clamp(22px,3.8vw,32px);
+    color:#fff;
+    margin-bottom:14px;
+    letter-spacing:-.01em;
+  }
+  .bridge p{
+    font-size:clamp(14.5px,2.1vw,17px);
+    line-height:1.62;
+    color:rgba(243,231,213,.92);
+    max-width:62ch;
+  }
+  .bridge p + p{margin-top:13px}
+  .bridge strong{color:#fff;font-weight:600}
+  .bridge .b-src{
+    display:block;margin-top:16px;
+    font-family:var(--body);font-weight:500;
+    font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:rgba(243,231,213,.6);
+  }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:var(--cream);
+    text-align:center;
+    padding:clamp(30px,4.6vw,52px) clamp(22px,6vw,72px);
+    border-top:1px solid var(--line);
+  }
+  .closing blockquote{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(19px,3.3vw,28px);
+    line-height:1.34;
+    color:var(--red);
+    text-wrap:balance;
+    max-width:30ch;
+    margin:0 auto;
+  }
+  .closing cite{
+    display:block;font-style:normal;
+    font-family:var(--body);font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;
+    font-size:11px;color:var(--muted-deep);
+    margin-top:14px;
+  }
+  .closing .rule{
+    width:54px;height:2px;background:var(--gold);
+    margin:clamp(22px,3vw,30px) auto;
+  }
+  .closing .line{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(19px,3.2vw,27px);
+    line-height:1.2;
+    color:var(--ink);
+    text-wrap:balance;
+    max-width:24ch;margin:0 auto;
+  }
+  .closing .line span{color:var(--red)}
+  .closing .line-src{
+    display:block;font-family:var(--body);font-weight:500;
+    letter-spacing:.1em;text-transform:uppercase;
+    font-size:10.5px;color:var(--muted);margin-top:10px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer.sources{
+    background:var(--ink);
+    color:rgba(244,236,219,.72);
+    padding:clamp(18px,3vw,26px) clamp(22px,6vw,60px);
+    font-size:11.5px;
+    line-height:1.6;
+    letter-spacing:.02em;
+  }
+  footer.sources b{
+    color:rgba(244,236,219,.95);
+    font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;
+    font-size:10.5px;
+    display:block;margin-bottom:7px;
+  }
+  footer.sources .meta{
+    margin-top:14px;padding-top:12px;
+    border-top:1px solid rgba(244,236,219,.16);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+    color:rgba(244,236,219,.5);
+    font-family:var(--body);
+    letter-spacing:.08em;text-transform:uppercase;font-size:10px;
+  }
+
+  /* staggered reveal */
+  @keyframes rise{to{opacity:1;transform:none}}
+  .col-no li:nth-child(1){animation-delay:.05s}
+  .col-no li:nth-child(2){animation-delay:.12s}
+  .col-no li:nth-child(3){animation-delay:.19s}
+  .col-no li:nth-child(4){animation-delay:.26s}
+  .col-no li:nth-child(5){animation-delay:.33s}
+  .col-no li:nth-child(6){animation-delay:.40s}
+  .col-no li:nth-child(7){animation-delay:.47s}
+  .col-no li:nth-child(8){animation-delay:.54s}
+  .col-no li:nth-child(9){animation-delay:.61s}
+  .col-si li:nth-child(1){animation-delay:.10s}
+  .col-si li:nth-child(2){animation-delay:.17s}
+  .col-si li:nth-child(3){animation-delay:.24s}
+  .col-si li:nth-child(4){animation-delay:.31s}
+  .col-si li:nth-child(5){animation-delay:.38s}
+  .col-si li:nth-child(6){animation-delay:.45s}
+
+  @media (max-width:760px){
+    .compare{grid-template-columns:1fr}
+    .seam{height:1px;width:auto}
+    .col-si{border-top:1px solid var(--line)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    ul.points li{opacity:1;transform:none;animation:none}
+  }
+
+  @media print{
+    body{background:#fff;padding:0}
+    body::before{display:none}
+    .sheet{box-shadow:none;border:none;max-width:none}
+    ul.points li{opacity:1;transform:none;animation:none}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<main class="sheet">
+
+  <header class="masthead">
+    <div class="eyebrow">Alcohólicos Anónimos · Colombia — Área 3, Región C</div>
+    <h1>Unicidad de Propósito</h1>
+    <div class="sub">Qué <em>no</em> es &nbsp;y&nbsp; qué <em>sí</em> es, a la luz de la Quinta Tradición</div>
+  </header>
+
+  <section class="anchor">
+    <span class="tag">Quinta Tradición</span>
+    <blockquote>“Cada grupo tiene un solo objetivo primordial: llevar el mensaje al alcohólico que aún está sufriendo.”</blockquote>
+    <cite>Doce Pasos y Doce Tradiciones · pág. 146</cite>
+  </section>
+
+  <section class="compare">
+
+    <!-- ===== LO QUE NO ES ===== -->
+    <div class="col col-no">
+      <div class="col-head">
+        <span class="badge badge-no">✕</span>
+        <h2>Lo que <span>no</span> es</h2>
+      </div>
+      <ul class="points">
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es una panacea.</span>
+            <span class="li-text">AA no es la suprema autoridad sobre el alcoholismo ni la solución para todos los males del ser humano.</span>
+            <span class="li-src">El Lenguaje del Corazón</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es afiliación.</span>
+            <span class="li-text">No nos afiliamos a ninguna secta, religión, partido u organización; no intervenimos en controversias ni respaldamos ni nos oponemos a ninguna causa.</span>
+            <span class="li-src">Preámbulo · 3ª Tradición (forma larga)</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es respaldo ni patrocinio.</span>
+            <span class="li-text">El grupo nunca presta el nombre, el dinero ni el aval de AA a ninguna empresa ajena, por digna que sea.</span>
+            <span class="li-src">Sexta Tradición</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es diversificar.</span>
+            <span class="li-text">AA no se convierte en programa de educación, investigación o tratamiento, ni en una nueva religión que pretenda salvar al mundo.</span>
+            <span class="li-src">El Lenguaje del Corazón · AA Llega a su Mayoría de Edad</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es rechazar al que sufre.</span>
+            <span class="li-text">El alcohólico que además padece otras adicciones o problemas es bienvenido, siempre que tenga una historia genuinamente alcohólica.</span>
+            <span class="li-src">“Problemas fuera del alcohol”, Bill W. · Box 459 (1989)</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es distracción.</span>
+            <span class="li-text">El grupo no se ocupa de rifas, paseos, bailes ni concursos, ni usa el compartimiento para el resentimiento, el aplauso o el poder.</span>
+            <span class="li-src">Plan Nacional de Acción · 62ª CSG (2026)</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es usar literatura de otras comunidades.</span>
+            <span class="li-text">Las reuniones se coordinan únicamente con literatura aprobada por la Conferencia. Incorporar material de NA u otras comunidades —aunque sea "por inclusión"— distorsiona el mensaje del grupo.</span>
+            <span class="li-src">Recomendaciones Vigentes 1982 · Manual de Servicio de AA</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es echar al adicto no alcohólico.</span>
+            <span class="li-text">Quien padece un problema distinto al alcohol puede asistir a reuniones abiertas; AA lo orienta hacia la ayuda que necesita. La Comunidad no lo expulsa: sencillamente no puede admitirlo como miembro, porque el denominador común ha de ser el alcoholismo.</span>
+            <span class="li-src">Bill W., El Lenguaje del Corazón · About AA (2001)</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✕</span>
+          <div>
+            <span class="li-title">No es abrir AA a todos por "inclusión."</span>
+            <span class="li-text">"Si AA abre sus puertas a todo el mundo, ¿cómo y con quién va a poder identificarse el recién llegado?" Nadie ha dicho que AA sea para todos. Perder el denominador común —el alcoholismo— nos haría fracasar y no podríamos ayudar a nadie.</span>
+            <span class="li-src">Susan C. y Allan W., About AA (2001) · Bill W., El Lenguaje del Corazón</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="seam"></div>
+
+    <!-- ===== LO QUE SÍ ES ===== -->
+    <div class="col col-si">
+      <div class="col-head">
+        <span class="badge badge-si">✓</span>
+        <h2>Lo que <span>sí</span> es</h2>
+      </div>
+      <ul class="points">
+        <li>
+          <span class="ic">✓</span>
+          <div>
+            <span class="li-title">Un solo objetivo.</span>
+            <span class="li-text">Llevar el mensaje al alcohólico que aún sufre: la sola y alta misión que anima hoy a AA en todas partes del mundo.</span>
+            <span class="li-src">5ª Tradición · 12 y 12, pág. 146</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✓</span>
+          <div>
+            <span class="li-title">Hacer una cosa bien.</span>
+            <span class="li-text">Más vale hacer una sola cosa supremamente bien que muchas mal hechas. “Zapatero, a tus zapatos.”</span>
+            <span class="li-src">12 y 12, Quinta Tradición</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✓</span>
+          <div>
+            <span class="li-title">El centro de nuestra unidad.</span>
+            <span class="li-text">Es el punto alrededor del cual toda la Comunidad se congrega; de su conservación depende la vida misma de AA.</span>
+            <span class="li-src">12 y 12, pág. 146</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✓</span>
+          <div>
+            <span class="li-title">Un don que se conserva al darlo.</span>
+            <span class="li-text">Raras veces conservamos el precioso don de la sobriedad a menos que lo pasemos a otros.</span>
+            <span class="li-src">12 y 12, pág. 147</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✓</span>
+          <div>
+            <span class="li-title">Atender solo el alcoholismo.</span>
+            <span class="li-text">Ocuparnos de la enfermedad —obsesión y alergia— y conducir al despertar espiritual mediante los Doce Pasos.</span>
+            <span class="li-src">Plan Nacional de Acción · Texto Básico</span>
+          </div>
+        </li>
+        <li>
+          <span class="ic">✓</span>
+          <div>
+            <span class="li-title">Cooperar sin afiliarse.</span>
+            <span class="li-text">La mano de AA siempre disponible para el alcohólico —también junto a los profesionales— sin perder su identidad.</span>
+            <span class="li-src">About AA (2001) · El Lenguaje del Corazón</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <section class="bridge">
+    <h3>Puerta abierta, propósito único</h3>
+    <p>La <strong>Tercera Tradición</strong> abre la puerta —el único requisito es querer dejar de beber—; la <strong>Quinta</strong> define la tarea —llevar el mensaje al que aún sufre—. No se contradicen: quien tiene una historia genuinamente alcohólica es miembro de pleno derecho, aunque cargue otros problemas. Pero AA no puede admitir como miembros a los no alcohólicos; a ellos los ayudamos a hallar su propio camino y cooperamos sin afiliarnos.</p>
+    <p>La razón de este enfoque tan riguroso no es la exclusión, sino superar la negación: <strong>a menos que el alcoholismo se mantenga incesantemente en primer plano, otros asuntos usurparán la atención de todos.</strong></p>
+    <span class="b-src">Bill W., “Problemas fuera del alcohol” · George E. Vaillant, Custodio Clase A — About AA (2001)</span>
+  </section>
+
+  <section class="closing">
+    <blockquote>“Mientras más se aferre A.A. a su propósito fundamental, mayor será la influencia bienhechora en todas partes.”</blockquote>
+    <cite>Bill W. · AA Llega a su Mayoría de Edad</cite>
+    <div class="rule"></div>
+    <div class="line">En su <span>unicidad de propósito</span> está la fortaleza de AA.</div>
+    <span class="line-src">Junta de Servicios Generales</span>
+  </section>
+
+  <footer class="sources">
+    <b>Fuentes — literatura aprobada por la Conferencia</b>
+    Doce Pasos y Doce Tradiciones (Quinta y Sexta Tradiciones) · Alcohólicos Anónimos: Texto Básico · El Lenguaje del Corazón · AA Llega a su Mayoría de Edad · El Manual de Servicio de AA (Preámbulo) · “Problemas fuera del alcohol”, Bill W. (Box 459, 1989) · George E. Vaillant, “Unicidad de propósito” (About AA, 2001) · Susan C. y Allan W. (About AA, 2001) · Recomendaciones Vigentes 1982 · Plan Nacional de Acción para Fortalecer la Unicidad de Propósito, 62ª CSG (2026).
+    <div class="meta">
+      <span>Comité de Área C3 · Región C · Panel 62</span>
+      <span>La unidad, la confianza y la comunicación fortalecen nuestra estructura</span>
+    </div>
+  </footer>
+
+</main>
+</body>
+</html>
