@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="William R. — Delegado Área 3, Región C, Bogotá">
+  <meta name="description" content="¿Qué es el programa de AA? Análisis doctrinal desde la literatura aprobada por la Conferencia: Doce Pasos, Texto Básico, apadrinamiento y práctica.">
+  <meta name="theme-color" content="#7F1D1D">
+  <title>¿Qué es el Programa de AA? · Análisis Doctrinal · Delegado Área 3</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── TOKENS ────────────────────────────────────────────────── */
+    :root {
+      --bordo:     #7F1D1D;
+      --bordo-mid: #991B1B;
+      --bordo-lt:  #FEE2E2;
+      --crema:     #FDFAF4;
+      --crema-dk:  #F3EDE0;
+      --ink:       #1C1410;
+      --ink-mid:   #44372C;
+      --ink-lt:    #7C6F62;
+      --gold:      #92400E;
+      --gold-lt:   #FEF3C7;
+      --rule:      #D6CABB;
+      --serif-d:   'Fraunces', Georgia, serif;
+      --serif-b:   'Spectral', Georgia, serif;
+      --r:         4px;
+    }
+
+    /* ── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--crema);
+      color: var(--ink);
+      font-family: var(--serif-b);
+      font-size: 1rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SITE HEADER ───────────────────────────────────────────── */
+    .site-header {
+      background: var(--bordo);
+      padding: .6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header a.home {
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--serif-d);
+      font-size: .78rem;
+      font-weight: 300;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      opacity: .85;
+    }
+    .site-header a.home:hover { opacity: 1; }
+    .site-header .badge {
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      font-family: var(--serif-b);
+      font-size: .7rem;
+      padding: .2rem .6rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      background: var(--bordo);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,.025) 40px,
+        rgba(255,255,255,.025) 41px
+      );
+      pointer-events: none;
+    }
+    .hero .eyebrow {
+      font-family: var(--serif-b);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: .9rem;
+    }
+    .hero h1 {
+      font-family: var(--serif-d);
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: .75rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+    .hero .sub {
+      font-family: var(--serif-b);
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,.75);
+      max-width: 560px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+    .hero .meta-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+    }
+    .hero .chip {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px;
+      padding: .25rem .75rem;
+      font-size: .72rem;
+      font-family: var(--serif-b);
+      color: rgba(255,255,255,.85);
+    }
+
+    /* ── WRAPPER ───────────────────────────────────────────────── */
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ── TESIS ─────────────────────────────────────────────────── */
+    .tesis {
+      margin: 2.5rem auto;
+      padding: 1.5rem 1.75rem;
+      background: var(--crema-dk);
+      border-left: 5px solid var(--bordo);
+      border-radius: 0 var(--r) var(--r) 0;
+    }
+    .tesis p {
+      font-family: var(--serif-d);
+      font-size: 1.15rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ink);
+    }
+    .tesis p strong { font-weight: 600; font-style: normal; }
+
+    /* ── SECCIÓN ───────────────────────────────────────────────── */
+    .seccion {
+      margin: 2.75rem 0;
+    }
+    .seccion-header {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+      margin-bottom: 1rem;
+      padding-bottom: .6rem;
+      border-bottom: 2px solid var(--rule);
+    }
+    .seccion-num {
+      font-family: var(--serif-d);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--bordo);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .seccion-title {
+      font-family: var(--serif-d);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .seccion-title .sub {
+      display: block;
+      font-family: var(--serif-b);
+      font-size: .78rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-lt);
+      margin-top: .2rem;
+    }
+
+    /* ── BODY TEXT ─────────────────────────────────────────────── */
+    .seccion p {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      margin-bottom: .9rem;
+    }
+    .seccion p:last-child { margin-bottom: 0; }
+
+    /* ── CITA BLOQUE ───────────────────────────────────────────── */
+    .cita {
+      margin: 1.25rem 0;
+      display: grid;
+      grid-template-columns: 4px 1fr;
+      gap: 0 1rem;
+    }
+    .cita-bar { background: var(--bordo); border-radius: 2px; }
+    .cita-body {
+      background: var(--gold-lt);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 1rem 1.25rem;
+    }
+    .cita-body blockquote {
+      font-family: var(--serif-d);
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: .6rem;
+    }
+    .cita-source {
+      font-family: var(--serif-b);
+      font-size: .73rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--bordo);
+    }
+
+    /* ── CARD ELEMENTO ─────────────────────────────────────────── */
+    .elementos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .elem-card {
+      background: #fff;
+      border-radius: var(--r);
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .elem-card-head {
+      background: var(--bordo);
+      padding: .6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .elem-card-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      flex-shrink: 0;
+    }
+    .elem-card-head h3 {
+      font-family: var(--serif-d);
+      font-size: .9rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .elem-card-head h3 span {
+      display: block;
+      font-family: var(--serif-b);
+      font-size: .68rem;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255,255,255,.7);
+    }
+    .elem-card-body {
+      padding: 1rem;
+      font-size: .9rem;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+    .elem-card-body strong { color: var(--ink); font-weight: 600; }
+
+    /* ── TABLE ─────────────────────────────────────────────────── */
+    .tabla-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border-radius: var(--r);
+      border: 1px solid var(--rule);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+    thead tr { background: var(--bordo); }
+    thead th {
+      color: #fff;
+      font-family: var(--serif-b);
+      font-weight: 600;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: .65rem .9rem;
+      text-align: left;
+    }
+    tbody tr:nth-child(even) { background: var(--crema-dk); }
+    tbody tr:nth-child(odd) { background: #fff; }
+    tbody td {
+      padding: .6rem .9rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-mid);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    tbody td:first-child {
+      font-weight: 600;
+      color: var(--bordo);
+      font-family: var(--serif-b);
+      white-space: nowrap;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* ── ALERTA / DISTINCIÓN ───────────────────────────────────── */
+    .alerta {
+      background: var(--bordo-lt);
+      border: 1px solid #FECACA;
+      border-radius: var(--r);
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .alerta-label {
+      font-family: var(--serif-b);
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--bordo);
+      margin-bottom: .4rem;
+    }
+    .alerta p {
+      font-size: .92rem;
+      color: #7f1d1d;
+      margin: 0;
+    }
+
+    /* ── ACCORDION ─────────────────────────────────────────────── */
+    details {
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      margin-bottom: .6rem;
+      background: #fff;
+      overflow: hidden;
+    }
+    details[open] { border-color: var(--bordo); }
+    summary {
+      cursor: pointer;
+      padding: .8rem 1rem;
+      font-family: var(--serif-b);
+      font-weight: 600;
+      font-size: .92rem;
+      color: var(--ink);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '＋';
+      color: var(--bordo);
+      font-size: 1.1rem;
+      transition: transform .25s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details[open] summary { color: var(--bordo); }
+    .details-body {
+      padding: .75rem 1rem 1rem;
+      border-top: 1px solid var(--rule);
+      font-size: .9rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+    .details-body p { margin-bottom: .6rem; }
+    .details-body p:last-child { margin-bottom: 0; }
+
+    /* ── DIVIDER ───────────────────────────────────────────────── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
+    }
+
+    /* ── FUENTES ───────────────────────────────────────────────── */
+    .fuentes {
+      background: var(--crema-dk);
+      border-top: 3px solid var(--bordo);
+      padding: 1.75rem 1.5rem;
+      margin-top: 3rem;
+    }
+    .fuentes h2 {
+      font-family: var(--serif-d);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--bordo);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+    }
+    .fuentes ul { list-style: none; padding: 0; }
+    .fuentes li {
+      font-size: .85rem;
+      color: var(--ink-mid);
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      gap: .5rem;
+      align-items: start;
+    }
+    .fuentes li:last-child { border-bottom: none; }
+    .fuentes li::before {
+      content: '📖';
+      font-size: .8rem;
+      padding-top: .05rem;
+    }
+    .fuentes strong { color: var(--bordo); }
+
+    /* ── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: .72rem;
+      color: var(--ink-lt);
+      font-family: var(--serif-b);
+    }
+    footer a { color: var(--bordo); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      .hero { padding: 2.25rem 1.25rem 2rem; }
+      .seccion-num { font-size: 1.3rem; }
+      .seccion-title { font-size: 1.05rem; }
+      .elementos { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      .site-header, .hero .meta-chips { display: none; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="https://wiroal.github.io/racsg/" class="home">← Delegado Área 3 · Región C</a>
+    <span class="badge">Análisis Doctrinal</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">Alcohólicos Anónimos · Literatura Aprobada por la Conferencia</p>
+    <h1>¿Qué es <em>el programa</em> de AA?</h1>
+    <p class="sub">En los grupos se escucha mucho "el programa me ayudó" o "practiqué el programa". ¿De qué consta exactamente?</p>
+    <div class="meta-chips">
+      <span class="chip">Doce Pasos y Doce Tradiciones</span>
+      <span class="chip">Texto Básico</span>
+      <span class="chip">Plan Nacional 62ª CSG · 2026</span>
+      <span class="chip">Delegado Área 3 · Panel 62</span>
+    </div>
+  </section>
+
+  <!-- CONTENIDO -->
+  <main class="wrap">
+
+    <!-- TESIS -->
+    <div class="tesis">
+      <p>El programa no es <strong>dejar de beber</strong>. Es un proceso espiritual cuyo objetivo es <strong>devolver el sano juicio</strong> —evidenciado en el despertar espiritual— fruto de la práctica de los Doce Pasos. Eso lo dice la CSG Colombia en el Plan Nacional aprobado en 2026. Lo que en los grupos se llama "el programa" tiene tres componentes inseparables: <strong>los Doce Pasos, el Texto Básico y el apadrinamiento</strong>. Sin la práctica activa de los tres, ninguno funciona.</p>
+    </div>
+
+    <!-- ADVERTENCIA -->
+    <div class="alerta">
+      <p class="alerta-label">⚠ Confusión frecuente en los grupos</p>
+      <p>AA es un <strong>programa para la recuperación</strong> que se ha confundido como un programa de abstinencia alcohólica. El alcohólico que solo deja de beber, sin trabajar los Pasos, sigue ingobernable. No supera el Primer Paso. Su vida sigue siendo ingobernable.</p>
+    </div>
+
+    <!-- SECCIÓN 1 ─ LOS PASOS -->
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">1</span>
+        <div class="seccion-title">
+          Los Doce Pasos
+          <span class="sub">El camino espiritual · Primer Legado de AA</span>
+        </div>
+      </div>
+
+      <p>El <em>Doce y Doce</em> es la fuente más directa sobre este punto. Al explicar el Duodécimo Paso, define el programa con precisión quirúrgica:</p>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«En A.A., la forma de prepararse para recibir este don radica en la práctica de los Doce Pasos de nuestro programa.»</blockquote>
+          <span class="cita-source">Doce Pasos y Doce Tradiciones — Duodécimo Paso, p. 106</span>
+        </div>
+      </div>
+
+      <p>No dice "el conocimiento" de los Pasos ni "la lectura". Dice la <strong>práctica</strong>. Y el Plan Nacional de la 62ª CSG lo subraya con énfasis:</p>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«ESTUDIAR, ESTUDIAR, ESTUDIAR Y VOLVER A ESTUDIAR LOS DOCE PASOS; PRACTICAR, PRACTICAR Y SEGUIR PRACTICANDO LOS DOCE PASOS. Hacerle seguimiento a la apropiación de los Pasos a cada miembro de AA, es tarea ineludible del Grupo Base.»</blockquote>
+          <span class="cita-source">Plan Nacional de Acción · 62ª CSG · 2026, p. 6</span>
+        </div>
+      </div>
+
+      <p>Los Doce Pasos son el programa. Pero los Pasos no flotan en el aire: viven escritos en un libro.</p>
+    </div>
+
+    <!-- SECCIÓN 2 ─ TEXTO BÁSICO -->
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">2</span>
+        <div class="seccion-title">
+          El Texto Básico
+          <span class="sub">El continente donde vive el programa</span>
+        </div>
+      </div>
+
+      <p><em>Transmítelo</em> describe el Libro Grande en el momento de su publicación en 1939:</p>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Presentaba la experiencia de A.A. con el alcoholismo además del programa de Doce Pasos; en un lenguaje sencillo, directo.»</blockquote>
+          <span class="cita-source">Transmítelo — Biografía de Bill W.</span>
+        </div>
+      </div>
+
+      <p>El Manual de Servicio AA Colombia 2025 lo categoriza bajo el encabezado explícito:</p>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Alcohólicos Anónimos — Nuestro Texto Básico y el programa de recuperación de AA.»</blockquote>
+          <span class="cita-source">Manual de Servicio AA Colombia 2025 — Apéndice P: Literatura</span>
+        </div>
+      </div>
+
+      <p>Y el Plan Nacional de la 62ª CSG los une en una sola fórmula:</p>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Es indispensable que los grupos asuman la responsabilidad de dar a conocer de manera permanente el programa de recuperación inserto en LOS DOCE PASOS y en EL TEXTO BÁSICO.»</blockquote>
+          <span class="cita-source">Plan Nacional de Acción · 62ª CSG · 2026, p. 7</span>
+        </div>
+      </div>
+
+      <p>Los Pasos del Cuarto al Noveno no pueden trabajarse sin los Capítulos 5 (<em>Cómo trabaja</em>) y 6 (<em>En acción</em>) del Libro Grande. El Texto Básico no es un accesorio: <strong>es donde el programa vive escrito</strong>.</p>
+    </div>
+
+    <!-- SECCIÓN 3 ─ APADRINAMIENTO -->
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">3</span>
+        <div class="seccion-title">
+          El Apadrinamiento
+          <span class="sub">El vehículo de transmisión del programa · Paso 12 en acción</span>
+        </div>
+      </div>
+
+      <p>El Plan Nacional coloca el apadrinamiento en el mismo nivel operativo que el estudio de los Pasos:</p>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Fortalecimiento del Padrino como guía espiritual. El grupo procurará que cada miembro de AA tenga el patrocinio de un padrino. Ningún miembro del grupo debe carecer de padrino.»</blockquote>
+          <span class="cita-source">Plan Nacional de Acción · 62ª CSG · 2026, p. 7</span>
+        </div>
+      </div>
+
+      <p>El Texto Básico dedica el Capítulo 7 entero —<em>Trabajando con los demás</em>— a describir cómo el Paso Doce se hace carne en el apadrinamiento. Sin un padrino que haya recorrido los Pasos, el recién llegado queda solo frente a un texto que no puede descifrar. <strong>El apadrinamiento es el puente entre el libro y la vida del miembro.</strong></p>
+    </div>
+
+    <!-- LOS TRES COMPONENTES ─ CARDS -->
+    <hr class="rule">
+
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">◈</span>
+        <div class="seccion-title">
+          Los tres componentes · Inseparables
+          <span class="sub">Ninguno funciona sin los otros dos</span>
+        </div>
+      </div>
+
+      <div class="elementos">
+
+        <div class="elem-card">
+          <div class="elem-card-head">
+            <div class="elem-card-icon">📋</div>
+            <h3>Los Doce Pasos <span>El camino espiritual</span></h3>
+          </div>
+          <div class="elem-card-body">
+            El programa en sentido estricto. Su fin no es la abstinencia sino el <strong>despertar espiritual</strong> y el <strong>sano juicio</strong>. Requieren práctica activa, no solo lectura.<br><br>
+            <em>«La práctica de los Doce Pasos de nuestro programa.»</em><br>
+            <small>— 12 y 12, p. 106</small>
+          </div>
+        </div>
+
+        <div class="elem-card">
+          <div class="elem-card-head">
+            <div class="elem-card-icon">📗</div>
+            <h3>El Texto Básico <span>El Libro Grande</span></h3>
+          </div>
+          <div class="elem-card-body">
+            Contiene los Pasos explicados y los capítulos operativos para trabajarlos (<em>Cómo trabaja</em>, <em>En acción</em>). <strong>Es el programa escrito.</strong> Sin él, los Pasos son un listado sin instrucciones.<br><br>
+            <em>«Nuestro Texto Básico y el programa de recuperación de AA.»</em><br>
+            <small>— Manual de Servicio, Apéndice P</small>
+          </div>
+        </div>
+
+        <div class="elem-card">
+          <div class="elem-card-head">
+            <div class="elem-card-icon">🤝</div>
+            <h3>El Apadrinamiento <span>Paso 12 en acción</span></h3>
+          </div>
+          <div class="elem-card-body">
+            El puente entre el libro y la vida. Es el vehículo de transmisión. <strong>Ningún miembro debe carecer de padrino.</strong> Sin apadrinamiento, el recién llegado queda solo frente a un texto que no puede descifrar.<br><br>
+            <em>«El grupo procurará que cada miembro de AA tenga el patrocinio de un padrino.»</em><br>
+            <small>— Plan Nacional 62ª CSG, p. 7</small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TABLA COMPLETA -->
+    <hr class="rule">
+
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">◈</span>
+        <div class="seccion-title">
+          El programa completo
+          <span class="sub">Cuadro de elementos, función y fundamento literario</span>
+        </div>
+      </div>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Elemento</th>
+              <th>Función</th>
+              <th>Fundamento literario</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Los Doce Pasos</td>
+              <td>El camino espiritual: de la locura al sano juicio</td>
+              <td>Doce y Doce · Texto Básico Cap. 5</td>
+            </tr>
+            <tr>
+              <td>El Texto Básico</td>
+              <td>El continente donde vive el programa escrito</td>
+              <td>Transmítelo · Manual de Servicio Ap. P</td>
+            </tr>
+            <tr>
+              <td>El Apadrinamiento</td>
+              <td>El vehículo de transmisión de los Pasos</td>
+              <td>Texto Básico Cap. 7 · Plan Nacional p. 7</td>
+            </tr>
+            <tr>
+              <td>La Práctica activa</td>
+              <td>La condición sine qua non de todo lo anterior</td>
+              <td>Doce y Doce p. 106 · Plan Nacional p. 6</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ACCORDION: FINES DE LA RECUPERACIÓN -->
+    <hr class="rule">
+
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">◈</span>
+        <div class="seccion-title">
+          Fines de la recuperación
+          <span class="sub">¿A dónde lleva el programa? · Plan Nacional 62ª CSG, p. 6</span>
+        </div>
+      </div>
+
+      <details open>
+        <summary>1 · Recobrar el sano juicio — Paso Dos</summary>
+        <div class="details-body">
+          <p>El propósito del programa es sacar al alcohólico de su locura y hacerlo transitar hacia la vida normal. Esta finalidad está expresamente descrita en el Paso Dos. Sin Poder Superior —Dios, como cada cual lo conciba—, no hay restablecimiento de la salud mental.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>2 · Despertar espiritual — práctica íntegra de los Doce Pasos</summary>
+        <div class="details-body">
+          <p>Una vida conducida por los defectos de carácter es una vida donde la espiritualidad ha obtenido certificado de defunción. La tarea del grupo base, del padrino y de la estructura de AA es despertar espiritualmente al enfermo. Eso solo se logra cuando el miembro asume el conocimiento y práctica del programa de los Doce Pasos en su totalidad —no solo los Pasos 1 y 12, el "pasodoble".</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>3 · Reencuentro con Dios — Paso Tres y Texto Básico</summary>
+        <div class="details-body">
+          <p>El objetivo central de AA es recuperar al alcohólico con un programa de naturaleza espiritual que tiene como esencia la experiencia espiritual. Esa experiencia tiene como resultado la reconciliación con Dios. El grupo es, en últimas, el responsable de inducir al miembro a vivir una profunda experiencia espiritual.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>4 · Reincorporación a la vida — Paso Doce</summary>
+        <div class="details-body">
+          <p>La recuperación no termina en el individuo: se extiende a la familia, al trabajo y a la sociedad. El Paso Doce es a la vez el resultado del proceso y el punto de partida del servicio. "Trabajando con los demás" —Capítulo 7 del Texto Básico— describe este movimiento hacia afuera.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- LOS TRES LEGADOS -->
+    <hr class="rule">
+
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">◈</span>
+        <div class="seccion-title">
+          El programa y los Tres Legados
+          <span class="sub">Contexto estructural de AA · AA Llega a su Mayoría de Edad</span>
+        </div>
+      </div>
+
+      <p>El "programa" en sentido estricto es el Primero de los Tres Legados de AA. Pero los tres son inseparables en la práctica:</p>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Legado</th>
+              <th>Instrumento</th>
+              <th>Alcance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Recuperación</td>
+              <td>Doce Pasos</td>
+              <td>Cómo el individuo se recupera</td>
+            </tr>
+            <tr>
+              <td>Unidad</td>
+              <td>Doce Tradiciones</td>
+              <td>Cómo el grupo se mantiene unido</td>
+            </tr>
+            <tr>
+              <td>Servicio</td>
+              <td>Doce Conceptos</td>
+              <td>Cómo AA sirve al mundo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«La Recuperación, la Unidad y el Servicio constituyen una unión indisoluble donde la sobriedad personal es la raíz que transforma el servicio en amor en acción.»</blockquote>
+          <span class="cita-source">Informe Preliminar · 62ª RAC Colombia · 2026</span>
+        </div>
+      </div>
+    </div>
+
+  </main><!-- /wrap -->
+
+  <!-- FUENTES -->
+  <div class="fuentes">
+    <div class="wrap">
+      <h2>Fuentes · Literatura aprobada por la Conferencia</h2>
+      <ul>
+        <li><strong>Doce Pasos y Doce Tradiciones</strong> — Bill W. Duodécimo Paso, p. 106.</li>
+        <li><strong>Alcohólicos Anónimos · Texto Básico</strong> — Prólogo; Caps. 5, 6 y 7.</li>
+        <li><strong>Transmítelo</strong> — Biografía de Bill W. Descripción del Libro Grande.</li>
+        <li><strong>Manual de Servicio AA Colombia 2025</strong> — Apéndice P: Literatura.</li>
+        <li><strong>Plan Nacional de Acción para Fortalecer la Unicidad de Propósito</strong> — Acción Recomendable del Comité de Políticas y Admisiones, 62ª CSG Colombia, Rionegro 2026. Págs. 3, 5, 6 y 7.</li>
+        <li><strong>Informe Preliminar Oficial · 62ª RAC Colombia · 2026</strong> — Conclusiones de grupos de compartimiento.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Delegado Área 3, Región C · Panel 62 · Alcohólicos Anónimos Colombia</p>
+    <p style="margin-top:.3rem"><a href="https://wiroal.github.io/racsg/">wiroal.github.io/racsg</a> · Material de servicio para grupos y distritos</p>
+  </footer>
+
+</body>
+</html>
