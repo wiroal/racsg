@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="William R. — Delegado Área 3, Región C, Bogotá">
+  <meta name="description" content="Amor y seguridad en los grupos de AA. Análisis doctrinal desde las Tradiciones y la literatura aprobada: el grupo como refugio seguro y la responsabilidad de protegerlo.">
+  <meta name="theme-color" content="#7F1D1D">
+  <title>Amor y Seguridad en los Grupos · Análisis Doctrinal · Delegado Área 3</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,800;1,300;1,600&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bordo:     #7F1D1D;
+      --bordo-mid: #991B1B;
+      --bordo-lt:  #FEE2E2;
+      --crema:     #FDFAF4;
+      --crema-dk:  #F3EDE0;
+      --ink:       #1C1410;
+      --ink-mid:   #44372C;
+      --ink-lt:    #7C6F62;
+      --gold:      #92400E;
+      --gold-lt:   #FEF3C7;
+      --rule:      #D6CABB;
+      --verde-lt:  #F0FDF4;
+      --verde:     #166534;
+      --serif-d:   'Fraunces', Georgia, serif;
+      --serif-b:   'Spectral', Georgia, serif;
+      --r:         4px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--crema);
+      color: var(--ink);
+      font-family: var(--serif-b);
+      font-size: 1rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────────── */
+    .site-header {
+      background: var(--bordo);
+      padding: .6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header a.home {
+      color: #fff;
+      text-decoration: none;
+      font-family: var(--serif-d);
+      font-size: .78rem;
+      font-weight: 300;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      opacity: .85;
+    }
+    .site-header a.home:hover { opacity: 1; }
+    .site-header .badge {
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      font-family: var(--serif-b);
+      font-size: .7rem;
+      padding: .2rem .6rem;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* ── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      background: var(--bordo);
+      color: #fff;
+      padding: 3rem 1.5rem 2.75rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent, transparent 40px,
+        rgba(255,255,255,.025) 40px, rgba(255,255,255,.025) 41px
+      );
+      pointer-events: none;
+    }
+    .hero .eyebrow {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.6);
+      margin-bottom: .9rem;
+    }
+    .hero h1 {
+      font-family: var(--serif-d);
+      font-size: clamp(2rem, 7vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: .5rem;
+    }
+    .hero h1 em { font-style: italic; font-weight: 300; }
+    .hero .sub {
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,.75);
+      max-width: 600px;
+      margin: .5rem auto 1.5rem;
+      line-height: 1.6;
+    }
+    .hero-lema {
+      display: inline-block;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: var(--r);
+      padding: .6rem 1.2rem;
+      font-family: var(--serif-d);
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,.9);
+      margin-top: .5rem;
+    }
+
+    /* ── WRAP ───────────────────────────────────────────────────── */
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* ── TESIS ──────────────────────────────────────────────────── */
+    .tesis {
+      margin: 2.5rem 0;
+      padding: 1.5rem 1.75rem;
+      background: var(--crema-dk);
+      border-left: 5px solid var(--bordo);
+      border-radius: 0 var(--r) var(--r) 0;
+    }
+    .tesis p {
+      font-family: var(--serif-d);
+      font-size: 1.12rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+    .tesis p strong { font-weight: 600; font-style: normal; color: var(--bordo); }
+
+    /* ── SECCIÓN ────────────────────────────────────────────────── */
+    .seccion { margin: 2.75rem 0; }
+    .seccion-header {
+      display: flex;
+      align-items: baseline;
+      gap: .75rem;
+      margin-bottom: 1.1rem;
+      padding-bottom: .6rem;
+      border-bottom: 2px solid var(--rule);
+    }
+    .seccion-num {
+      font-family: var(--serif-d);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--bordo);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .seccion-title {
+      font-family: var(--serif-d);
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .seccion-title .sub {
+      display: block;
+      font-family: var(--serif-b);
+      font-size: .78rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-lt);
+      margin-top: .2rem;
+    }
+
+    /* ── SUB-SECCIÓN ────────────────────────────────────────────── */
+    .subseccion {
+      margin: 1.75rem 0 .75rem;
+      font-family: var(--serif-d);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .subseccion::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 2px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── TEXTO ──────────────────────────────────────────────────── */
+    .seccion p {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      margin-bottom: .9rem;
+      line-height: 1.78;
+    }
+    .seccion p:last-child { margin-bottom: 0; }
+    .seccion p strong { color: var(--ink); font-weight: 600; }
+
+    /* ── CITA ───────────────────────────────────────────────────── */
+    .cita {
+      margin: 1.25rem 0;
+      display: grid;
+      grid-template-columns: 4px 1fr;
+      gap: 0 1rem;
+    }
+    .cita-bar { background: var(--bordo); border-radius: 2px; }
+    .cita-body {
+      background: var(--gold-lt);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 1rem 1.25rem;
+    }
+    .cita-body blockquote {
+      font-family: var(--serif-d);
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.68;
+      color: var(--ink);
+      margin-bottom: .6rem;
+    }
+    .cita-source {
+      font-family: var(--serif-b);
+      font-size: .73rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--bordo);
+    }
+
+    /* ── CONTUNDENCIA (cita fuerte) ─────────────────────────────── */
+    .cita-fuerte {
+      margin: 1.5rem 0;
+      background: var(--bordo);
+      border-radius: var(--r);
+      padding: 1.25rem 1.5rem;
+    }
+    .cita-fuerte blockquote {
+      font-family: var(--serif-d);
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: #fff;
+      margin-bottom: .5rem;
+    }
+    .cita-fuerte .cita-source {
+      color: rgba(255,255,255,.65);
+    }
+
+    /* ── LISTA VIÑETAS ──────────────────────────────────────────── */
+    .lista {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .lista li {
+      padding: .45rem 0 .45rem 1.6rem;
+      position: relative;
+      font-size: .97rem;
+      color: var(--ink-mid);
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.65;
+    }
+    .lista li:last-child { border-bottom: none; }
+    .lista li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      top: .5rem;
+      color: var(--bordo);
+      font-size: .85rem;
+    }
+
+    /* ── ALERTA ─────────────────────────────────────────────────── */
+    .alerta {
+      border-radius: var(--r);
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .alerta.rojo {
+      background: var(--bordo-lt);
+      border: 1px solid #FECACA;
+    }
+    .alerta.verde {
+      background: var(--verde-lt);
+      border: 1px solid #BBF7D0;
+    }
+    .alerta-label {
+      font-family: var(--serif-b);
+      font-size: .7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: .4rem;
+    }
+    .alerta.rojo .alerta-label { color: var(--bordo); }
+    .alerta.verde .alerta-label { color: var(--verde); }
+    .alerta p { font-size: .92rem; margin: 0; line-height: 1.65; }
+    .alerta.rojo p { color: #7f1d1d; }
+    .alerta.verde p { color: #14532d; }
+
+    /* ── DISTINCIÓN CLAVE ───────────────────────────────────────── */
+    .distincion {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .distincion-item {
+      padding: 1rem 1.1rem;
+      border-radius: var(--r);
+      border: 1px solid var(--rule);
+    }
+    .distincion-item.no { background: var(--bordo-lt); border-color: #FECACA; }
+    .distincion-item.si { background: var(--verde-lt); border-color: #BBF7D0; }
+    .distincion-item .tag {
+      font-family: var(--serif-b);
+      font-size: .68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: .4rem;
+    }
+    .distincion-item.no .tag { color: var(--bordo); }
+    .distincion-item.si .tag { color: var(--verde); }
+    .distincion-item p {
+      font-size: .88rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .distincion-item.no p { color: #7f1d1d; }
+    .distincion-item.si p { color: #14532d; }
+
+    /* ── TABLA ──────────────────────────────────────────────────── */
+    .tabla-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border-radius: var(--r);
+      border: 1px solid var(--rule);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    thead tr { background: var(--bordo); }
+    thead th {
+      color: #fff;
+      font-family: var(--serif-b);
+      font-weight: 600;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: .65rem .9rem;
+      text-align: left;
+    }
+    tbody tr:nth-child(even) { background: var(--crema-dk); }
+    tbody tr:nth-child(odd) { background: #fff; }
+    tbody td {
+      padding: .6rem .9rem;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink-mid);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    tbody td:first-child {
+      font-weight: 600;
+      color: var(--bordo);
+      font-family: var(--serif-b);
+    }
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* ── ACCORDION ──────────────────────────────────────────────── */
+    details {
+      border: 1px solid var(--rule);
+      border-radius: var(--r);
+      margin-bottom: .6rem;
+      background: #fff;
+      overflow: hidden;
+    }
+    details[open] { border-color: var(--bordo); }
+    summary {
+      cursor: pointer;
+      padding: .8rem 1rem;
+      font-family: var(--serif-b);
+      font-weight: 600;
+      font-size: .92rem;
+      color: var(--ink);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '＋';
+      color: var(--bordo);
+      font-size: 1.1rem;
+      transition: transform .25s;
+      flex-shrink: 0;
+      margin-left: .5rem;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details[open] summary { color: var(--bordo); }
+    .details-body {
+      padding: .75rem 1rem 1rem;
+      border-top: 1px solid var(--rule);
+      font-size: .9rem;
+      color: var(--ink-mid);
+      line-height: 1.72;
+    }
+    .details-body p { margin-bottom: .6rem; }
+    .details-body p:last-child { margin-bottom: 0; }
+    .details-body strong { color: var(--ink); font-weight: 600; }
+
+    /* ── REGLA ──────────────────────────────────────────────────── */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
+    }
+
+    /* ── CIERRE ─────────────────────────────────────────────────── */
+    .cierre-bloque {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: var(--bordo);
+      margin: 3rem 0 0;
+      color: #fff;
+    }
+    .cierre-bloque blockquote {
+      font-family: var(--serif-d);
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.55;
+      color: #fff;
+      max-width: 600px;
+      margin: 0 auto 1rem;
+    }
+    .cierre-bloque .cita-source {
+      color: rgba(255,255,255,.6);
+      font-size: .73rem;
+    }
+    .cierre-bloque p.cierre-texto {
+      font-size: .95rem;
+      color: rgba(255,255,255,.82);
+      max-width: 580px;
+      margin: 1.5rem auto 0;
+      line-height: 1.7;
+    }
+
+    /* ── FUENTES ────────────────────────────────────────────────── */
+    .fuentes {
+      background: var(--crema-dk);
+      border-top: 3px solid var(--bordo);
+      padding: 1.75rem 1.5rem;
+    }
+    .fuentes h2 {
+      font-family: var(--serif-d);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--bordo);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+    }
+    .fuentes ul { list-style: none; padding: 0; }
+    .fuentes li {
+      font-size: .85rem;
+      color: var(--ink-mid);
+      padding: .45rem 0 .45rem 1.75rem;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      line-height: 1.6;
+    }
+    .fuentes li:last-child { border-bottom: none; }
+    .fuentes li::before {
+      content: '📖';
+      font-size: .78rem;
+      position: absolute;
+      left: 0;
+      top: .55rem;
+    }
+    .fuentes strong { color: var(--bordo); }
+
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: .72rem;
+      color: var(--ink-lt);
+      font-family: var(--serif-b);
+    }
+    footer a { color: var(--bordo); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 520px) {
+      .distincion { grid-template-columns: 1fr; }
+      .hero { padding: 2.25rem 1.25rem 2rem; }
+      .seccion-num { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <a href="https://wiroal.github.io/racsg/" class="home">← Delegado Área 3 · Región C</a>
+    <span class="badge">Tradiciones · Vida de Grupo</span>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">Alcohólicos Anónimos · Literatura Aprobada por la Conferencia</p>
+    <h1>Amor <em>y</em> Seguridad<br>en los Grupos</h1>
+    <p class="sub">El grupo no es solo un espacio de bienvenida. Es también un espacio de responsabilidad. Las Tradiciones garantizan ambas cosas.</p>
+    <span class="hero-lema">«El grupo de AA es un refugio seguro rodeado por el tirano alcohol.»</span>
+  </section>
+
+  <main class="wrap">
+
+    <!-- TESIS -->
+    <div class="tesis">
+      <p>El amor sin límites no protege al recién llegado: lo expone. La seguridad sin amor no acoge al que sufre: lo aleja. <strong>Las Tradiciones de AA son la única garantía que sostiene ambos valores a la vez.</strong> Este documento explora qué dice la literatura aprobada sobre el deber de amar y el deber de proteger —y cómo los dos son inseparables.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════
+         PARTE I — EL AMOR
+    ═══════════════════════════════════════════════════ -->
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">I</span>
+        <div class="seccion-title">
+          El Amor — La naturaleza del grupo
+          <span class="sub">El grupo como refugio · Primera y Tercera Tradición</span>
+        </div>
+      </div>
+
+      <div class="subseccion">El grupo es un refugio seguro</div>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Cada grupo de AA es un refugio seguro. Pero siempre está rodeado por el tirano alcohol. Como los compañeros de Eddie Rickenbacker, flotando en una balsa en alta mar, nosotros los que vivimos en el refugio de AA, nos apegamos unos a otros con una determinación que el mundo de afuera rara vez puede comprender. La anarquía del individuo va desapareciendo. Se desvanece el egoísmo, y la democracia se convierte en realidad. Empezamos a conocer la verdadera libertad de espíritu.»</blockquote>
+          <span class="cita-source">El Lenguaje del Corazón, p. 36 — Bill W.</span>
+        </div>
+      </div>
+
+      <p>El grupo no es un club social ni un salón de conferencias: es una <strong>balsa de salvamento</strong>. En esa balsa, nadie puede permitirse mecer el barco. El bienestar del grupo no es una formalidad burocrática —es la condición de supervivencia de cada uno de sus miembros.</p>
+
+      <div class="subseccion">La Primera Tradición: amor que antepone lo común</div>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«La Primera Tradición dice que el bienestar común de AA tiene la preferencia. Esto quiere decir realmente que tendremos que hacer a un lado nuestras ambiciones personales cada vez que entren en conflicto con la seguridad o la eficacia de nuestra Comunidad. Quiere decir que a veces tenemos que amar a nuestra Sociedad más que a nosotros mismos.»</blockquote>
+          <span class="cita-source">El Lenguaje del Corazón — Bill W.</span>
+        </div>
+      </div>
+
+      <p>Cada miembro, con sus diferencias, pone el bien del grupo por encima del bien propio. Eso no es una renuncia: es la forma más alta de amor en acción dentro de AA.</p>
+
+      <div class="subseccion">La Tercera Tradición: amor incondicional al recién llegado</div>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Todo AA recién llegado siente enseguida que se le quiere, se confía en él y se le ama. Qué buena comprensión tenemos de sus necesidades; ciertamente, nosotros mismos las hemos tenido.»</blockquote>
+          <span class="cita-source">El Lenguaje del Corazón — Bill W.</span>
+        </div>
+      </div>
+
+      <p>El único requisito para ser miembro de AA es querer dejar de beber. Ningún grupo puede poner más condiciones. La puerta es ancha —y esa amplitud es la fuerza de AA, no su debilidad.</p>
+
+      <div class="subseccion">Las últimas palabras del Dr. Bob</div>
+
+      <div class="cita-fuerte">
+        <blockquote>«Amor y Servicio.»</blockquote>
+        <span class="cita-source">Dr. Bob S. — última intervención ante la Comunidad, 3 de julio de 1950</span>
+      </div>
+
+      <p>Dos palabras. Todo el programa. Todo el legado.</p>
+    </div>
+
+    <hr class="rule">
+
+    <!-- ═══════════════════════════════════════════════════
+         PARTE II — LA SEGURIDAD
+    ═══════════════════════════════════════════════════ -->
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">II</span>
+        <div class="seccion-title">
+          La Seguridad — Responsabilidad del grupo
+          <span class="sub">Apéndice G · Talleres de Capacitación para el Servicio en AA (ed. 2024, pp. 88-90)</span>
+        </div>
+      </div>
+
+      <div class="alerta rojo">
+        <p class="alerta-label">Punto de partida</p>
+        <p>Ser miembro de AA <strong>no significa tener que tolerarlo todo</strong>. El amor incondicional al recién llegado no es sinónimo de impunidad para quien daña el espacio de recuperación.</p>
+      </div>
+
+      <div class="subseccion">1. Lo que ningún miembro debe tolerar</div>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Ser miembro de AA no significa tener que tolerar acoso sexual, amenazas de violencia, coacción económica u hostigamiento. Tampoco es aceptable presionar a los miembros de AA para que adopten un punto de vista o creencia en particular sobre la meditación, la religión y otras cuestiones externas.»</blockquote>
+          <span class="cita-source">Apéndice G · Talleres de Capacitación para el Servicio en AA, p. 88</span>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Nadie debería tolerar discriminación por su raza, orientación sexual, género, edad u otros motivos cuando busca ayuda en AA.»</blockquote>
+          <span class="cita-source">Apéndice G · Talleres de Capacitación para el Servicio en AA, p. 88</span>
+        </div>
+      </div>
+
+      <div class="subseccion">2. Situaciones que amenazan la unidad y la seguridad</div>
+
+      <p>El Apéndice G identifica tres situaciones concretas que ponen en riesgo al grupo:</p>
+
+      <ul class="lista">
+        <li>Las insinuaciones sexuales no deseadas y los comportamientos abusivos son contrarios a llevar el mensaje de recuperación.</li>
+        <li>Puede haber comportamientos fuera de los horarios de reunión que afecten cuán segura se siente una persona para regresar al grupo.</li>
+        <li>Las situaciones conflictivas o que alteran la paz pueden asustar o alarmar a los miembros, sean nuevos o antiguos.</li>
+      </ul>
+
+      <div class="subseccion">3. La tensión entre inclusión y límites — Tercera Tradición (forma larga)</div>
+
+      <p>Este es el punto más delicado y más importante:</p>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Nuestra Comunidad debe incluir a todos los que sufren del alcoholismo. Por eso, no podemos rechazar a nadie que quiera recuperarse. No obstante, un grupo de AA podría pedirle a alguien que deje de asistir a sus reuniones, si altera el orden y la concordia e interfiere con la transmisión del mensaje. Ninguna entidad de AA propone impedirle a ninguna persona ser miembro de Alcohólicos Anónimos.»</blockquote>
+          <span class="cita-source">Apéndice G · Talleres de Capacitación para el Servicio en AA, p. 88 — Tercera Tradición, forma larga</span>
+        </div>
+      </div>
+
+      <div class="distincion">
+        <div class="distincion-item no">
+          <p class="tag">❌ Lo que AA no puede hacer</p>
+          <p>Negarle a alguien la <strong>membresía</strong> en AA. Eso es absoluto e irrevocable. Cualquier alcohólico que quiera dejar de beber es miembro.</p>
+        </div>
+        <div class="distincion-item si">
+          <p class="tag">✓ Lo que el grupo sí puede hacer</p>
+          <p>Pedirle a alguien que <strong>no asista a sus reuniones</strong> cuando su comportamiento destruye el ambiente de recuperación. No es expulsión: es protección del mensaje.</p>
+        </div>
+      </div>
+
+      <div class="subseccion">4. El anonimato no es escudo para el daño</div>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Llamar a las autoridades pertinentes no contradice las Tradiciones de AA. El anonimato no encubre el comportamiento delictivo o inapropiado. Cualquier conducta dentro de una reunión de AA está sujeta a las mismas leyes que rigen fuera de la reunión.»</blockquote>
+          <span class="cita-source">Apéndice G · Talleres de Capacitación para el Servicio en AA, p. 88</span>
+        </div>
+      </div>
+
+      <p>La Undécima Tradición protege la <strong>identidad</strong> del miembro. No protege el daño. Los grupos no tienen que paralizarse por falsos dilemas entre anonimato y justicia.</p>
+
+      <div class="subseccion">5. El propósito primordial como brújula</div>
+
+      <div class="cita-fuerte">
+        <blockquote>«Cada Grupo tiene un solo objetivo primordial: llevar el mensaje al alcohólico que aún está sufriendo.»</blockquote>
+        <span class="cita-source">Apéndice G · Talleres de Capacitación para el Servicio en AA, p. 89</span>
+      </div>
+
+      <p>Ante cualquier situación difícil, la pregunta correcta es siempre la misma: <strong>¿esto ayuda u obstaculiza que el mensaje llegue al que sufre?</strong> Esa brújula nunca falla.</p>
+    </div>
+
+    <hr class="rule">
+
+    <!-- ═══════════════════════════════════════════════════
+         PARTE III — EL EQUILIBRIO
+    ═══════════════════════════════════════════════════ -->
+    <div class="seccion">
+      <div class="seccion-header">
+        <span class="seccion-num">III</span>
+        <div class="seccion-title">
+          El Equilibrio — Las Tradiciones como garantía
+          <span class="sub">El marco que hace posibles el amor y la seguridad a la vez</span>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-bar"></div>
+        <div class="cita-body">
+          <blockquote>«Las Tradiciones han de depararnos mucho más que la protección contra la mediocridad y la disolución… la confianza y el amor mutuos que tendremos que cultivar si esperamos alcanzar la libertad que buscamos.»</blockquote>
+          <span class="cita-source">El Lenguaje del Corazón — Bill W.</span>
+        </div>
+      </div>
+
+      <p>El grupo que practica sus Tradiciones es el grupo que puede hacer ambas cosas a la vez: acoger sin discriminar y proteger sin excusas.</p>
+
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Tradición</th>
+              <th>Lo que garantiza en el grupo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primera</td>
+              <td>El bienestar común tiene la preferencia — protege el espacio de todos</td>
+            </tr>
+            <tr>
+              <td>Tercera</td>
+              <td>La puerta abierta al que sufre — nadie puede ser rechazado como miembro</td>
+            </tr>
+            <tr>
+              <td>Quinta</td>
+              <td>Un solo propósito — orienta cada decisión difícil del grupo</td>
+            </tr>
+            <tr>
+              <td>Undécima</td>
+              <td>El anonimato protege identidades — no encubre conductas ilegales</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subseccion">Sugerencias prácticas — Apéndice G, pp. 89-90</div>
+
+      <ul class="lista">
+        <li>Debatir la seguridad en las reuniones de <strong>conciencia de grupo</strong> y mesas de trabajo de servicio.</li>
+        <li>Considerar la creación de <strong>guías generales y procedimientos de seguridad</strong> propios del grupo.</li>
+        <li>Incluir la seguridad como <strong>tema del inventario de grupo</strong>.</li>
+        <li>Si surgen inquietudes personales, conversar con un <strong>padrino, madrina</strong>, amigo de confianza o profesional.</li>
+        <li>Contactar al <strong>MCD o Delegado</strong> para obtener la experiencia compartida local.</li>
+        <li>Para emergencias médicas, incendios u otras crisis: <strong>atender la emergencia primero</strong> — es más importante que continuar la reunión.</li>
+        <li>Los principios de seguridad que aplican presencialmente <strong>también aplican en entornos digitales</strong>: reuniones virtuales, redes sociales, grupos de mensajería.</li>
+      </ul>
+
+      <div class="alerta verde">
+        <p class="alerta-label">✓ El grupo que practica las Tradiciones</p>
+        <p>Acoge sin condiciones al que llega. Protege sin vacilación el espacio donde se transmite el mensaje. Y cuando aparece un conflicto, tiene una brújula clara: el bienestar del grupo y el propósito primordial de AA.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- CIERRE -->
+  <div class="cierre-bloque">
+    <blockquote>«La vigilancia siempre será el precio que hay que pagar para sobrevivir.»</blockquote>
+    <span class="cita-source">El Lenguaje del Corazón — Bill W.</span>
+    <p class="cierre-texto">Un grupo no dura porque nunca tuvo problemas. Dura porque cada vez que los tuvo eligió los principios sobre las personalidades, el amor sobre el miedo, y la seguridad del recién llegado sobre la comodidad propia. Eso es AA.</p>
+  </div>
+
+  <!-- FUENTES -->
+  <div class="fuentes">
+    <div class="wrap">
+      <h2>Fuentes · Literatura aprobada por la Conferencia</h2>
+      <ul>
+        <li><strong>El Lenguaje del Corazón</strong> — Bill W. «Refugio seguro» (p. 36); Primera Tradición; Tercera Tradición; vigilancia.</li>
+        <li><strong>Talleres de Capacitación para el Servicio en AA. Hacia el Liderazgo Integral</strong> (ed. 2024) — Apéndice G: La Seguridad y AA, pp. 88-90.</li>
+        <li><strong>Alcohólicos Anónimos · Texto Básico</strong> — Tercera Tradición (forma larga), Apéndice I.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>Delegado Área 3, Región C · Panel 62 · Alcohólicos Anónimos Colombia</p>
+    <p style="margin-top:.3rem"><a href="https://wiroal.github.io/racsg/">wiroal.github.io/racsg</a> · Material de servicio para grupos y distritos</p>
+  </footer>
+
+</body>
+</html>
