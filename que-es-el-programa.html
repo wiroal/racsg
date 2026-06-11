@@ -429,18 +429,18 @@
     .fuentes li {
       font-size: .85rem;
       color: var(--ink-mid);
-      padding: .5rem 0;
+      padding: .45rem 0 .45rem 1.75rem;
       border-bottom: 1px solid var(--rule);
-      display: grid;
-      grid-template-columns: 1.5rem 1fr;
-      gap: .5rem;
-      align-items: start;
+      position: relative;
+      line-height: 1.6;
     }
     .fuentes li:last-child { border-bottom: none; }
     .fuentes li::before {
       content: '📖';
-      font-size: .8rem;
-      padding-top: .05rem;
+      font-size: .78rem;
+      position: absolute;
+      left: 0;
+      top: .55rem;
     }
     .fuentes strong { color: var(--bordo); }
 
