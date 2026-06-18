@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#003087">
+  <meta name="author" content="William R. — Delegado Área 3, Región C, Bogotá">
+  <meta name="description" content="Pautas para escribir en la Revista AA El Mensaje. Quién puede escribir, sobre qué, requisitos de forma y cómo enviar tu testimonio.">
+  <title>Cómo escribir para AA El Mensaje · Delegado Área 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --azul:        #003087;   /* azul corporativo AA Colombia */
+      --azul-mid:    #1A4EA0;
+      --azul-dark:   #00204F;
+      --azul-light:  #EBF1FA;
+      --azul-xlight: #F4F7FC;
+      --dorado:      #C89000;
+      --dorado-claro:#F0C040;
+      --blanco:      #FFFFFF;
+      --gris-txt:    #2A3A50;
+      --gris-suave:  #5A6A7A;
+      --fondo:       #F7F9FC;
+      --borde:       #C8D8EA;
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'Spectral', Georgia, serif;
+      --font-ui:      system-ui, -apple-system, sans-serif;
+
+      --r: 10px;
+      --shadow: 0 2px 12px rgba(0,48,135,.10);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--fondo);
+      color: var(--gris-txt);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    .nav {
+      background: var(--azul-dark);
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav a {
+      color: var(--dorado-claro);
+      text-decoration: none;
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      transition: opacity .2s;
+    }
+    .nav a:hover { opacity: .75; }
+    .nav-sep { color: #4A6A9A; font-size: .8rem; }
+    .nav-current {
+      color: #A0BCD8;
+      font-family: var(--font-ui);
+      font-size: .82rem;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────── */
+    .page-header {
+      background: var(--azul);
+      color: var(--blanco);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Logo */
+    .header-logo {
+      display: block;
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      margin: 0 auto 1rem;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.25));
+    }
+
+    .eyebrow {
+      font-family: var(--font-ui);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--dorado-claro);
+      margin-bottom: .6rem;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      line-height: 1.15;
+      margin-bottom: .75rem;
+      color: #fff;
+    }
+    .page-header h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--dorado-claro);
+    }
+
+    .lead {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #B8CFEA;
+      max-width: 580px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.6;
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      justify-content: center;
+      margin-top: .25rem;
+    }
+    .tag {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #D0E4FF;
+      font-family: var(--font-ui);
+      font-size: .72rem;
+      letter-spacing: .06em;
+      padding: .25rem .7rem;
+      border-radius: 999px;
+    }
+
+    /* ─── GOLD STRIPE ────────────────────────────────────── */
+    .stripe {
+      height: 4px;
+      background: linear-gradient(90deg, var(--azul-dark), var(--dorado), var(--azul-dark));
+    }
+
+    /* ─── MAIN ───────────────────────────────────────────── */
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    /* ─── SECTION CARD ───────────────────────────────────── */
+    .seccion {
+      background: var(--blanco);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--borde);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .seccion-header {
+      background: var(--azul);
+      color: var(--blanco);
+      padding: .8rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .seccion-num {
+      background: var(--dorado);
+      color: var(--azul-dark);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .seccion-header h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .seccion-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+
+    /* ─── LISTAS ─────────────────────────────────────────── */
+    .lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .lista li {
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .lista li::before {
+      content: '▸';
+      color: var(--azul);
+      font-size: .85rem;
+      flex-shrink: 0;
+      margin-top: .2rem;
+    }
+    .lista.no li::before {
+      content: '✕';
+      color: #B00020;
+    }
+    .lista.si li::before {
+      content: '✓';
+      color: #1A7A3A;
+    }
+
+    /* ─── BLOCKQUOTE ─────────────────────────────────────── */
+    blockquote {
+      border-left: 4px solid var(--azul);
+      background: var(--azul-xlight);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: var(--azul-dark);
+      line-height: 1.65;
+    }
+    blockquote cite {
+      display: block;
+      margin-top: .5rem;
+      font-style: normal;
+      font-family: var(--font-ui);
+      font-size: .78rem;
+      color: var(--gris-suave);
+      letter-spacing: .03em;
+    }
+
+    /* ─── TABLA ──────────────────────────────────────────── */
+    .tabla-wrap {
+      overflow-x: auto;
+      border-radius: var(--r);
+      border: 1px solid var(--borde);
+      margin-top: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+    thead tr {
+      background: var(--azul);
+      color: #fff;
+    }
+    thead th {
+      padding: .6rem .9rem;
+      text-align: left;
+      font-family: var(--font-ui);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    tbody tr:nth-child(even) { background: var(--azul-xlight); }
+    tbody tr:nth-child(odd)  { background: var(--blanco); }
+    tbody tr:hover { background: var(--azul-light); transition: background .15s; }
+    td {
+      padding: .55rem .9rem;
+      border-bottom: 1px solid var(--borde);
+      vertical-align: top;
+    }
+    td:first-child {
+      font-weight: 600;
+      color: var(--azul);
+      white-space: nowrap;
+    }
+
+    /* ─── AVISO ──────────────────────────────────────────── */
+    .aviso {
+      background: #FFF8E6;
+      border: 1px solid #E8C840;
+      border-left: 4px solid var(--dorado);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: .9rem 1.1rem;
+      font-size: .93rem;
+      color: #5A4A00;
+      display: flex;
+      gap: .65rem;
+      align-items: flex-start;
+      margin: 1rem 0;
+    }
+    .aviso-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .1rem; }
+
+    /* ─── CITA DESTACADA ─────────────────────────────────── */
+    .cita-grande {
+      background: var(--azul);
+      color: #fff;
+      border-radius: var(--r);
+      padding: 1.75rem 1.5rem 1.5rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .cita-grande p {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+      line-height: 1.55;
+      color: #D6E8FF;
+      margin-bottom: .75rem;
+    }
+    .cita-grande p strong {
+      font-weight: 600;
+      color: #fff;
+    }
+    .cita-grande cite {
+      font-family: var(--font-ui);
+      font-size: .78rem;
+      color: var(--dorado-claro);
+      letter-spacing: .04em;
+    }
+
+    /* ─── ENVÍO ──────────────────────────────────────────── */
+    .envio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: .5rem;
+    }
+    .envio-card {
+      background: var(--azul-xlight);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 1rem 1.1rem;
+    }
+    .envio-card .envio-icon {
+      font-size: 1.4rem;
+      margin-bottom: .35rem;
+    }
+    .envio-card strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--azul);
+      margin-bottom: .2rem;
+    }
+    .envio-card span {
+      font-size: .9rem;
+      color: var(--gris-txt);
+      line-height: 1.45;
+    }
+    .envio-card a {
+      color: var(--azul-mid);
+      text-decoration: none;
+    }
+    .envio-card a:hover { text-decoration: underline; }
+
+    /* ─── FUENTES ────────────────────────────────────────── */
+    .fuentes {
+      background: var(--blanco);
+      border: 1px solid var(--borde);
+      border-radius: var(--r);
+      padding: 1.25rem 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .fuentes h3 {
+      font-family: var(--font-ui);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--azul);
+      margin-bottom: .85rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .fuentes h3::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--borde);
+    }
+    .fuentes ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+    .fuentes li {
+      font-size: .85rem;
+      color: var(--gris-suave);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .fuentes li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--dorado);
+      font-weight: 700;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--azul-dark);
+      color: #7A9AC0;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-family: var(--font-ui);
+      font-size: .78rem;
+      line-height: 1.8;
+    }
+    footer a {
+      color: var(--dorado-claro);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+    footer strong {
+      color: #A8C8E8;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 520px) {
+      .seccion-body { padding: 1rem 1rem 1.25rem; }
+      .envio-grid   { grid-template-columns: 1fr; }
+      table { font-size: .82rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="https://wiroal.github.io/racsg/">
+    ← Delegado Área 3 · Región C
+  </a>
+  <span class="nav-sep">·</span>
+  <span class="nav-current">Publicaciones · AA El Mensaje</span>
+</nav>
+
+<!-- HEADER -->
+<header class="page-header">
+  <img
+    src="https://wiroal.github.io/image/logoaa.png"
+    alt="Logo Alcohólicos Anónimos Colombia"
+    class="header-logo"
+  >
+  <p class="eyebrow">Alcohólicos Anónimos Colombia · Revista AA El Mensaje</p>
+  <h1>Usted puede <em>escribir</em></h1>
+  <p class="lead">
+    Pautas para contribuir con tu testimonio en la revista nacional de AA Colombia.
+  </p>
+  <div class="tags">
+    <span class="tag">Manual de Servicio 2025</span>
+    <span class="tag">AA El Mensaje</span>
+    <span class="tag">Testimonio de recuperación</span>
+    <span class="tag">Delegado Área 3 · Panel 62</span>
+  </div>
+</header>
+
+<div class="stripe"></div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- SECCIÓN I: ¿QUIÉN? -->
+  <div class="seccion">
+    <div class="seccion-header">
+      <span class="seccion-num">I</span>
+      <h2>¿Quién puede escribir?</h2>
+    </div>
+    <div class="seccion-body">
+      <ul class="lista">
+        <li>Cualquier miembro de AA</li>
+        <li>Amigos no alcohólicos de la Comunidad interesados en participar</li>
+        <li>No se necesita experiencia ni ser escritor profesional</li>
+      </ul>
+
+      <blockquote>
+        «¿Es necesario tener experiencia o incluso ser escritor profesional para escribir
+        algo para AA El Mensaje? No es necesario en absoluto.»
+        <cite>Manual de Servicio AA Colombia 2025, p. 75</cite>
+      </blockquote>
+
+      <div class="aviso">
+        <span class="aviso-icon">✏️</span>
+        <span>
+          <strong>La ortografía no es obstáculo:</strong>
+          el Departamento de Publicaciones y el Comité Editor revisan y corrigen el texto
+          antes de su publicación.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN II: ¿SOBRE QUÉ? -->
+  <div class="seccion">
+    <div class="seccion-header">
+      <span class="seccion-num">II</span>
+      <h2>¿Sobre qué escribir?</h2>
+    </div>
+    <div class="seccion-body">
+      <p style="margin-bottom:.9rem; font-style:italic; color:var(--gris-suave);">
+        El hilo conductor: <strong>cómo éramos, lo que nos aconteció y cómo somos ahora.</strong>
+      </p>
+      <ul class="lista">
+        <li><strong>Llegada a AA</strong> — cómo llegué, quién me llevó, cómo empecé con los Doce Pasos</li>
+        <li><strong>Historia en el grupo</strong> — problemas económicos, familiares, laborales, con la ley, en el hospital o en la cárcel</li>
+        <li><strong>Permanencia en el programa</strong> — cómo ha cambiado mi vida, qué ha sido lo más difícil</li>
+        <li><strong>Servicio en AA</strong> — dificultades encontradas, lecciones aprendidas, cómo mantener la unidad</li>
+        <li><strong>Madrinazgo / padrinazgo</strong> — a quién ayudé y qué recuerdo de esa experiencia</li>
+        <li><strong>Estudio del Manual</strong> y el camino del Servicio en AA</li>
+      </ul>
+
+      <blockquote>
+        «Los redactores animan a los escritores a expresar sus experiencias
+        de su propia manera. Se seleccionan los artículos para ser publicados
+        solamente después de una discusión y un consenso de los miembros de
+        la redacción.»
+        <cite>Manual de Servicio AA Colombia 2025, p. 74</cite>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- SECCIÓN III: REQUISITOS DE FORMA -->
+  <div class="seccion">
+    <div class="seccion-header">
+      <span class="seccion-num">III</span>
+      <h2>Requisitos de forma</h2>
+    </div>
+    <div class="seccion-body">
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Indicación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📄 Extensión</td>
+              <td>Hasta <strong>3 páginas</strong></td>
+            </tr>
+            <tr>
+              <td>🖥️ Fuente</td>
+              <td><strong>Arial 12 pt</strong>, a espacio sencillo</td>
+            </tr>
+            <tr>
+              <td>✏️ Ortografía</td>
+              <td>No es obstáculo — el Comité Editor corrige</td>
+            </tr>
+            <tr>
+              <td>📖 Citas literarias</td>
+              <td>Incluye citas de literatura AA con <strong>número de página</strong> y nombre del libro</td>
+            </tr>
+            <tr>
+              <td>🖊️ Formato alterno</td>
+              <td>Escrito a mano (letra legible) o grabado en audio</td>
+            </tr>
+            <tr>
+              <td>🎨 Caricatura</td>
+              <td>Si tienes ese talento, puedes enviar historias en imágenes</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN IV: QUÉ NO ENVIAR -->
+  <div class="seccion">
+    <div class="seccion-header">
+      <span class="seccion-num">IV</span>
+      <h2>¿Qué <em style="font-style:italic;color:var(--dorado-claro)">no</em> enviar?</h2>
+    </div>
+    <div class="seccion-body">
+      <ul class="lista no">
+        <li>Poemas · Oraciones · Tributos a individuos</li>
+        <li>Teatro · Ficción</li>
+        <li>Cualquier contenido <strong>no relacionado con AA</strong> o que vaya <strong>contra sus principios</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECCIÓN V: CÓMO ENVIAR -->
+  <div class="seccion">
+    <div class="seccion-header">
+      <span class="seccion-num">V</span>
+      <h2>¿A dónde enviarlo?</h2>
+    </div>
+    <div class="seccion-body">
+      <div class="envio-grid">
+        <div class="envio-card">
+          <div class="envio-icon">📧</div>
+          <strong>Correo electrónico</strong>
+          <span>
+            <a href="mailto:aaelmensajecol1@gmail.com">aaelmensajecol1@gmail.com</a>
+          </span>
+        </div>
+        <div class="envio-card">
+          <div class="envio-icon">🔗</div>
+          <strong>A través de tu REM</strong>
+          <span>
+            Representante AA El Mensaje<br>de tu grupo de base
+          </span>
+        </div>
+        <div class="envio-card">
+          <div class="envio-icon">🏢</div>
+          <strong>Correo postal — OSG</strong>
+          <span>
+            Calle 50 N.° 46-36, Of. 310<br>
+            Edif. Furatena · Medellín
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CITA GRANDE -->
+  <div class="cita-grande">
+    <p>
+      «Los miembros de AA del personal evalúan los artículos y, aunque se hacen
+      algunas correcciones por cuestiones de claridad, estilo y extensión,
+      <strong>los redactores animan a los escritores a expresar sus experiencias
+      de su propia manera.</strong>»
+    </p>
+    <cite>Manual de Servicio AA Colombia 2025, p. 74</cite>
+  </div>
+
+  <!-- FUENTES -->
+  <div class="fuentes">
+    <h3>Fuentes · Literatura aprobada por la Conferencia</h3>
+    <ul>
+      <li>
+        <strong>Manual de Servicio AA Colombia 2025</strong> — «AA El Mensaje»,
+        pp. 73-75: ¿Qué hace un REM?, materiales producidos, preguntas frecuentes.
+      </li>
+      <li>
+        <strong>Imagen convocatoria</strong> — Página 6 de la Revista AA El Mensaje:
+        «Usted puede escribir. Servir para vivir.»
+      </li>
+      <li>
+        <strong>Recomendaciones Vigentes 1965–2025</strong> — Moción 2022:
+        uso del color tradicional de AA en publicaciones (p. 24).
+      </li>
+    </ul>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Delegado Área 3, Región C · Panel 62 · Alcohólicos Anónimos Colombia</strong><br>
+  <a href="https://wiroal.github.io/racsg/">wiroal.github.io/racsg</a>
+  · Material de servicio para grupos y distritos<br>
+  <span style="color:#4A6A8A; font-size:.72rem;">
+    «La Recuperación y la Práctica de las Tradiciones garantizan un mejor Servicio»
+  </span>
+</footer>
+
+</body>
+</html>
