@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costo de operación de la OSG · 2026 vs 2025</title>
+<style>
+  :root{
+    --aa-blue:#003087; --aa-blue-2:#1E5FA8; --aa-blue-3:#4A82C4;
+    --aa-blue-4:#8FB0DD; --aa-blue-5:#C9D6E8;
+    --gold:#C89000; --ink:#1c2530; --muted:#5b6774;
+    --line:#e3e8ef; --bg:#f6f8fb; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,Helvetica,sans-serif;color:var(--ink);
+    background:var(--bg);line-height:1.5;padding:28px 16px}
+  .wrap{max-width:920px;margin:0 auto}
+  header{border-bottom:4px solid var(--gold);padding-bottom:18px;margin-bottom:24px}
+  .kicker{color:var(--gold);font-weight:700;font-size:.8rem;
+    letter-spacing:.14em;text-transform:uppercase}
+  h1{color:var(--aa-blue);font-size:1.7rem;margin:6px 0 4px;line-height:1.2}
+  .sub{color:var(--muted);font-size:.95rem}
+  .hero{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+  .hero .big{flex:1 1 260px;background:var(--aa-blue);color:#fff;
+    border-radius:14px;padding:22px 24px}
+  .hero .big .lab{font-size:.82rem;opacity:.85;text-transform:uppercase;letter-spacing:.08em}
+  .hero .big .val{font-size:2.5rem;font-weight:800;margin-top:4px;line-height:1}
+  .hero .big .note{font-size:.85rem;opacity:.9;margin-top:8px}
+  .hero .mini{flex:1 1 180px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:18px 20px}
+  .hero .mini .lab{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .hero .mini .val{font-size:1.5rem;font-weight:800;color:var(--aa-blue);margin-top:4px}
+  .hero .mini .delta{font-size:.85rem;font-weight:700;margin-top:6px;color:var(--gold)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin-bottom:22px}
+  .card h2{color:var(--aa-blue);font-size:1.15rem;margin-bottom:4px}
+  .card .caption{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+  .donut-row{display:flex;flex-wrap:wrap;gap:26px;align-items:center}
+  .donut{width:220px;height:220px;border-radius:50%;flex:0 0 auto;margin:0 auto;
+    background:conic-gradient(
+      var(--aa-blue)      0        61.29%,
+      var(--gold)         61.29%   75.02%,
+      var(--aa-blue-2)    75.02%   84.25%,
+      var(--aa-blue-3)    84.25%   92.52%,
+      var(--aa-blue-4)    92.52%   96.38%,
+      var(--aa-blue-5)    96.38%   100%);
+    position:relative}
+  .donut::after{content:"";position:absolute;inset:30%;background:var(--card);
+    border-radius:50%;box-shadow:inset 0 0 0 1px var(--line)}
+  .donut .center{position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center}
+  .donut .center b{color:var(--aa-blue);font-size:1.05rem;line-height:1}
+  .donut .center span{color:var(--muted);font-size:.72rem;margin-top:3px}
+  .legend{flex:1 1 320px;min-width:280px}
+  .leg{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);
+    font-size:.9rem}
+  .leg:last-child{border-bottom:none}
+  .dot{width:13px;height:13px;border-radius:3px;flex:0 0 auto}
+  .leg .name{flex:1}
+  .leg .pct{font-weight:800;color:var(--aa-blue);width:56px;text-align:right}
+  .leg .abs{color:var(--muted);font-size:.78rem;width:118px;text-align:right}
+  .bars{margin-top:6px}
+  .grp{margin-bottom:16px}
+  .grp .glab{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px}
+  .grp .glab .gname{font-weight:700;color:var(--ink)}
+  .grp .glab .gdelta{font-weight:800;color:var(--gold)}
+  .bar{position:relative;height:26px;border-radius:6px;margin:5px 0;
+    display:flex;align-items:center;padding-left:10px;color:#fff;font-size:.8rem;font-weight:700;
+    white-space:nowrap}
+  .bar.y25{background:var(--aa-blue-3)}
+  .bar.y26{background:var(--aa-blue)}
+  .bar .tag{position:absolute;left:10px}
+  table{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:4px}
+  th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line)}
+  th:first-child,td:first-child{text-align:left}
+  thead th{color:var(--aa-blue);border-bottom:2px solid var(--aa-blue)}
+  tr.tot td{font-weight:800;color:var(--aa-blue);border-top:2px solid var(--aa-blue)}
+  .up{color:#0a7d3c;font-weight:700}
+  .read{background:#fbf7ec;border-left:4px solid var(--gold);border-radius:0 10px 10px 0;
+    padding:16px 18px;font-size:.92rem}
+  .read b{color:var(--aa-blue)}
+  footer{color:var(--muted);font-size:.78rem;border-top:1px solid var(--line);
+    padding-top:14px;margin-top:8px;line-height:1.6}
+  @media (max-width:520px){h1{font-size:1.4rem}.hero .big .val{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Corporación Nacional de Servicios Generales · AA Colombia</div>
+    <h1>Costo de operación de la OSG · 2026 frente a 2025</h1>
+    <div class="sub">Gastos operacionales (funcionamiento de la oficina): nómina + administración. Excluye gasto misional e impuestos.</div>
+  </header>
+
+  <div class="hero">
+    <div class="big">
+      <div class="lab">Costo de operación · 2026 (presupuesto)</div>
+      <div class="val">$66,9 M<span style="font-size:1.1rem;font-weight:600">/mes</span></div>
+      <div class="note">$802,4 millones al año (Talento Humano + Operacionales)</div>
+    </div>
+    <div class="mini">
+      <div class="lab">2025 · presupuesto</div>
+      <div class="val">$56,9 M/mes</div>
+      <div class="delta">Operación total +17,5%</div>
+    </div>
+    <div class="mini">
+      <div class="lab">2025 · ejecutado (auditado)</div>
+      <div class="val">$59,3 M/mes</div>
+      <div class="delta">$711,1 M/año</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>¿En qué se va el gasto? Composición 2025 (ejecución auditada)</h2>
+    <div class="caption">Peso de cada rubro dentro de los $711,1 millones de gastos operacionales.</div>
+    <div class="donut-row">
+      <div class="donut">
+        <div class="center"><b>$711,1 M</b><span>gasto operacional 2025</span></div>
+      </div>
+      <div class="legend">
+        <div class="leg"><span class="dot" style="background:var(--aa-blue)"></span><span class="name">Personal (nómina)</span><span class="pct">61,3%</span><span class="abs">$435,9 M</span></div>
+        <div class="leg"><span class="dot" style="background:var(--gold)"></span><span class="name">Servicios (públicos, correo, fletes, publicidad)</span><span class="pct">13,7%</span><span class="abs">$97,6 M</span></div>
+        <div class="leg"><span class="dot" style="background:var(--aa-blue-2)"></span><span class="name">Arrendamientos</span><span class="pct">9,2%</span><span class="abs">$65,6 M</span></div>
+        <div class="leg"><span class="dot" style="background:var(--aa-blue-3)"></span><span class="name">Honorarios (contador, revisoría, abogados)</span><span class="pct">8,3%</span><span class="abs">$58,8 M</span></div>
+        <div class="leg"><span class="dot" style="background:var(--aa-blue-4)"></span><span class="name">Diversos (aseo, papelería, transporte, bienestar)</span><span class="pct">3,9%</span><span class="abs">$27,4 M</span></div>
+        <div class="leg"><span class="dot" style="background:var(--aa-blue-5)"></span><span class="name">Otros (mantenimiento, depreciación, legales, seguros…)</span><span class="pct">3,6%</span><span class="abs">$25,7 M</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Comparativo 2025 → 2026 por bloque</h2>
+    <div class="caption">Presupuesto, en millones de pesos. Barra clara = 2025 · Barra azul = 2026.</div>
+    <div class="bars">
+      <div class="grp">
+        <div class="glab"><span class="gname">Talento Humano (nómina y prestaciones)</span><span class="gdelta">+13%</span></div>
+        <div class="bar y25" style="width:54.6%"><span class="tag">2025 · $438,3 M</span></div>
+        <div class="bar y26" style="width:61.8%"><span class="tag">2026 · $495,9 M</span></div>
+      </div>
+      <div class="grp">
+        <div class="glab"><span class="gname">Operacionales (arriendo, honorarios, servicios…)</span><span class="gdelta">+25%</span></div>
+        <div class="bar y25" style="width:30.5%"><span class="tag">2025 · $244,4 M</span></div>
+        <div class="bar y26" style="width:38.2%"><span class="tag">2026 · $306,4 M</span></div>
+      </div>
+      <div class="grp">
+        <div class="glab"><span class="gname">Total operación OSG</span><span class="gdelta">+17,5%</span></div>
+        <div class="bar y25" style="width:85.1%"><span class="tag">2025 · $682,6 M</span></div>
+        <div class="bar y26" style="width:100%"><span class="tag">2026 · $802,4 M</span></div>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Bloque</th><th>2025</th><th>2026</th><th>Variación</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Talento Humano</td><td>$438,3 M</td><td>$495,9 M</td><td class="up">+13%</td></tr>
+        <tr><td>Operacionales</td><td>$244,4 M</td><td>$306,4 M</td><td class="up">+25%</td></tr>
+        <tr class="tot"><td>Total operación / año</td><td>$682,6 M</td><td>$802,4 M</td><td class="up">+17,5%</td></tr>
+        <tr class="tot"><td>Costo mensual</td><td>$56,9 M</td><td>$66,9 M</td><td class="up">+$10,0 M</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="read">
+    <b>Lectura rápida.</b> La operación de la OSG cuesta cerca de <b>$66,9 millones al mes en 2026</b>, casi <b>$10 millones más</b> que en 2025. Seis de cada diez pesos son <b>nómina</b>; el resto lo dominan servicios, arriendo y honorarios. El bloque que más crece es <b>Operacionales (+25%)</b>, muy influido por honorarios y gestión legal: los honorarios de 2025 ya habían subido <b>+182%</b> frente a 2024 por los requerimientos y tutelas atendidos.
+  </div>
+
+  <footer>
+    <b>Fuente:</b> Informe Final 62ª RAC – 2026. Composición y cifra ejecutada 2025: Estado de Resultados Acumulado (Gastos Operacionales), Revelación 15 “Gastos de Administración”. Cifras 2026 y variaciones por bloque: Presupuesto 2026 (subtotales Talento Humano y Operacionales). Valores en pesos colombianos; mensual = total anual ÷ 12.<br>
+    <b>Nota metodológica:</b> “Costo de operación” = gastos operacionales/administrativos. No incluye gastos misionales (literatura, convención, foro, Junta de Custodios, Conferencia) ni no operacionales (impuesto de renta $153,4 M, financieros). El costo mensual 2025 difiere entre presupuesto ($56,9 M) y ejecución auditada ($59,3 M) por diferencias de clasificación entre ambas fuentes.
+  </footer>
+
+</div>
+</body>
+</html>
