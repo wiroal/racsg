@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca de A.A. · Inventario y tabla de contenido por temas</title>
+  <meta name="description" content="Inventario de 17 documentos de Alcohólicos Anónimos, ordenados en siete temas, con rutas de lectura y balance de la colección.">
+  <meta property="og:title" content="Biblioteca de A.A. · Inventario por temas">
+  <meta property="og:description" content="17 documentos, 2.238 páginas y siete temas para encontrar el texto que hace falta.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wiroal.github.io/racsg/biblioteca_aa.html">
+  <link rel="canonical" href="https://wiroal.github.io/racsg/biblioteca_aa.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312265a'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%23c9a84c' stroke-width='2'/%3E%3Ctext x='32' y='39' font-family='Georgia' font-size='18' fill='%23c9a84c' text-anchor='middle'%3EAA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+  :root {
+    --navy: #12265a;
+    --navy-2: #1c3574;
+    --blue: #2e5fae;
+    --blue-soft: #e8eef9;
+    --gold: #c9a84c;
+    --gold-soft: #f3e8c8;
+    --paper: #f7f6f2;
+    --cream: #f0ede6;
+    --white: #ffffff;
+    --ink: #172033;
+    --muted: #5d6a7e;
+    --line: #dfe4ec;
+    --radius: 14px;
+    --shadow: 0 12px 32px rgba(18, 38, 90, .09);
+    --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sans: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { display: block; }
+  a { color: var(--blue); }
+  a:hover { color: var(--navy); }
+  code, kbd { font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace; }
+
+  .skip {
+    position: absolute; left: -999px; top: 0;
+    background: var(--gold); color: var(--navy);
+    padding: 10px 16px; z-index: 100; font-weight: 700;
+  }
+  .skip:focus { left: 12px; top: 12px; }
+
+  .wrap { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+
+  /* ── Cabecera ───────────────────────────────────────────── */
+  .site-head {
+    background: var(--navy);
+    color: var(--white);
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+  }
+  .head-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px; padding-block: 16px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 13px;
+    color: var(--white); text-decoration: none;
+  }
+  .aa-mark {
+    width: 44px; height: 44px; border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display: grid; place-items: center;
+    font-family: var(--serif); font-weight: 700; font-size: 1.05rem;
+    color: var(--gold); letter-spacing: -.08em;
+    flex: none;
+  }
+  .brand-text strong {
+    display: block; font-family: var(--serif);
+    font-size: 1.02rem; font-weight: 700; line-height: 1.2;
+  }
+  .brand-text small {
+    display: block; font-size: .6rem; letter-spacing: .18em;
+    text-transform: uppercase; color: #aebbd8; margin-top: 3px;
+  }
+  .head-nav { display: flex; gap: 26px; }
+  .head-nav a {
+    color: #cdd7ea; text-decoration: none; font-size: .8rem;
+    letter-spacing: .06em; text-transform: uppercase;
+    border-bottom: 1px solid transparent; padding-bottom: 3px;
+  }
+  .head-nav a:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── Hero ───────────────────────────────────────────────── */
+  .hero {
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #0c1c45 0%, var(--navy) 55%, #25427f 100%);
+    color: var(--white);
+  }
+  .hero::before {
+    content: 'AA';
+    position: absolute; right: -2%; top: -30%;
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(18rem, 40vw, 40rem); line-height: 1;
+    color: rgba(255, 255, 255, .035); pointer-events: none;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1.45fr .8fr;
+    gap: 56px; align-items: end;
+    padding-block: 72px 78px;
+  }
+  .eyebrow {
+    margin: 0 0 6px;
+    font-size: .66rem; font-weight: 600;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .hero h1 {
+    margin: 14px 0 22px;
+    font-family: var(--serif);
+    font-size: clamp(2.45rem, 5vw, 4.2rem);
+    line-height: 1.04; font-weight: 700;
+    letter-spacing: -.025em; color: var(--white);
+  }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .lead {
+    max-width: 58ch; margin: 0;
+    font-size: 1.04rem; line-height: 1.72;
+    color: #d4dcee;
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 20px; border-radius: 999px;
+    font-size: .84rem; font-weight: 600; letter-spacing: .02em;
+    text-decoration: none; border: 1px solid transparent;
+    transition: transform .18s ease, background .18s ease, color .18s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-gold { background: var(--gold); color: #16213d; }
+  .btn-gold:hover { background: #dcbe6a; color: #16213d; }
+  .btn-ghost { border-color: rgba(255, 255, 255, .34); color: var(--white); }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-card {
+    background: rgba(9, 22, 55, .58);
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 16px;
+    padding: 22px;
+    backdrop-filter: blur(8px);
+  }
+  .hero-card-head {
+    margin: 0 0 14px; font-size: .62rem; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: rgba(255, 255, 255, .14);
+    border: 1px solid rgba(255, 255, 255, .12);
+  }
+  .stat {
+    background: rgba(13, 29, 67, .92);
+    padding: 17px 15px;
+  }
+  .stat b {
+    display: block; font-family: var(--serif);
+    font-size: 2rem; line-height: 1; color: var(--white);
+  }
+  .stat span {
+    display: block; margin-top: 5px;
+    font-size: .58rem; letter-spacing: .15em;
+    text-transform: uppercase; color: #a9b6d2;
+  }
+  .hero-facts {
+    display: grid; gap: 8px; margin: 18px 0 0;
+    padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .12);
+    font-size: .72rem;
+  }
+  .hero-facts div { display: flex; justify-content: space-between; gap: 12px; }
+  .hero-facts dt { color: #a9b6d2; letter-spacing: .08em; text-transform: uppercase; font-size: .6rem; }
+  .hero-facts dd { margin: 0; color: #e6ebf7; text-align: right; }
+  .hero-facts code { font-size: .68rem; color: var(--gold); }
+
+  /* ── Barra de búsqueda y filtros ────────────────────────── */
+  .toolbar {
+    position: sticky; top: 0; z-index: 30;
+    background: rgba(247, 246, 242, .96);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(10px);
+    transition: box-shadow .2s ease;
+  }
+  .toolbar.stuck { box-shadow: 0 8px 24px rgba(18, 38, 90, .08); }
+  .toolbar-inner {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 18px; align-items: center;
+    padding-block: 11px;
+  }
+  .search {
+    width: min(100%, 520px); min-width: 0;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: 999px; padding: 9px 14px 9px 16px;
+  }
+  .search:focus-within {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(46, 95, 174, .12);
+  }
+  .search svg { width: 15px; height: 15px; color: var(--muted); flex: none; }
+  .search input {
+    flex: 1; min-width: 0; border: 0; outline: 0;
+    background: transparent; font: inherit; font-size: .86rem; color: var(--ink);
+  }
+  .search input::-webkit-search-cancel-button { display: none; }
+  .search kbd {
+    font-size: .62rem; color: var(--muted); border: 1px solid var(--line);
+    border-radius: 4px; padding: 1px 5px; background: var(--paper);
+  }
+  .search .clear {
+    border: 0; background: var(--blue-soft); color: var(--navy);
+    width: 21px; height: 21px; border-radius: 50%;
+    display: grid; place-items: center; cursor: pointer;
+    font-size: .85rem; line-height: 1; padding: 0;
+  }
+  .chips {
+    grid-column: 1 / -1; grid-row: 2;
+    display: flex; gap: 7px; overflow-x: auto;
+    scrollbar-width: none; max-width: 100%; min-width: 0; padding-block: 2px;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    border: 1px solid var(--line); background: var(--white);
+    color: var(--muted); border-radius: 999px;
+    padding: 6px 11px; font: inherit; font-size: .73rem;
+    white-space: nowrap; cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+  .chip span { opacity: .55; margin-left: 2px; font-size: .66rem; }
+  .chip:hover { border-color: #b9c6dc; color: var(--navy); }
+  .chip[aria-pressed="true"] {
+    background: var(--navy); color: var(--white); border-color: var(--navy);
+  }
+  .chip[aria-pressed="true"] span { opacity: .7; }
+  .count {
+    grid-column: 2; grid-row: 1; justify-self: end;
+    margin: 0; font-size: .7rem; color: var(--muted);
+    white-space: nowrap; letter-spacing: .04em;
+  }
+
+  /* ── Colección y temas ──────────────────────────────────── */
+  .collection { padding-block: 46px 20px; }
+  .collection-head {
+    display: grid; grid-template-columns: 1.15fr .85fr;
+    gap: 40px; align-items: end;
+    padding-bottom: 34px; border-bottom: 1px solid var(--line);
+  }
+  .collection-head h2, .display {
+    margin: 0; font-family: var(--serif);
+    font-size: clamp(1.85rem, 3.3vw, 2.65rem);
+    line-height: 1.12; color: var(--navy); letter-spacing: -.015em;
+  }
+  .section-lead { margin: 10px 0 0; font-size: .92rem; color: var(--muted); max-width: 62ch; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0;
+    margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0);
+    white-space: nowrap; border: 0;
+  }
+
+  .theme { padding-block: 34px 8px; scroll-margin-top: 96px; }
+  .routes, .balance, .inventory { scroll-margin-top: 90px; }
+  .theme + .theme { border-top: 1px solid var(--line); }
+  .theme-head {
+    display: grid; grid-template-columns: 62px 1fr auto;
+    gap: 20px; align-items: start;
+    padding-bottom: 22px;
+  }
+  .theme-num {
+    font-family: var(--serif); font-size: 2.5rem; line-height: .95;
+    color: var(--gold); font-weight: 700;
+  }
+  .kicker {
+    margin: 0 0 4px; font-size: .6rem; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .theme-head h2 {
+    margin: 0 0 7px; font-family: var(--serif);
+    font-size: clamp(1.4rem, 2.3vw, 1.8rem);
+    line-height: 1.2; color: var(--navy); font-weight: 700;
+  }
+  .theme-intro {
+    margin: 0; max-width: 62ch; font-size: .87rem;
+    color: var(--muted); line-height: 1.6;
+  }
+  .theme-meta {
+    margin: 0; text-align: right; font-size: .72rem;
+    color: var(--navy); white-space: nowrap;
+  }
+  .theme-meta strong { font-family: var(--serif); font-size: 1rem; }
+  .theme-meta span { color: var(--muted); font-size: .68rem; }
+
+  .doc-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px; padding-bottom: 28px;
+  }
+  .doc-grid--solo { grid-template-columns: 1fr; }
+  .doc-card {
+    position: relative; display: flex; flex-direction: column; gap: 11px;
+    background: var(--white); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 22px 22px 18px;
+    scroll-margin-top: 128px;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .doc-card::before {
+    content: ''; position: absolute; left: 0; top: 20px; bottom: 20px;
+    width: 3px; border-radius: 0 3px 3px 0; background: var(--gold);
+    opacity: .9;
+  }
+  .doc-card:hover {
+    transform: translateY(-2px); box-shadow: var(--shadow);
+    border-color: #c8d3e6;
+  }
+  .doc-card:target, .doc-card.flash {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(201, 168, 76, .22), var(--shadow);
+  }
+  .doc-top { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+  .doc-num {
+    font-family: var(--serif); font-size: 1rem; font-weight: 700;
+    color: var(--gold); letter-spacing: .02em;
+  }
+  .tag {
+    font-size: .56rem; font-weight: 600; letter-spacing: .13em;
+    text-transform: uppercase; padding: 3px 8px; border-radius: 999px;
+    background: var(--blue-soft); color: var(--blue);
+  }
+  .tag--manual { background: var(--gold-soft); color: #7a5b0e; }
+  .tag--informe, .tag--memoria { background: #e7f0e9; color: #2d6a4f; }
+  .doc-pages {
+    margin-left: auto; font-size: .68rem; color: var(--muted);
+    letter-spacing: .03em;
+  }
+  .doc-title {
+    margin: 0; font-family: var(--serif); font-size: 1.24rem;
+    line-height: 1.28; color: var(--navy); font-weight: 700;
+  }
+  .doc-desc { margin: 0; font-size: .86rem; line-height: 1.62; color: #3d4a5f; flex: 1; }
+  .doc-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .meta-item {
+    font-size: .64rem; color: var(--muted);
+    background: var(--paper); border-radius: 5px; padding: 3px 7px;
+  }
+  .doc-file {
+    display: block; font-size: .61rem; color: #7b879a;
+    background: var(--paper); border-radius: 6px;
+    padding: 6px 8px; word-break: break-all; line-height: 1.45;
+  }
+  .empty {
+    margin: 10px 0 50px; padding: 38px 20px; text-align: center;
+    background: var(--white); border: 1px dashed #c7d0e0;
+    border-radius: var(--radius); color: var(--muted);
+  }
+  .empty strong { display: block; font-family: var(--serif); color: var(--navy); font-size: 1.3rem; }
+
+  /* ── Rutas ──────────────────────────────────────────────── */
+  .routes { background: var(--cream); padding-block: 72px; margin-top: 42px; }
+  .routes h2 {
+    margin: 0; font-family: var(--serif); color: var(--navy);
+    font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.1;
+  }
+  .routes .section-lead { color: #5c5647; margin-top: 10px; }
+  .route-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px; margin-top: 32px;
+  }
+  .route {
+    background: var(--white); border: 1px solid #e2dccb;
+    border-top: 3px solid var(--navy); border-radius: 10px;
+    padding: 22px 24px; display: flex; flex-direction: column; gap: 11px;
+  }
+  .route h3 {
+    margin: 0; font-family: var(--serif); font-size: 1.3rem;
+    color: var(--navy); line-height: 1.2;
+  }
+  .steps { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; }
+  .step {
+    display: inline-grid; place-items: center;
+    min-width: 34px; height: 32px; padding-inline: 5px;
+    border-radius: 7px; background: var(--blue-soft);
+    color: var(--navy); font-size: .74rem; font-weight: 700;
+    text-decoration: none; letter-spacing: .02em;
+    transition: background .15s, color .15s;
+  }
+  .step:hover { background: var(--navy); color: var(--white); }
+  .arrow { color: #a59d88; font-size: .7rem; }
+  .route-text { margin: 0; font-size: .82rem; line-height: 1.6; color: #4c5566; flex: 1; }
+  .route-meta {
+    margin: 0; padding-top: 10px; border-top: 1px solid #ece6d8;
+    font-size: .66rem; color: #7a7361; letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .profiles {
+    margin-top: 34px; background: var(--white);
+    border: 1px solid #e2dccb; border-radius: 10px; overflow: hidden;
+  }
+  .profiles-head {
+    padding: 13px 20px; background: var(--navy); color: var(--white);
+    font-size: .62rem; letter-spacing: .18em; text-transform: uppercase;
+  }
+  .profile-row {
+    display: grid; grid-template-columns: 1.4fr .45fr 1.4fr;
+    gap: 14px; padding: 11px 20px; align-items: center;
+    border-top: 1px solid #eee8d9; font-size: .82rem;
+  }
+  .profile-head {
+    background: var(--paper); color: var(--muted);
+    font-size: .58rem; letter-spacing: .16em; text-transform: uppercase;
+    padding-block: 8px;
+  }
+  .mini {
+    display: inline-grid; place-items: center;
+    min-width: 27px; height: 24px; padding-inline: 4px;
+    background: var(--blue-soft); border-radius: 5px;
+    color: var(--navy); font-size: .66rem; font-weight: 700;
+    text-decoration: none;
+  }
+  .mini:hover { background: var(--navy); color: var(--white); }
+  .mini--start { background: var(--gold-soft); color: #6d510c; }
+
+  /* ── Balance ────────────────────────────────────────────── */
+  .balance { padding-block: 72px 26px; }
+  .balance-grid {
+    display: grid; grid-template-columns: 1.3fr .7fr;
+    gap: 56px; margin-top: 32px; align-items: start;
+  }
+  .bars { display: grid; gap: 2px; }
+  .bar-row {
+    display: grid; grid-template-columns: minmax(150px, 210px) 1fr 112px;
+    gap: 14px; align-items: center; padding-block: 9px;
+    border-bottom: 1px solid var(--line);
+  }
+  .bar-label { font-size: .78rem; color: #3a465a; }
+  .bar-label em {
+    font-style: normal; color: var(--muted); font-size: .66rem; margin-left: 3px;
+  }
+  .bar-track { height: 8px; border-radius: 99px; background: #e9edf5; overflow: hidden; }
+  .bar-fill {
+    display: block; height: 100%; border-radius: 99px;
+    background: linear-gradient(90deg, var(--navy), var(--blue));
+  }
+  .bar-value { font-size: .66rem; color: var(--muted); text-align: right; }
+  .insight {
+    background: var(--navy); color: var(--white);
+    border-radius: 12px; padding: 24px 24px 20px;
+  }
+  .insight .kicker { color: var(--gold); }
+  .insight p { margin: 0; font-size: .86rem; line-height: 1.65; color: #d4dcee; }
+  .insight strong { color: var(--gold); }
+  .insight p + p { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.14); }
+  .type-table {
+    width: 100%; border-collapse: collapse; margin-top: 20px;
+    background: var(--white); border: 1px solid var(--line);
+  }
+  .type-table th {
+    background: var(--paper); color: var(--muted);
+    font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
+    text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line);
+  }
+  .type-table td { padding: 8px 12px; border-bottom: 1px solid var(--line); font-size: .78rem; }
+  .type-table tr:last-child td { border-bottom: 0; }
+  .type-table .num, .type-table th.num { text-align: right; }
+  .type-table .total td { font-weight: 700; background: var(--paper); }
+
+  /* ── Inventario completo ───────────────────────────────── */
+  .inventory { padding-block: 54px 80px; border-top: 1px solid var(--line); }
+  .table-scroll {
+    margin-top: 26px; overflow-x: auto;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: var(--white); -webkit-overflow-scrolling: touch;
+  }
+  .inventory table {
+    width: 100%; min-width: 880px; border-collapse: collapse;
+  }
+  .inventory th {
+    position: sticky; top: 0; z-index: 1;
+    background: var(--navy); color: var(--white);
+    font-size: .58rem; letter-spacing: .14em; text-transform: uppercase;
+    text-align: left; padding: 11px 13px; white-space: nowrap;
+  }
+  .inventory td {
+    padding: 10px 13px; border-top: 1px solid var(--line);
+    font-size: .76rem; vertical-align: top;
+  }
+  .inventory tbody tr:nth-child(even) td { background: #fbfcfe; }
+  .inventory td strong { color: var(--navy); font-size: .78rem; }
+  .inventory td code { font-size: .62rem; color: #7b879a; display: inline-block; margin-top: 3px; }
+  .inventory .num { text-align: right; white-space: nowrap; }
+  .inventory td.num:first-child { color: var(--gold); font-weight: 700; }
+
+  /* ── Pie ────────────────────────────────────────────────── */
+  .site-foot {
+    background: #0d1d47; color: #aebbd8;
+    padding-block: 44px 36px; font-size: .76rem;
+  }
+  .foot-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 28px; flex-wrap: wrap;
+    padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.12);
+  }
+  .foot-brand { display: flex; align-items: center; gap: 12px; }
+  .foot-brand .aa-mark { width: 38px; height: 38px; font-size: .9rem; }
+  .foot-brand strong {
+    display: block; color: var(--white); font-family: var(--serif);
+    font-size: .95rem; font-weight: 700;
+  }
+  .foot-brand span { font-size: .68rem; }
+  .foot-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .foot-links a { color: #cdd7ea; text-decoration: none; font-size: .72rem; }
+  .foot-links a:hover { color: var(--gold); }
+  .foot-note { margin-top: 20px; max-width: 78ch; line-height: 1.7; font-size: .68rem; }
+  .foot-note strong { color: #dbe2f1; }
+
+  /* ── Responsive ─────────────────────────────────────────── */
+  @media (max-width: 1020px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 34px; padding-block: 56px 58px; }
+    .hero-card { max-width: 520px; }
+    .balance-grid { grid-template-columns: 1fr; gap: 34px; }
+    .collection-head { grid-template-columns: 1fr; gap: 12px; }
+  }
+  @media (max-width: 820px) {
+    .head-nav { display: none; }
+    .doc-grid { grid-template-columns: 1fr; }
+    .route-grid { grid-template-columns: 1fr; }
+    .theme-head { grid-template-columns: 44px 1fr; }
+    .theme-meta { grid-column: 2; text-align: left; margin-top: -6px; }
+    .theme-num { font-size: 2rem; }
+    .bar-row { grid-template-columns: 1fr 90px; gap: 8px 12px; }
+    .bar-track { grid-column: 1 / -1; grid-row: 2; }
+    .bar-value { grid-column: 2; grid-row: 1; }
+  }
+  @media (max-width: 620px) {
+    .wrap { width: calc(100% - 32px); }
+    .hero h1 { font-size: clamp(2.15rem, 10vw, 2.8rem); }
+    .hero-inner { padding-block: 44px 46px; }
+    .hero-card { padding: 16px; }
+    .stat { padding: 14px 12px; }
+    .toolbar-inner { gap: 8px; }
+    .search { grid-column: 1 / -1; grid-row: 1; width: 100%; }
+    .chips { grid-row: 2; }
+    .count { display: none; }
+    .chips {
+      padding-right: 18px;
+      -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent);
+      mask-image: linear-gradient(90deg, #000 92%, transparent);
+    }
+    .theme-head { gap: 12px; }
+    .theme-intro { font-size: .82rem; }
+    .doc-card { padding: 18px 18px 15px; }
+    .doc-title { font-size: 1.14rem; }
+    .profile-row { grid-template-columns: 1.2fr .5fr 1fr; font-size: .76rem; }
+    .profile-head { display: none; }
+    .routes { padding-block: 52px; }
+    .balance { padding-block: 52px 10px; }
+    .inventory { padding-block: 44px 60px; }
+    .foot-top { flex-direction: column; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    .site-head, .toolbar, .hero-actions, .site-foot, .skip { display: none !important; }
+    body { background: #fff; }
+    .hero { background: #fff; color: #000; }
+    .hero h1, .hero .lead, .eyebrow { color: #000; }
+    .hero-card, .insight { border: 1px solid #999; background: #fff; color: #000; }
+    .doc-card, .route { break-inside: avoid; box-shadow: none; }
+    .theme { break-inside: auto; }
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#temas">Saltar al contenido</a>
+
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="#top">
+        <span class="aa-mark" aria-hidden="true">AA</span>
+        <span class="brand-text">
+          <strong>Biblioteca de A.A.</strong>
+          <small>racsg · Servicios Generales</small>
+        </span>
+      </a>
+      <nav class="head-nav" aria-label="Secciones">
+        <a href="#temas">Temas</a>
+        <a href="#rutas">Rutas</a>
+        <a href="#balance">Balance</a>
+        <a href="#inventario">Inventario</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Colección digital · Alcohólicos Anónimos</p>
+        <h1>Inventario y tabla de contenido <em>por temas</em></h1>
+        <p class="lead">
+          Diecisiete documentos —libros, folletos, un manual y memorias de servicio— para la
+          recuperación, la vida del grupo y el servicio. Una estructura breve para encontrar el
+          texto que hace falta, entender para qué sirve y decidir por dónde empezar.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#temas">Explorar la colección</a>
+          <a class="btn btn-ghost" href="#rutas">Rutas de lectura</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Ficha de la colección">
+        <p class="hero-card-head">Ficha de la colección</p>
+        <div class="stats">
+          <div class="stat"><b>17</b><span>Documentos</span></div>
+          <div class="stat"><b>2.238</b><span>Páginas</span></div>
+          <div class="stat"><b>7</b><span>Temas</span></div>
+          <div class="stat"><b>102,3</b><span>MB</span></div>
+        </div>
+        <dl class="hero-facts">
+          <div><dt>Origen</dt><dd>17 archivos PDF</dd></div>
+          <div><dt>Corte</dt><dd>24 oct 2026</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <div class="toolbar" id="toolbar">
+    <div class="wrap toolbar-inner">
+      <label class="search" for="q">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        <input id="q" type="search" placeholder="Buscar por título, tema o archivo…" aria-label="Buscar en la colección" autocomplete="off" spellcheck="false">
+        <button class="clear" id="clear" type="button" aria-label="Limpiar búsqueda" hidden>×</button>
+        <kbd>/</kbd>
+      </label>
+      <div class="chips" role="group" aria-label="Filtrar por tema">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">Todos <span>17</span></button>
+          <button type="button" class="chip" data-filter="textos" aria-pressed="false">Textos básicos <span>2</span></button>
+          <button type="button" class="chip" data-filter="espiritualidad" aria-pressed="false">Espiritualidad <span>2</span></button>
+          <button type="button" class="chip" data-filter="tradiciones" aria-pressed="false">Tradiciones <span>1</span></button>
+          <button type="button" class="chip" data-filter="grupo" aria-pressed="false">Grupo y padrinazgo <span>2</span></button>
+          <button type="button" class="chip" data-filter="servicio" aria-pressed="false">Servicio <span>4</span></button>
+          <button type="button" class="chip" data-filter="historia" aria-pressed="false">Historia <span>3</span></button>
+          <button type="button" class="chip" data-filter="exterior" aria-pressed="false">Salud y justicia <span>3</span></button>
+      </div>
+      <p class="count" id="count" aria-live="polite">17 documentos</p>
+    </div>
+  </div>
+
+  <main>
+    <section class="collection" id="temas">
+      <div class="wrap">
+        <div class="collection-head">
+          <div>
+            <p class="eyebrow">La colección</p>
+            <h2>Siete temas, una misma vocación</h2>
+          </div>
+          <p class="section-lead">
+            El orden responde a la función de cada texto en la vida de A.A., no a su formato.
+            Cada ficha conserva el número del inventario y el nombre exacto del archivo.
+          </p>
+        </div>
+
+      <section class="theme" id="tema-textos" data-theme-section="textos">
+        <header class="theme-head">
+          <span class="theme-num" aria-hidden="true">01</span>
+          <div class="theme-copy">
+            <p class="kicker">Tema 01</p>
+            <h2>Textos básicos y doctrina</h2>
+            <p class="theme-intro">Las obras de referencia que fijan el método y el lenguaje de la Comunidad. Es el punto de partida para cualquier lectura ordenada.</p>
+          </div>
+          <p class="theme-meta">
+            <strong>2</strong> documentos<br>
+            <span>391 páginas · 53,2 MB</span>
+          </p>
+        </header>
+        <div class="doc-grid">
+        <article class="doc-card" id="doc-01" data-theme="textos" data-search="Alcohólicos Anónimos — el Libro Grande, texto básico LIBRO_AA_TEXTO_BASICO.pdf Texto fundacional de A.A.: relata la experiencia de los primeros miembros, presenta los Doce Pasos y expone el programa de recuperación que sirve de base a toda la literatura posterior. Libro — Textos básicos y doctrina documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">01</span>
+            <span class="tag tag--libro">Libro</span>
+            <span class="doc-pages">210 págs.</span>
+          </div>
+          <h3 class="doc-title">Alcohólicos Anónimos — el Libro Grande, texto básico</h3>
+          <p class="doc-desc">Texto fundacional de A.A.: relata la experiencia de los primeros miembros, presenta los Doce Pasos y expone el programa de recuperación que sirve de base a toda la literatura posterior.</p>
+          <div class="doc-meta">
+            <span class="meta-item">52,4 MB</span>
+            
+          </div>
+          <code class="doc-file">LIBRO_AA_TEXTO_BASICO.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-02" data-theme="textos" data-search="Doce Pasos y Doce Tradiciones DOCE PASOS Y DOCE TRADICIONES.pdf Comentario de Bill W. a cada uno de los Doce Pasos y de las Doce Tradiciones, con experiencias personales. Lectura habitual en grupos de estudio y en el trabajo de paso. Libro 9.ª impr., 2015 Textos básicos y doctrina documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">02</span>
+            <span class="tag tag--libro">Libro</span>
+            <span class="doc-pages">181 págs.</span>
+          </div>
+          <h3 class="doc-title">Doce Pasos y Doce Tradiciones</h3>
+          <p class="doc-desc">Comentario de Bill W. a cada uno de los Doce Pasos y de las Doce Tradiciones, con experiencias personales. Lectura habitual en grupos de estudio y en el trabajo de paso.</p>
+          <div class="doc-meta">
+            <span class="meta-item">0,81 MB</span>
+            <span class="meta-item">Ed. 9.ª impr., 2015</span>
+          </div>
+          <code class="doc-file">DOCE PASOS Y DOCE TRADICIONES.pdf</code>
+        </article>
+        </div>
+      </section>
+      <section class="theme" id="tema-espiritualidad" data-theme-section="espiritualidad">
+        <header class="theme-head">
+          <span class="theme-num" aria-hidden="true">02</span>
+          <div class="theme-copy">
+            <p class="kicker">Tema 02</p>
+            <h2>Espiritualidad y reflexión</h2>
+            <p class="theme-intro">Material sobre el poder superior, la fe y la reflexión personal, escrito para acompañar el trabajo de los Pasos sin imponer creencias.</p>
+          </div>
+          <p class="theme-meta">
+            <strong>2</strong> documentos<br>
+            <span>345 páginas · 4,9 MB</span>
+          </p>
+        </header>
+        <div class="doc-grid">
+        <article class="doc-card" id="doc-03" data-theme="espiritualidad" data-search="La palabra «Dios»: los miembros de AA agnósticos y ateos SP-86_0724.pdf Folleto dirigido a miembros agnósticos y ateos: revisa cómo la literatura de A.A. emplea la palabra «Dios» y cómo cada persona puede encontrar un poder superior a su manera. Folleto — Espiritualidad y reflexión documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">03</span>
+            <span class="tag tag--folleto">Folleto</span>
+            <span class="doc-pages">24 págs.</span>
+          </div>
+          <h3 class="doc-title">La palabra «Dios»: los miembros de AA agnósticos y ateos</h3>
+          <p class="doc-desc">Folleto dirigido a miembros agnósticos y ateos: revisa cómo la literatura de A.A. emplea la palabra «Dios» y cómo cada persona puede encontrar un poder superior a su manera.</p>
+          <div class="doc-meta">
+            <span class="meta-item">2,18 MB</span>
+            
+          </div>
+          <code class="doc-file">SP-86_0724.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-04" data-theme="espiritualidad" data-search="El lenguaje del corazón: los escritos de Bill W. para el Grapevine el_lenguaje_del_corazon.pdf Recopilación de artículos que Bill W. escribió para la revista Grapevine: espiritualidad, unidad, servicio y la historia temprana de la Comunidad. Libro — Espiritualidad y reflexión documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">04</span>
+            <span class="tag tag--libro">Libro</span>
+            <span class="doc-pages">321 págs.</span>
+          </div>
+          <h3 class="doc-title">El lenguaje del corazón: los escritos de Bill W. para el Grapevine</h3>
+          <p class="doc-desc">Recopilación de artículos que Bill W. escribió para la revista Grapevine: espiritualidad, unidad, servicio y la historia temprana de la Comunidad.</p>
+          <div class="doc-meta">
+            <span class="meta-item">2,75 MB</span>
+            
+          </div>
+          <code class="doc-file">el_lenguaje_del_corazon.pdf</code>
+        </article>
+        </div>
+      </section>
+      <section class="theme" id="tema-tradiciones" data-theme-section="tradiciones">
+        <header class="theme-head">
+          <span class="theme-num" aria-hidden="true">03</span>
+          <div class="theme-copy">
+            <p class="kicker">Tema 03</p>
+            <h2>Tradiciones y unidad</h2>
+            <p class="theme-intro">La salvaguarda de la unidad: cómo las Doce Tradiciones protegen la Comunidad de sí misma y de las presiones externas.</p>
+          </div>
+          <p class="theme-meta">
+            <strong>1</strong> documento<br>
+            <span>28 páginas · 11,9 MB</span>
+          </p>
+        </header>
+        <div class="doc-grid doc-grid--solo">
+        <article class="doc-card" id="doc-05" data-theme="tradiciones" data-search="Las Doce Tradiciones Ilustradas Doce Tradiciones Ilustradas.pdf Explicación gráfica de las Doce Tradiciones mediante viñetas: muestra con humor cómo la unidad y la anonimia protegen la supervivencia de A.A. Folleto © 1983 Tradiciones y unidad documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">05</span>
+            <span class="tag tag--folleto">Folleto</span>
+            <span class="doc-pages">28 págs.</span>
+          </div>
+          <h3 class="doc-title">Las Doce Tradiciones Ilustradas</h3>
+          <p class="doc-desc">Explicación gráfica de las Doce Tradiciones mediante viñetas: muestra con humor cómo la unidad y la anonimia protegen la supervivencia de A.A.</p>
+          <div class="doc-meta">
+            <span class="meta-item">11,9 MB</span>
+            <span class="meta-item">Ed. © 1983</span>
+          </div>
+          <code class="doc-file">Doce Tradiciones Ilustradas.pdf</code>
+        </article>
+        </div>
+      </section>
+      <section class="theme" id="tema-grupo" data-theme-section="grupo">
+        <header class="theme-head">
+          <span class="theme-num" aria-hidden="true">04</span>
+          <div class="theme-copy">
+            <p class="kicker">Tema 04</p>
+            <h2>El grupo y el padrinazgo</h2>
+            <p class="theme-intro">La vida cotidiana de A.A.: qué es un grupo, cómo se sostiene y cómo se transmite la experiencia de miembro a miembro.</p>
+          </div>
+          <p class="theme-meta">
+            <strong>2</strong> documentos<br>
+            <span>87 páginas · 1,7 MB</span>
+          </p>
+        </header>
+        <div class="doc-grid">
+        <article class="doc-card" id="doc-06" data-theme="grupo" data-search="El Grupo de A.A. ... donde todo empieza ElGrupoDondeTodoEmpieza.pdf Guía sobre qué es un grupo, cómo funciona y cómo ponerlo en marcha: reuniones, comités, inventario del grupo y relación con la estructura de servicio. Folleto — El grupo y el padrinazgo documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">06</span>
+            <span class="tag tag--folleto">Folleto</span>
+            <span class="doc-pages">56 págs.</span>
+          </div>
+          <h3 class="doc-title">El Grupo de A.A. ... donde todo empieza</h3>
+          <p class="doc-desc">Guía sobre qué es un grupo, cómo funciona y cómo ponerlo en marcha: reuniones, comités, inventario del grupo y relación con la estructura de servicio.</p>
+          <div class="doc-meta">
+            <span class="meta-item">1,00 MB</span>
+            
+          </div>
+          <code class="doc-file">ElGrupoDondeTodoEmpieza.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-07" data-theme="grupo" data-search="Preguntas y respuestas sobre el apadrinamiento folleto_apadrinamiento.pdf Preguntas frecuentes sobre el padrinazgo: qué esperar del padrino, cómo elegirlo, qué límites tiene esa relación y cómo acompañar a un recién llegado. Folleto — El grupo y el padrinazgo documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">07</span>
+            <span class="tag tag--folleto">Folleto</span>
+            <span class="doc-pages">31 págs.</span>
+          </div>
+          <h3 class="doc-title">Preguntas y respuestas sobre el apadrinamiento</h3>
+          <p class="doc-desc">Preguntas frecuentes sobre el padrinazgo: qué esperar del padrino, cómo elegirlo, qué límites tiene esa relación y cómo acompañar a un recién llegado.</p>
+          <div class="doc-meta">
+            <span class="meta-item">0,67 MB</span>
+            
+          </div>
+          <code class="doc-file">folleto_apadrinamiento.pdf</code>
+        </article>
+        </div>
+      </section>
+      <section class="theme" id="tema-servicio" data-theme-section="servicio">
+        <header class="theme-head">
+          <span class="theme-num" aria-hidden="true">05</span>
+          <div class="theme-copy">
+            <p class="kicker">Tema 05</p>
+            <h2>Servicio, estructura y conceptos</h2>
+            <p class="theme-intro">El gobierno de la Comunidad y su práctica: conceptos, manual, conferencias y encuentros de las estructuras de servicio.</p>
+          </div>
+          <p class="theme-meta">
+            <strong>4</strong> documentos<br>
+            <span>616 páginas · 26,1 MB</span>
+          </p>
+        </header>
+        <div class="doc-grid">
+        <article class="doc-card" id="doc-08" data-theme="servicio" data-search="Los Doce Conceptos para el Servicio Mundial — ilustrados DOCE CONCEPTOS ILUSTRADOS.pdf Versión ilustrada de los Doce Conceptos: explica con ejemplos los principios de autoridad, representación y equilibrio que ordenan el servicio mundial. Folleto © 1986 Servicio, estructura y conceptos documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">08</span>
+            <span class="tag tag--folleto">Folleto</span>
+            <span class="doc-pages">28 págs.</span>
+          </div>
+          <h3 class="doc-title">Los Doce Conceptos para el Servicio Mundial — ilustrados</h3>
+          <p class="doc-desc">Versión ilustrada de los Doce Conceptos: explica con ejemplos los principios de autoridad, representación y equilibrio que ordenan el servicio mundial.</p>
+          <div class="doc-meta">
+            <span class="meta-item">3,00 MB</span>
+            <span class="meta-item">Ed. © 1986</span>
+          </div>
+          <code class="doc-file">DOCE CONCEPTOS ILUSTRADOS.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-09" data-theme="servicio" data-search="El Manual de Servicio de AA y Doce Conceptos para el Servicio Mundial ManualDeServicio2025.pdf Manual de servicio con los Doce Conceptos comentados por Bill W. Incorpora las recomendaciones aprobadas por la Conferencia aplicables al Manual y recoge la práctica de servicio vigente. Manual 2025-2027 Servicio, estructura y conceptos documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">09</span>
+            <span class="tag tag--manual">Manual</span>
+            <span class="doc-pages">210 págs.</span>
+          </div>
+          <h3 class="doc-title">El Manual de Servicio de AA y Doce Conceptos para el Servicio Mundial</h3>
+          <p class="doc-desc">Manual de servicio con los Doce Conceptos comentados por Bill W. Incorpora las recomendaciones aprobadas por la Conferencia aplicables al Manual y recoge la práctica de servicio vigente.</p>
+          <div class="doc-meta">
+            <span class="meta-item">7,00 MB</span>
+            <span class="meta-item">Ed. 2025-2027</span>
+          </div>
+          <code class="doc-file">ManualDeServicio2025.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-10" data-theme="servicio" data-search="Informe Final — 62.ª Conferencia de Servicios Generales de AA Colombia Informe Final Conferencia 62 - oficial...LEBrdt.pdf Memoria de la 62.ª Reunión Anual de la Conferencia (Rionegro, Antioquia, del 30 de abril al 3 de mayo de 2026), bajo el lema «La Recuperación y la Práctica de las Tradiciones garantizan un mejor Servicio»: agenda, ponencias, decisiones y elección de custodios. Informe 2026 Servicio, estructura y conceptos documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">10</span>
+            <span class="tag tag--informe">Informe</span>
+            <span class="doc-pages">216 págs.</span>
+          </div>
+          <h3 class="doc-title">Informe Final — 62.ª Conferencia de Servicios Generales de AA Colombia</h3>
+          <p class="doc-desc">Memoria de la 62.ª Reunión Anual de la Conferencia (Rionegro, Antioquia, del 30 de abril al 3 de mayo de 2026), bajo el lema «La Recuperación y la Práctica de las Tradiciones garantizan un mejor Servicio»: agenda, ponencias, decisiones y elección de custodios.</p>
+          <div class="doc-meta">
+            <span class="meta-item">5,13 MB</span>
+            <span class="meta-item">Ed. 2026</span>
+          </div>
+          <code class="doc-file">Informe Final Conferencia 62 - oficial...LEBrdt.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-11" data-theme="servicio" data-search="24.ª REDELA — Santa Cruz de la Sierra, Bolivia, 2025 24REDELA_BOLIVIA_web.pdf Memoria de la 24.ª REDELA, con el reporte final de la 18.ª Reunión de las Américas: informes de las estructuras participantes, intercambio de experiencias y acuerdos. Memoria 2025 Servicio, estructura y conceptos documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">11</span>
+            <span class="tag tag--memoria">Memoria</span>
+            <span class="doc-pages">162 págs.</span>
+          </div>
+          <h3 class="doc-title">24.ª REDELA — Santa Cruz de la Sierra, Bolivia, 2025</h3>
+          <p class="doc-desc">Memoria de la 24.ª REDELA, con el reporte final de la 18.ª Reunión de las Américas: informes de las estructuras participantes, intercambio de experiencias y acuerdos.</p>
+          <div class="doc-meta">
+            <span class="meta-item">10,9 MB</span>
+            <span class="meta-item">Ed. 2025</span>
+          </div>
+          <code class="doc-file">24REDELA_BOLIVIA_web.pdf</code>
+        </article>
+        </div>
+      </section>
+      <section class="theme" id="tema-historia" data-theme-section="historia">
+        <header class="theme-head">
+          <span class="theme-num" aria-hidden="true">06</span>
+          <div class="theme-copy">
+            <p class="kicker">Tema 06</p>
+            <h2>Historia, biografía y testimonios</h2>
+            <p class="theme-intro">Cómo nació y creció A.A., contado por sus protagonistas y por quienes reconstruyeron su memoria.</p>
+          </div>
+          <p class="theme-meta">
+            <strong>3</strong> documentos<br>
+            <span>689 páginas · 3,9 MB</span>
+          </p>
+        </header>
+        <div class="doc-grid">
+        <article class="doc-card" id="doc-12" data-theme="historia" data-search="A.A. llega a su mayoría de edad: breve historia de A.A. AA-llega-a-su-mayoria-de-edad.pdf Breve historia escrita por Bill W.: los tres legados (recuperación, unidad y servicio), la Conferencia de 1955 y la mayoría de edad de la Comunidad, con la crónica «Domingo a las cuatro de la tarde» y la opinión médica de los doctores Bauer y Tiebout. Libro — Historia, biografía y testimonios documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">12</span>
+            <span class="tag tag--libro">Libro</span>
+            <span class="doc-pages">240 págs.</span>
+          </div>
+          <h3 class="doc-title">A.A. llega a su mayoría de edad: breve historia de A.A.</h3>
+          <p class="doc-desc">Breve historia escrita por Bill W.: los tres legados (recuperación, unidad y servicio), la Conferencia de 1955 y la mayoría de edad de la Comunidad, con la crónica «Domingo a las cuatro de la tarde» y la opinión médica de los doctores Bauer y Tiebout.</p>
+          <div class="doc-meta">
+            <span class="meta-item">1,23 MB</span>
+            
+          </div>
+          <code class="doc-file">AA-llega-a-su-mayoria-de-edad.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-13" data-theme="historia" data-search="El Dr. Bob y los Buenos Veteranos EL DR. BOB y los Buenos Veteranos.pdf Biografía del cofundador Robert Holbrook Smith y crónica de los primeros veteranos de Akron y Cleveland: los orígenes del movimiento y el estilo que marcó a la Comunidad. Libro — Historia, biografía y testimonios documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">13</span>
+            <span class="tag tag--libro">Libro</span>
+            <span class="doc-pages">176 págs.</span>
+          </div>
+          <h3 class="doc-title">El Dr. Bob y los Buenos Veteranos</h3>
+          <p class="doc-desc">Biografía del cofundador Robert Holbrook Smith y crónica de los primeros veteranos de Akron y Cleveland: los orígenes del movimiento y el estilo que marcó a la Comunidad.</p>
+          <div class="doc-meta">
+            <span class="meta-item">1,46 MB</span>
+            
+          </div>
+          <code class="doc-file">EL DR. BOB y los Buenos Veteranos.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-14" data-theme="historia" data-search="Transmítelo: la historia de Bill Wilson transmitelo.pdf Biografía de Bill Wilson y relato de cómo el mensaje de A.A. se extendió por el mundo. Complemento indispensable de la historia oficial de la Comunidad. Libro — Historia, biografía y testimonios documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">14</span>
+            <span class="tag tag--libro">Libro</span>
+            <span class="doc-pages">273 págs.</span>
+          </div>
+          <h3 class="doc-title">Transmítelo: la historia de Bill Wilson</h3>
+          <p class="doc-desc">Biografía de Bill Wilson y relato de cómo el mensaje de A.A. se extendió por el mundo. Complemento indispensable de la historia oficial de la Comunidad.</p>
+          <div class="doc-meta">
+            <span class="meta-item">1,18 MB</span>
+            
+          </div>
+          <code class="doc-file">transmitelo.pdf</code>
+        </article>
+        </div>
+      </section>
+      <section class="theme" id="tema-exterior" data-theme-section="exterior">
+        <header class="theme-head">
+          <span class="theme-num" aria-hidden="true">07</span>
+          <div class="theme-copy">
+            <p class="kicker">Tema 07</p>
+            <h2>A.A. y el mundo exterior: salud y justicia</h2>
+            <p class="theme-intro">La relación con médicos, profesionales de la salud mental y el sistema judicial: qué ofrece A.A. y cuáles son sus límites.</p>
+          </div>
+          <p class="theme-meta">
+            <strong>3</strong> documentos<br>
+            <span>82 páginas · 0,7 MB</span>
+          </p>
+        </header>
+        <div class="doc-grid">
+        <article class="doc-card" id="doc-15" data-theme="exterior" data-search="El miembro de AA, los medicamentos y otras drogas SP-11_AA_Member_Medication_&amp;_Other_Drugs_ONLINE.pdf Orientación sobre el uso de medicamentos y otras drogas por parte de miembros de A.A.: distingue el consumo no terapéutico del tratamiento indicado por profesionales. Folleto — A.A. y el mundo exterior: salud y justicia documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">15</span>
+            <span class="tag tag--folleto">Folleto</span>
+            <span class="doc-pages">28 págs.</span>
+          </div>
+          <h3 class="doc-title">El miembro de AA, los medicamentos y otras drogas</h3>
+          <p class="doc-desc">Orientación sobre el uso de medicamentos y otras drogas por parte de miembros de A.A.: distingue el consumo no terapéutico del tratamiento indicado por profesionales.</p>
+          <div class="doc-meta">
+            <span class="meta-item">0,22 MB</span>
+            
+          </div>
+          <code class="doc-file">SP-11_AA_Member_Medication_&amp;_Other_Drugs_ONLINE.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-16" data-theme="exterior" data-search="AA para los alcohólicos que padecen trastornos mentales... y sus padrinos SP-87_AA_Alcoholics_w_Mental_Health_ONLINE.pdf Recurso para miembros con trastornos de salud mental concurrentes y para sus padrinos: cómo acompañar sin diagnosticar y cuándo remitir a profesionales. Folleto — A.A. y el mundo exterior: salud y justicia documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">16</span>
+            <span class="tag tag--folleto">Folleto</span>
+            <span class="doc-pages">52 págs.</span>
+          </div>
+          <h3 class="doc-title">AA para los alcohólicos que padecen trastornos mentales... y sus padrinos</h3>
+          <p class="doc-desc">Recurso para miembros con trastornos de salud mental concurrentes y para sus padrinos: cómo acompañar sin diagnosticar y cuándo remitir a profesionales.</p>
+          <div class="doc-meta">
+            <span class="meta-item">0,40 MB</span>
+            
+          </div>
+          <code class="doc-file">SP-87_AA_Alcoholics_w_Mental_Health_ONLINE.pdf</code>
+        </article>
+        <article class="doc-card" id="doc-17" data-theme="exterior" data-search="AA como recurso para profesionales judiciales relacionados con las drogas y el alcohol SMFS-177_AA_Resource_Court_Professionals_ONLINE.pdf Hoja informativa de dos páginas que presenta A.A. a jueces, fiscales y profesionales del sistema judicial: qué ofrece la Comunidad, cómo se accede y cuáles son sus límites. Folleto — A.A. y el mundo exterior: salud y justicia documento literatura aa">
+          <div class="doc-top">
+            <span class="doc-num">17</span>
+            <span class="tag tag--folleto">Folleto</span>
+            <span class="doc-pages">2 págs.</span>
+          </div>
+          <h3 class="doc-title">AA como recurso para profesionales judiciales relacionados con las drogas y el alcohol</h3>
+          <p class="doc-desc">Hoja informativa de dos páginas que presenta A.A. a jueces, fiscales y profesionales del sistema judicial: qué ofrece la Comunidad, cómo se accede y cuáles son sus límites.</p>
+          <div class="doc-meta">
+            <span class="meta-item">0,04 MB</span>
+            
+          </div>
+          <code class="doc-file">SMFS-177_AA_Resource_Court_Professionals_ONLINE.pdf</code>
+        </article>
+        </div>
+      </section>
+        <p class="empty" id="empty" hidden>
+          <strong>Sin resultados</strong>
+          Pruebe con otra palabra o vuelva a «Todos» para ver la colección completa.
+        </p>
+      </div>
+    </section>
+
+    <section class="routes" id="rutas">
+      <div class="wrap">
+        <p class="eyebrow">Itinerarios</p>
+        <h2>Cuatro rutas para empezar</h2>
+        <p class="section-lead">
+          No son excluyentes: un mismo título puede servir a más de un propósito.
+          Los números llevan a la ficha correspondiente.
+        </p>
+        <div class="route-grid">
+          <article class="route">
+            <p class="kicker">Para quien llega</p>
+            <h3>Primeros noventa días</h3>
+            <div class="steps"><a class="step" href="#doc-01" data-goto="doc-01">01</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-02" data-goto="doc-02">02</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-06" data-goto="doc-06">06</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-07" data-goto="doc-07">07</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-03" data-goto="doc-03">03</a></div>
+            <p class="route-text">Del texto básico al grupo real: qué es el programa, cómo se trabaja el Paso, dónde ocurre la reunión, quién acompaña y cómo se habla de Dios sin imponer una creencia.</p>
+            <p class="route-meta">5 documentos · 502 páginas</p>
+          </article>
+          <article class="route">
+            <p class="kicker">Para servir</p>
+            <h3>Servicio y estructura</h3>
+            <div class="steps"><a class="step" href="#doc-08" data-goto="doc-08">08</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-09" data-goto="doc-09">09</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-10" data-goto="doc-10">10</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-11" data-goto="doc-11">11</a></div>
+            <p class="route-text">De los principios a la práctica: los Conceptos ilustrados, el Manual vigente, el informe de la Conferencia de Colombia y la memoria de la REDELA.</p>
+            <p class="route-meta">4 documentos · 616 páginas</p>
+          </article>
+          <article class="route">
+            <p class="kicker">Para recordar</p>
+            <h3>Historia y biografía</h3>
+            <div class="steps"><a class="step" href="#doc-12" data-goto="doc-12">12</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-13" data-goto="doc-13">13</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-14" data-goto="doc-14">14</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-04" data-goto="doc-04">04</a></div>
+            <p class="route-text">La memoria larga de la Comunidad: la mayoría de edad contada por Bill W., los primeros veteranos de Akron, la biografía de Bill y sus artículos del Grapevine.</p>
+            <p class="route-meta">4 documentos · 1.010 páginas</p>
+          </article>
+          <article class="route">
+            <p class="kicker">Para acompañar</p>
+            <h3>Salud, justicia y padrinazgo</h3>
+            <div class="steps"><a class="step" href="#doc-15" data-goto="doc-15">15</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-16" data-goto="doc-16">16</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-17" data-goto="doc-17">17</a><span class="arrow" aria-hidden="true">→</span><a class="step" href="#doc-07" data-goto="doc-07">07</a></div>
+            <p class="route-text">Medicación, salud mental y contacto con el sistema judicial: qué decir, qué no prometer y cuándo remitir a un profesional.</p>
+            <p class="route-meta">4 documentos · 113 páginas</p>
+          </article>
+        </div>
+
+        <div class="profiles">
+          <p class="profiles-head">Según el perfil del lector</p>
+          <div class="profile-row profile-head"><span>Si usted es…</span><span>Empiece por</span><span>Continúe con</span></div>
+          <div class="profile-row">
+            <span>Persona que llega por primera vez</span>
+            <span><a class="mini mini--start" href="#doc-01" data-goto="doc-01">01</a></span>
+            <span><a class="mini" href="#doc-02" data-goto="doc-02">02</a> · <a class="mini" href="#doc-06" data-goto="doc-06">06</a> · <a class="mini" href="#doc-07" data-goto="doc-07">07</a></span>
+          </div>
+          <div class="profile-row">
+            <span>Padrino o madrina</span>
+            <span><a class="mini mini--start" href="#doc-07" data-goto="doc-07">07</a></span>
+            <span><a class="mini" href="#doc-02" data-goto="doc-02">02</a> · <a class="mini" href="#doc-15" data-goto="doc-15">15</a> · <a class="mini" href="#doc-16" data-goto="doc-16">16</a></span>
+          </div>
+          <div class="profile-row">
+            <span>Servidor de grupo</span>
+            <span><a class="mini mini--start" href="#doc-06" data-goto="doc-06">06</a></span>
+            <span><a class="mini" href="#doc-08" data-goto="doc-08">08</a> · <a class="mini" href="#doc-09" data-goto="doc-09">09</a></span>
+          </div>
+          <div class="profile-row">
+            <span>Delegado o miembro de una estructura</span>
+            <span><a class="mini mini--start" href="#doc-09" data-goto="doc-09">09</a></span>
+            <span><a class="mini" href="#doc-10" data-goto="doc-10">10</a> · <a class="mini" href="#doc-11" data-goto="doc-11">11</a></span>
+          </div>
+          <div class="profile-row">
+            <span>Profesional de la salud o de la justicia</span>
+            <span><a class="mini mini--start" href="#doc-17" data-goto="doc-17">17</a></span>
+            <span><a class="mini" href="#doc-15" data-goto="doc-15">15</a> · <a class="mini" href="#doc-16" data-goto="doc-16">16</a></span>
+          </div>
+          <div class="profile-row">
+            <span>Interesado en la historia de A.A.</span>
+            <span><a class="mini mini--start" href="#doc-12" data-goto="doc-12">12</a></span>
+            <span><a class="mini" href="#doc-13" data-goto="doc-13">13</a> · <a class="mini" href="#doc-14" data-goto="doc-14">14</a> · <a class="mini" href="#doc-04" data-goto="doc-04">04</a></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="balance" id="balance">
+      <div class="wrap">
+        <p class="eyebrow">Balance</p>
+        <h2 class="display">El peso de la colección</h2>
+        <p class="section-lead">
+          2.238 páginas y 102,3 MB. La historia y el servicio ocupan
+          algo más de la mitad de la colección.
+        </p>
+        <div class="balance-grid">
+          <div class="bars">
+            <div class="bar-row">
+              <span class="bar-label">Textos básicos y doctrina <em>2</em></span>
+              <span class="bar-track"><span class="bar-fill" style="width:17.5%"></span></span>
+              <span class="bar-value">391 · 17,5 %</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Espiritualidad y reflexión <em>2</em></span>
+              <span class="bar-track"><span class="bar-fill" style="width:15.4%"></span></span>
+              <span class="bar-value">345 · 15,4 %</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Tradiciones y unidad <em>1</em></span>
+              <span class="bar-track"><span class="bar-fill" style="width:1.3%"></span></span>
+              <span class="bar-value">28 · 1,3 %</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">El grupo y el padrinazgo <em>2</em></span>
+              <span class="bar-track"><span class="bar-fill" style="width:3.9%"></span></span>
+              <span class="bar-value">87 · 3,9 %</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Servicio, estructura y conceptos <em>4</em></span>
+              <span class="bar-track"><span class="bar-fill" style="width:27.5%"></span></span>
+              <span class="bar-value">616 · 27,5 %</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Historia, biografía y testimonios <em>3</em></span>
+              <span class="bar-track"><span class="bar-fill" style="width:30.8%"></span></span>
+              <span class="bar-value">689 · 30,8 %</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">A.A. y el mundo exterior: salud y justicia <em>3</em></span>
+              <span class="bar-track"><span class="bar-fill" style="width:3.7%"></span></span>
+              <span class="bar-value">82 · 3,7 %</span>
+            </div>
+          </div>
+          <aside>
+            <div class="insight">
+              <p class="kicker">Lectura rápida</p>
+              <p><strong>58,3 %</strong> de las páginas corresponde a historia y servicio:
+                1.305 de 2.238. Es una colección con memoria y con estructura,
+                no solo de lectura devocional.</p>
+              <p><strong>Quince de los diecisiete</strong> títulos son literatura de A.A. World
+                Services o de A.A. Grapevine; los dos restantes son documentos de servicio de
+                Colombia y Bolivia.</p>
+            </div>
+            <table class="type-table">
+              <caption class="sr-only">Distribución por tipo documental</caption>
+              <thead>
+                <tr><th>Tipo</th><th class="num">Docs.</th><th class="num">Págs.</th></tr>
+              </thead>
+              <tbody><tr><td>Libro</td><td class="num">6</td><td class="num">1.401</td></tr><tr><td>Folleto</td><td class="num">8</td><td class="num">249</td></tr><tr><td>Manual</td><td class="num">1</td><td class="num">210</td></tr><tr><td>Informe</td><td class="num">1</td><td class="num">216</td></tr><tr><td>Memoria</td><td class="num">1</td><td class="num">162</td></tr><tr class="total"><td>Total</td><td class="num">17</td><td class="num">2.238</td></tr></tbody>
+            </table>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="inventory" id="inventario">
+      <div class="wrap">
+        <p class="eyebrow">Inventario</p>
+        <h2 class="display">Los 17 archivos</h2>
+        <p class="section-lead">
+          Tipo, edición, páginas y tamaño. «—» indica que el ejemplar no muestra año o edición
+          en la portada o en los créditos.
+        </p>
+        <div class="table-scroll">
+          <table>
+            <caption class="sr-only">Inventario detallado de la colección</caption>
+            <thead>
+              <tr>
+                <th scope="col">N.º</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Tema</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Edición</th>
+                <th scope="col" class="num">Págs.</th>
+                <th scope="col" class="num">MB</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="num">01</td>
+                <td><strong>Alcohólicos Anónimos — el Libro Grande, texto básico</strong><br><code>LIBRO_AA_TEXTO_BASICO.pdf</code></td>
+                <td>Textos básicos</td>
+                <td>Libro</td>
+                <td>—</td>
+                <td class="num">210</td>
+                <td class="num">52,4</td>
+              </tr>
+              <tr>
+                <td class="num">02</td>
+                <td><strong>Doce Pasos y Doce Tradiciones</strong><br><code>DOCE PASOS Y DOCE TRADICIONES.pdf</code></td>
+                <td>Textos básicos</td>
+                <td>Libro</td>
+                <td>9.ª impr., 2015</td>
+                <td class="num">181</td>
+                <td class="num">0,81</td>
+              </tr>
+              <tr>
+                <td class="num">03</td>
+                <td><strong>La palabra «Dios»: los miembros de AA agnósticos y ateos</strong><br><code>SP-86_0724.pdf</code></td>
+                <td>Espiritualidad</td>
+                <td>Folleto</td>
+                <td>—</td>
+                <td class="num">24</td>
+                <td class="num">2,18</td>
+              </tr>
+              <tr>
+                <td class="num">04</td>
+                <td><strong>El lenguaje del corazón: los escritos de Bill W. para el Grapevine</strong><br><code>el_lenguaje_del_corazon.pdf</code></td>
+                <td>Espiritualidad</td>
+                <td>Libro</td>
+                <td>—</td>
+                <td class="num">321</td>
+                <td class="num">2,75</td>
+              </tr>
+              <tr>
+                <td class="num">05</td>
+                <td><strong>Las Doce Tradiciones Ilustradas</strong><br><code>Doce Tradiciones Ilustradas.pdf</code></td>
+                <td>Tradiciones</td>
+                <td>Folleto</td>
+                <td>© 1983</td>
+                <td class="num">28</td>
+                <td class="num">11,9</td>
+              </tr>
+              <tr>
+                <td class="num">06</td>
+                <td><strong>El Grupo de A.A. ... donde todo empieza</strong><br><code>ElGrupoDondeTodoEmpieza.pdf</code></td>
+                <td>Grupo y padrinazgo</td>
+                <td>Folleto</td>
+                <td>—</td>
+                <td class="num">56</td>
+                <td class="num">1,00</td>
+              </tr>
+              <tr>
+                <td class="num">07</td>
+                <td><strong>Preguntas y respuestas sobre el apadrinamiento</strong><br><code>folleto_apadrinamiento.pdf</code></td>
+                <td>Grupo y padrinazgo</td>
+                <td>Folleto</td>
+                <td>—</td>
+                <td class="num">31</td>
+                <td class="num">0,67</td>
+              </tr>
+              <tr>
+                <td class="num">08</td>
+                <td><strong>Los Doce Conceptos para el Servicio Mundial — ilustrados</strong><br><code>DOCE CONCEPTOS ILUSTRADOS.pdf</code></td>
+                <td>Servicio</td>
+                <td>Folleto</td>
+                <td>© 1986</td>
+                <td class="num">28</td>
+                <td class="num">3,00</td>
+              </tr>
+              <tr>
+                <td class="num">09</td>
+                <td><strong>El Manual de Servicio de AA y Doce Conceptos para el Servicio Mundial</strong><br><code>ManualDeServicio2025.pdf</code></td>
+                <td>Servicio</td>
+                <td>Manual</td>
+                <td>2025-2027</td>
+                <td class="num">210</td>
+                <td class="num">7,00</td>
+              </tr>
+              <tr>
+                <td class="num">10</td>
+                <td><strong>Informe Final — 62.ª Conferencia de Servicios Generales de AA Colombia</strong><br><code>Informe Final Conferencia 62 - oficial...LEBrdt.pdf</code></td>
+                <td>Servicio</td>
+                <td>Informe</td>
+                <td>2026</td>
+                <td class="num">216</td>
+                <td class="num">5,13</td>
+              </tr>
+              <tr>
+                <td class="num">11</td>
+                <td><strong>24.ª REDELA — Santa Cruz de la Sierra, Bolivia, 2025</strong><br><code>24REDELA_BOLIVIA_web.pdf</code></td>
+                <td>Servicio</td>
+                <td>Memoria</td>
+                <td>2025</td>
+                <td class="num">162</td>
+                <td class="num">10,9</td>
+              </tr>
+              <tr>
+                <td class="num">12</td>
+                <td><strong>A.A. llega a su mayoría de edad: breve historia de A.A.</strong><br><code>AA-llega-a-su-mayoria-de-edad.pdf</code></td>
+                <td>Historia</td>
+                <td>Libro</td>
+                <td>—</td>
+                <td class="num">240</td>
+                <td class="num">1,23</td>
+              </tr>
+              <tr>
+                <td class="num">13</td>
+                <td><strong>El Dr. Bob y los Buenos Veteranos</strong><br><code>EL DR. BOB y los Buenos Veteranos.pdf</code></td>
+                <td>Historia</td>
+                <td>Libro</td>
+                <td>—</td>
+                <td class="num">176</td>
+                <td class="num">1,46</td>
+              </tr>
+              <tr>
+                <td class="num">14</td>
+                <td><strong>Transmítelo: la historia de Bill Wilson</strong><br><code>transmitelo.pdf</code></td>
+                <td>Historia</td>
+                <td>Libro</td>
+                <td>—</td>
+                <td class="num">273</td>
+                <td class="num">1,18</td>
+              </tr>
+              <tr>
+                <td class="num">15</td>
+                <td><strong>El miembro de AA, los medicamentos y otras drogas</strong><br><code>SP-11_AA_Member_Medication_&amp;_Other_Drugs_ONLINE.pdf</code></td>
+                <td>Salud y justicia</td>
+                <td>Folleto</td>
+                <td>—</td>
+                <td class="num">28</td>
+                <td class="num">0,22</td>
+              </tr>
+              <tr>
+                <td class="num">16</td>
+                <td><strong>AA para los alcohólicos que padecen trastornos mentales... y sus padrinos</strong><br><code>SP-87_AA_Alcoholics_w_Mental_Health_ONLINE.pdf</code></td>
+                <td>Salud y justicia</td>
+                <td>Folleto</td>
+                <td>—</td>
+                <td class="num">52</td>
+                <td class="num">0,40</td>
+              </tr>
+              <tr>
+                <td class="num">17</td>
+                <td><strong>AA como recurso para profesionales judiciales relacionados con las drogas y el alcohol</strong><br><code>SMFS-177_AA_Resource_Court_Professionals_ONLINE.pdf</code></td>
+                <td>Salud y justicia</td>
+                <td>Folleto</td>
+                <td>—</td>
+                <td class="num">2</td>
+                <td class="num">0,04</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <span class="aa-mark" aria-hidden="true">AA</span>
+          <div>
+            <strong>Biblioteca de A.A.</strong>
+            <span>Inventario y tabla de contenido por temas</span>
+          </div>
+        </div>
+        <nav class="foot-links" aria-label="Enlaces">
+          <a href="https://github.com/wiroal/racsg">Repositorio racsg</a>
+          <a href="index.html">Informe 62ª RAC</a>
+          <a href="#top">Volver arriba</a>
+        </nav>
+      </div>
+      <p class="foot-note">
+        <strong>Documento de trabajo, no oficial.</strong> Inventario elaborado el 24 de octubre de 2026 a partir
+        de los 17 PDF de la colección. Los textos pertenecen a A.A. World Services, A.A. Grapevine
+        y a las estructuras de servicio citadas. Esta página no sustituye la literatura aprobada
+        ni los sitios oficiales de Alcohólicos Anónimos.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+(() => {
+  const q = document.getElementById('q');
+  const chips = Array.from(document.querySelectorAll('.chip'));
+  const cards = Array.from(document.querySelectorAll('.doc-card'));
+  const sections = Array.from(document.querySelectorAll('.theme'));
+  const count = document.getElementById('count');
+  const empty = document.getElementById('empty');
+  const clear = document.getElementById('clear');
+  let theme = 'all';
+
+  const norm = (value) => value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+
+  function apply() {
+    const term = norm(q.value.trim());
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const matchesTheme = theme === 'all' || card.dataset.theme === theme;
+      const matchesText = !term || norm(card.dataset.search).includes(term);
+      const show = matchesTheme && matchesText;
+      card.hidden = !show;
+      if (show) visible += 1;
+    });
+
+    sections.forEach((section) => {
+      section.hidden = !section.querySelector('.doc-card:not([hidden])');
+    });
+
+    count.textContent = `${visible} ${visible === 1 ? 'documento' : 'documentos'}`;
+    empty.hidden = visible !== 0;
+    clear.hidden = q.value.length === 0;
+
+    chips.forEach((chip) => {
+      chip.setAttribute('aria-pressed', String(chip.dataset.filter === theme));
+    });
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      theme = chip.dataset.filter;
+      apply();
+    });
+  });
+
+  q.addEventListener('input', apply);
+  clear.addEventListener('click', () => {
+    q.value = '';
+    q.focus();
+    apply();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === '/' && document.activeElement !== q) {
+      event.preventDefault();
+      q.focus();
+    }
+    if (event.key === 'Escape' && document.activeElement === q) {
+      q.value = '';
+      apply();
+    }
+  });
+
+  document.querySelectorAll('[data-goto]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      theme = 'all';
+      q.value = '';
+      apply();
+      const target = document.getElementById(link.dataset.goto);
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      target.classList.add('flash');
+      window.setTimeout(() => target.classList.remove('flash'), 1800);
+    });
+  });
+
+  const toolbar = document.getElementById('toolbar');
+  const onScroll = () => toolbar.classList.toggle('stuck', window.scrollY > 140);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  apply();
+})();
+</script>
+</body>
+</html>
