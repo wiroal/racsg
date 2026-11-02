@@ -1,4 +1,14 @@
-# Reunión Anual de la Conferencia de Servicios Generales de Alcohólicos Anónimos de Colombia
+# Conferencia de Servicios Generales de AA Colombia
+
+## Conferencia 63 · 2027
+
+La página principal organiza el espacio de trabajo de la 63.ª Conferencia y el seguimiento de proyectos y acciones recomendables.
+
+[Abrir índice de la 63.ª Conferencia](https://wiroal.github.io/racsg/)
+
+## Archivo de la 62.ª RAC
+
+[Informe de la 62.ª Conferencia](https://wiroal.github.io/racsg/csg62.html)
 
 ## Biblioteca
 
