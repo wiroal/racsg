@@ -270,7 +270,7 @@
           const source = document.createElement('div');
           source.className = 'source-hit';
           const link = document.createElement('a');
-          link.href = 'fuentes_AA_md/' + encodeURIComponent(hit.file);
+          link.href = 'lector_fuentes.html?doc=' + encodeURIComponent(hit.file) + '&seccion=' + encodeURIComponent(hit.heading);
           link.target = '_blank'; link.rel = 'noopener';
           link.textContent = hit.title;
           source.appendChild(link);

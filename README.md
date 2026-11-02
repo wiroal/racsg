@@ -16,4 +16,4 @@ La página principal organiza el espacio de trabajo de la 63.ª Conferencia y el
 
 ## Buscador de fuentes
 
-El índice busca fragmentos en los archivos Markdown de `fuentes_AA_md/` y enlaza cada resultado con su documento. Como el sitio usa GitHub Pages público, estos archivos también quedan accesibles públicamente.
+El índice busca fragmentos en los archivos Markdown de `fuentes_AA_md/` y abre los resultados en una vista HTML legible. La carpeta de fuentes incluye un catálogo de lectura. Como el sitio usa GitHub Pages público, tanto los Markdown originales como el buscador quedan accesibles públicamente.
