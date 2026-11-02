@@ -13,3 +13,7 @@ La página principal organiza el espacio de trabajo de la 63.ª Conferencia y el
 ## Biblioteca
 
 [Inventario y tabla de contenido por temas](https://wiroal.github.io/racsg/biblioteca_aa.html)
+
+## Buscador de fuentes
+
+El índice busca fragmentos en los archivos Markdown de `fuentes_AA_md/` y enlaza cada resultado con su documento. Como el sitio usa GitHub Pages público, estos archivos también quedan accesibles públicamente.

@@ -17,6 +17,7 @@
     .notice{background:#fff;border-left:4px solid var(--gold);padding:16px 18px;border-radius:8px;box-shadow:0 2px 10px #17264d0b;margin-bottom:22px}.notice strong{color:var(--navy)}
     .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:19px;box-shadow:0 3px 12px #17264d08}.card h3{font-size:1.08rem;color:var(--navy);margin:0 0 8px}.card p{color:#505a6e;margin:0 0 12px}.meta{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:#eef1f7;color:#405174;margin-bottom:9px}.meta.pending{background:#fbf3dc;color:#795b13}.meta.active{background:#e8f2ec;color:var(--green)}
     .links{display:flex;flex-wrap:wrap;gap:10px}.text-link{color:#284d86;font-weight:700;text-decoration-thickness:1px;text-underline-offset:3px}.small{font-size:.9rem;color:var(--muted)}.checklist{padding-left:20px;margin:10px 0 0;color:#505a6e}.checklist li{margin:5px 0}
+    .search-shell{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 5px 20px #17264d0c}.chat-log{height:min(460px,60vh);min-height:260px;overflow:auto;padding:18px;background:#f8f9fb;display:flex;flex-direction:column;gap:13px}.bubble{max-width:min(760px,94%);padding:13px 15px;border-radius:12px;background:#fff;border:1px solid var(--line);white-space:pre-wrap}.bubble.user{align-self:flex-end;background:#eaf0fa;border-color:#d9e3f4}.bubble.bot{align-self:flex-start}.bubble p{margin:0 0 8px}.bubble p:last-child{margin-bottom:0}.bubble .source-hit{display:block;margin-top:11px;padding-top:10px;border-top:1px solid var(--line);font-size:.9rem}.source-hit a{color:#284d86;font-weight:700;text-decoration-thickness:1px;text-underline-offset:2px}.source-hit small{display:block;color:var(--muted);margin-top:2px}.chat-form{padding:14px;border-top:1px solid var(--line);display:flex;gap:10px}.chat-form input{min-width:0;flex:1;padding:12px 13px;border:1px solid #cbd2de;border-radius:8px;font:inherit}.chat-form input:focus{outline:3px solid #dce5f3;border-color:#49699d}.chat-form button{border:0;border-radius:8px;background:var(--navy);color:#fff;padding:0 20px;font:700 1rem system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer}.chat-form button:disabled{opacity:.55;cursor:wait}.suggestions{display:flex;flex-wrap:wrap;gap:8px;padding:0 14px 14px}.suggestions button{background:#f3f5f8;border:1px solid var(--line);border-radius:20px;padding:7px 11px;color:#33415d;cursor:pointer;font:inherit;font-size:.85rem}.search-note{padding:0 14px 14px;color:var(--muted);font-size:.82rem}
     footer{background:var(--navy);color:#dbe2ef;padding:22px;text-align:center;font-size:.88rem}footer a{color:#f0d889}
     @media(max-width:680px){.grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:6px}.hero{padding-top:35px}}
   </style>
@@ -29,6 +30,7 @@
       <p>Espacio de trabajo para organizar las acciones recomendables, los proyectos que llegan a la Conferencia y los asuntos que continúan desde la 62.ª RAC.</p>
       <nav aria-label="Navegación principal">
         <a class="button" href="#proyectos">Ir a proyectos</a>
+        <a class="button secondary" href="#buscador">Buscar en las fuentes</a>
         <a class="button secondary" href="csg62.html">Consultar informe de la 62.ª RAC</a>
         <a class="button secondary" href="biblioteca_aa.html">Biblioteca de AA</a>
       </nav>
@@ -90,6 +92,30 @@
       </div>
     </section>
 
+    <section class="section" id="buscador" aria-labelledby="buscador-title">
+      <div class="section-head">
+        <h2 id="buscador-title">Buscador conversacional de fuentes</h2>
+        <p>Pregunta por un tema y encuentra pasajes en las fuentes de AA y documentos de servicio.</p>
+      </div>
+      <div class="search-shell">
+        <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-label="Conversación con el buscador">
+          <div class="bubble bot">Puedo buscar en acciones recomendables, el informe de la 62.ª Conferencia, el Manual de Servicio, los Doce Pasos y Doce Tradiciones y otros textos de la biblioteca. Escribe una pregunta o un tema; te mostraré fragmentos y enlaces a sus fuentes.</div>
+        </div>
+        <form class="chat-form" id="search-form">
+          <label for="search-query" class="small" style="position:absolute;left:-10000px">Pregunta o tema</label>
+          <input id="search-query" name="q" type="search" placeholder="Ej.: ¿Qué acciones recomendables hablan de finanzas?" autocomplete="off" required>
+          <button id="search-submit" type="submit">Buscar</button>
+        </form>
+        <div class="suggestions" aria-label="Búsquedas sugeridas">
+          <button type="button" data-query="acciones recomendables sobre finanzas">Acciones sobre finanzas</button>
+          <button type="button" data-query="mociones de piso de la conferencia 62">Mociones de la 62.ª</button>
+          <button type="button" data-query="qué dice la tradición cinco">Tradición cinco</button>
+          <button type="button" data-query="formato para proyecto de acción recomendable">Formato de proyecto</button>
+        </div>
+        <div class="search-note">Búsqueda local por relevancia en los documentos fuente. La consulta no se envía a un chatbot externo; los resultados incluyen citas para que puedas verificar el contexto.</div>
+      </div>
+    </section>
+
     <section class="section" aria-labelledby="recursos-title">
       <div class="section-head">
         <h2 id="recursos-title">Documentos de referencia</h2>
@@ -104,5 +130,190 @@
     </section>
   </main>
   <footer><div class="wrap">Espacio de trabajo de la 63.ª Conferencia · <a href="csg62.html">Archivo 62.ª RAC</a> · <a href="biblioteca_aa.html">Biblioteca</a></div></footer>
+  <script>
+    (() => {
+      const sources = [
+        ['Acciones_Recomendables_1965-2026.md', 'Acciones recomendables 1965–2026'],
+        ['Informe_Final_Conferencia_62.md', 'Informe final de la 62.ª Conferencia'],
+        ['Manual_de_Servicio_2025.md', 'Manual de Servicio 2025'],
+        ['Doce_Pasos_y_Doce_Tradiciones.md', 'Doce Pasos y Doce Tradiciones'],
+        ['Alcoholicos_Anonimos_Libro_Grande.md', 'Alcohólicos Anónimos · Libro Grande'],
+        ['AA_Llega_a_su_Mayoria_de_Edad.md', 'AA llega a su mayoría de edad'],
+        ['El_Lenguaje_del_Corazon.md', 'El lenguaje del corazón'],
+        ['El_Dr_Bob_y_los_Buenos_Veteranos.md', 'El Dr. Bob y los buenos veteranos'],
+        ['formato_proyectos_accion_recomendable.md', 'Formato para proyectos de acción recomendable']
+      ];
+      const stopWords = new Set('a al algo algunas algunos ante bajo cada como con contra cual cuales cuando de del desde donde dos el ella ellas ellos en entre era es esa esas ese esos esta estas este esto estos fue ha hasta hay la las le les lo los más me mi muy ni no nos o para pero por que qué quien se sin sobre son su sus también te tiene todo tras tu un una uno unos unas y ya'.split(' '));
+      const log = document.getElementById('chat-log');
+      const form = document.getElementById('search-form');
+      const input = document.getElementById('search-query');
+      const submit = document.getElementById('search-submit');
+      let chunksPromise;
+
+      const normalize = value => value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9ñ]+/g, ' ').trim();
+      const termsFor = value => normalize(value).split(/\s+/).filter(term => term.length > 2 && !stopWords.has(term));
+      const cleanMarkdown = value => value
+        .replace(/```[\s\S]*?```/g, ' ')
+        .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+        .replace(/^\s*[-*_]{3,}\s*$/gm, ' ')
+        .replace(/^\s*\|?\s*:?-{2,}.*$/gm, ' ')
+        .replace(/[#>*_`~]/g, ' ')
+        .replace(/\s+/g, ' ').trim();
+
+      function splitDocument(text, file, title) {
+        const lines = text.replace(/\r/g, '').split('\n');
+        const sections = [];
+        let heading = title;
+        let body = [];
+        const flush = () => {
+          const content = body.join('\n').trim();
+          if (content) sections.push({heading, content});
+          body = [];
+        };
+        for (const line of lines) {
+          const match = line.match(/^\s*(#{1,6})\s+(.+?)\s*#*\s*$/) || line.match(/^\s*\*\*?(Pág(?:ina)?\.?\s*(?:PDF\s*)?\d+[^*]*)\*\*?\s*$/i);
+          if (match) {
+            flush();
+            heading = (match[2] || match[1]).replace(/[*_`]/g, '').trim();
+          } else body.push(line);
+        }
+        flush();
+        const chunks = [];
+        for (const section of sections) {
+          const paragraphs = section.content.split(/\n\s*\n/);
+          let buffer = '';
+          for (const paragraph of paragraphs) {
+            const next = (buffer ? buffer + '\n' : '') + paragraph.trim();
+            if (buffer && next.length > 1400) {
+              addChunk(buffer); buffer = paragraph.trim();
+            } else buffer = next;
+            if (buffer.length > 1900) { addChunk(buffer); buffer = ''; }
+          }
+          if (buffer) addChunk(buffer);
+          function addChunk(raw) {
+            const content = cleanMarkdown(raw);
+            if (content.length >= 55) chunks.push({file, title, heading: section.heading, content, normalized: normalize(section.heading + ' ' + content)});
+          }
+        }
+        return chunks;
+      }
+
+      function sourceText(raw) {
+        if (!/^\s*(<!doctype\s+html|<html)/i.test(raw)) return raw;
+        const parsed = new DOMParser().parseFromString(raw, 'text/html');
+        parsed.querySelectorAll('script,style,nav,header,footer').forEach(node => node.remove());
+        const content = parsed.querySelector('main') || parsed.querySelector('article') || parsed.body;
+        return [...content.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,blockquote,tr')].map(node => {
+          const value = node.textContent.replace(/\s+/g, ' ').trim();
+          if (!value) return '';
+          return /^H[1-6]$/.test(node.tagName) ? '# ' + value : value;
+        }).filter(Boolean).join('\n\n');
+      }
+
+      function loadIndex() {
+        if (!chunksPromise) chunksPromise = Promise.all(sources.map(async ([file, title]) => {
+          const response = await fetch('fuentes_AA_md/' + encodeURIComponent(file));
+          if (!response.ok) throw new Error('No se pudo cargar ' + file + ' (' + response.status + ').');
+          return splitDocument(sourceText(await response.text()), file, title);
+        })).then(groups => groups.flat());
+        return chunksPromise;
+      }
+
+      function rankChunks(chunks, query) {
+        const terms = [...new Set(termsFor(query))];
+        if (!terms.length) return [];
+        const averageLength = chunks.reduce((sum, item) => sum + item.normalized.length, 0) / Math.max(1, chunks.length);
+        const documentFrequency = new Map(terms.map(term => [term, chunks.reduce((sum, item) => sum + (item.normalized.includes(term) ? 1 : 0), 0)]));
+        const normalizedQuery = normalize(query);
+        return chunks.map(item => {
+          let score = 0;
+          const words = item.normalized.split(' ');
+          for (const term of terms) {
+            const tf = words.reduce((count, word) => count + (word === term ? 1 : 0), 0);
+            if (!tf) continue;
+            const df = documentFrequency.get(term) || 0;
+            const idf = Math.log(1 + (chunks.length - df + .5) / (df + .5));
+            const lengthFactor = 1.2 * (1 - .75 + .75 * item.normalized.length / Math.max(1, averageLength));
+            score += idf * (tf * 2.2) / (tf + lengthFactor);
+            if (normalize(item.heading).includes(term)) score += .9;
+          }
+          if (normalizedQuery.length > 7 && item.normalized.includes(normalizedQuery)) score += 3;
+          if (terms.length > 1 && terms.filter(term => item.normalized.includes(term)).length === terms.length) score += 1.25;
+          return {...item, score};
+        }).filter(item => item.score > .5).sort((a, b) => b.score - a.score).slice(0, 6);
+      }
+
+      function excerptFor(item, query) {
+        const text = item.content;
+        if (text.length <= 520) return text;
+        const terms = termsFor(query);
+        const sentences = text.split(/(?<=[.!?])\s+|(?<=;)\s+/);
+        let best = 0, bestScore = -1;
+        for (let i = 0; i < sentences.length; i++) {
+          const haystack = normalize(sentences[i]);
+          const score = terms.reduce((sum, term) => sum + (haystack.includes(term) ? 1 : 0), 0);
+          if (score > bestScore) { best = i; bestScore = score; }
+        }
+        let excerpt = sentences.slice(Math.max(0, best - 1), Math.min(sentences.length, best + 2)).join(' ');
+        if (excerpt.length > 560) excerpt = excerpt.slice(0, 557).trimEnd() + '…';
+        return excerpt;
+      }
+
+      function addBubble(kind, message, hits = []) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble ' + kind;
+        const paragraph = document.createElement('p');
+        paragraph.textContent = message;
+        bubble.appendChild(paragraph);
+        for (const hit of hits) {
+          const source = document.createElement('div');
+          source.className = 'source-hit';
+          const link = document.createElement('a');
+          link.href = 'fuentes_AA_md/' + encodeURIComponent(hit.file);
+          link.target = '_blank'; link.rel = 'noopener';
+          link.textContent = hit.title;
+          source.appendChild(link);
+          const heading = document.createElement('small');
+          heading.textContent = hit.heading + ' · ' + Math.round(hit.score * 10) / 10 + ' relevancia';
+          source.appendChild(heading);
+          const excerpt = document.createElement('small');
+          excerpt.textContent = '“' + excerptFor(hit, input.value) + '”';
+          source.appendChild(excerpt);
+          bubble.appendChild(source);
+        }
+        log.appendChild(bubble);
+        log.scrollTop = log.scrollHeight;
+      }
+
+      async function search(query) {
+        addBubble('user', query);
+        submit.disabled = true;
+        submit.textContent = 'Buscando…';
+        try {
+          const chunks = await loadIndex();
+          const hits = rankChunks(chunks, query);
+          if (hits.length) addBubble('bot', `Encontré ${hits.length} pasajes que pueden servir. Revisa el fragmento y abre la fuente para leerlo en contexto:`, hits);
+          else addBubble('bot', 'No encontré coincidencias claras. Prueba con términos más concretos, el nombre de un comité, una tradición o el año de la recomendación.');
+        } catch (error) {
+          addBubble('bot', 'No pude cargar las fuentes publicadas en fuentes_AA_md/. Verifica que estén disponibles en el sitio y vuelve a intentarlo. Detalle: ' + error.message);
+        } finally {
+          submit.disabled = false;
+          submit.textContent = 'Buscar';
+          input.focus();
+        }
+      }
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        const query = input.value.trim();
+        if (query) search(query);
+      });
+      document.querySelectorAll('.suggestions button').forEach(button => button.addEventListener('click', () => {
+        input.value = button.dataset.query;
+        search(input.value);
+      }));
+    })();
+  </script>
 </body>
 </html>
