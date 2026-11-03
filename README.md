@@ -16,4 +16,4 @@ La página principal organiza el espacio de trabajo de la 63.ª Conferencia y el
 
 ## Buscador de fuentes
 
-El índice muestra primero las acciones recomendables, con comité, año y página, a partir de `proyecto_accion_recomendable/datos_acciones.js` del sitio principal. Después busca fragmentos en las versiones HTML de `Fuentes_AA_Area3/html/` y en el formato de proyectos de `fuentes_AA_md/`. [Abrir repositorio de fuentes](https://wiroal.github.io/racsg/Fuentes_AA_Area3/). Como el sitio usa GitHub Pages público, las fuentes y el buscador quedan accesibles públicamente.
+El índice muestra primero las acciones recomendables, con comité, año y página, a partir de `proyecto_accion_recomendable/datos_acciones.js` del sitio principal. Después busca fragmentos en las versiones HTML de `Fuentes_AA_Area3/html/` y en el formato de proyectos de `fuentes_AA_md/`. Como el sitio usa GitHub Pages público, las fuentes y el buscador quedan accesibles públicamente.

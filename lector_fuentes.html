@@ -37,9 +37,7 @@
       const toc = document.getElementById('toc');
       const tocList = document.getElementById('toc-list');
       const allowedFiles = new Set([
-        'AA_Llega_a_su_Mayoria_de_Edad.md','Acciones_Recomendables_1965-2026.md','Alcoholicos_Anonimos_Libro_Grande.md',
-        'Doce_Pasos_y_Doce_Tradiciones.md','El_Dr_Bob_y_los_Buenos_Veteranos.md','El_Lenguaje_del_Corazon.md',
-        'Informe_Final_Conferencia_62.md','Manual_de_Servicio_2025.md','formato_proyectos_accion_recomendable.md','comentarios_mcsg_01.md'
+        'formato_proyectos_accion_recomendable.md','comentarios_mcsg_01.md'
       ]);
       const escapeHtml = value => value.replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
       const slugify = value => value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
