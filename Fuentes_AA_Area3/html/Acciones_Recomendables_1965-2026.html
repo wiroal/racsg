@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acciones Recomendables 1965–2026</title>
+<style>@media print{:root{--fs-print:9.21pt}}
+:root{
+  --azul:#003087; --azul-2:#1f4fa8; --oro:#C89000; --oro-suave:#f3e3b5;
+  --fondo:#f4efe4; --hoja:#fffdf8; --tinta:#2b2a27; --tinta-2:#5d5a52; --linea:#e6dccb;
+  --sombra:0 1px 2px rgba(60,45,20,.06),0 8px 28px rgba(60,45,20,.08);
+  --serif:"Source Serif 4","Charter","Bitstream Charter","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --fondo:#15171c; --hoja:#1d2027; --tinta:#e7e2d6; --tinta-2:#a9a395; --linea:#2f333c;
+    --azul:#8fb1ff; --azul-2:#a9c3ff; --oro:#e0b44a; --oro-suave:#3a3220; --sombra:0 8px 28px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --fondo:#15171c; --hoja:#1d2027; --tinta:#e7e2d6; --tinta-2:#a9a395; --linea:#2f333c;
+  --azul:#8fb1ff; --azul-2:#a9c3ff; --oro:#e0b44a; --oro-suave:#3a3220; --sombra:0 8px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--fondo);color:var(--tinta);font-family:var(--serif);
+  font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:var(--azul)}
+.barra{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:12px;
+  padding:10px 16px;background:color-mix(in srgb,var(--fondo) 88%,transparent);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--linea);font-family:var(--sans);font-size:14px}
+.barra .t{font-weight:600;color:var(--azul);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.barra a.volver{text-decoration:none;color:var(--tinta-2);white-space:nowrap}
+.barra form{display:flex;gap:6px;align-items:center;color:var(--tinta-2)}
+.barra input{width:64px;padding:5px 8px;border:1px solid var(--linea);border-radius:8px;background:var(--hoja);color:var(--tinta);font:inherit}
+.barra button{border:1px solid var(--linea);background:var(--hoja);color:var(--tinta);border-radius:8px;padding:5px 10px;font:inherit;cursor:pointer}
+.progreso{position:fixed;top:0;left:0;height:3px;background:var(--oro);width:0;z-index:11}
+main{max-width:860px;margin:0 auto;padding:28px 16px 80px}
+.portada{background:var(--azul);color:#fff;border-radius:16px;padding:56px 44px;margin-bottom:28px;position:relative;overflow:hidden;box-shadow:var(--sombra)}
+:root[data-theme="dark"] .portada{background:#0b1f52}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .portada{background:#0b1f52}}
+.portada:after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border:18px solid var(--oro);border-radius:50%;opacity:.7}
+.portada .kick{font-family:var(--sans);text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:#f2d27a}
+.portada h1{font-size:40px;line-height:1.15;margin:12px 0 14px;font-weight:600;max-width:600px}
+.portada .meta{font-family:var(--sans);font-size:14px;opacity:.85;max-width:620px}
+.indice{background:var(--hoja);border:1px solid var(--linea);border-radius:14px;padding:20px 24px;margin-bottom:28px;box-shadow:var(--sombra)}
+.indice summary{cursor:pointer;font-family:var(--sans);font-weight:600;color:var(--azul)}
+.indice ol{columns:2;column-gap:28px;padding-left:0;list-style:none;font-size:15px;margin:14px 0 0}
+.indice li{break-inside:avoid;margin:0 0 6px;display:flex;gap:8px}
+.indice li b{font-family:var(--sans);font-size:12px;color:var(--oro);min-width:34px}
+.indice a{text-decoration:none;color:var(--tinta)}
+.indice a:hover{color:var(--azul)}
+.pagina{background:var(--hoja);border:1px solid var(--linea);border-radius:6px;box-shadow:var(--sombra);
+  padding:52px 64px 44px;margin:0 0 26px;position:relative;scroll-margin-top:64px}
+.pagina>.num{position:absolute;top:16px;right:22px;font-family:var(--sans);font-size:12px;letter-spacing:.06em;color:var(--tinta-2)}
+.pagina>.num b{color:var(--oro);font-weight:700}
+.pagina{overflow-wrap:anywhere}
+.pagina p{margin:0 0 .75em;text-align:left}
+.pagina p.j{text-align:justify;hyphens:auto}
+.toc{display:flex;align-items:baseline;gap:8px;margin:0 0 .35em;font-size:.95em}
+.toc .tt{flex:0 1 auto}
+.toc .dots{flex:1 1 auto;border-bottom:1.5px dotted var(--tinta-2);opacity:.45;min-width:24px;transform:translateY(-4px)}
+.toc .pn{flex:0 0 auto;font-family:var(--sans);font-size:.85em;font-weight:600;color:var(--azul);min-width:2.2em;text-align:right}
+.pagina p.dc:first-letter{font-weight:700;color:var(--azul)}
+.pagina p.cap{color:var(--tinta-2);font-size:.9em}
+.pagina h3{font-family:var(--sans);font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--azul);
+  margin:1.4em 0 .7em;padding-bottom:6px;border-bottom:2px solid var(--oro-suave);line-height:1.35}
+.pagina h3:first-child{margin-top:0}
+.year{margin:1.2em 0 .5em}
+.year span{display:inline-block;font-family:var(--sans);font-weight:700;font-size:13px;letter-spacing:.08em;color:#fff;background:var(--azul);padding:3px 10px;border-radius:999px}
+.folio{font-family:var(--sans);font-size:11.5px;color:var(--tinta-2);text-align:center;margin:.4em 0;letter-spacing:.04em}
+.tbl{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14px;margin:.6em 0 1em}
+.tbl th{background:var(--azul);color:#fff;text-align:left;padding:6px 10px;font-weight:600}
+.tbl th,.tbl td{overflow-wrap:normal}
+.tbl td:nth-child(-n+2),.tbl th:nth-child(-n+2){white-space:nowrap;width:1%}
+.tbl td{padding:5px 10px;border-bottom:1px solid var(--linea);vertical-align:top}
+.tbl tr:nth-child(even) td{background:color-mix(in srgb,var(--oro-suave) 35%,transparent)}
+.folio.run{display:none}
+.gridl{columns:3 180px;column-gap:22px;font-family:var(--sans);font-size:13px;line-height:1.35;color:var(--tinta)}
+.gridl span{display:block;break-inside:avoid;padding:1px 0;border-bottom:1px dotted var(--linea)}
+@media print{.gridl{font-size:7.4pt;columns:4;line-height:1.25}}
+.vacia{color:var(--tinta-2);font-style:italic;text-align:center;font-family:var(--sans);font-size:14px}
+footer.pie{text-align:center;font-family:var(--sans);font-size:13px;color:var(--tinta-2);margin-top:40px}
+@media (max-width:640px){
+  body{font-size:17px}
+  .pagina{padding:40px 22px 28px}
+  .portada{padding:40px 24px}.portada h1{font-size:30px}
+  .indice ol{columns:1}
+  .barra form span{display:none}
+}
+/* ---------- Impresión / PDF ---------- */
+@page{size:Letter;margin:15mm 17mm 17mm;
+  @bottom-center{content:counter(page);font-family:"Inter",sans-serif;font-size:9pt;color:#7a7466}
+  @top-center{content:"ACCIONES RECOMENDABLES 1965–2026";font-family:"Inter",sans-serif;font-size:8pt;color:#003087;letter-spacing:.08em}
+}
+@page :first{@bottom-center{content:none}@top-center{content:none}}
+@media print{
+  :root{--fondo:#fff;--hoja:#fff;--tinta:#1f1e1b;--tinta-2:#6b665b;--linea:#e3dccd;--azul:#003087;--oro:#C89000;--oro-suave:#efe1bb}
+  body{font-size:var(--fs-print,10.2pt);line-height:1.4;background:#fff}
+  .pagina p{margin:0 0 .45em}
+  .barra,.progreso,.indice,footer.pie{display:none!important}
+  main{max-width:none;padding:0;margin:0}
+  .portada{break-after:page;border-radius:0;box-shadow:none;min-height:240mm;display:flex;flex-direction:column;justify-content:center;padding:30mm 18mm;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .portada h1{font-size:30pt}
+  .pagina{break-before:page;border:0;box-shadow:none;border-radius:0;padding:0;margin:0}
+  .pagina>.num{position:static;text-align:right;margin:0 0 4mm;font-size:8pt;border-bottom:.5pt solid #e3dccd;padding-bottom:1.5mm}
+  .pagina h3{font-size:10pt;break-after:avoid}
+  .year,.tbl th,.year span{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pagina p{orphans:3;widows:3}
+  .tbl{font-size:9pt}
+}
+</style></head>
+<body>
+<div class="progreso"></div>
+<div class="barra"><a class="volver" href="../index.html">← Fuentes</a><span class="t">Acciones Recomendables 1965–2026</span>
+<form id="ir"><span>Ir a pág.</span><input type="number" min="1" max="45" aria-label="Número de página"><button>Ir</button></form>
+<button id="tema" title="Cambiar tema" aria-label="Cambiar tema">◐</button></div>
+<main>
+<header class="portada"><div class="kick">Servicio · Colombia · Alcohólicos Anónimos</div>
+<h1>Acciones Recomendables 1965–2026</h1><div class="meta">Fuente: Acciones-Recomendables-al-1965-2026.pdf (45 páginas). Texto extraído del PDF; las marcas [Pág. PDF N] indican la página del archivo PDF (puede diferir del número impreso).<br>45 páginas con texto · Repositorio de fuentes del Delegado, Área 3</div></header>
+<details class="indice"><summary>Índice de páginas y secciones</summary><ol><li><b>1</b><a href="#p1">CONFERENCIA DE SERVICIOS GENERALES DE ALCOHÓLICOS ANÓNIMOS COLOMBIA RECOMENDACIONES VIGENT</a></li><li><b>2</b><a href="#p2">CONFERENCIA DE SERVICIOS GENERALES DE ALCOHÓLICOS ANÓNIMOS COLOMBIA RECOMENDACIONES VIGENT</a></li><li><b>3</b><a href="#p3">INTRODUCCIÓN</a></li><li><b>4</b><a href="#p4">PRIMERA CONFERENCIA AÑO 1965</a></li><li><b>5</b><a href="#p5">ACTA ÚNICA</a></li><li><b>6</b><a href="#p6">ARTURO ESCOBAR ASESOR CONFERENCIA</a></li><li><b>7</b><a href="#p7">SEGUNDA CONFERENCIA AÑO 1966</a></li><li><b>8</b><a href="#p8">ESTATUTOS DE LA CORPORACIÓN NACIONAL DE SERVICIOS GENERALES</a></li><li><b>9</b><a href="#p9">TERCERA CONFERENCIA AÑO 1967</a></li><li><b>12</b><a href="#p12">“EL INVENTARIO DE GRUPO, VITAL EN EL FORTALECIMIENTO DE AA”</a></li><li><b>18</b><a href="#p18">FINANZAS</a></li><li><b>20</b><a href="#p20">ANTES</a></li><li><b>26</b><a href="#p26">INSTITUCIONES CORRECCIONALES (CÁRCELES)</a></li><li><b>32</b><a href="#p32">LITERATURA</a></li><li><b>34</b><a href="#p34">POLÍTICA Y ADMISIONES</a></li><li><b>37</b><a href="#p37">M49 TC / M68 TMC</a></li><li><b>40</b><a href="#p40">LA ROTACIÓN: “EL PRINCIPIO DE LA ROTACION”</a></li><li><b>45</b><a href="#p45">FUENTES DE CONSULTA</a></li></ol></details>
+<section class="pagina" id="p1"><div class="num">PÁGINA <b>1</b> / 45</div>
+<h3>CONFERENCIA DE SERVICIOS GENERALES DE ALCOHÓLICOS ANÓNIMOS COLOMBIA RECOMENDACIONES VIGENTES</h3>
+<p>1965 – 2026</p>
+</section>
+<section class="pagina" id="p2"><div class="num">PÁGINA <b>2</b> / 45</div>
+<h3>CONFERENCIA DE SERVICIOS GENERALES DE ALCOHÓLICOS ANÓNIMOS COLOMBIA RECOMENDACIONES VIGENTES</h3>
+<p>1965 – 2025</p>
+<h3>OFICINA DE SERVICIOS GENERALES ALCOHÓLICOS ANÓNIMOS COLOMBIA</h3>
+<p>aacolombia.org</p>
+<p>Contenido</p>
+<h3>INTRODUCCIÓN 2 PRIMERA CONFERENCIA AÑO 1965 3</h3>
+<div class="toc"><span class="tt">ACTA ÚNICA</span><span class="dots"></span><span class="pn">4</span></div>
+<h3>ACTA Nº 1 5 SEGUNDA CONFERENCIA AÑO 1966 6</h3>
+<div class="toc"><span class="tt">CORPORACIÓN NACIONAL DE SERVICIOS GENERALES DE AA</span><span class="dots"></span><span class="pn">6</span></div>
+<div class="toc"><span class="tt">CARTA CONSTITUTIVA DE LA CONFERENCIA</span><span class="dots"></span><span class="pn">6</span></div>
+<div class="toc"><span class="tt">ESTATUTOS DE LA CORPORACIÓN NACIONAL DE SERVICIOS GENERALES</span><span class="dots"></span><span class="pn">7</span></div>
+<div class="toc"><span class="tt">ELECCIÓN DE CUSTODIOS CLASE A: NO ALCOHÓLICOS</span><span class="dots"></span><span class="pn">7</span></div>
+<h3>NOMBRAMIENTO DE CUSTODIOS DE LA CLASE B. 7 TERCERA CONFERENCIA AÑO 1967 8</h3>
+<div class="toc"><span class="tt">Comité de Agenda y Políticas</span><span class="dots"></span><span class="pn">8</span></div>
+<div class="toc"><span class="tt">Comité de Finanzas</span><span class="dots"></span><span class="pn">12</span></div>
+<div class="toc"><span class="tt">Comité de Cooperación con la Comunidad Profesional</span><span class="dots"></span><span class="pn">18</span></div>
+<div class="toc"><span class="tt">Comité de Información al Público</span><span class="dots"></span><span class="pn">21</span></div>
+<div class="toc"><span class="tt">Comité de Instituciones</span><span class="dots"></span><span class="pn">24</span></div>
+<div class="toc"><span class="tt">Comité de Literatura</span><span class="dots"></span><span class="pn">26</span></div>
+<div class="toc"><span class="tt">Comité de Política y Admisiones</span><span class="dots"></span><span class="pn">31</span></div>
+<div class="toc"><span class="tt">Comité de Congresos, Eventos y Foros Nacionales</span><span class="dots"></span><span class="pn">33</span></div>
+<div class="toc"><span class="tt">Comité sobre Custodios - Nominaciones</span><span class="dots"></span><span class="pn">34</span></div>
+<div class="toc"><span class="tt">Comité de Informe y Carta</span><span class="dots"></span><span class="pn">35</span></div>
+<div class="toc"><span class="tt">Comité Revista AA El Mensaje</span><span class="dots"></span><span class="pn">40</span></div>
+<div class="toc"><span class="tt">Comité de Archivo Histórico</span><span class="dots"></span><span class="pn">41</span></div>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 1</div>
+</section>
+<section class="pagina" id="p3"><div class="num">PÁGINA <b>3</b> / 45</div>
+<h3>INTRODUCCIÓN</h3>
+<p class="j">En el libro “Doce Conceptos para el Servicio Mundial”, el cofundador Bill W. señaló que «en defensa de A.A. como un todo, nuestra Conferencia de Servicios Generales tiene la responsabilidad principal del mantenimiento de nuestros servicios mundiales y tradicionalmente tiene la decisión final respecto a grandes asuntos de política general y finanzas.» Las decisiones a las cuales hacía alusión Bill W. se expresan en RECOMENDACIONES que, aunque no constituyen un mandato legal, sí marcan una guía para el funcionamiento de nuestra Comunidad y de su acatamiento dependen en buena medida la unidad y el bienestar de la misma. La Conferencia de Servicios Generales de Alcohólicos Anónimos de Colombia se lleva a cabo en la ciudad de Medellín, sede de la Oficina de Servicios Generales. Un total de 54 reuniones se han realizado desde su creación, lo cual constituye un trabajo muy voluminoso y relevante como se puede apreciar en los informes publicados hasta el momento. Desafortunadamente, en la medida en que transcurre el tiempo, la tendencia es a aplicar y compartir las recomendaciones más recientes, mientras las de años anteriores, con todo su valor y significado, tienden a quedar en el olvido.</p>
+<p class="j">Esta circunstancia condujo a que el Comité de Literatura de la Conferencia de 1995 recomendara la elaboración de un folleto que recopilara las recomendaciones de la Conferencia desde su creación, tarea que se espera cumplida con la presentación de este informe, el cual abre un espacio también para continuar actualizándolo en el futuro. Aparte de cumplir con la Recomendación, también se espera que este trabajo sirva de conocimiento a la Comunidad y como una herramienta de trabajo para los distintos cuerpos de servicio y miembros de AA. Todas las decisiones importantes de la comunidad de A.A. referentes a literatura, información al público, finanzas, congresos y convenciones, etc. están consignadas en el trabajo de los comités y ofrecen un panorama muy amplio para atender las consultas que se presentan en las actividades del servicio de A.A. Incluso la Conferencia ha definido normas muy precisas para el correcto funcionamiento de la Corporación Nacional de Servicios Generales de A.A. y la Oficina de Servicios Generales que, en las épocas en las cuales han sido aplicadas, han demostrado su efectividad para el crecimiento y bienestar de estos centros de servicio.</p>
+<p class="j">Este trabajo se elaboró teniendo en cuenta los informes de la Conferencia que han sido publicados por la Oficina de Servicios Generales desde el año 1965 cuando se llevó a cabo la 1ª reunión. Las recomendaciones fueron tomadas textualmente de los informes para no desvirtuar el espíritu inicial que les dio origen. Otra observación metodológica tiene que ver con la clasificación de las recomendaciones en los distintos comités. Como al comienzo de la Conferencia éstos no estaban bien definidos, las recomendaciones de los primeros años se insertaron en los comités que se crearon posteriormente, de acuerdo a los temas tratados. Acerca de la metodología utilizada, también conviene anotar que el Comité de Congresos y Convenciones funcionó en dos períodos de la Conferencia. Actualmente no opera, sin embargo, se incluyen todas sus recomendaciones porque constituyen políticas de la comunidad de A.A. en Colombia sobre la materia que se deben tener en cuenta en la realización de los certámenes de carácter nacional o local que se realizan actualmente.</p>
+<p class="j">También es importante aclarar que se han presentado cambios en el pensamiento de la Conferencia con respecto a ciertos tópicos, razón por la cual la Recomendación más reciente sobre determinado tema reemplaza a las anteriores que le son contrarias. Existen unos pocos años en los cuales algunos comités no produjeron recomendaciones.</p>
+<p class="j">En general, las recomendaciones corresponden a cada momento histórico de la Comunidad, a cada fase de su desarrollo, a la manera de afrontar cierto problema en épocas muy particulares y por esta razón hay que entenderlas en el contexto en el cual fueron dictadas.</p>
+<p class="j">Esto significa, además, que si bien los principios de la comunidad de Alcohólicos Anónimos en cuanto a sus tres legados, han permanecido inalterables, su organización en Colombia en la actualidad y la manera de funcionar en los aspectos del servicio, difiere sustancialmente de los procedimientos utilizados en la década de los 60 o los 70. Esto explica por qué ciertas recomendaciones parece que no tuvieran sentido en la actualidad, pero en la época en la cual fueron dictadas atendían a una necesidad importante. Por la Gracia de Dios cada nueva generación de servidores en A.A. le ha ido aportando a la estructura de servicios generales sus mejores esfuerzos y deseos para lograr crear una Comunidad sólida, fuerte en</p>
+<div class="folio run">Pág. 2 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p4"><div class="num">PÁGINA <b>4</b> / 45</div>
+<p class="j">principios y capaz de atender efectivamente el propósito de ayudar a los alcohólicos que aún sufren. Este material pretende revivir la memoria de ese esfuerzo, para que el trabajo de las generaciones anteriores y su valiosa experiencia, sirvan de guía a los actuales miembros de A.A. y a su estructura de servicio. Finalmente, en la información correspondiente a las primeras cuatro Conferencias realizadas en los años de 1965, 1966, 1967 y 1968 no existe claridad sobre las recomendaciones. Sin embargo, por considerar esta información de gran interés para la Comunidad de A.A., se incluyen a continuación apartes del material que reposa en los archivos de la OSG.</p>
+<h3>PRIMERA CONFERENCIA AÑO 1965</h3>
+<p class="j">La General Service Office, por conducto de uno de sus Custodios, Allan B, nos hizo conocer durante el VII Congreso de AA celebrado en Bogotá en junio de 1964, su deseo de que asumiéramos nuestras propias responsabilidades eligiendo nuestra Junta de Custodios.</p>
+<p class="j">Quisimos satisfacer ese deseo precipitadamente y, como es natural, no tuvimos éxito. Pero la idea ha venido fortaleciéndose; el mismo crecimiento de A.A. entre nosotros está clamando por la creación de esa Junta y la G.S.O. está ahora más interesada en que esto se haga.</p>
+<p>Una circular en este sentido debe estar llegando a todos los grupos, procedente de nuestra Central en Nueva York.</p>
+<p class="j">Se ha pensado aprovechar la ocasión que ofrece la reunión de nuestro X Congreso Nacional durante los días 5, 6 y 7 de diciembre en la ciudad de Palmira, para llevar a cabo nuestra Primera Conferencia de Servicios Generales.</p>
+<p>El procedimiento indicado por la General Service Office para este efecto es el siguiente: El país estará dividido en las cuatro zonas acordadas en el VII Congreso, así:</p>
+<p>Zona A: Antioquia, Bolívar, Caldas, Chocó y Córdoba.</p>
+<p>Zona B: Atlántico, Guajira, Magdalena, Santander y Norte de Santander. Zona: Cauca, Nariño y Valle del Cauca.</p>
+<p>Zona D: Cundinamarca, Boyacá, Huila, Meta y Tolima.</p>
+<p class="j">Los delegados a la Conferencia serán elegidos uno por cada ciudad en donde existan grupos. En las ciudades en donde exista más de un grupo, cada uno nombrará un delegado y éstos se reunirán para elegir a quien deba representarlos (un delegado) en la Conferencia General.</p>
+<p class="j">La Conferencia tendrá a su estudio la creación de la Junta de Custodios A.A., cuyo número será de cinco: uno por cada zona y uno más por la ciudad en donde vaya a funcionar la Oficina General de Servicios, ciudad que será designada igualmente por la Conferencia. Si se logra reunir esta Primera Conferencia General en Palmira y se hace la elección de estos cinco Custodios, debe tenerse en cuenta que éstos ejercerán provisionalmente sus funciones ya que su confirmación se haría en la Segunda Conferencia que debe convocarse para abril de 1966. Igualmente corresponderá a la Segunda Conferencia estudiar la nómina de seis candidatos para Custodio no alcohólicos que esta Junta Provisional presentaría, lista que puede ser acogida o modificada por la Conferencia.</p>
+<p class="j">Se busca que entre el lapso de tiempo transcurrido entre la Primera y la Segunda Conferencia, quienes resulten elegidos provisionalmente para el cargo de Custodios tengan tiempo de estudiar los Estatutos que enviará la GSO; de someterlos al estudio de un abogado nuestro y una vez adaptados a nuestra legislación, remitirlos a Nueva York para su aprobación. Igualmente tendrán tiempo de estudiar la gran responsabilidad que este paso implica y resolver si efectivamente estamos preparados para darlo.</p>
+<p class="j">Este estudio, sin embargo, debe empezar desde el grupo mismo, cuando piense nombrar su delegado a la Conferencia. Es preciso que cada uno de nuestros compañeros actúe con plena conciencia de lo que va a hacerse. Que sepa que todas estas cosas, que el crecimiento de AA en nuestro país, implica gastos para que podamos cumplir a cabalidad nuestro Tercer Legado. Estos gastos deberán ser cubiertos por cada uno de nosotros.</p>
+<p class="j">Es preciso que la escogencia de los compañeros que vayan a integrar la Junta de Custodios, se haga en forma muy cuidadosa. Que cuenten con un tiempo de abstención lo más largo posible; que sean mesurados, prudentes, y conocedores del programa; que gocen del aprecio de sus compañeros y que hayan demostrado su</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 3</div>
+</section>
+<section class="pagina" id="p5"><div class="num">PÁGINA <b>5</b> / 45</div>
+<p>espíritu de servicio. Y sobre todo que se comprometan a estar dispuestos a reunirse con los demás miembros de la Junta cuando ésta sea convocada.</p>
+<p class="j">Los grupos deben saber que los gastos que ocasione la asistencia de su delegado a la Conferencia de Servicios, corren por su cuenta, y que igualmente todos los grupos tendrán que costear los gastos de las reuniones de la Junta de Custodios.</p>
+<p class="j">Basados en la experiencia que ya tenemos con el Centro de Distribución de Literatura, podemos anticipar como base para el mantenimiento de la Junta de Custodios y sus Comités de Oficina General de Servicios, revista similar a Grapevine y literatura, una suma más o menos de $3.000= mensuales.</p>
+<p class="j">Los delegados a esta Primera Conferencia de Servicios Generales deben tener en cuenta que este será un acto completamente independiente del X Congreso; que celebrará sus reuniones en un salón distinto a los de éste y que en ellas sólo tomarán parte los delegados, quienes deberán presentar sus credenciales ante la “Comisión de Estudio” en la ciudad de Palmira en el momento de la instalación el día 5 de diciembre del año en curso.</p>
+<p class="j">En la circular de la GSO. a que nos hemos referido encontrarán ustedes, que este Centro de Distribución de Literatura ha designado una “Comisión de Estudio” para preparar e instalar esta Primera Conferencia de Servicios Generales.</p>
+<p class="j">Por tanto, nuestra labor terminará en el momento mismo en que se instale la Conferencia y los miembros de la Junta del Centro de Literatura sólo estaremos en esa reunión con el ánimo de suministrar todas las informaciones que nos sean solicitadas.</p>
+<p class="j">Esperamos que todos los grupos se harán representar en la Conferencia para dar este paso tan importante en el desarrollo de AA en nuestro país. De ustedes muy cordialmente, Firmado: Presidente de la Junta</p>
+<h3>ACTA ÚNICA</h3>
+<p class="j">El día 31 del mes de julio a las 6 de la tarde se reunieron los delegados a la Conferencia de Servicios Generales, por el Valle del Aburra, señores Ignacio Ramírez por Envigado; Oscar Gallón por Sansón; Alberto Correa por Medellín; Luís Carlos Molina por Bello; Alfonso Berrio por Itagüí.</p>
+<p class="j">No se hizo presente el señor Arnoldo Ríos delegado por Sabaneta, quien fue entrevistado posteriormente. Esta Junta fue presidida por el señor Jaime Llano C., como Custodio Alcohólico de la ciudad sede. Una vez verificado el quórum, fue nombrado como secretario el señor Ignacio Ramírez y se dio comienzo al asunto a tratar.</p>
+<p class="j">Como en la Junta de Custodios, celebrada el 28 de julio, el señor Arturo Escobar fue nombrado interinamente, para manejar la Oficina de Servicios Generales en la ciudad de Medellín, era preciso estudiar otros candidatos, que llenaran los requisitos necesarios para garantizar el buen manejo de dicha oficina. Hecho el estudio de algunos candidatos y previamente consultados, se llegó a la siguiente conclusión: Pedir a la Junta de Custodios de la Corporación, ratificar el nombramiento en propiedad del señor Arturo Escobar, persona que en la actualidad llena a plena satisfacción los deseos de los alcohólicos anónimos del Valle de Aburra y considerado como el único en la actualidad con verdadera mística, para el manejo de la citada oficina y además de una comprobada experiencia.</p>
+<p class="j">Sugerir a la Junta de Custodios, el estudio de un aumento en la asignación estipulada, para el pago de director de la oficina, ya que este es el punto que mayor dificultad presenta, para lograr interesar a alguien en la aceptación de dicho cargo.</p>
+<p class="j">Sugerir el nombramiento de un empleado de medio tiempo para que haga las labores de mandadero y así evitar al Director y a la secretaria, el tener que disponer de tiempo precioso en asuntos específicos para un mensajero.</p>
+<p class="j">Solicitar el estudio del cambio de Oficina, por otra de mejor presentación y mayor espacio, con el fin de organizar en forma ágil y digna los diferentes aspectos de la citada oficina.</p>
+<p class="j">Pedir autorización al Director para que prepare futuros candidatos al manejo de la oficina, en horas que no perjudiquen la buena marcha de los asuntos diarios, consignados al Director.</p>
+<p class="j">Por unanimidad los delegados presentan un anticipado agradecimiento a la Junta de Custodios por la acogida a la presente; pues consideran que es un paso más hacia la unificación y mejoramiento de nuestros servicios generales.</p>
+<div class="folio run">Pág. 4 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p6"><div class="num">PÁGINA <b>6</b> / 45</div>
+<p>Siendo las 9 de la noche se dio por terminada la sesión y en constancia se firma por los asistentes y por el delegado que no asistió, pero que fue consultado con posterioridad.</p>
+<p>Señor</p>
+<h3>ARTURO ESCOBAR ASESOR CONFERENCIA</h3>
+<p>Pte.</p>
+<p class="j">La Secretaría General de la Primera Conferencia de Servicios Generales para dar cumplimiento a lo acordado en su sesión inaugural se permite transcribirle a continuación el Acta de instalación de esta Conferencia:</p>
+<h3>ACTA Nº 1</h3>
+<p>Palmira, diciembre 5 de 1965</p>
+<p class="j">Siendo las 12 del día y con la asistencia de 22 delegados se procedió a la instalación de la Primera Conferencia de Servicios Generales; tomando la presidencia para organizar las votaciones el compañero Eduardo C., representante de los grupos de Bogotá, se procedió a hacer la votación para elección de dignatarios; por unanimidad se eligió al compañero Arturo E., de Medellín como presidente honorario, quedando en claro que necesitaríamos tanto de sus luces como de las del compañero Eduardo J., en la buena marcha de la Conferencia.</p>
+<p class="j">Enseguida, se procedió a la votación dando como resultado la elección para presidente el compañero Libardo Lozano representante de los grupos de Cali, primer vicepresidente Eduardo Castello representante de la mayoría de los grupos de Bogotá, segundo vicepresidente el compañero Ricardo Benedetti representante de los grupos de Cartagena y como Secretario General el compañero Campo Elías Torres representante de todos los grupos de Bucaramanga, quedando así manifiesta la conciencia por regiones distantes del país confirmando la importancia de las zonas adecuadas para que el movimiento se esparza firmemente por todo el país. Siendo las 12 y 45 se levantó la sesión quedando legalmente constituida la Primera Conferencia de Servicios Generales de Colombia y todos sus componentes elevaron su corazón al Dios universal para pedirle que nos acompañe con sus luces de aquí en adelante</p>
+<p>(Firmado Presidente, De usted atentamente,</p>
+<h3>SECRETARIO CONFERENCIA</h3>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 5</div>
+</section>
+<section class="pagina" id="p7"><div class="num">PÁGINA <b>7</b> / 45</div>
+<h3>SEGUNDA CONFERENCIA AÑO 1966</h3>
+<p>Apreciados compañeros:</p>
+<p class="j">En cumplimiento del Artículo Siete (7) de la Carta Constitutiva de la Conferencia de Servicios Generales de A.A. de Colombia, la secretaría se permite enviar a ustedes un resumen de las realizaciones llevadas a cabo en la segunda reunión de dicha Conferencia durante los días 21 y 22 de mayo en la ciudad de Medellín.</p>
+<h3>RECUENTO HISTÓRICO:</h3>
+<p class="j">Desde el VII Congreso reunido en Bogotá se concibió la idea de crear la Oficina de Servicios Generales de A.A. para Colombia. Esta idea fue muy bien acogida por el Custodio Allan B, quien viajó desde Nueva York para asistir especialmente a este congreso. Se acordaron algunos principios básicos para esta organización y se creó entre tanto la Oficina Central de Distribución de Literatura que comenzó a funcionar en Medellín. En los congresos de Cúcuta y Barranquilla se maduró un poco más la idea y se convino que en el Congreso siguiente que tendría lugar en la ciudad de Palmira, se constituiría por primera vez la Conferencia de Servicios Generales y se nombrarían Custodios.</p>
+<p class="j">Llegado que fue el Congreso de Palmira se procedió a la organización efectiva de la Conferencia; se acordó la necesidad de crear una Oficina de Servicios Generales, disponiendo que su sede estuviera localizada en la ciudad de Medellín. Se nombraron provisionalmente los cinco Custodios Alcohólicos los cuales debían ser ratificados en la próxima reunión de la Conferencia que tendría lugar en la ciudad de Medellín. Se acordó además elaborar los Estatutos de la Conferencia y de la Corporación de Servicios Generales de AA y por último que a la segunda reunión serían presentados por parte de los Custodios alcohólicos los seis candidatos para Custodios no alcohólicos.</p>
+<h3>LA CONFERENCIA</h3>
+<p class="j">La Conferencia de Servicios Generales de AA en Colombia, está compuesta por un delegado de cada localidad del país donde funcionen grupos de alcohólicos anónimos. Es la protectora de los Servicios Nacionales y de las Doce Tradiciones de AA Es un cuerpo solamente de servicio y nunca un gobierno para AA.</p>
+<p class="j">La Conferencia es una institución que funciona en forma permanente pero que se reúne cada año o cuando sea convocada especialmente bien sea para reunirse o para sesionar por correo.</p>
+<h3>CORPORACIÓN NACIONAL DE SERVICIOS GENERALES DE AA</h3>
+<p class="j">Es la principal rama de Servicio de la Conferencia y su carácter es esencialmente de administración. Está compuesta por la Junta de Custodios que de acuerdo con los Estatutos son cinco (5) alcohólicos y seis (6) no alcohólicos.</p>
+<p class="j">La Corporación es la responsable de la integridad financiera y política de los servicios conexos de AA, puede nombrar comités para poner a funcionar los servicios y uno de estos comités, la Oficina de Servicios Generales, se encargará de la distribución y edición de la literatura que ya ha venido funcionando como Centro de distribución de literatura de AA para América del Sur.</p>
+<p class="j">La corporación de Servicios Generales como entidad esencialmente administrativa tendrá personería jurídica para poder manejar libremente los asuntos y negocios de las oficinas de AA. Pero no podrá tomar determinación alguna que pueda afectar grandemente a AA como un todo, sin consultar antes a la Conferencia. La Corporación de Servicios Generales y sus servicios conexos son responsables de sus actuaciones ante la Conferencia.</p>
+<h3>CARTA CONSTITUTIVA DE LA CONFERENCIA</h3>
+<p>El proyecto de constitución fue presentado por los compañeros Ricardo B. y Mateo C. de una traducción del Manual del Tercer Legado.</p>
+<div class="folio run">Pág. 6 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p8"><div class="num">PÁGINA <b>8</b> / 45</div>
+<p>El proyecto fue aprobado con pequeñas modificaciones y es así como ya la Conferencia tiene su carta Fundamental que la rige y que demarca su campo de acción.</p>
+<h3>ESTATUTOS DE LA CORPORACIÓN NACIONAL DE SERVICIOS GENERALES</h3>
+<p class="j">El proyecto fue igualmente presentado por los compañeros Ricardo B. Y Mateo C, y aprobado también con algunas modificaciones. Estos estatutos son los que rigen la Corporación y se protocolizarán para obtener la Personería Jurídica de la Corporación. Cuando esto se haya realizado, enviaremos a todos los grupos tanto la Carta Constitucional de la Conferencia, como los Estatutos de la Corporación.</p>
+<h3>ELECCIÓN DE CUSTODIOS CLASE A: NO ALCOHÓLICOS</h3>
+<p>Los candidatos fueron presentados por la Junta de Custodios nombrada en Palmira. Los Custodios son los siguientes:</p>
+<p>Zona A: Dr. Gustavo Vega Bustamante.</p>
+<p>Economista y actualmente vicepresidente de la Compañía Suramericana de Seguros. Zona A: Dr. Alberto Morales Tobón.</p>
+<p>Médico siquiatra - Medellín.</p>
+<p>Zona B: Dr. Alejandro Villalobos Serpa. Médico siquiatra - Bucaramanga.</p>
+<p>Zona C: Dr. Oscar Gerardo Ramos.</p>
+<p>Secretario General de la Universidad del Valle. Zona D: Dr. Bernardo Guindee Salazar.</p>
+<p>Industrial de Bogotá.</p>
+<p>Zona D: Dr. Humberto Núñez Bossio. Médico residente en Bogotá.</p>
+<p class="j">Estos señores, de acuerdo con los informes presentados por la Junta de Custodios, son personas muy honestas y honorables, amigos y servidores de AA y que ya conocen nuestro programa de recuperación.</p>
+<p>NOMBRAMIENTO DE CUSTODIOS DE LA CLASE B.</p>
+<p class="j">Prácticamente quedaron ratificados los nombrados en Palmira a excepción de dos que renunciaron. Los Custodios elegidos fueron los siguientes: Zona A: Ricardo B. para un periodo de tres (3) años Zona A: Esteban C. para un periodo de dos (2) años Zona B: Hernando R. para un periodo de dos (2) años Zona C: Hernán V. para un período de cuatro (4) años Zona D: Se nombrará posteriormente.</p>
+<p>La Conferencia terminó de sesionar el día 22 de mayo a las 9 p.m. y fue convocada la próxima reunión para los días 29 y 30 de abril de 1967 en la ciudad de Bogotá.</p>
+<p>Por este breve informe y por los Estatutos que posteriormente les enviaremos, se pueden dar cuenta que ya la Oficina de Servicios Generales es una realidad en Colombia.</p>
+<p class="j">Es indudable que la Conferencia y la Corporación de Servicios Generales traerán mucho bien para todos los A.A. a la vez que permitirá que nuestra Asociación se afiance en Colombia y que podamos ayudar a la recuperación de muchísimos alcohólicos que aún sufren, Pero para ello se requiere que todos los A.A. de Colombia rodeemos como una sola persona y apoyemos moral y materialmente estas instituciones creadas. De la cooperación de todos nosotros depende el éxito de la Conferencia y de la Corporación Nacional de Servicios Generales de AA.</p>
+<p>Fernando R.</p>
+<p>Conferencia de Servicios Generales. Secretario.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 7</div>
+</section>
+<section class="pagina" id="p9"><div class="num">PÁGINA <b>9</b> / 45</div>
+<h3>TERCERA CONFERENCIA AÑO 1967</h3>
+<p>“La Tercera Reunión de la Conferencia de Servicios Generales de A.A. Recomienda: a todos los grupos de A.A. que actualmente funcionan en el país:</p>
+<p class="j">A) Que libremente estudien la conveniencia de ajustar el funcionamiento de sus respectivos grupos a las Sugerencias que se nos hace en el folleto “Como Comienza A.A. Cómo Crece” para lo cual promoverá su lectura y discusión periódica en sesiones cerradas e invitarán a compañeros a disertaciones sobre el tema. B) Que igualmente estudien, discutan y analicen las Sugerencias que se nos hacen a los A.A. para que nos ciñamos a las “Doce Tradiciones” en nuestras actividades individuales y de cada grupo.</p>
+<p class="j">C) Que para una mejor integración con los Servicios Generales de A.A. utilicen más ampliamente la literatura impresa y soliciten la impresión de la que crean conveniente y necesaria. Y además utilicen todos los servicios que la Corporación de Servicios Generales de A.A. está en la obligación de prestarles.”</p>
+<p class="j">Comité de Agenda y Políticas *En 1991 se aprobó La creación del Comité de Política de la Conferencia el cual quedo anexo al Comité de Agenda. En La actualidad se llama Comité de Agenda.</p>
+<div class="year"><span>1971</span></div>
+<p class="j">Se Recomienda que el Informe Final de la Conferencia sea leído por el delegado o por el RSG en reuniones cerradas de grupo. Se Recomienda: Cuando se invite a un custodio a reuniones de aniversario, encuentros, reuniones zonales, etc., debe entenderse que tal invitación se hace a un miembro de AA y no a la persona en su calidad de custodio. Esto en el caso de que el invitado sea un custodio clase B.</p>
+<div class="year"><span>1977</span></div>
+<p class="j">Se Recomienda: Que, en el futuro, la Conferencia se reúna en un sitio más adecuado en la ciudad de Medellín, durante tres días del mes de abril de cada año, de acuerdo con nuestra Carta Constitutiva. El temario será enviado a cada delegado con un mes de anticipación a la reunión anual.</p>
+<p>Se Recomienda: Que a partir de 1978 la Conferencia se reúna durante tres días en el sitio más apropiado que escoja la OSG.</p>
+<div class="year"><span>1978</span></div>
+<p>Recomienda que la OSG informe trimestralmente, por medio del boletín, de sus actividades a los grupos del país.</p>
+<div class="year"><span>1980</span></div>
+<p class="j">Se Recomienda: que a través del boletín debe promoverse la importancia del tema de la Conferencia. Se Recomienda: a las Asambleas de Área o Comités de servicio, hacer llegar a la OSG, con la anticipación correspondiente un acta en la cual conste la elección del Delegado y las firmas reglamentarias. Se Recomienda: que a todo invitado especial a la Conferencia debe permitírsele participar con voz, no solamente en la presentación del trabajo que se le encomendó, sino también en todas las sesiones de la misma.</p>
+<div class="year"><span>1981</span></div>
+<p>Se Recomienda: Que haya una mayor comunicación entre custodios y delegados a través de la OSG, sobre todo después de las reuniones de la Junta.</p>
+<div class="folio run">Pág. 8 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p10"><div class="num">PÁGINA <b>10</b> / 45</div>
+<div class="year"><span>1982</span></div>
+<p class="j">Se Recomienda: que los delegados, grupos y miembros envíen con suficiente anticipación (ojalá antes de finalizar el mes de febrero) todas las inquietudes y Sugerencias que se deseen tratar en la Conferencia. De esta manera se podrá programar mejor el trabajo de cada uno de los comités.</p>
+<p class="j">Se Recomienda: que los miembros de AA que trabajan a sueldo en instituciones dedicadas a la recuperación de alcohólicos, no sean considerados para cargos de servicio en la estructura de AA.</p>
+<p class="j">Se Recomienda: a los servidores que terminan su período que continúen vinculados al servicio activo ya que sus experiencias son de gran utilidad para asesorar a los nuevos servidores.</p>
+<p>Se Recomienda: que el Custodio Clase B, después de completar su período de servicio, no pueda repetir como Custodio de Servicio General, ni viceversa.</p>
+<div class="year"><span>1983</span></div>
+<p class="j">Se Recomienda que sean los congresos y eventos zonales los que se aprovechen para la invitación y la visita de director de la OSG y los custodios a las zonas, para difundir y estructurar mejor el servicio general.</p>
+<div class="year"><span>1984</span></div>
+<p class="j">Se Recomienda: A los grupos de la ciudad sede, rodear de unidad y amor a nuestra OSG para prestar un eficiente apoyo a los distintos comités, para el mejor servicio de Colombia y sus países patrocinados.</p>
+<div class="year"><span>1988</span></div>
+<p class="j">Se Recomienda: que la elección del delegado se efectúe antes del 15 de noviembre. Se Recomienda además la inclusión de un formato que contenga la hoja de vida, con el objeto de que se encuentre oportunamente en el comité de la Conferencia la documentación necesaria del delegado.</p>
+<p class="j">Recomienda: incluir en la agenda de la Conferencia el informe del Custodio de Servicios Generales. Se Recomienda: que en el año en que se celebre la Convención Nacional, en reemplazo de los Congresos Zonales se efectúe un foro nacional de servicios, con participación de custodios, ex custodios, delegados, ex coordinadores de comités de área y presidentes de oficinas intergrupales.</p>
+<div class="year"><span>1991</span></div>
+<p>Recomendamos: La creación del Comité de Política de la Conferencia el cual queda anexo al Comité de Agenda.</p>
+<p>Se Recomienda: al Comité sobre Conferencia de la Junta de Custodios el envío a los delegados de un proyecto de agenda de la Conferencia para su aprobación.</p>
+<div class="year"><span>1995</span></div>
+<p>Se Recomienda: Que el mes de enero de cada año sea dedicado al estudio de los Doce Conceptos para el Servicio Mundial en las áreas y grupos de nuestra Comunidad.</p>
+<div class="year"><span>2000</span></div>
+<p class="j">Se Recomienda: que los comités de área y las oficinas de Inter grupos establezcan un trabajo en equipo tratando de buscar la armonía y la unidad, con el fin de que no se presente dualidad en sus funciones y que se acojan a las definidas en el Manual de Servicio de AA.</p>
+<div class="year"><span>2001</span></div>
+<p class="j">Se Recomienda: Que en las próximas conferencias y foros de servicio: nacionales, zonales y de área, se comparta sobre la necesidad y las experiencias de los distritos en nuestra estructura.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 9</div>
+</section>
+<section class="pagina" id="p11"><div class="num">PÁGINA <b>11</b> / 45</div>
+<div class="year"><span>2002</span></div>
+<p class="j">Se Recomienda: Que la Reunión Conjunta de los Comités de Agenda y Políticas de la Junta de Custodios y de la Conferencia, se celebre en la primera quincena de enero, con el fin exclusivo de aprobar la agenda que se desarrollará en la Conferencia que se celebra en ese año.</p>
+<div class="year"><span>2004</span></div>
+<p>Se Recomienda: a las áreas realizar reuniones pre conferencia sobre el lema y los lemas aprobados en la Conferencia.</p>
+<p class="j">Se Recomienda: Que se conforme el Comité de Archivo de la Conferencia de Servicios Generales de Colombia y en cada una de las áreas del país, con el fin de coordinar y proyectar a nivel nacional dentro de la Comunidad, la recolección, dosificación y uso adecuado de documentos, objetos, libros y toda clase de material de importancia histórica que sirva para enriquecer el archivo histórico y administrativo de A.A. en Colombia. Se Recomienda: al Comité de Agenda y Políticas de la Junta establecer una fecha límite, para recibir propuestas que serán tomadas en cuenta en los Comités de la Conferencia, con el fin de hacer más dinámico y productivo el proceso de aprobación de las recomendaciones, exceptuando aquellos proyectos que surgen del trabajo colectivo de los Comités de la Conferencia, para los cuales se abre un espacio autorizado por la misma.</p>
+<div class="year"><span>2005</span></div>
+<p class="j">Se Recomienda: reformar el artículo diez de los Estatutos de la Corporación, que para la elección del Custodio de Servicios Generales sea ampliada a las áreas 1 y 3 de la Zona E, así: Deberá residir en la ciudad de Medellín, su área Metropolitana, o en cualquiera de los municipios de las áreas 1 y 3 de la Zona E.</p>
+<div class="year"><span>2007</span></div>
+<p class="j">Se Recomienda: Impulsar y desarrollar los Talleres de Liderazgo Integral en los comités de servicios, (desde el grupo hasta la Junta de Custodios) El proceso de implementación será liderado por los Custodios Zonales y Delegados, con la ayuda logística de la OSG, propendiendo principalmente para que en aquellas zonas, áreas, distritos o grupos donde no se han desarrollado, no se retarde más su implementación.</p>
+<div class="year"><span>2009</span></div>
+<p>Se Recomienda: Que toda Conferencia además del lema establezca una denominación del año.</p>
+<p class="j">Moción: que la reunión conjunta de los comités de Agenda de la Junta de Custodios y de la Conferencia, se celebre en la primera quincena de enero, con el fin exclusivo de aprobar la agenda que se desarrollará en la Conferencia en ese año. (Recomendación 2002).</p>
+<div class="year"><span>2012</span></div>
+<p class="j">Se Recomienda: Que en la agenda de la CSG se implemente una reunión, previa al inicio de la CSG, encaminada a compartir entre los dos paneles de la CSG, en la cual sólo participen los Delegados.</p>
+<div class="year"><span>2015</span></div>
+<p>Se Recomienda: Dar respuesta a los proyectos de Recomendación por parte de cada comité con las razones por las cuales fueron rechazados.</p>
+<p>Sugerencia: Que la Junta de Custodios no modifique, y sí lo hace que lo comunique sobre las decisiones tomadas en la reunión de programación de Comité de Agenda de la Conferencia.</p>
+<p>Sugerencia: Que en la reunión de delegados haya una agenda preestablecida y que se consideren en ella los puntos sobresalientes y preguntas de los informes de los delegados.</p>
+<div class="folio run">Pág. 10 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p12"><div class="num">PÁGINA <b>12</b> / 45</div>
+<div class="year"><span>2017</span></div>
+<p class="j">Se Recomienda: Que los lemas que apruebe la Conferencia sean cortos y que se retire la Recomendación del 2009 que dice: Se Recomienda que toda Conferencia además del lema establezca una denominación del año.</p>
+<div class="year"><span>2018</span></div>
+<p>Se Recomienda:</p>
+<p>Que se incluya en la agenda de la 55ª Conferencia de Servicios Generales el tema “Problemas diferentes al alcoholismo”; para mantener nuestra unicidad de propósito.</p>
+<p>Se Recomienda:</p>
+<p class="j">Que en todos los doce reportes que se envían durante el año a los delegados, se coloque una nota recordatoria, rememorando, que el programa final de la Conferencia se elabora con propuestas enviadas por la misma comunidad en general; las cuales deben ser enviadas antes del 31 de enero de cada año; para que reposen en la OSG, y de ahí elaborar la agenda de la Conferencia.</p>
+<div class="year"><span>2020</span></div>
+<p>Lema: “Vivir los Doce Pasos, Fortalece Nuestra Estructura”</p>
+<div class="year"><span>2021</span></div>
+<p>Lema de la 58 CSG: “El apadrinamiento contribuye al fortalecimiento de nuestra Estructura”.</p>
+<div class="year"><span>2022</span></div>
+<p>Se Recomienda que el lema para la 59ª Conferencia de Servicios Generales sea: “Nuestro Grupo base… donde todo empieza”</p>
+<div class="year"><span>2023</span></div>
+<p class="j">Se Recomienda al Comité de Conferencia de la Junta de Servicios Generales que modifique la Acción Recomendable de la 54 CSG que dice “En todos los doce Reportes que se envían durante el año a los Delegados, se coloque una nota recordatoria, recomendando que el programa final de la Conferencia se elabora con propuestas enviadas por la misma Comunidad.</p>
+<p class="j">Sustituir esta acción recomendable por la siguiente: “Que en los reportes de la Conferencia que se envían a los delegados durante todo el año, solamente en los reportes del uno (1) al ocho (8) se coloque una nota recordatoria motivando el envió de temas y propuestas para la elaboración de la programación final de la Conferencia (Agenda)”</p>
+<div class="year"><span>2024</span></div>
+<h3>“EL INVENTARIO DE GRUPO, VITAL EN EL FORTALECIMIENTO DE AA”</h3>
+<p class="j">Se recomienda: modificar la Acción Recomendable del año 2002 del Comité de Agenda que dice: “que la reunión conjunta de los Comités de Agenda y Política de la Junta de Custodios y de la Conferencia, se celebre en la primera quincena de enero, con el fin exclusivo de aprobar la Agenda que se desarrollará en la Conferencia que se celebra en ese año”, por la siguiente: “Se recomienda que la reunión conjunta entre el Comité de Agenda de la Conferencia y el Comité de Conferencia de Servicios Generales de la Junta de Custodios, se celebre en la primera quincena de febrero, con el fin exclusivo de aprobar la Agenda que se desarrollará en la Conferencia que se celebra en ese año”.</p>
+<div class="year"><span>2025</span></div>
+<p>Sugerencia: se declare improcedente la Reunión Especial de la Conferencia de Servicios Generales (RECSG),</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 11</div>
+</section>
+<section class="pagina" id="p13"><div class="num">PÁGINA <b>13</b> / 45</div>
+<p class="j">efectuada de manera virtual, los días 19 y 20 de octubre de 2024 ya que desde el momento en que fue convocada, no cumplía con los requisitos necesarios para ser realizada y en su ejecución se pasaron por alto varios principios, así:</p>
+<p class="j">- Incumplimiento al Artículo 18 de los Estatutos de la CNSGAA no se cumplió con la votación (Mayoría Simple) para que se aprobara la RECSG: Del Quórum de 40 delegados inscritos a la 60 RAC (Artículo 4 Carta Constitutiva): Nueve (9) votaron en contra, (20) a favor y (11) se abstuvieron o no alcanzaron a votar. Si hablamos de mayoría simple debieron ser 21 votos para aprobar o rechazar y esto claramente no se cumplió. El error consiste en que no se recibieron los votos de los 40 delegados inscritos.</p>
+<p>- Incumplimiento al Artículo 19 de los Estatutos de la CNSGAA la convocatoria de la reunión se debió hacer con dos semanas de anticipación y solo dieron cinco días.</p>
+<p class="j">- Finalmente, la Reunión Especial de la Conferencia fue grabada y los audios se dieron a conocer a la membresía nacional, en la ejecución de la reunión especial asistieron personas no alcohólicas y además estuvieron al frente del conteo de los votos, esto es una clara violación a nuestro principio de Anonimato. Se recomienda: que la Junta de Servicios Generales (JSG) conforme un Comité incluyendo antiguos servidores de la estructura para estudiar, analizar, complementar y actualizar la actual mecánica de la reunión anual de la Conferencia de Servicios Generales (MRAC). Se presentarán tres borradores, así: 1. Se debe entregar hasta el 31 de julio de 2025; 2. Se debe entregar hasta el 30 de noviembre de 2025; 3. Este último se presentará en la RAC de 2026. Una vez la JSG tenga los dos primeros borradores de la MRAC, los compartirá, en las fechas previstas anteriormente, con la conciencia nacional, a través de los delegados, para sus comentarios. Luego de ser aprobada la MRAC se debe aplicar en la RAC, y ser incluida en la siguiente edición del Manual de Servicio de AA de Colombia.</p>
+<div class="year"><span>2026</span></div>
+<p class="j">Se recomienda: prorrogar la recomendación de la MRAC de la RAC para ser aprobada en la RAC # 63. Teniendo en cuenta el trabajo realizado en el segundo borrador, la JSG recibirá sugerencias hasta el 31 de julio de 2026. Una vez que el comité de conferencia de la JSG reciba las sugerencias de la membresía oficializada y sustentada por el Comité de Área respectiva, organizará junto con el comité transitorio el tercer y último borrador de la MRAC que será presentado el 15 de octubre de 2026 al comité de agenda de la conferencia para su revisión final y posterior presentación para la aprobación en la RAC # 63.</p>
+<p>Comité de Finanzas</p>
+<div class="year"><span>1969</span></div>
+<p class="j">Se recuerda que es la literatura el medio más efectivo para llevar el mensaje, siendo a la vez, una manera de contribuir a los centros de servicio. Obsequie folletos en sus Pasos Doce, en colegios, hospitales; recuerde que con ello está colaborando y retribuyendo.</p>
+<p class="j">Comprar más literatura: Cada uno de nosotros debiera fijarse la consigna de “compremos literatura”. Que en todos los grupos haya el mayor número de folletos a la vista de los compañeros, para que puedan proveerse de la literatura que deseen.</p>
+<p class="j">Inscripción para congresos y reuniones especiales: Explicar a los compañeros que al establecer estas inscripciones no se trata de poner precio a la asistencia a nuestras reuniones, sino que se ha hecho para atender los gastos que demandan estos eventos, como también para buscar algún remanente que ayude al mantenimiento de los servicios. Se Recomienda a los delegados, personalmente y a través de los RSG, hacer conocer a los grupos la necesidad que tenemos todos de cumplir nuestra Tradición Siete de “mantenernos con nuestras propias contribuciones”, entendiendo que ese mantenimiento no es solamente para cubrir los gastos de los grupos, sino también para atender debidamente los que ocasionan el funcionamiento de los inter grupos, y los de la OSG. Se Recomienda estimular el estudio de la literatura, para que más gente se provea de ella, logrando así</p>
+<div class="folio run">Pág. 12 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p14"><div class="num">PÁGINA <b>14</b> / 45</div>
+<p>mayor venta.</p>
+<p>Se Recomienda que personas responsables manejen los dineros de los grupos, para que puedan presentar buenas cuentas y así lograr contribuir a la OSG.</p>
+<p class="j">Se Recomienda estar todos vigilando para que no vaya a confundirse nuestra asociación de A.A. con otras organizaciones, muy principalmente en la solicitud de fondos para el funcionamiento de ellas, pues no teniendo éstas, las Tradiciones que nosotros guardamos, pueden libremente pedir ayuda a extraños en dinero y demás facilidades y, por tanto, es nuestro deber vigilar que de ninguna manera vaya a ser usado el nombre de A.A. con esos fines.</p>
+<div class="year"><span>1973</span></div>
+<p>Se sugiere A todos los miembros de A.A. un aporte voluntario mensual con destino a la OSG. La forma de recaudar este aporte queda a criterio de los grupos.</p>
+<p>Se Recomienda a los grupos promover la venta de literatura bien sea mediante la exhibición de ella o a través de pequeñas rifas.</p>
+<p>Se Recomienda a los delegados, motivar a los grupos para tratar de conseguir una mayor participación de éstos en el mantenimiento de la OSG.</p>
+<p class="j">Se Recomienda a la OSG ocuparse en mantener el entusiasmo constante de los grupos del país, recalcándoles la importancia de los aportes; ampliando un poco más la información sobre su estado financiero y dando a conocer sus planes de servicio.</p>
+<p class="j">Se Recomienda a los grupos que acojan una Recomendación de la 3º Reunión de Servicio Mundial sobre la recaudación de fondos y que a la letra dice: “Se sugiere que los grupos de A.A. recauden sus fondos sólo por los medios tradicionales (recolectas de grupo) porque al hacerlo en otra forma pueden poner en peligro la sobriedad del individuo, la existencia del grupo y el bienestar de A.A. como un todo”.</p>
+<div class="year"><span>1976</span></div>
+<p>Se Recomienda A los grupos y oficinas de servicio local que se abstengan de publicar en las carteleras los nombres de los compañeros que hagan aportes voluntarios para A.A.</p>
+<div class="year"><span>1977</span></div>
+<p>Se Recomienda: a los delegados que motiven a los grupos de su área para que aporten a la OSG.</p>
+<div class="year"><span>1980</span></div>
+<p>Se Recomienda A los delegados asistentes a la Conferencia promover en sus respectivas áreas:</p>
+<p>a)El aumento de aportes de los grupos a la OSG;</p>
+<p>b) El cumplimiento del plan aniversario, y c) Venta de literatura, suscripciones al boletín y la revista “A.A. El Mensaje”.</p>
+<div class="year"><span>1981</span></div>
+<p class="j">Se Recomienda: a las oficinas de inter grupos trabajar con el descuento que concede la OSG en ventas de literatura, con el fin de que puedan venderla al mismo precio que la oficina.</p>
+<div class="year"><span>1982</span></div>
+<p class="j">Se Recomienda: que a las próximas Conferencias se invite al contador y al revisor fiscal de la Corporación, para que se aclaren aspectos contables y diluciden situaciones financieras de la asociación. Se Recomienda: a los delegados, R.S.G. y demás servidores informar oportuna y debidamente a todos los grupos del país, sobre los cambios que se registran en los costos de nuestra literatura y los motivos que se operan para los incrementos en su valor.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 13</div>
+</section>
+<section class="pagina" id="p15"><div class="num">PÁGINA <b>15</b> / 45</div>
+<p class="j">Se Recomienda: que, para el mes de noviembre, señalado como el “mes de las Tradiciones”, se celebre en todos los grupos de A.A. la “SEMANA DE LA GRATITUD”, como lo sugiere el folleto “El Grupo de A.A.” y que los recaudos que se logren en ellas sean con exclusivo destino para la OSG.</p>
+<div class="year"><span>1984</span></div>
+<p class="j">Se Recomienda: Que la semana de la Gratitud que se celebra en el mes de noviembre, mes de las tradiciones, sea promovida por parte de la OSG y comités de área con la suficiente anticipación y por medio de los cuerpos de servicio, a través de boletines y todos los medios posibles de difusión a los grupos. Se Recomienda: Que, en lo posible, Colombia esté representada en los eventos de servicio mundial y en el Encuentro Iberoamericano.</p>
+<div class="year"><span>1985</span></div>
+<p>Se Recomienda: A los comités de área constituir su comité de finanzas como lo Recomienda el Manual de Servicio.</p>
+<div class="year"><span>1987</span></div>
+<p class="j">Recomendamos: Al comité de finanzas y a la OSG canalizar los fondos de la Corporación en entidades bancarias o corporaciones que tengan amplio respaldo oficial. Con esta Recomendación buscamos el máximo de seguridad para las reservas de nuestra amada comunidad.</p>
+<p>Se Recomienda: a los grupos de todas las áreas no recurrir a rifas o fiestas para el mantenimiento del grupo. Que los R.S.G. destaquen la necesidad del auto mantenimiento.</p>
+<div class="year"><span>1989</span></div>
+<p class="j">Se Recomienda: la necesidad de motivar la aplicación del Plan 60-30-10 para que sea incluido dentro del presupuesto del grupo y sirva para el sostenimiento de la oficina de inter grupos, comités de área y OSG.</p>
+<div class="year"><span>1990</span></div>
+<p class="j">Se Recomienda: a la OSG publicar el plegable de auto mantenimiento con la explicación del Plan 60-30-10, haciendo claridad que dentro de los gastos básicos del grupo además del arriendo, los gastos de cafetería y servicios, se encuentran también los aportes a la OSG, la oficina de inter grupos y el comité de área. Si después de cubrir los gastos queda algún excedente se le aplica el Plan 60-30-10.</p>
+<div class="year"><span>1991</span></div>
+<p class="j">Se Recomienda: como estrategia adicional para captar más fondos para la OSG que en las reuniones de aniversario de los miembros de A.A. el 50% de las contribuciones que se recolecten en cada una de éstas, se envíe como aporte a la OSG.</p>
+<div class="year"><span>1992</span></div>
+<p class="j">Se Recomienda: en la aplicación del Plan 60-30-10, en referencia con los excedentes de los grupos, cuando no exista oficina intergrupal, se aplique en la siguiente forma: 70% para la OSG y el 30% para el área sede.</p>
+<div class="year"><span>1993</span></div>
+<p>Se Recomienda: Nuevamente la prudente reserva para los grupos de dos (2) meses, para los inter grupos y comités de área seis (6), y para la OSG de un (1) año.</p>
+<div class="year"><span>2000</span></div>
+<p class="j">Se Recomienda: Que todos los centros de servicio del país apliquen la mayor diligencia posible para que todos los tesoreros o personas encargadas de hacer giros de dineros a la Corporación Nacional de Servicios de A.A. (O.S.G.), especifiquen en cada caso el origen o razón de cada cuenta en la consignación, con el objetivo de que la contabilidad de la Corporación esté completamente actualizada. Si al término del ejercicio contable tenemos saldos a favor por consignaciones efectuadas por algún cuerpo de servicio que no la identificó en su momento, esta oficina tiene plena facultad para hacer su apropiación.</p>
+<div class="folio run">Pág. 14 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p16"><div class="num">PÁGINA <b>16</b> / 45</div>
+<div class="year"><span>2003</span></div>
+<p>Se Recomienda: que en todos los eventos masivos y de grupos, foros, congresos, talleres, etc., haya un taller sobre auto mantenimiento, valor espiritual del dinero.</p>
+<div class="year"><span>2004</span></div>
+<p>Moción: Que el balance de cierre sea acompañado de las notas explicativas o aclaratorias necesarias para su comprensión contable.</p>
+<p>Moción: la Conferencia aprobar anualmente el balance general de la Corporación a 31 de diciembre del año anterior, y el presupuesto del año vigente.</p>
+<div class="year"><span>2005</span></div>
+<p class="j">Se Recomienda: que los excedentes de los eventos zonales como congresos, foros y encuentros de servidores, sean distribuidos así: El 60% para la OSG El 20% para el próximo evento El 20 % para el área sede. (Esta Recomendación, reemplaza la Recomendación de 1992 (60-30-10)).</p>
+<div class="year"><span>2007</span></div>
+<p>Se Recomienda: a las áreas desarrollar talleres en sus respectivos comités, distritos y grupos, basados en el plegable “El Automantenimiento en AA”</p>
+<p>Sugerencia: Que las áreas utilicen el correo electrónico para comunicarnos en doble vía con la OSG, con el fin de ahorrar lo que se invierte actualmente en correo certificado.</p>
+<div class="year"><span>2008</span></div>
+<p class="j">Recomendamos: modificar la Recomendación de 1997, de la siguiente manera: “Se Recomienda que las contribuciones voluntarias de los miembros de AA. Con destino a la OSG, tengan como máximo doce salarios mínimos legales mensuales por año.</p>
+<div class="year"><span>2009</span></div>
+<p>Se sugiere: Que los informes estadísticos sobre ventas de literatura se presenten tanto en pesos como en unidades vendidas.</p>
+<div class="year"><span>2010</span></div>
+<p class="j">Se Recomienda: que los excedentes de los eventos nacionales, sean distribuidos así: 60% para la Corporación Nacional De Servicios Generales de AA 20% para el próximo evento de similar característica. 10% Región. 10% para el área que la realice.</p>
+<p class="j">Se Recomienda: incluir en todas las publicaciones del año de la Revista El Mensaje y el Boletín Nacional, un artículo de motivación sobre la necesidad e importancia del Automantenimiento para nuestra Comunidad.</p>
+<div class="year"><span>2011</span></div>
+<p class="j">Se Recomienda: que se elabore un afiche que contenga los diferentes planes de Automantenimiento, para que sea ubicado en un lugar visible de los grupos, Inter grupos y comités de área y sea una herramienta de motivación de nuestra responsabilidad frente al Automantenimiento.</p>
+<div class="year"><span>2012</span></div>
+<p class="j">Moción: Que la Semana de la Gratitud consistente en que los dineros recaudados en los grupos, por concepto de Séptima Tradición, en la última semana del mes de noviembre de cada año, sean enviados en su totalidad a la OSG.</p>
+<div class="year"><span>2013</span></div>
+<p>Se sugiere: al comité de finanzas de la junta de servicios generales presentar en el informe anual un cuadro</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 15</div>
+</section>
+<section class="pagina" id="p17"><div class="num">PÁGINA <b>17</b> / 45</div>
+<p>comparativo de las ventas de literatura de los últimos tres años por título.</p>
+<p class="j">Se le sugirió al comité de finanzas de la junta de servicios generales presentar los estados financieros del año anterior en el mes de marzo del año siguiente para evitar correcciones.</p>
+<p>Sugerencia: Presentar en los estados financieros el análisis los indicadores financieros con el objeto que toda la comunidad entienda la situación de nuestra corporación.</p>
+<div class="year"><span>2014</span></div>
+<p class="j">Sugerencia: Que los estados de Resultados se elaboren con otra presentación, para que así, coincidan con el presupuesto y sean más entendibles por la conciencia de grupo. Esta Sugerencia fue establecida con la presencia de la Contadora y el Revisor Fiscal de la Corporación de la OSG.</p>
+<div class="year"><span>2015</span></div>
+<p>Se Recomienda: cambiar el lenguaje y las bases sugeridas para liquidar el Plan Aniversario Miembro y el Plan Aniversario Grupo o porcentaje sobre el salario mínimo así:</p>
+<p class="j">Plan Aniversario Miembro, PAM; el 1% sobre el salario mínimo legal mensual vigente por cada año de sobriedad, o lo que decida el miembro de acuerdo a su capacidad económica. Plan Aniversario Grupo, PAG; el 7% sobre el salario mínimo legal mensual vigente cada que el grupo cumpla aniversario, o lo que decida el grupo de acuerdo a su capacidad económica.</p>
+<p class="j">Sugerencia: Que el balance general y el estado de beneficios de la Corporación Nacional de Servicios Generales de junio y diciembre sean enviados a los integrantes del Comité de Finanzas de la Conferencia y además sean publicados en el boletín de los meses de marzo y agosto de cada año.</p>
+<p>(Acción Recomendable del año 1995).</p>
+<div class="year"><span>2017</span></div>
+<p>Se Recomienda: Actualizar los saldos de la prudente reserva capitalizando los intereses que ésta produzca, adicionando el 2.5 % de los excedentes de las ventas de literatura.</p>
+<p>Moción de recordación:</p>
+<p>Que el Comité de Finanzas y presupuesto de los Custodios, cada que se reúnan, le envié los balances al respectivo Comité de Conferencia.</p>
+<div class="year"><span>2019</span></div>
+<p>Moción de piso</p>
+<p>Se Recomienda que la Recomendación del año 2005 que dice:</p>
+<p class="j">“Se Recomienda: que los excedentes de los eventos Zonales como Congresos, foros y encuentros de servidores, sean distribuidos así: El 60% para la OSG, El 20 % Para el próximo evento, El 20% para el área sede” Por el siguiente texto:</p>
+<p class="j">Se Recomienda: que los excedentes de los eventos Regionales como Congresos, foros y encuentros de servidores, sean distribuidos así: El 60% para la Corporación Nacional de AA, El 20 % Para el próximo evento, El 20% para el área sede.</p>
+<div class="year"><span>2020</span></div>
+<p class="j">Se Recomienda: Crear Reserva de eventos nacionales: a partir del excedente actual; se incrementará sumándole el 10% de los excedentes de cada evento nacional. Dicha reserva se protegerá, teniendo en cuenta que esta no hace parte de los ingresos de los eventos. Que el Plan de Auto mantenimiento “excedentes nacionales” quedaría 70% para la corporación, 10% para el fondo de reserva de eventos nacionales, 10% para la Región sede y 10 % para el Área sede. El tope del fondo de eventos nacionales será de70 SMMLV y cuando se obtenga este tope el 10% de excedente pasará a la corporación.</p>
+<div class="folio run">Pág. 16 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p18"><div class="num">PÁGINA <b>18</b> / 45</div>
+<div class="year"><span>2022</span></div>
+<h3>FINANZAS</h3>
+<p>Fue aprobado el presupuesto para el año 2022.</p>
+<p>Fue aprobado la distribución de excedentes del año 2021. (Ver cuadro en la pág. 122 de informe final de la 58 CSG)</p>
+<p class="j">Moción DE PISO Que en la plenaria deliberativa de aprobación de balance general del año anterior y presupuesto del año en curso estén presente el contador y revisor fiscal. Moción DE RECORDACIÓN AÑO 2004: Se Recomienda que el balance de cierre sea acompañado de las notas explicativas o aclaratorias necesarias para su comprensión contable.</p>
+<p class="j">Moción DE RECORDACIÓN AÑO 1976: Se Recomienda a los grupos y oficina de servicio local que se abstengan de publicar en las carteleras los nombres de los compañeros que hagan aportes voluntarios para Alcohólicos Anónimos.</p>
+<div class="year"><span>2023</span></div>
+<p class="j">Reunido el Comité y con la presencia de la Contadora de la corporación, el Revisor Fiscal, y los Coordinadores de los Comités de Finanzas de la Junta de Servicios Generales y la Entidad Operativa de Servicios Generales, se analizaron y revisaron los estados financieros correspondientes al período fiscal 2022 al igual que el presupuesto para el año 2023.</p>
+<p class="j">Aclaradas las inquietudes, despejados los interrogantes y teniendo en cuenta el dictamen contable presentado por Revisor Fiscal el Comité manifiesta que se encuentran ajustados a las operaciones de la comunidad para el cabal cumplimiento de su objetivo. Por lo expuesto anteriormente se da por aprobado el estado financiero 2022. Al igual que el presupuesto para el año 2023.</p>
+<p class="j">Se Recomienda que se anule la Acción Recomendable del Comité de Finanzas aprobado en la Conferencia 58, que dice: “Que en la Plenaria deliberativa de aprobación del balance del año anterior y presupuesto del año en curso estén presente el Contador y Revisor Fiscal”.</p>
+<p class="j">Moción de Recordación: En 1984 se recomendó que la Semana de la Gratitud que se celebra en el mes de noviembre, mes de las Tradiciones, sea promovida por parte de la OSG y Comités de Área con la suficiente anticipación y por medio de los cuerpos de servicio a través de boletines y todos los medios posibles de difusión a los grupos.</p>
+<div class="year"><span>2024</span></div>
+<p>Moción de Recordación 2017: que el Comité de Finanzas y Presupuesto de los Custodios, cada vez que se reúna, le envíe los balances al respectivo Comité de Conferencia.</p>
+<div class="year"><span>2025</span></div>
+<p>Sugerencia: actualizar la guía de eventos nacionales, que los proveedores contratados cumplan con las normas legales vigentes y la corporación exija las pólizas de cumplimiento.</p>
+<p>Se recomienda: a la JSG que después de aprobar el presupuesto para los eventos nacionales se presente dicho prepuesto al Comité de Finanzas de la Conferencia para su conocimiento.</p>
+<p>Moción de recordación año 2017: Que el comité de finanzas y presupuesto de los custodios, cada que se reúnan, le envié los balances al comité respectivo de conferencia.</p>
+<div class="year"><span>2026</span></div>
+<p>Moción de recordación:</p>
+<p class="j">“Se Recomienda: que los excedentes de los eventos Zonales como Congresos, Foros y Encuentros de Servidores, sean distribuidos así: El 60% para la OSG, El 20 % Para el próximo evento, El 20% para el área sede”</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 17</div>
+</section>
+<section class="pagina" id="p19"><div class="num">PÁGINA <b>19</b> / 45</div>
+<p class="j">se cambie por el siguiente texto: “Se Recomienda: que los excedentes de los eventos Regionales como Congresos, Foros y Encuentros de Servidores, sean distribuidos así: El 60% para la Corporación Nacional de AA, El 20 % para el próximo evento, El 20% para el área sede”.</p>
+<p>Moción de recordación:</p>
+<p class="j">Realizar recordación a todos los grupos y miembros de la Recomendación del año 1973 que dice: “Se sugiere a todos los miembros de AA un aporte voluntario mensual con destino a la OSG. La forma de recaudar este aporte queda a criterio de los Grupos”</p>
+<p class="j">Nota: Los miembros del Comité de Finanzas de La Conferencia se reunieron con el contador de la Corporación, su Auxiliar Contable, el Director No Custodio del Comité de Finanzas de la Entidad Operativa de Servicios Generales, Custodio de Servicios Generales y el Gerente encargado de la Corporación y se analizaron, revisaron y fueron aclaradas las inquietudes sobre la distribución de los excedentes, el Balance y Estado de Resultados a Diciembre 2025 y Presupuesto para el año 2026, considerando que está acorde con las normas Contables y el objetivo de la Comunidad.</p>
+<p>Comité de Cooperación con la Comunidad Profesional</p>
+<div class="year"><span>1992</span></div>
+<p class="j">Se Recomienda: a las áreas que, por intermedio de sus comités de CCP, inicien el plan “Apadrinemos un Profesional” mediante el envío del boletín “Acerca de A.A.” y la literatura apropiada.</p>
+<div class="year"><span>1993</span></div>
+<p>Moción: a los comités de área a través de su CCP, ejecutar efectivamente el plan de apadrinamiento a un profesional.</p>
+<div class="year"><span>2000</span></div>
+<p class="j">Se Recomienda: a las áreas enviar a la OSG informes concernientes a las experiencias de trabajo del comité Trabajando con Otros CTO, (IP, TI- CCP), con el objetivo de conformar un banco de datos.</p>
+<p>Se Recomienda: Que se edite una carpeta de presentación para trabajos de CCP, que pueda ser adaptada por CTO o demás comités.</p>
+<div class="year"><span>2001</span></div>
+<p>Se Recomienda: formar un banco de datos en el Comité Trabajando con Otros CTO alimentado por los CCP de las áreas, renovándolo por lo menos cada año.</p>
+<div class="year"><span>2004</span></div>
+<p>Recomendamos: Que los custodios zonales, delegados y coordinadores de área sean responsables de la conformación y puesta en funcionamiento de los C.T.O. en las áreas.</p>
+<p>Recomendamos: a los Comités de CCP de las áreas, que después de cada información al público se le dé continuidad con algún trabajo de CCP.</p>
+<div class="year"><span>2006</span></div>
+<p>Se Recomienda: Que la Junta de Custodios apoye a los CCP de las áreas en la realización anual de un Encuentro de Área de Amigos Profesionales de AA.</p>
+<div class="year"><span>2010</span></div>
+<p>Se Recomienda: Elaborar una guía práctica para los encuentros de profesionales en el territorio nacional. (Anexamos modelo) Esta guía estará dividida en tres momentos:</p>
+<div class="folio run">Pág. 18 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p20"><div class="num">PÁGINA <b>20</b> / 45</div>
+<h3>ANTES</h3>
+<p class="j">Los temas deben ser elegidos acordes con el encuentro y con anticipación (recordar que no es una IP.) En lo posible se debe contactar a los oradores no alcohólicos con suficiente anterioridad, igual que a los suplentes.</p>
+<p>Los oradores no alcohólicos deben ser personas que ya tengan un amplio conocimiento de la comunidad y de la enfermedad del alcoholismo, además de demostrar aprecio por AA.</p>
+<p>Se sugiere no atiborrar de temas la programación y dejar suficiente espacio libre para que los profesionales puedan compartir entre si y ante todo con los miembros de la comunidad.</p>
+<p class="j">A los profesionales que también acudirán como asistentes se les debe notificar con una carta por los menos con un mes de anticipación y llamarlos a confirmar con unos días de anticipación.</p>
+<p>El lugar del evento es preferible que sea un lugar campestre y tranquilo.</p>
+<p>Los asistentes deben ser la mayoría no alcohólicos y una minoría de miembros de la comunidad que lleven suficiente tiempo de sobriedad.</p>
+<p class="j">- La inscripción y los gastos que impliquen la asistencia de los profesionales debe ser patrocinada por miembros de la comunidad, grupos distritos o áreas. En el plegable de la programación se debe tener en cuenta que a los oradores profesionales se les debe colocar el nombre completo y profesión, ej.: el doctor Pepito Pérez Rodríguez –psicólogo especialista en sicología social de la Universidad del Valle. Esto debido a que la comunidad no debe obligarlo al anonimato, pues este rige para los miembros de ella y no para otros.</p>
+<h3>DURANTE</h3>
+<p>Debe haber un comité encargado del recibimiento y ubicación de los profesionales. Estas apersonas deben estar puntualmente a la hora acordada en la invitación a los Profesionales.</p>
+<p class="j">Al inicio hacer una presentación breve de los profesionales donde digan su nombre, Profesión y expectativas con el evento y al final una evaluación donde expresen su parecer con el mismo. Se considera importante que en los espacios libres se comparta entre miembros de AA y los profesionales; pues es allí donde los profesionales mejor pueden conocer a la comunidad.</p>
+<p>Se sugiere que el último punto de la programación sea una plenaria donde los profesionales participen con preguntas o sus aportes profesionales. Se comprometen.</p>
+<p>La alimentación debe ser de excelente calidad y presentación.</p>
+<p class="j">Importante tener claro que se procura un compartir de saberes entre miembros de la comunidad y los profesionales. No preocuparse por convertirlos en colaboradores inmediatos y bajo presión. Se ha demostrado que cuando un profesional se enamora de la Comunidad; él mismo sugiere formas de cooperación.</p>
+<h3>DESPUÉS</h3>
+<p class="j">Los encargados del CCP de área deben enviar por escrito a la OSG el informe de lo que fue el evento, acompañado de la información para la base de datos de los profesionales. El comité encargado de la realización debe hacer una reunión para evaluar el evento, con el propósito de mejorar en próximas oportunidades.</p>
+<p>Los encargados del CCP del área deben ocuparse de que le llegue el boletín a todos los profesionales que estuvieron en el evento.</p>
+<p class="j">A estos profesionales se les debe seguir apadrinando con literatura de la comunidad e invitándolos a otros eventos, tales como aniversarios de miembros y de grupos, para que sigan teniendo un mayor acercamiento y conocimiento de la Comunidad.</p>
+<p class="j">Sugerencia: Que los coordinadores de Instituciones correccionales de cada área de su respectiva región envíen sus correos electrónicos a la secretaría permanente y comuniquen a qué área y región pertenecen, para hacer una base de datos y así tener una buena comunicación entre la J de C, la OSG, los grupos y el coordinador de comité de instituciones correccionales de la conferencia.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 19</div>
+</section>
+<section class="pagina" id="p21"><div class="num">PÁGINA <b>21</b> / 45</div>
+<div class="year"><span>2011</span></div>
+<p class="j">Moción: recordar la Recomendación del año 2000 Conferencia 36: “Se Recomienda a las áreas enviar a la OSG informes concernientes a las experiencias de trabajo del Comité Trabajando con Otros (CTO, IP, TI, CCP), con el objetivo de conformar un banco de datos.”</p>
+<div class="year"><span>2014</span></div>
+<p>Sugerencia: a todos los entes de servicio de la estructura nacional hacer uso de todo el material aprobado por la Conferencia y por la Junta para hacer CCP.</p>
+<p>1. Libro de trabajo de CCP en instituciones.</p>
+<p>2. Folletos relacionados con este servicio.</p>
+<p>3. El documento de guías para cooperación institucional con entidades gubernamentales.</p>
+<div class="year"><span>2015</span></div>
+<p class="j">Sugerencia: A todos los entes de servicio de la estructura, poner en práctica el Plan Nacional de Fortalecimiento, teniendo en cuenta el Plan de Acción para el fortalecimiento de la presencia de Alcohólicos Anónimos en la sociedad. Tener en cuenta que profesional no es solamente aquel que tiene un título profesional, sino cualquier persona por la labor que realice tenga contacto con la comunidad.</p>
+<div class="year"><span>2017</span></div>
+<p>Se Recomienda: que el CCP de la Junta de Servicios Generales haga contactos a un alto nivel con las instituciones gubernamentales y privadas.</p>
+<div class="year"><span>2019</span></div>
+<p class="j">Sugerencia: Que la declaración hecha por el Custodio Clase A de la Junta de Servicios Generales de Estados Unidos George E. Vaillant, que dice “la unicidad de propósito es esencial para el tratamiento eficaz del alcoholismo. El motivo para tener tal exagerado enfoque es el de superar la negación. La negación asociada con el alcoholismo es astuta, desconcertante y poderosa y afecta al paciente, a quien lo ayuda y a la comunidad. A menos que el alcoholismo se mantenga incesantemente en primer plano, otros asuntos usurparan la atención de todos”.</p>
+<p>Aparezca en los boletines a profesionales y toda la información que tenga que ver con el trabajo de CCP.</p>
+<div class="year"><span>2020</span></div>
+<p class="j">Moción de Recordación: Recordar a los grupos que elijan su representante de CCP, como se ubica este servicio en la estructura del grupo, para que ellos sean parte importante del fortalecimiento de los comités de distrito y área.</p>
+<div class="year"><span>2024</span></div>
+<p class="j">Moción de recordación: Se solicita a la Junta de Servicios Generales atender lo sugerido por la acción Recomendable del Comité de Cooperación con la comunidad profesional e instituciones de tratamiento del año 2017 para establecer contactos de alto nivel con las instituciones gubernamentales y privadas.</p>
+<div class="year"><span>2025</span></div>
+<p class="j">Se recomienda: que la JSG realice videos que incluyan lengua de señas y audios informativos de los tres comités que trabajan con la comunidad no AA: IP, CCP e IT con apoyo del Departamento de Comunicaciones y Tecnología de la OSG.</p>
+<p class="j">Se recomienda: a la JSG que, con el fin de mejorar y fortalecer el trabajo del Comité “Trabajando con Otros”, se lleve a cabo la revisión, edición y distribución de un nuevo manual impreso para el CTO. Este manual debe integrar la información contenida en el folleto CTO, en el que se explica cómo los tres comités se coordinan y colaboran para lograr sus objetivos comunes. El propósito es proporcionar a los grupos, incluso con pocos servidores, una herramienta clara y accesible para comprender el funcionamiento y la importancia de estos</p>
+<div class="folio run">Pág. 20 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p22"><div class="num">PÁGINA <b>22</b> / 45</div>
+<p>comités en su estructura y labor.</p>
+<p>Comité de Información al Público</p>
+<div class="year"><span>1977</span></div>
+<p class="j">Se Recomienda: Que al dar información por la radio acerca de A.A., no se dé al final del programa el número de teléfonos individuales o comerciales. Lo indicado es dar los números de las oficinas locales o de los grupos de A.A. Queremos hacer resaltar la importancia que tiene identificar el nombre del grupo o de la oficina local de A.A. cuando se contesta por teléfono.</p>
+<p class="j">Se Recomienda Insistir en que toda la información al público se haga a través de los comités de información, así sean constituidos por un grupo. Es lógico que en los lugares donde existen intergrupos o comités de servicios generales corresponde a estas entidades constituir estos comités de I.P.</p>
+<div class="year"><span>1980</span></div>
+<p>Se Recomienda: a los intergrupos, comités de servicio o grupos donde haya Comités de IP, se asigne una partida para estas actividades.</p>
+<p class="j">Se Recomienda: al Comité de IP de la Corporación buscar un mayor acercamiento y motivación a los periodistas, para evitar tergiversaciones y malos entendidos en cuanto a la imagen de AA.</p>
+<div class="year"><span>1982</span></div>
+<p class="j">Se Recomienda: a aquellos miembros de AA que trabajan en el campo del alcoholismo que se hagan más conscientes de las tradiciones para lograr la mayor claridad en el principio de “Cooperación sí, afiliación no”.</p>
+<p class="j">Se Recomienda: que los grupos de AA que se reúnan en instituciones donde se da tratamiento a los alcohólicos se protejan con la Tradición Siete; si no se nos acepta dinero para el pago de arrendamiento, los grupos deben contribuir en alguna otra forma, y que los empleados de AA pagados por la institución no coordinen esas reuniones ni esos grupos.</p>
+<p class="j">Se Recomienda: reiterar a los miembros de AA interesados en informar al público, que se abstengan de narrar historiales trágicos o situaciones de permanentes borracheras para que el público no vaya a confundir el alcoholismo con maldad o nuestra enfermedad con solamente borracheras.</p>
+<div class="year"><span>1983</span></div>
+<p class="j">Se Recomienda: A.A. y que nuestra comunidad A los encargados de información al público recalcar que A.A. no tiene opiniones sobre las causas del alcoholismo o su prevención, sino sobre el programa de recuperación de no es una sociedad de temperancia.</p>
+<div class="year"><span>1991</span></div>
+<p>Se Recomienda: extender las labores de información pública al sector rural.</p>
+<div class="year"><span>1999</span></div>
+<p class="j">Se Recomienda: al comité de área e intergrupos, que el día 10 de junio de cada año, se celebre en Colombia, la fundación de Alcohólicos Anónimos, sugiriendo que durante el día se dé información permanente a la comunidad en general, utilizando los medios masivos de comunicación para su divulgación.</p>
+<div class="year"><span>2001</span></div>
+<p>Se Recomienda: que la Junta de Servicios Generales, las zonas* y los comités de área conformen los Comités Trabajando con Otros “CTO”</p>
+<p>*(Zona hoy equivale a Región en el nuevo manual edición 2014)</p>
+<div class="year"><span>2002</span></div>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 21</div>
+</section>
+<section class="pagina" id="p23"><div class="num">PÁGINA <b>23</b> / 45</div>
+<p class="j">Se Recomienda: iniciar y/o reforzar en los grupos, distritos y comités de área, los talleres de capacitación sobre cómo hacer información al público, utilizando las guías recomendadas por la Conferencia.</p>
+<div class="year"><span>2004</span></div>
+<p class="j">Se Recomienda: Unificar el uso del nombre, del símbolo de AA y de todo aquello que tenga que ver con nuestra Comunidad, tanto para el uso interno como para el uso externo, esto debe tenerse en cuenta en los avisos de grupo, papelería, etc. a todos los niveles de la estructura de Servicios Generales, desde el grupo hasta la OSG.</p>
+<div class="year"><span>2006</span></div>
+<p>Se Recomienda: a los comités de área, utilizar los canales locales y regionales (TV-cables, parabólicas, etc.), para transmitir los comerciales de AA.</p>
+<div class="year"><span>2008</span></div>
+<p class="j">Se Recomienda: homogenizar los avisos de IP de acuerdo a los parámetros señalados en el plegable de la imagen corporativa en cuanto al color y demás indicaciones que es el color azul.</p>
+<div class="year"><span>2009</span></div>
+<p class="j">Se Recomienda: Que todos los cuerpos de servicio general acaten la Recomendación respecto a la utilización de la Imagen Corporativa en comunicados, revistas, boletines, blogs, páginas web, correos, avisos, tarjetas de grupo, afiches de eventos, etc. (Manual de Servicios, Tamaño Carta M83 y 84 – Tamaño Media C 117 y 118). Se Recomienda: A los grupos, acatar la resolución del Ministerio de Protección Social en lo referente a la prohibición de fumar en recintos cerrados.</p>
+<div class="year"><span>2010</span></div>
+<p class="j">Sugerencia: actualizar los anuncios de servicio público para la radio y la televisión y actualizar el código civil* ante la comisión Nacional de televisión – CNTV* que se permita La difusión de dichos anuncios y renovarla cada vez que sea necesario. Se Recomienda: Que el Comité de IP de la Junta realice cada 3 años una encuesta de los miembros de AA, con el fin de conocer el perfil actual de los alcohólicos anónimos en Colombia.</p>
+<div class="year"><span>2011</span></div>
+<p>Moción: sugerimos que por ningún motivo se hagan fotocopias de nuestra literatura impresa.</p>
+<p class="j">*En la actualidad, los términos correctos son: Código Cívico y Autoridad Nacional de Televisión - ANTV) Se recomendó: que, en aras de preservar nuestro anonimato personal en el desarrollo oficial de nuestras reuniones de grupo, área, conferencia, foros, congresos y convenciones, no se tomen fotos ni se hagan filmaciones.</p>
+<p class="j">Que, en aras de preservar nuestro anonimato personal en la realización de nuestros eventos, todos los elementos de uso personal que el miembro vaya a utilizar, tales como: escarapelas, camisetas, botones y otros no aparezca ninguna mención, ni logo ni nombre de AA.</p>
+<p class="j">A la comunidad de AA de Colombia en general, que se abstenga de publicar en las páginas sociales de Internet fotos, documentos escritos y videos que puedan violar nuestro manto protector de anonimato.</p>
+<div class="year"><span>2012</span></div>
+<p>Se Recomienda: Aprobar las guías de I.P. presentadas por el comité transitorio para su aplicación a nivel nacional.</p>
+<p>Moción: sugerimos a los grupos reactivar el Comité de Bienvenida o Recepción para que se le haga acompañamiento al nuevo. Esto ajustándonos a las nuevas guías.</p>
+<div class="year"><span>2014</span></div>
+<p>Recomendación: Que en una misma publicación se incluyan los manuales de IP, CCP, IT e IC</p>
+<div class="folio run">Pág. 22 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p24"><div class="num">PÁGINA <b>24</b> / 45</div>
+<div class="year"><span>2016</span></div>
+<p>Recomendación:</p>
+<p class="j">Incluir la siguiente frase: “Y además el Estado colombiano ha reconocido el alcoholismo como un problema de salud pública” en la diapositiva de la Guía Nacional de IP donde las autoridades médicas reconocen el alcoholismo como una enfermedad.</p>
+<div class="year"><span>2016</span></div>
+<p class="j">Moción de recordación Se Recomienda que, a todos los niveles de servicio de la Comunidad, se pongan en práctica las siguientes estrategias para proteger el anonimato en las redes sociales.</p>
+<p>1. Estudiar las recomendaciones dadas en el libro de trabajo de I.P Pág. 54, donde se hace referencia específica al anonimato en redes sociales.</p>
+<p>2. Que en todos los eventos se haga énfasis sobre el anonimato en redes sociales.</p>
+<p>3. Que mediante el apadrinamiento se oriente a los recién llegados sobre la importancia del anonimato en las redes sociales.</p>
+<div class="year"><span>2019</span></div>
+<p class="j">Moción de recordación. Año 2010, Se Recomienda que el Comité de Información Pública de la Junta, realice cada tres años una encuesta en los miembros de AA, con el fin de conocer el perfil actual de los AA en Colombia.</p>
+<div class="year"><span>2020</span></div>
+<p class="j">Moción de Recordación. En la conferencia 48 del año 2012 se dijo: “sugerimos a los grupos reactivar el comité de bienvenida o recepción para que se haga acompañamiento al nuevo, esto ajustándonos a las nuevas guías”.</p>
+<div class="year"><span>2021</span></div>
+<p class="j">Se Recomienda a la Junta de Servicios Generales que para el año 2022, se elabore una presentación adicional de IP dirigida al público juvenil y se actualice la guía vigente Se Recomienda a la Junta de Servicios Generales que a partir del año 2021 se cree un link para acceso directo a reuniones virtuales de AA en la página principal de la Corporación.</p>
+<div class="year"><span>2022</span></div>
+<p class="j">INFORME Y CARTA CONSTITUTIVA Se Recomienda: Que, en el afiche de la Reunión Anual de la Conferencia de Servicios Generales, predomine el color tradicional de A.A. y que el logo que aparezca sea de acuerdo con la imagen correspondiente según el Manual de Imagen Corporativa.</p>
+<p>Se Recomienda:</p>
+<p class="j">Omitir en el Manual de Servicios, en la página (M113), en el párrafo que dice: “Debido a este requisito, originalmente los custodios de servicios generales residían en Medellín y su área metropolitana, y a veces se conocían como “custodios dentro de la ciudad”; ahora que hay posibilidad de comunicarse más rápidamente y con mayor eficacia por teléfono, así como por correo y medios electrónicos, las personas que no son residentes en Medellín y sus alrededores también pueden ocupar estos servicios” Y transcribir el párrafo del artículo 8, página (M176) de los estatutos que dice: “El custodio de servicios generales será del área correspondiente a Medellín o sus áreas vecinas”</p>
+<p class="j">Moción DE PISO Que la Junta de Servicios Generales revise los Manuales de Imagen Corporativa y estos coincidan con lo que aparece en el Manual de Servicios PAG. M129 – M130. Aprobado Moción DE PISO Que todos los afiches pendones y volantes de los eventos tengan el logo de Alcohólicos Anónimos de acuerdo con la imagen corporativa según el Manual de Servicios PAG. M130. Aprobado.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 23</div>
+</section>
+<section class="pagina" id="p25"><div class="num">PÁGINA <b>25</b> / 45</div>
+<div class="year"><span>2024</span></div>
+<p class="j">Moción de recordación 2011: que, en aras de preservar nuestro anonimato personal en el desarrollo oficial de nuestras reuniones de Grupo, de Área, Conferencia, Foros, Congresos y Convenciones no se tomen fotos ni se hagan filmaciones.</p>
+<p class="j">Que, en aras de preservar nuestro anonimato personal en la realización de nuestros eventos, todos los elementos de uso personal que el miembro vaya a utilizar, tales como: escarapelas, camisetas, botones y otros no aparezca ninguna mención, ni logo de AA.</p>
+<p class="j">A la comunidad de AA Colombia en general que se abstenga de publicar en las páginas sociales de internet fotos, documentos, escritos y videos que puedan violar nuestro manto protector de anonimato.</p>
+<div class="year"><span>2025</span></div>
+<p class="j">Se recomienda: a la Junta de Servíos Generales ampliar la difusión del mensaje de AA para alcanzar a más personas que puedan necesitar ayuda o información sobre el alcoholismo, utilizando redes sociales y otros medios digitales, respetando nuestros 36 principios. Sólo con material producido por el Departamento de Comunicaciones y Tecnología de la OSG.</p>
+<p class="j">Moción de recordación: Se recuerda a la JSG el cumplimiento de las Acciones Recomendables: años 2004 y 2009 del Comité de IP, en cuanto al uso de la Imagen Corporativa a todo nivel de la Estructura de Servicio.</p>
+<div class="year"><span>2026</span></div>
+<p class="j">Se recomienda a la JSG con el apoyo y asesoría del Departamento de Tecnología y Comunicaciones elaborar un Plan de Acción a mediano y largo plazo para mantener al día o actualizadas las redes sociales de la corporación que actualmente tenemos y abrir aquellas que aún no tenemos en la web y en la página aacolombia.org Se recomienda a la JSG de Colombia actualizar la Guía Nacional de Información Pública (I.P.) tomando en cuenta las siguientes sugerencias:</p>
+<p>Pág. # 8: Síntomas. En los puntos adicionar la palabra “Negación”.</p>
+<p class="j">En la pág. # 19 se propone que se actualice las cifras pasadas por cifras actuales al momento de la estadística (fecha de edición de la guía) referente a la presencia de A.A. en el mundo y en Colombia.</p>
+<p>Comité de Instituciones</p>
+<div class="year"><span>1994</span></div>
+<p class="j">Se Recomienda: La inclusión en los foros, talleres y otras actividades del área, intergrupos y demás entes de servicio, información sobre la manera como puede hacerse el trabajo en centros de tratamiento e instituciones carcelarias.</p>
+<div class="year"><span>1997</span></div>
+<p class="j">Se Recomienda: que el trabajo en Instituciones carcelarias sea llevado a cabo en lo posible por miembros del mismo sexo, es decir, los hombres a los centros donde están recluidos los hombres y las mujeres donde están recluidas las mujeres.</p>
+<div class="year"><span>2002</span></div>
+<p class="j">Se Recomienda: para mantener nuestras buenas relaciones y la buena imagen de Alcohólicos Anónimos, que toda actividad relacionada con los subcomités de Instituciones carcelarias y hospitalarias, se realice a través del comité de área, intergrupos, distritos o grupos y no por miembros de la comunidad, en forma individual.</p>
+<div class="year"><span>2004</span></div>
+<p>Moción: Que las áreas conformen el Comité de Instituciones Carcelarias y Hospitalarias</p>
+<div class="folio run">Pág. 24 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p26"><div class="num">PÁGINA <b>26</b> / 45</div>
+<div class="year"><span>2010</span></div>
+<p class="j">Se sugiere: que los coordinadores de instituciones correccionales de cada área de sus respectivas regiones, envíen sus correos electrónicos a la secretaría permanente y comunicar a qué área y región pertenecen para hacer una base de datos y así tener una buena comunicación, entre la Junta de Custodios, la OSG, los Grupos y el Coordinador de intuiciones correccionales de la conferencia.</p>
+<div class="year"><span>2014</span></div>
+<p class="j">Se sugiere: que todas las áreas del país hagan un censo de los grupos carcelarios que existen en la actualidad y además de los lugares donde existen centros penitenciarios, pero no hay grupos de AA. los datos necesarios son: Nombre y ubicación del grupo, Nombre, correo u teléfono del coordinador de dicho grupo. Hecho esto, se enviará la información a la OS</p>
+<div class="year"><span>2015</span></div>
+<p>Recomendación: que se haga un banco de literatura en las áreas donde los miembros de la comunidad depositen los libros, folletos y revistas que consideren que pueden donar.</p>
+<div class="year"><span>2016</span></div>
+<p class="j">Moción de Piso: Debido al trabajo que se está haciendo en las cárceles, Se Recomienda que se realicen los talleres de capacitación y estructuración con base en el manual de Instituciones Correccionales en áreas y regiones.</p>
+<div class="year"><span>2017</span></div>
+<p class="j">Se Recomienda: Que la OSG, solicite a Estados Unidos el último video llamado ‘Hay una nueva libertad’ y se socialice en las áreas. Para que sirva de instrumento de trabajo en las instituciones carcelarias.</p>
+<div class="year"><span>2018</span></div>
+<p>Moción de recordación:</p>
+<p>Que el comité de CCP de las áreas, sean más efectivas al contactar a los profesionales, para que el Comité de IP e IT, pueda hacer su correspondiente labor.</p>
+<p>Moción de recordación:</p>
+<p>Que se recuerde enviar la solicitud a la estructura americana: los videos: “Una Nueva Libertad” que son dos, uno dirigido a los profesionales y otro a los presos.</p>
+<div class="year"><span>2019</span></div>
+<p>Moción de recordación.</p>
+<p>Que se recuerde enviar la solicitud a la estructura americana los videos ‘una nueva libertad’, una dirigida a los profesionales y otra a los presos.</p>
+<p>Sugerencia. El Comité de Instituciones Correccionales promover que en las cárceles exista un buzón que incluya literatura y un directorio de los grupos del país.</p>
+<div class="year"><span>2023</span></div>
+<h3>INSTITUCIONES CORRECCIONALES (CÁRCELES)</h3>
+<p class="j">Se Recomienda que la JSG, coloque en marcha la revisión y la actualización de contextos de nuestro actual libro de trabajo de Instituciones Correccionales. Como última actividad de plenaria el domingo en la noche, se deliberó sobre una Moción de Piso, la cual, no fue aprobada.</p>
+<div class="year"><span>2024</span></div>
+<p class="j">Moción de recordación: Se recomienda la inclusión en los foros, talleres y otras actividades de área, intergrupos y demás entes de servicio, información sobre la manera cómo pueden hacerse el trabajo en centro de tratamiento e instituciones carcelarias. Esto fue aprobado en la Conferencia de 1994.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 25</div>
+</section>
+<section class="pagina" id="p27"><div class="num">PÁGINA <b>27</b> / 45</div>
+<div class="year"><span>2026</span></div>
+<p>Se recomienda: cambiar el nombre del comité de instituciones correccionales por comité de Instituciones Carcelarias.</p>
+<p class="j">Moción de recordación: Acción Recomendable 2017: “Que la OSG solicite a Estados Unidos que el último video llamado “Hay una nueva libertad” y se socialice en las áreas para que sirva de instrumento de trabajo en las instituciones correccionales.</p>
+<p>Comité de Literatura</p>
+<div class="year"><span>1969</span></div>
+<p class="j">Se Recomienda Por conveniencia para todo el movimiento evitar hacer publicaciones diferentes a las aprobadas por la Conferencia. También se ruega que en la Oración de la Serenidad y los slogans se mantenga la uniformidad de acuerdo con lo sugerido en los boletines. Se Recomienda De manera especial el estudio de los Doce Pasos y las Doce Tradiciones en reuniones cerradas.</p>
+<div class="year"><span>1970</span></div>
+<p>Se Recomienda Que este comité esté en perfecta concordancia con el Comité de Finanzas.</p>
+<p class="j">Se Recomienda Que cuando la revista éste en circulación, éste boletín pasará a ser un vehículo de información no sólo de la OSG, sino también de los grupos en general, sobre sus actividades y, su distribución deberá ser con costos fijados por la OSG.</p>
+<p class="j">Se Recomienda Comprometernos para que la mística por la lectura y aplicación de la literatura sean una realidad, tenemos la absoluta seguridad de que el mensaje de A.A. será más efectivo y la recuperación del alcohólico más firme y por lógica consecuencia, la ayuda a nuestra oficina de servicios más real y efectiva.</p>
+<div class="year"><span>1971</span></div>
+<p>Se Recomienda Estudiar los folletos “A.A. el Grupo” y “Cómo Comienza A.A. Cómo Crece”, para seguir las Sugerencias y estructurar debidamente los grupos.</p>
+<div class="year"><span>1974</span></div>
+<p class="j">Se Recomienda Que para lograr una mayor difusión de la revista “A.A. el mensaje”, los encargados de la literatura en cada uno de los grupos, fomenten las suscripciones anuales de dicha publicación, teniendo presente las recomendaciones del folleto “El Grupo de A.A.” respecto al representante del Grapevine.</p>
+<div class="year"><span>1978</span></div>
+<p class="j">Se Recomienda: Que la Conferencia reitere recomendaciones anteriores a los miembros y grupos de AA para que no editen tarjetas personales, almanaques, postales que lleven el nombre de AA con las letras AA; ni mezclar el nombre de nuestra comunidad con oraciones o frases que no correspondan a nuestra literatura.</p>
+<div class="year"><span>1981</span></div>
+<p>Se Recomienda: Que en lo posible la OSG continúe prefiriendo las oficinas de intergrupos en las ciudades donde existan para la distribución de la literatura.</p>
+<div class="year"><span>1982</span></div>
+<p class="j">Se Recomienda: Nuevamente a los grupos y miembros de AA que en los membretes y remites de los sobres NO utilicen las palabras “Alcohólicos Anónimos “ni tampoco las iniciales de A.A.</p>
+<div class="folio run">Pág. 26 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p28"><div class="num">PÁGINA <b>28</b> / 45</div>
+<p class="j">Se Recomienda: Que las reuniones de AA se coordinen siempre con la “Literatura Aprobada por la Conferencia”. Se Recomienda: Que los grupos se abstengan de editar o fotocopiar literatura de AA sin el permiso correspondiente, puesto que la misma cuenta con derechos registrados y está amparada ante la ley. Se Recomienda: Que las citas escritas de la literatura de A.A. lleven la indicación del libro o folleto de donde han sido tomadas.</p>
+<p>Se Recomienda: A todos los grupos y miembros utilizar las guías y folletos editados por la OSG para la correcta IP.</p>
+<div class="year"><span>1983</span></div>
+<p class="j">Se Recomienda: Que toda la literatura que publique la OSG debe llevar el sello de “Aprobado por la Conferencia”, agregando el número y fecha de edición y la anotación de revisada cuando lo sea. Recomienda: Que en la elaboración del boletín se tengan en cuenta aspectos de servicio, información, mensaje de recuperación y situación y noticias de la OSG.</p>
+<div class="year"><span>1984</span></div>
+<p class="j">Se Recomienda: Que cualquier libro o folleto que hable de A.A. en Colombia sea editado bajo el control de la Corporación de Servicios Generales, producida y revisada previamente por el comité de literatura y sometida a su aprobación por la Conferencia.</p>
+<p class="j">Se Recomienda: Que en las publicaciones de A.A. no se le dé crédito a ninguna casa editorial. Se Recomienda: Revisar las pruebas de nuevas ediciones antes de autorizar su impresión, esto con el fin de corregir errores o distorsiones en su contenido, como también es necesario mejorar la calidad de la encuadernación de algunos libros.</p>
+<div class="year"><span>1985</span></div>
+<p class="j">Recomendación: Se ratifica que la única autorizada para editar y fotocopiar la literatura de AA es la OSG que cuenta con derechos registrados y está amparada por la ley. Se Recomienda así mismo que las citas escritas de la literatura de A.A. lleven la indicación del libro o folleto de donde han sido tomadas para darle crédito. Se Recomienda: Que la coordinación de las reuniones se haga únicamente con la literatura de AA. y abstenerse de la venta de literatura que no sea exclusiva de AA.</p>
+<div class="year"><span>1988</span></div>
+<p class="j">Se Recomienda: Que el Comité de Literatura sugiere a los intergrupos, comités de área y grupos no modificar los precios de literatura establecidos por la OSG, señalando que esta es un medio para pasar el mensaje y no para sostenimiento de los grupos.</p>
+<p class="j">Se Recomienda: A los intergrupos, comités de área y grupos no modificar los precios de la literatura establecidos por la OSG, señalando que ésta es un medio para pasar el mensaje y no para el mantenimiento de los grupos.</p>
+<div class="year"><span>1991</span></div>
+<p class="j">Se Recomienda: Dedicar el mes de abril al estudio y divulgación del libro Alcohólicos Anónimos. Se Recomienda: La publicación de los Doce Conceptos y el Manual de Servicio en un solo libro.</p>
+<div class="year"><span>1992</span></div>
+<p>Se Recomienda: A la OSG editar los Doce Conceptos en tipo cartel, similar a los pasos y tradiciones, para exhibir en los grupos.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 27</div>
+</section>
+<section class="pagina" id="p29"><div class="num">PÁGINA <b>29</b> / 45</div>
+<div class="year"><span>1995</span></div>
+<p>Se Recomienda: La recopilación de todas las recomendaciones de la Conferencia, que actualicen anualmente y se publiquen.</p>
+<p class="j">Se Recomienda: Que se publiquen los folletos “AA y las fuerzas armadas”, “Carta a un preso que puede ser alcohólico”, previa revisión y adaptación por parte del comité de literatura de la Junta, de acuerdo con los folletos publicados por la GSO de NY.</p>
+<div class="year"><span>1996</span></div>
+<p class="j">Se Recomienda: Que la Junta de Custodios solicitarle a la OSG organizar el archivo histórico de Alcohólicos Anónimos en Colombia e igualmente Se Recomienda a las áreas que emprendan este proyecto.</p>
+<div class="year"><span>2000</span></div>
+<p>Se Recomienda: A la Junta de Servicios Generales le oriente a la OSG para publicar el Informe Final en 45 días, luego de terminada la Conferencia.</p>
+<p>Se Recomienda: Que en nuestra página Web salga información sobre la revista “AA el mensaje” Pág. 28 - Recomendaciones 1965 - 2025</p>
+<div class="year"><span>2001</span></div>
+<p>Se Recomienda: Que, en todos los eventos zonales y nacionales, parte del costo de inscripción sea destinado para entregar a los participantes su valor en literatura.</p>
+<p class="j">Ejemplo: Una vez el Comité de Finanzas de un congreso tenga determinado el costo de inscripción de $ 30.000, se le incrementen $ 5.000. Para un total de $ 35.000. Los $ 5.000 adicionales serán entregados en literatura como principal recordatorio. La misma será comprada directamente a la OSG.</p>
+<div class="year"><span>2002</span></div>
+<p>Se Recomienda: Editar un plegable donde se encuentre el funcionamiento del distrito como comité. Se entrega formato modelo.</p>
+<div class="year"><span>2004</span></div>
+<p>Se Recomienda: Que la OSG edite un plegable exclusivamente hablando del CTO. (Comité Trabajando con Otros).</p>
+<div class="year"><span>2005</span></div>
+<p>Se Recomienda: Que, en todos los eventos nacionales o zonales, se incluya en la agenda un tema sobre la importancia de la literatura de AA.</p>
+<p class="j">Se Recomienda: Que cada Delegado a la Conferencia, utilice el formato suministrado por la OSG, para su informe trimestral y anual lo que facilitará una completa claridad en el análisis del mismo. Se Recomienda: Que cada año se realice el mes de la literatura, durante el cual se resalte en los grupos la importancia que tiene, ya que en ella está el verdadero mensaje de Alcohólicos Anónimos y que ese mes sea el de septiembre, durante el cual se conmemora el aniversario de la llegada del mensaje de AA a Colombia. Se Recomienda: Que ningún ente de servicio, con motivo de eventos de AA, produzca y/o distribuya artículos recordatorios tales como: ceniceros, encendedores, pisapapeles, jarros, o similares, ya que el objetivo de AA en tales eventos, es llevar el mensaje de AA, contenido en nuestra literatura, y el mercadeo de tales objetos, no aprobados por la Conferencia, ni producidos por la OSG, no sólo desvían el objetivo espiritual de estas reuniones masivas, sino que afectan notoriamente el bienestar común y la unidad de AA, por las innecesarias polémicas que tales suvenires originan al interior de Nuestra Comunidad.</p>
+<p class="j">Se Recomienda: Que el libro empastado, que se le envía a los grupos nuevos, para el apadrinamiento y la coordinación de reuniones, sea incluido “preguntas y respuestas sobre apadrinamiento”. (La OSG enviará carta a todos los grupos informando sobre el cambio y que esto se hará en el momento que las existencias se agoten y que además el diseño del folleto cambiará para que se ajuste al tamaño del libro empastado). Se Recomienda: Que en el informe final de la Conferencia del 2000, se incluya un texto que dice que: la Conferencia ni aprueba ni desaprueba el uso del material “regreso a lo básico”. Esta Conferencia no aprueba</p>
+<div class="folio run">Pág. 28 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p30"><div class="num">PÁGINA <b>30</b> / 45</div>
+<p>dicho material porque no está aprobado por la Conferencia.</p>
+<div class="year"><span>2006</span></div>
+<p class="j">Se Recomienda: Que todos los textos que la OSG ha venido editando a través de los años en Colombia y que no han sido aprobados por la Conferencia queden aprobados a partir de esta, y todos los textos que vayan a ser editados por la OSG sean aprobados por la Conferencia de Servicios Generales.</p>
+<p class="j">Se Recomienda: Que para no distorsionar el mensaje original de AA, evitemos la proliferación de guías, que no sean de AA, ni aprobadas por la conciencia de grupo, más bien dejemos que nuestros textos originales hablen por sí solos.</p>
+<p class="j">Se Recomienda: A la Junta de Custodios, establecer los controles necesarios para la revisión final de las ediciones, con el fin que nuestros textos se publiquen sin errores de impresión.</p>
+<div class="year"><span>2007</span></div>
+<p class="j">Recomendamos: Que la literatura, afiches, comunicaciones, audiovisuales emanados de los Comités de la Conferencia, sean revisados antes de su publicación por el Comité de Literatura de la Junta de Custodios.</p>
+<div class="year"><span>2008</span></div>
+<p class="j">Se Recomienda: Que las nuevas publicaciones de literatura de Alcohólicos Anónimos y la introducción de nuevos contenidos a la actual, sean sometidas a la aprobación de la Conferencia.</p>
+<p class="j">Las modificaciones en su presentación y las actualizaciones que se hagan de conformidad con el original que suministra la A.A. Word Services, Inc., podrán realizarse por la OSG previa aprobación del Comité de Literatura de la Junta de Servicios Generales tal como lo establece el concepto once.</p>
+<p class="j">Se Recomienda: A la OSG actualizar el Manual del Grupo, introduciendo la metodología del inventario de grupo y los planes de trabajo para la formación nuevos grupos y el fortalecimiento de la estructura de los existentes.</p>
+<div class="year"><span>2009</span></div>
+<p class="j">Se Recomienda: Autorizar a la OSG para que, en unión del comité de publicaciones de la Directiva de Servicios Generales, prepare, edite y comercialice cada año o cada que lo considere conveniente o que las necesidades y la demanda lo exijan, un libro con la selección de Artículos de la Revista AA el Mensaje. Se Recomienda: Autorizar a la OSG para que previos los correspondientes permisos de AA World Services Inc. y el consecuente envío del CD original, de acuerdo con las necesidades y demanda y con la aprobación del Comité de Literatura de la Junta, prepare, edite y comercialice la literatura que la estructura de EEUU tiene traducida al español.</p>
+<div class="year"><span>2011</span></div>
+<p class="j">Se Recomienda: Que el comité de literatura de la JSG elabore un afiche motivacional alusivo al Comité de Instituciones correccionales, que estará en todos los grupos del país y así concienciar a la membresía para su vinculación a este comité.</p>
+<p class="j">Sugerencia: Que los textos, gráficos, diagramas y otros que tengan que ver con la estructura de servicios de AA, sean aprobados por el comité de literatura de la Junta de Custodios.</p>
+<p class="j">Sugerencia: Al Comité de Literatura de la J de C que para la próxima edición del libro “La historia de AA en Colombia” se incluya la historia de la llegada del mensaje en aquellas áreas que cumplan 50 o más años de fundadas.</p>
+<div class="year"><span>2012</span></div>
+<p>Se Recomienda: Que en las próximas ediciones del “Manual del Grupo” aparezca el REM formando parte de la Junta de Servidores del grupo.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 29</div>
+</section>
+<section class="pagina" id="p31"><div class="num">PÁGINA <b>31</b> / 45</div>
+<div class="year"><span>2013</span></div>
+<p>Se Recomienda: Aprobar el Manual de Imagen Corporativa de Alcohólicos Anónimos de Colombia, que se pone en consideración de la 49 Conferencia</p>
+<div class="year"><span>2014</span></div>
+<p>Se Recomienda: “Que en una misma publicación se incluyan los manuales de IP, CCP, IT e IC.</p>
+<p class="j">Se Recomienda: Que se publique un folleto que compile el siguiente material literario: folleto “El Automantenimiento, donde se mezclan la espiritualidad y el dinero”, “El Automantenimiento en AA”, las diferentes modalidades de Automantenimiento y las recomendaciones de la Conferencia vigentes relacionadas con el Automantenimiento.</p>
+<p>Pág. 30 - Recomendaciones 1965 - 2025</p>
+<div class="year"><span>2015</span></div>
+<p>Se Recomienda: Volver a insertar en el Folleto “Es AA para Usted” la introducción a las doce preguntas de auto examen.</p>
+<div class="year"><span>2017</span></div>
+<p>Sugerencia: Se diseñe y se publique un afiche sobre la importancia del RSG para ser llevado a cada grupo de todas las áreas.</p>
+<p>Se Recomienda que, en todos los eventos nacionales o regionales, se incluya en la Agenda un tema sobre la importancia de la literatura de AA.</p>
+<div class="year"><span>2018</span></div>
+<p>Se Recomienda:</p>
+<p>Que se actualice el afiche de los Planes de Auto sostenimiento, con las últimas recomendaciones a la fecha. Se Recomienda:</p>
+<p>Anexar a los folletos del RSG y/o MCD el diagrama de una acción recomendable en las próximas ediciones.</p>
+<div class="year"><span>2019</span></div>
+<p>Se Recomienda a la Junta de Servicios Generales, elabore un modelo de inventario para los cuerpos de servicio de AA.</p>
+<div class="year"><span>2019</span></div>
+<p>Moción de piso</p>
+<p class="j">Se Recomienda que, en todas las comunicaciones de La Corporación Nacional Servicios Generales y los entes de servicio, cada que se cite algún párrafo o texto de nuestra literatura, se cite la fuente desde dónde fue extractada</p>
+<div class="year"><span>2020</span></div>
+<p>Se Recomienda: aprobar la impresión del libro “Nuestra Gran Responsabilidad” Se Recomienda: aprobar la impresión del folleto “La Palabra Dios”</p>
+<p>Se Recomienda: anexar al libro de coordinación (empastado) el enunciado de los Doce conceptos para el servicio mundial forma larga.</p>
+<div class="year"><span>2021</span></div>
+<p class="j">Recomendar a la JSG, solicitar la licencia del folleto “Alcohólicos Anónimos para los alcohólicos con problemas de salud mental – y sus padrinos” a la estructura de EE. UU. Y Canadá. Se Recomienda a la JSG tramitar frente a la oficina de Servicios Generales de EE.UU. La aprobación de la traducción al dialecto wayunaiki los siguientes textos: Oración de la Serenidad, el Preámbulo de AA y Esto es</p>
+<div class="folio run">Pág. 30 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p32"><div class="num">PÁGINA <b>32</b> / 45</div>
+<p>AA.</p>
+<div class="year"><span>2022</span></div>
+<h3>LITERATURA</h3>
+<p class="j">Se sugiere a toda la Estructura de AA en Colombia, acogerse a la recién modificación aprobada por la 71 Conferencia de EE.UU./ Canadá en la cual se cambia hombres y mujeres por personas y… no se pagan honorarios ni cuotas por derechos de admisión, ni cuotas.</p>
+<p>Nota aclaratoria: Se aplicará para nuevas impresiones.</p>
+<div class="year"><span>2024</span></div>
+<p class="j">Se recomienda: eliminar en el texto Manual de Grupo edición 2023, la palabra “activos” que aparece en la página 35 correspondiente al ítem 12 específicamente en el tema de Finanzas, cuya pregunta está redactada de la siguiente manera ¿Es el grupo sostenido económicamente por todos los miembros activos? Todo esto dentro del tema“Revisión Inventario de Grupo” que inicia en la página Pág 32.</p>
+<p class="j">Moción de recordación 2011: Que el Comité de literatura de la JSG elabore un afiche motivacional alusivo al Comité de Instituciones correccionales, que estará en todos los grupos del país y así concienciar a la Membresía para su vinculación a este Comité. Moción de recordación: Se recomienda a la JSG tramitar frente a la OSG de EE.UU. la aprobación de la traducción al dialecto wuayunaiki, los siguientes textos: Oración de la Serenidad, El Preámbulo de AA y Esto es AA.</p>
+<div class="year"><span>2025</span></div>
+<p>Se recomienda: Volver a publicar el folleto ‘Cómo se desarrolló la Tradición de AA’. Para conocer que tuvieron que hacer los pioneros antes de que existieran las tradiciones.</p>
+<p class="j">Se recomienda: Que se publique el Texto Básico en pasta dura, alusivo a la conmemoración de los 90 años de AA en el mundo, con presentación correspondiente a la primera edición, con letra grande.</p>
+<p>Comité de Política y Admisiones</p>
+<div class="year"><span>2009</span></div>
+<p>Se Recomienda, que todas las constancias con informes de minoría, entregados por escrito y debidamente sustentados, sean incluidas en el informe final de la Conferencia.</p>
+<div class="year"><span>2010</span></div>
+<p>Recomendación: Que las áreas aledañas, sin importar que pertenezcan a diferentes regiones, se patrocinen entre sí aprovechando sus fortalezas y/o debilidades.</p>
+<p class="j">Recomendación: que las comunicaciones internas de la estructura (Reportes y la Junta Informa) se realicen única y exclusivamente vía e-mail, para reducir costos y aprovechar la oportunidad que nos brinda el Internet. Moción: Que la Junta de Custodios lidere un proyecto para que a todos los niveles de la estructura pongan en marcha el contenido del Manual de Servicio y los Doce Conceptos de Servicios Mundial.</p>
+<div class="year"><span>2011</span></div>
+<p class="j">Se Recomienda que el proyecto de regionalización no tenga límite de tiempo. Se deja a iniciativa de los grupos, distritos, áreas y regiones su consolidación llevando el mensaje de Alcohólicos Anónimos, a donde aún no existe.</p>
+<div class="year"><span>2012</span></div>
+<p class="j">Se Recomienda: Que se remplace el texto de la Acción Recomendable del Comité de Política y Admisiones del año 2010 que dice: “Que a partir del año 2011 se invite a un máximo de cinco países a la Conferencia,</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 31</div>
+</section>
+<section class="pagina" id="p33"><div class="num">PÁGINA <b>33</b> / 45</div>
+<p class="j">con un delegado por país, así: nuestros cuatro países patrocinados y el país padrino”, por el siguiente: “Que a partir del año 2013 se invite a un máximo de cinco países a la CSG, con un delegado por país”.</p>
+<div class="year"><span>2013</span></div>
+<p class="j">Se Recomienda a la OSG documentar el procedimiento para verificar la existencia de un nuevo grupo, una vez recibido el formulario respectivo diligenciado a través del comité de área para efectos del envió del paquete de literatura, lo cual se realizará en un término no superior a 6 meses. Se exceptúa de lo anterior a los grupos de las áreas inactivas.</p>
+<p class="j">Se Recomienda a la Junta de Servicios Generales, que implemente los mecanismos adecuados para socializar y construir colectivamente el plan nacional de fortalecimiento de la estructura de servicios generales de AA Colombia 2014-2020, proyecto que se presenta a la Conferencia de Servicios Generales número 49ª. Una vez acordado con la comunidad el contenido de dicho plan, se presentará el documento final, para su aprobación por la 50ª Conferencia de Servicios Generales. En caso de ser aprobado, serán responsables de su realización todos los integrantes de la estructura de servicios generales. El desarrollo y avance del plan serán informados por el Comité de Políticas y Admisiones de la Conferencia.”</p>
+<p class="j">Se Recomienda: Que se lleve a cabo, un evento de orden nacional tendiente a recordar y celebrar “La llegada del mensaje de AA a Colombia”, el cual tendrá lugar cada cinco años, a partir de 2017, en el mes de septiembre. Iniciando en Barranquilla, en lo sucesivo en forma rotativa en diferentes regiones. Será responsabilidad de la Junta de Servicios Generales.</p>
+<div class="year"><span>2014</span></div>
+<p>Se Recomienda: Aprobar el Plan Nacional de Fortalecimiento de la Estructura de Servicios Generales 2014</p>
+<p>– 2020, la Junta de Custodios coordinará con la OSG la edición y distribución del plan aplicando las políticas vigentes de venta de literatura.</p>
+<div class="year"><span>2015</span></div>
+<p>Recomendamos: Que se realicen Los Foros de Servicio en todas las regiones.</p>
+<div class="year"><span>2016</span></div>
+<p>Se Recomienda Que cuando se presente una Moción de piso, debe estar secundada por el 10% de los participantes con voto en la reunión anual de la CSG.</p>
+<div class="year"><span>2017</span></div>
+<p class="j">Se Recomienda que de acuerdo con los procedimientos establecidos en el Manual de Servicios página M.64 (tamaño media carta) y estando de acuerdo las regiones C y D, se haga el traslado de los grupos Viviendo Sobrio y Sólo por Hoy de la ciudad de Leticia Amazonas de la Región D al Área 3 de la Región C.</p>
+<div class="year"><span>2017</span></div>
+<p>Moción de piso</p>
+<p>Se Recomienda que los comités de conferencia tengan asesoría según el tema para mejorar la redacción, orientación y contenido de las propuestas a presentar a plenarias.</p>
+<div class="year"><span>2019</span></div>
+<p>Moción de piso</p>
+<p>Se Recomienda: En cada RAC, sean ratificados los Directores no Custodios.</p>
+<div class="year"><span>2019</span></div>
+<p>Moción de piso</p>
+<p>A la Junta de Custodios que diseñe una Guía Nacional para todas las reuniones regionales y sea socializada y presentada en la Conferencia 56.</p>
+<div class="folio run">Pág. 32 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p34"><div class="num">PÁGINA <b>34</b> / 45</div>
+<div class="year"><span>2020</span></div>
+<p>Se Recomienda: Que la Junta de Servicios Generales prorrogue el Plan Nacional de Fortalecimiento 2014</p>
+<p class="j">– 2020 por cinco años más, evaluar lo actuado y continuar su implementación con el acompañamiento y seguimiento de los Custodios Regionales; se siga evaluando anualmente, a partir del primero de enero del año 2022, según el formato diseñado para tal fin por la Entidad Operativa de Servicios Generales, en su aplicación y en el quinto año una evaluación general.</p>
+<p class="j">Moción de recordación: Que la Junta de Servicios Generales garantice el cumplimiento de lo establecido en nuestro Manual de Servicio, página M93 2° párrafo, que dice: Políticas y Admisiones (No hay comité correspondiente de los Custodios): Responsable de cuestiones de política que tienen que ver con la conferencia y de considerar todas las solicitudes de admisión a la reunión anual de la conferencia de servicios generales. Todos los cambios propuestos al plan de la conferencia, todos los procedimientos encaminados a la ampliación de la conferencia y todo lo que pueda afectar los gastos de la conferencia, se somete al comité de política y admisiones de la conferencia. Este comité está encargado de aprobar o no las solicitudes de Áreas adicionales y evalúan el desarrollo y avance de los planes aprobados en conferencia.</p>
+<div class="year"><span>2021</span></div>
+<p class="j">Se Recomienda: a la Junta de Servicios generales realizar un estudio exhaustivo de apadrinamiento, de estructura a estructura y presentar proyecto de Recomendación a la conferencia 58.</p>
+<div class="year"><span>2022</span></div>
+<h3>POLÍTICA Y ADMISIONES</h3>
+<p class="j">Se Recomienda a la JSG determinar y gestionar el apadrinamiento con las estructuras idóneas, para las necesidades actuales y las que surjan en asuntos de Servicios Generales. Para lo anterior se debe contar e informar al Comité de Política y Admisiones. Dicho comité y el Comité Internacional deberán presentar un informe a la Conferencia de Servicios Generales de los avances, desarrollo e implementación.</p>
+<div class="year"><span>2024</span></div>
+<p class="j">Se recomienda: a la J.S.G. consultar a la estructura de Estados Unidos y Canadá la forma como se reconocieron y estructuraron los grupos virtuales, para que presenten un proyecto de recomendación a la 61</p>
+<p>Conferencia sobre si es viable o no el reconocimiento de estos grupos virtuales en nuestra estructura.</p>
+<div class="year"><span>2025</span></div>
+<p>Se recomienda: que las Mociones de Piso para ser discutidas en la RAC, deben estar secundadas por mayoría simple de los conferencistas.</p>
+<div class="year"><span>2026</span></div>
+<p class="j">Se recomienda a la Junta de Custodios que implemente un Plan Nacional de Acción durante 5 años a partir del 2027 y se presente en la 63 RAC, dando a conocer los resultados en las reuniones anuales de las Conferencias siguientes, teniéndose en cuenta únicamente por la Junta de Custodios el Plan de Acción presentado por el Comité de Política y Admisiones.</p>
+<p>Comité de Congresos, Eventos y Foros Nacionales</p>
+<div class="year"><span>1976</span></div>
+<p>Recomendación. Este comité considera que debe ratificarse la Recomendación de la pasada conferencia en</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 33</div>
+</section>
+<section class="pagina" id="p35"><div class="num">PÁGINA <b>35</b> / 45</div>
+<p>el sentido de que sea el custodio y los delegados de cada zona, quienes de común acuerdo señalen las sedes de los congresos zonales.</p>
+<div class="year"><span>1986</span></div>
+<p>Se Recomienda: A los organizadores de congresos zonales no pasar sombrero en ninguna de sus reuniones, puesto que estos se financian con las inscripciones y aportes especiales.</p>
+<div class="year"><span>1990</span></div>
+<p class="j">Se Recomienda: que a partir de la VII Convención de AA que se debe realizar en 1999, la designación de la sede se haga en forma rotatoria por zonas así: 1º la zona E, 2º la zona A, y después la B, etc. Se Recomienda: debido a los problemas de alojamiento que se presentan al fin del año Que el congreso de la zona A, se realicen en el bimestre septiembre-octubre, pero en un mes distinto al que se celebra el congreso de la zona D.</p>
+<div class="year"><span>2025</span></div>
+<p class="j">Se recomienda: que los eventos nacionales y regionales que requieran contratos a nombre de la Corporación sean previamente consultados con el Departamento Jurídico para ser aprobados por la Junta de Servicios Generales y Comité de Eventos Nacionales.</p>
+<p>Comité sobre Custodios - Nominaciones</p>
+<p>NOTA: * Comité sobre Custodios – (Cambio su nombre por Comité de Nominaciones)</p>
+<p>Se Recomienda: a las áreas patrocinar candidatos para custodios Clase A, con el fin de que haya variedad de profesionales en la Junta de Custodios.</p>
+<p class="j">Se Recomienda: que el Custodio de Servicio General vele por el cumplimiento de las recomendaciones de la Conferencia que tengan que ver con la Junta de Custodios y la OSG y que en su informe a la Conferencia comunique el cumplimiento o no de las mismas.</p>
+<p>Se Recomienda: que el candidato a custodio lleve como mínimo un año, después de salir de su período de delgado. (Incluido en el manual de servicio edición 2014)</p>
+<div class="year"><span>2004</span></div>
+<p class="j">Se Recomienda: Que el Comité de Agenda y Políticas, después de conocer las hojas de vida de los nuevos delegados electos, determine e informe oportunamente (mes de enero) sobre la conformación de los comités, anexando dirección, teléfono y si tiene correo electrónico. Lo anterior para que haya una previa y mayor comunicación entre los miembros de cada comité.</p>
+<div class="year"><span>2005</span></div>
+<p class="j">Se Recomienda: que la tercera Recomendación del año 1993 que dice: “Se Recomienda que en la elección de custodios clase B, se tenga en cuenta en lo posible, que los candidatos hayan prestado el servicio de delegados y además su trayectoria y espíritu de servicio, junto con su tiempo de abstención y actividad profesional”, se requiera que el candidato haya sido delegado a la Conferencia de Servicios Generales. (Incluido en el manual de servicio edición 2014)</p>
+<div class="year"><span>2013</span></div>
+<p class="j">Se sugiere a la Junta de Servicios Generales que las hojas de vida de los candidatos a Directores no Custodios, miembros para la Junta Directiva de Servicios Generales y de AA El Mensaje sean enviadas al Comité de Nominaciones de la Conferencia de Servicios Generales con 30 días de anticipación para darles el respectivo procedimiento.</p>
+<div class="folio run">Pág. 34 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p36"><div class="num">PÁGINA <b>36</b> / 45</div>
+<div class="year"><span>2018</span></div>
+<p>Se Recomienda:</p>
+<p>Que las hojas de vida presentadas al Comité de Nominaciones de la CSG, sean diligenciadas en un formato establecido previamente por la Oficina de Servicios Generales.</p>
+<p>Así mismo, crear y/o poner en vigencia un formato para transcripción de las partes relevantes del acta electiva adjunta del candidato postulado al servicio Se Recomienda:</p>
+<p class="j">Que se retire la Recomendación del año 2006 del Comité de Nominaciones: “Se Recomienda al Comité de Nominaciones de la Junta de Custodios que en la escogencia del custodio clase B, se tenga en cuenta, en lo posible, la rotación de las diferentes áreas, para que se cumpla el principio de rotación”.</p>
+<div class="year"><span>2019</span></div>
+<p>Moción de recordación.</p>
+<p>Que se cumpla con el formato aprobado en la 54ª Conferencia para las hojas de vida de los aspirantes a Custodio. Que la hoja de vida que no cumpla con el requisito sea rechazada.</p>
+<div class="year"><span>2026</span></div>
+<p class="j">Que teniendo en cuenta que la [nombre omitido], Custodia Clase A, no fue ratificada, se solicita mediante este proyecto de recomendación en esta conferencia, la presentación de hoja de vida y la ratificación de la Custodia Clase A faltante, dado que al Comité de Nominaciones de la Conferencia llegaron tres hojas de vida aprobados por la junta para su consideración.</p>
+<p class="j">Nota: una vez aprobado el proyecto en plenaria se presentó la Hoja de vida de [nombre omitido] para el servicio de Custodia Clase A y fue ratificada por el pleno de la Conferencia.</p>
+<p>Comité de Informe y Carta</p>
+<div class="year"><span>2013</span></div>
+<p class="j">Se Recomienda: que los ajustes y modificaciones que deban realizarse al Manual de Servicio de Alcohólicos Anónimos se efectúen a través de proyectos de Acción Recomendables que lleguen al Comité de Informe y Carta y que este comité presente a la Conferencia de Servicios Generales en pleno para su aprobación. Que en lo sucesivo no se apruebe la creación de comités transitorios para modificación del manual. Se Recomienda Que las modificaciones al Manual de Servicio empiecen a regir cuando la CSG lo disponga y aparezcan en el Manual de Servicio en cada nueva edición.</p>
+<p class="j">Se Recomienda que el artículo 6 de los Estatutos de la Corporación de Servicios Generales de Alcohólicos Anónimos de Colombia – Junta de Servicios Generales quede redactado de la siguiente manera: “Artículo 6º: la Carta Constitutiva de la Conferencia clasifica a los miembros custodios en dos categorías: no alcohólicos y alcohólicos. Los Custodios no alcohólicos son cuatro (4) y se designan en estos estatutos como miembros Custodios Clase A…” En lo demás queda igual.</p>
+<p>Esto deberá incluirse en la parte correspondiente al Manual y el nuevo Custodio clase A deberá ratificarse en la próxima Reunión Anual de la Conferencia.</p>
+<p>Se Recomienda: que se nombren las áreas de la siguiente manera: Área 2 Región D Palmira Área 6 Región E Aburra Sur y Occidente.</p>
+<p>Área 7 Región E Medellín Norte</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 35</div>
+</section>
+<section class="pagina" id="p37"><div class="num">PÁGINA <b>37</b> / 45</div>
+<div class="year"><span>2014</span></div>
+<p>Se Recomienda: que en los estatutos de la Corporación Nacional de Servicios Generales de AA se incluya la figura del Revisor Fiscal.</p>
+<div class="year"><span>2016</span></div>
+<p class="j">Recomendación: Incluir dentro del Manual de Servicio, la figura del “Custodio Emérito” a los presidentes de La JSG, que en razón de la rotación han salido. Y que la JSG considere merecedores de esta distinción. La JSG, cuando lo considere necesario, acudirá a su experiencia y sabiduría, invitándolos a participar en las reuniones de La JSG y conferencia con voz sin voto.</p>
+<p class="j">Recomendación: CUSTODIOS GENERALES: Suprimir la parte final del párrafo contenida en el MANUAL DE SERVICIO, en la pág. M102, donde se lee: “...Pueden reemplazar a custodios Regionales según se necesite o se pida” por “...Pueden reemplazar a custodios regionales en caso de que se necesite…” se suprime las palabras “según” o “se pida”</p>
+<div class="year"><span>2017</span></div>
+<p>Los siguientes son los textos propuestos que fueron aprobados del Manual de Servicio: M20 TC / M29</p>
+<p>TMC.</p>
+<p>Custodio: un miembro de la Junta de Servicios Generales, ocho custodios son miembros de AA; Cuatro no son alcohólicos. M36 TC / M51 TMC.</p>
+<p>A veces hay una persona en el área, suele ser el secretario de área, que se encarga de facilitar la información de la OSG sobre cambio de información de distrito.</p>
+<h3>M49 TC / M68 TMC</h3>
+<p class="j">En algunas áreas hoy en día, hay secretarios de oficina que preparan y mantienen información de todos los grupos del área en los que se incluyen datos tales como: nombre del grupo, lugar y horas de reunión, nombre del RSG o del contacto del grupo. Mantiene apuntados y archivados los nombres, direcciones y números de teléfono de los RSG, los MCD, los servidores del área, del distrito y los coordinadores de los comités de servicio del área. También prepara las etiquetas de correo para las publicaciones del área, el boletín de área, por ejemplo, o para él envió de las actas. Para realizar este trabajo, es muy útil ser una persona bien organizada y saber utilizar los computadores</p>
+<p>M51 TC / M71 TMC.</p>
+<p>Métodos de Automantenimiento: a continuación, aparecen algunos métodos que han posibilitado a las áreas seguir siendo solventes y eficaces:</p>
+<p>Se reciben contribuciones voluntarias en la asamblea y en las reuniones de distrito.</p>
+<p>M52 TC / M74 TMC.</p>
+<p>Recordar a los MCD y RSG que informen a los distritos, grupos y miembros sobre AA el mensaje y la literatura aprobada por la Conferencia.</p>
+<p>Que se corrija en el manual en la página M104 TMC, el número actual de comités permanentes de la junta de custodios es Once (11)</p>
+<div class="year"><span>2017</span></div>
+<p>Moción de piso aprobado.</p>
+<p class="j">Se Recomienda: que los ajustes a manual de Servicio que sean de forma o de carácter legal no se constituyan en acciones recomendables, sino que el comité de informe y carta de la CSG, lo envíe directamente al comité de literatura de la Junta Directiva de Servicios Generales, para su implementación.</p>
+<p>Se Recomienda: unificar términos en los manuales, distrito es una división geográfica (M30- TMC), distrito es una entidad geográfica (M46-TMC).</p>
+<div class="folio run">Pág. 36 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p38"><div class="num">PÁGINA <b>38</b> / 45</div>
+<p class="j">Que quede como dice en el lenguaje de la Conferencia; el distrito es una división geográfica (M30-TMC) Sugerencia: Tener en cuenta el lenguaje de la conferencia aprobado en la última edición del Manual de servicio (Página M20-TC) en las interpretaciones de todos los asuntos de la Conferencia.</p>
+<div class="year"><span>2018</span></div>
+<p>Se Recomienda:</p>
+<p>Corregir el diagrama de una Acción Recomendable y anexarlo al Manual de Servicio en la página M87 – TMC.</p>
+<div class="year"><span>2019</span></div>
+<p>Se Recomienda:</p>
+<p class="j">Se incluya en el Manual de Servicio en la página M34, lo siguiente: Cuando se presente un solo candidato a un servicio, para lo cual no es aplicable el procedimiento del Tercer Legado, esta elección debe hacerse en una sola votación secreta por el sí o por el no, y debe alcanzar las dos terceras partes o más para ser elegido. Sugerencia: Suprimir del Manual de Servicio de la página M42 el texto Paquete del RSG (cuarto párrafo). Entrará en vigencia, a partir de la fecha y se hará el cambio en la próxima edición del Manual de Servicio Se Recomienda:</p>
+<p>La Junta de Custodios que diseñe una Guía Nacional para todas las reuniones regionales y sea socializada y presentada en la Conferencia 56</p>
+<div class="year"><span>2019</span></div>
+<p>Moción de piso</p>
+<p class="j">Se Recomienda incluir en el Manual de Servicio, lo siguiente: Para todo proceso de presentación de servidores (Custodios Clase A, Custodio de Servicios Generales y Directores no Custodios), si se presenta alguna objeción, se abre el debate y si no es retirada la objeción, se somete a votación secreta por el si o por el no de todos los Conferencistas y debe alcanzar las dos terceras partes o más de los votos para ser aprobada.</p>
+<div class="year"><span>2020</span></div>
+<p class="j">Se Recomienda: Incluir en el Manual de Servicios de AA Colombia, en el capítulo noveno “La Junta de Servicios Generales”, antes de la composición, Pág. M95, lo siguiente: Enunciado de misión, visión y acción de la Junta de Servicios Generales Para guiar nuestro sentido de responsabilidad, los Custodios de la Juntas de Servicios Generales han adoptado el siguiente enunciado de misión, visión y acción: Misión: Servir a la Comunidad de Alcohólicos Anónimos</p>
+<p class="j">Visión: Proporcionamos a la comunidad una dirección clara y efectiva. Responsables ante la comunidad por medio de la Conferencia de Servicios Generales. Nos ocupamos de todos los asuntos que impactan en el objetivo primordial de la Comunidad: llevar el mensaje al Alcohólico que aún sufre.</p>
+<p class="j">Acción: En todas nuestras deliberaciones y decisiones nos dejamos guiar por los Doce Pasos, Doce Tradiciones y Doce Conceptos. Se Recomienda: Modificar el texto que está en la pág. M133 del Manual de Servicios que dice: La mayoría de las áreas tienen un comité de AA el Mensaje, participan activamente en los trabajos encaminados a poner AA el Mensaje a disposición de los demás comités de servicio, tales como centros correccionales, de tratamiento y cooperación con la comunidad profesional.</p>
+<p>Cambiar por:</p>
+<p>La mayoría de las áreas tienen un coordinador de AA el Mensaje, quien desarrolla actividades con los diferentes REM de los grupos y los distritos.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 37</div>
+</section>
+<section class="pagina" id="p39"><div class="num">PÁGINA <b>39</b> / 45</div>
+<p class="j">Acorde con la Moción de recordación de la 55 CSG de 2019 que dice: “Revisar y modificar el Manual de gestión del REM en la medida que no aparezca como comité sino como representante” Ver pág. M69. “Un coordinador de AA el Mensaje”</p>
+<p>Se Recomienda: Cambiar de la Pág. M64 en directrices para cambiar cabecera de área lo siguiente: Aprobación en asamblea Regional</p>
+<p>Cambiar por en texto:</p>
+<p>Avalar en la reunión Regional.</p>
+<p>Se Recomienda: Modificar en el Manual de Servicio en la Pág. M102 en su último párrafo, de la siguiente manera.</p>
+<p class="j">El texto actual dice “El comité de Nominaciones de los custodios revisa la lista de los candidatos para comprobar su elegibilidad y durante la conferencia, algún tiempo antes de la sesión electoral, los delegados de cada área se reúnen y van reduciendo las listas hasta que quede un solo candidato por Region” Texto que se propone adicionar o modificar “El Comité de Nominaciones de los custodios revisa la lista de los candidatos para comprobar su elegibilidad y durante la Conferencia, algún tiempo antes de la sesión electoral, los delegados de cada área y el custodio de la región, se reúnen y van reduciendo las listas hasta que quede un solo candidato por Region”</p>
+<p class="j">Se Recomienda: Se propone el siguiente Proyecto de Recomendación de adición al Manual de Servicio en la pág.M31 Lenguaje de la Conferencia con enmienda aprobada por el comité Se Recomienda al comité de informe y carta de la Conferencia favor anexar al Manual de Servicio el significado de las frases: Moción de recordación, Moción de orden y Moción de piso, a incluirse en la pág. M31 Lenguaje de la Conferencia.</p>
+<p class="j">Se dio lectura a la carta enviada por el comité del área 4 Region A, territorio norte, sometiéndose a debate y consideración ante la 56 Conferencia de Servicios Generales lo siguiente:</p>
+<p class="j">Se realizaron cambios en el Manual por parte del comité de informe y carta en años anteriores, sin que fueran aprobados por la Conferencia de Servicios Generales. Razón por la cual se realizó revisión de las recomendaciones aprobadas por la Conferencia desde el año 2014 (manual anterior, tercera edición) evidenciadas en la página web de la Corporación, modificaciones que aparecen en el actual Manual de Servicios (cuarta edición, 2018 -2020) y que, de acuerdo con nuestro debate y deliberación en el comité de la actual Conferencia están conformes así:</p>
+<p class="j">En la versión anterior del Manual 2014, en la pág. M63, párrafo 3, en el subtítulo Congresos, Foros y Eventos de la Region, se agregó: “El Custodio General del Territorio donde pertenece la Región podrá pertenecer al comité ejecutivo del evento”</p>
+<p class="j">En el mismo párrafo ser cambió la frase: “por lo general, no se celebran reuniones de asamblea durante estos eventos” y se escribió: “por lo general, no se celebran Reuniones Regionales durante estos eventos” En el capítulo 6 sobre el Delegado, en la pág. M73, en el subtítulo: Responsabilidad, cambiaron la Frase: Asistir a todas las asambleas y reuniones de servicio del área y de la Region (en la cual asistan el custodio de la Region, el correspondiente Custodio General del Territorio y los delegados de la Región) “ Y por último en el capítulo 9, sobre la Junta de Servicios Generales, en la pág. M104, segundo párrafo se cambió en la Frase: “Se somete al Comité de Nominaciones de las Custodios la Hoja de Vida y de Servicios de un candidato competente, que ha servido por dos años por lo menos como miembro de la Junta Directiva de Servicios Generales o de la …” Por “ Se somete al Comité de Nominaciones de los Custodios la Hoja de Vida y de Servicios de un candidato competente, que ha servido por un año por lo menos como miembro de la Junta Directiva de Servicios Generales o de la ...”</p>
+<div class="folio run">Pág. 38 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p40"><div class="num">PÁGINA <b>40</b> / 45</div>
+<div class="year"><span>2021</span></div>
+<p class="j">Se Recomienda, a la Conferencia de Servicios Generales incluir en el Manual de Servicio y Doce Conceptos para el Servicio Mundial en la página M37, el siguiente texto después del tema “Cómo estimular el interés en los Servicios Generales” y antes del tema “Instrumentos Disponibles en la OSG”, el principio de rotación que aparece en el manual de Estados Unidos y Canadá 2016 - 2020 pág. S26. EL PRINCIPIO DE</p>
+<h3>LA ROTACIÓN: “EL PRINCIPIO DE LA ROTACION”</h3>
+<p class="j">Tradicionalmente, la rotación asegura que los servicios, como casi todo lo demás en AA, se repartan para que todos los miembros puedan compartir. Muchos servicios tienen suplentes que se pueden incorporar a los servicios, si se necesitan.</p>
+<p class="j">Dejar un servicio de AA que amamos puede ser difícil. Si hemos estado haciendo un buen trabajo, si sinceramente no vemos a nadie alrededor que esté dispuesto, cualificado o que disponga del tiempo necesario para hacerlo y si nuestros amigos están de acuerdo, es especial-mente duro. Pero puede ser un verdadero paso hacia adelante en el desarrollo – un verdadero paso hacia la humildad que es, para algunas personas, la esencia espiritual del anonimato. El anonimato en la comunidad significa, entre otras cosas, que renunciamos al prestigio personal por cualquier trabajo de A.A. que hagamos para ayudar a los alcohólicos. Y en el espíritu de la duodécima tradición, nos recuerda siempre “anteponer los principios a las personalidades”. A muchos miembros que salen de su servicio les resulta muy gratificante dedicar algún tiempo a compartir su experiencia con la persona que entra al servicio. La rotación ayuda a traernos recompensas espirituales mucho más duraderas que la fama. Al no haber en juego ningún “estatus” de A.A no necesitamos competir por títulos o alabanzas – tenemos completa libertad para servir según se nos necesite”.</p>
+<p class="j">2. En la 56ª Conferencia de Servicios Generales aprobamos la siguiente Recomendación: “Modificar el Manual de Servicio en la página M-102, en su último párrafo, de la siguiente manera”.</p>
+<p class="j">EL TEXTO ACTUAL DICE “El Comité de Nominaciones de los custodios revisa la lista de los candidatos para comprobar su elegibilidad y durante la Conferencia, algún tiempo antes de la sesión electoral, los delegados de cada área se reúnen y van reduciendo las listas hasta que quede un solo candidato por Región”. TEXTO QUE SE PROPONE ADICIONAR Y MODIFCAR “El Comité de Nominaciones de los custodios revisa la lista de los candidatos para comprobar su elegibilidad y durante la conferencia algún tiempo antes de la sesión electoral, los delegados de cada área y el custodio de la región, se reúnen y van reduciendo las listas hasta que quede un solo candidato por región”.</p>
+<p class="j">Teniendo en cuenta lo anterior y dado que aprobamos modificar el Manual desconociendo lo establecido en la Carta Constitutiva, recomendamos a la Conferencia de Servicios Generales RETIRAR esta Recomendación.</p>
+<div class="year"><span>2023</span></div>
+<p class="j">Se Recomienda al Comité de Informe y Carta Constitutiva corregir en el Manual de Servicio pág. M53 que se suprima el segundo ítem: requisitos para elección de MCD, dos palabras “Como delegado”. Quedando el párrafo así (Para ser MCD se debe llevar sobrio un tiempo suficiente, por lo general, cuatro o más años).</p>
+<div class="year"><span>2024</span></div>
+<p>Se recomienda: que en toda nuestra literatura donde aparezca transcrita la Tradición Once, sean eliminadas las palabras televisión e internet.</p>
+<p class="j">“La Entidad Operativa de Servicios Generales es la entidad que selecciona el personal de la OSG, dirige los servicios de la OSG y está encargada de publicar los libros y folletos aprobados por la Conferencia. Pág. M30</p>
+<p>- Edición 2022.</p>
+<p class="j">Cambiar por: “La Entidad Operativa de Servicios Generales es la entidad que apoya los diferentes departamentos de la OSG y está encargada de la revisión de libros y folletos aprobados por la Conferencia”. Se recomienda: a la Junta de servicios Generales actualizar el próximo Manual de Servicio y Doce Conceptos para el Servicio Mundial, edición 6, 2025 en el formato que tienen las estructuras de Estados Unidos/Canadá y México.</p>
+<p>Elaboración de la síntesis de la experiencia de la adecuación del Manual de Servicio. Aprobado en 2007.</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 39</div>
+</section>
+<section class="pagina" id="p41"><div class="num">PÁGINA <b>41</b> / 45</div>
+<p>Comité Revista AA El Mensaje</p>
+<div class="year"><span>2009</span></div>
+<p>Moción: Que se continúe en las áreas con la creación de los Comités de la Revista AA El Mensaje y que estos estén en cabeza preferiblemente del Delegado actual o ex delegados.</p>
+<div class="year"><span>2010</span></div>
+<p class="j">Moción: que se tenga en cuenta publicar en el último número del año los nuevos precios de la revista y de las suscripciones y en caso de no haber cambios, informar que continúan los mismos precios hasta nueva orden. Moción: Se sugiere a los grupos y cuerpos de servicio que elijan su REM. Así nos iremos preparando para la nueva etapa de la revista El Mensaje.</p>
+<div class="year"><span>2012</span></div>
+<p class="j">Recomendación: Que la Junta Directiva de AA El Mensaje, a través de su oficina, amplíe el portafolio de sus productos, mediante el diseño, producción y comercialización de nuevos materiales.</p>
+<p class="j">Recomendación: Que la Junta Directiva de AA El Mensaje, con el fin de ampliar la difusión de nuestra reunión impresa, genere una política de apadrinamiento consistente en que un miembro de AA, patrocine con una suscripción de nuestra revista a una persona y/o institución.</p>
+<div class="year"><span>2013</span></div>
+<p class="j">Recomendación: a la Junta de Servicios Generales organizar un encuentro anual en el mes de mayo que convoque a los R.E.M. (Representantes de la Revista “AA El Mensaje”), para impulsar la difusión, circulación de la revista y sus productos asociados y capacitar a dichos servidores.</p>
+<p class="j">Se Recomienda: a la Junta de Custodios realizar dentro de la celebración de la llegada del mensaje a Colombia, la celebración de los aniversarios del nacimiento de la revista AA El Mensaje. Se Recomienda: a la Junta de Custodios, la creación del folleto denominado “Manual de gestión del R.E.M.” que incluya las responsabilidades de este servidor.</p>
+<div class="year"><span>2014</span></div>
+<p>Se Recomienda: que agosto sea declarado el mes de la Revista A.A. El Mensaje</p>
+<div class="year"><span>2017</span></div>
+<p>Se Recomienda: Que se incluya en la revista de AA El Mensaje las Doce Preguntas.</p>
+<p>Se Recomienda en la sección de la revista AA El Mensaje ‘Si las paredes hablaran’, se agregue en las fotos del grupo la frase Sede del grupo…</p>
+<div class="year"><span>2018</span></div>
+<p>Moción de recordación:</p>
+<p>A las áreas que no tienen sus respectivos REM, elegirlo Se Recomienda</p>
+<p>Revisar y modificar el Manual de Gestión del REM en la medida en que no aparezca como comité, sino como representante.</p>
+<div class="year"><span>2019</span></div>
+<div class="folio run">Pág. 40 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p42"><div class="num">PÁGINA <b>42</b> / 45</div>
+<p>Moción de recordación.</p>
+<p class="j">Se Recomienda: A la Junta de Servicios Generales ejecutar la Recomendación aprobada en la Conferencia 54 que dice: revisar y modificar el Manual de Gestión del REM en la medida en que no aparezca como comité, sino como representante.</p>
+<div class="year"><span>2020</span></div>
+<p>Se Recomienda: Modificar el texto de la pág. M29 que dice:</p>
+<p>AA El Mensaje: es la Revista de Alcohólicos Anónimos de Colombia publicada por la Oficina de AA El Mensaje. Cambiar por:</p>
+<p class="j">AA El Mensaje: es la Entidad Operativa encargada de publicar la Revista de Alcohólicos Anónimos de Colombia “AA El Mensaje y los demás productos de ella. Se Recomienda: suspender la edición del Manual de Gestión del REM y reemplazarlo por un plegable que contenga la información básica del REM.</p>
+<p>Se Recomienda: permitir la autonomía del comité editor de la revista AA El Mensaje para publicar las secciones y los artículos que consideren pertinentes.</p>
+<div class="year"><span>2021</span></div>
+<p>Moción de recordación.</p>
+<p class="j">Que la junta Directiva de AA el Mensaje genere “la política de apadrinamiento” correspondiente a la Recomendación de 2012 que dice: Que la Junta Directiva de AA el Mensaje con el fin de ampliar la difusión de nuestra reunión impresa, genere una política de apadrinamiento consistente en que un miembro de AA patrocine con una suscripción de nuestra revista a una persona y/o institución.</p>
+<div class="year"><span>2024</span></div>
+<p>Se recomienda: Que los títulos de los productos de la revista AA El Mensaje se publiquen en la misma revista.</p>
+<div class="year"><span>2025</span></div>
+<p class="j">Se recomienda: a los grupos que deseen o puedan adquirir 5 revistas cada 3 meses para obsequiar y que de ser posible el valor sea incluido en el presupuesto mensual del grupo. Esta adquisición sería adicional a la inscripción que cada grupo posee.</p>
+<div class="year"><span>2026</span></div>
+<p class="j">Se recomienda: a la Junta de Custodios que encargue a la Entidad Operativa AA El Mensaje la edición especial e Impresión de un libro titulado “Soy Mujer en AA” colección de testimonios de la mujer en nuestra comunidad publicados en la Revista AA El Mensaje.</p>
+<p>Comité de Archivo Histórico</p>
+<div class="year"><span>2025</span></div>
+<p class="j">Se recomienda: que todos los informes finales de las 61ª. Conferencias realizadas hasta la fecha, así como los que se generen en adelante como resultado de futuras conferencias, estén disponibles en formato PDF en nuestra página web. Estos documentos permiten reconstruir la historia de las áreas, por lo que constituyen un valioso material de consulta con gran relevancia histórica. Excluir las últimas páginas</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 41</div>
+</section>
+<section class="pagina" id="p43"><div class="num">PÁGINA <b>43</b> / 45</div>
+<p>que tienen los nombres y direcciones de los servidores y omitir los apellidos donde aparezcan, en cambio reemplazar por la inicial.</p>
+<p class="j">Se recomienda: que la JSG mediante su Comité de Archivo Histórico, programe cada año en el mes de septiembre una reunión virtual con la participación de veteranos para conmemorar la llegada del mensaje de AA a Colombia, invitando a todas las regiones y membresía del país, así mismo a la comunidad internacional.</p>
+<table class="tbl"><thead><tr><th>AÑO</th><th>REUNIÓN</th><th>LEMA</th></tr></thead><tbody><tr><td>1965</td><td>1</td><td>Sin tema definido</td></tr><tr><td>1966</td><td>2</td><td>Sin tema definido</td></tr><tr><td>1968</td><td>4</td><td>Sin tema definido</td></tr><tr><td>1969</td><td>5</td><td>Sin tema definido</td></tr><tr><td>1970</td><td>6</td><td>Recuperación en AA.</td></tr><tr><td>1971</td><td>7</td><td>El Patrocinio en AA.</td></tr><tr><td>1972</td><td>8</td><td>Cooperación, pero no afiliación</td></tr><tr><td>1973</td><td>9</td><td>El Anonimato</td></tr><tr><td>1974</td><td>10</td><td>AA El Grupo</td></tr><tr><td>1975</td><td>11</td><td>El inventario de la primera década de los Servicios Generales</td></tr><tr><td>1976</td><td>12</td><td>Sin información</td></tr><tr><td>1977</td><td>13</td><td>Relaciones Públicas</td></tr><tr><td>1978</td><td>14</td><td>El Manual de Servicio de AA.</td></tr><tr><td>1979</td><td>15</td><td>Patrocinio y Paso Doce</td></tr><tr><td>1980</td><td>16</td><td>La responsabilidad de AA.</td></tr><tr><td>1981</td><td>17</td><td>La gratitud en AA.</td></tr><tr><td>1982</td><td>18</td><td>La dignificación del sombrero en AA.</td></tr><tr><td>1983</td><td>19</td><td>El servicio, una necesidad vital</td></tr><tr><td>1984</td><td>20</td><td>La Conferencia hace su inventario</td></tr><tr><td>1985</td><td>21</td><td>Las Tradiciones, responsabilidad de todos</td></tr><tr><td>1986</td><td>22</td><td>El grupo, factor de crecimiento</td></tr><tr><td>1987</td><td>23</td><td>Trabajando con otros dentro y fuera de AA.</td></tr><tr><td>1988</td><td>24</td><td>La recuperación personal, base para una mejor conciencia de grupo</td></tr><tr><td>1989</td><td>25</td><td>La comunicación, base de la unidad</td></tr><tr><td>1990</td><td>26</td><td>Regreso a lo fundamental</td></tr></tbody></table>
+<div class="folio run">Pág. 42 - Recomendaciones 1965 - 2025</div>
+</section>
+<section class="pagina" id="p44"><div class="num">PÁGINA <b>44</b> / 45</div>
+<table class="tbl"><thead><tr><th>AÑO</th><th>REUNIÓN</th><th>LEMA</th></tr></thead><tbody><tr><td>1991</td><td>27</td><td>El servicio es responsabilidad de todos</td></tr><tr><td>1992</td><td>28</td><td>La recuperación, base para un buen servicio</td></tr><tr><td>1993</td><td>29</td><td>El apadrinamiento, gratitud en acción</td></tr><tr><td>1994</td><td>30</td><td>El grupo, principio y fin del servicio en AA.</td></tr><tr><td>1995</td><td>31</td><td>Recuperación: liderazgo en acción</td></tr><tr><td>1996</td><td>32</td><td>El inventario: necesidad de la Conferencia</td></tr><tr><td>1997</td><td>33</td><td>Acción y Automantenimiento necesidad permanente en AA.</td></tr><tr><td>1998</td><td>34</td><td>La comunicación, fuente de crecimiento en AA.</td></tr><tr><td>1999</td><td>35</td><td>La espiritualidad: fundamento del Plan de Acción</td></tr><tr><td>2000</td><td>36</td><td>Liderazgo a la luz del Paso Doce</td></tr><tr><td>2001</td><td>37</td><td>El espíritu de las tradiciones asegura nuestro futuro</td></tr><tr><td>2002</td><td>38</td><td>Gratitud: Base fundamental para el Tercer Legado</td></tr><tr><td>2003</td><td>39</td><td>Los Doce Conceptos: Guía para un mejor servicio</td></tr><tr><td>2004</td><td>40</td><td>La estructura de Alcohólicos Anónimos hace su inventario</td></tr><tr><td>2005</td><td>41</td><td>Nuestra literatura y la acción integral, aseguran el crecimiento de AA</td></tr><tr><td>2006</td><td>42</td><td>La Recuperación y el Apadrinamiento Fortalecen Nuestra Estructura</td></tr><tr><td>2007</td><td>43</td><td>Servicio, una acción del corazón y una obra del Amor</td></tr><tr><td>2008</td><td>44</td><td>Los Distritos fortalecen el crecimiento de Alcohólicos Anónimos</td></tr><tr><td>2009</td><td>45</td><td>El Grupo generador de crecimiento de Alcohólicos Anónimos</td></tr><tr><td>2010</td><td>46</td><td>“EL servicio con amor en AA: una necesidad para nuestro crecimiento”</td></tr><tr><td>2011</td><td>47</td><td>“la estructura de la Conferencia hace su inventario”</td></tr><tr><td>2012</td><td>48</td><td>“La estructura de CSG continua su inventario y se apadrina para crecer”</td></tr><tr><td>2013</td><td>49</td><td>“Volver a los fundamental desde el Grupo Base, Corazón de AA”</td></tr><tr><td>2014</td><td>50</td><td>“La estructura de Alcohólicos Anónimos se fortalece con el servicio activo de la Mujer “</td></tr><tr><td>2015</td><td>51</td><td>“La comunicación afectiva y efectiva por toda la estructura de Alcohólicos Anónimos, responsabilidad de todos”</td></tr><tr><td>2016</td><td>52</td><td>“El Texto Básico: volver a lo fundamental”.</td></tr><tr><td>2017</td><td>53</td><td>“La Recuperación: Base para un buen servicio”.</td></tr><tr><td>2018</td><td>54</td><td>“ Unidad y Servicio, resultado del despertar espiritual”</td></tr></tbody></table>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 43</div>
+</section>
+<section class="pagina" id="p45"><div class="num">PÁGINA <b>45</b> / 45</div>
+<table class="tbl"><thead><tr><th>AÑO</th><th>REUNIÓN</th><th>LEMA</th></tr></thead><tbody><tr><td>2019</td><td>55</td><td>“ Vivir los Doce Pasos, Fortalece Nuestra Estructura”</td></tr><tr><td>2020</td><td>56</td><td>“El Apadrinamiento Contribuye al Fortalecimiento de Nuestra Estructura”</td></tr><tr><td>2021</td><td>57</td><td>“El apadrinamiento contribuye al fortalecimiento de nuestra estructura”</td></tr><tr><td>2022</td><td>58</td><td>“Nuestro Grupo Base …Donde todo comienza”</td></tr><tr><td>2023</td><td>59</td><td>“Llevar el mensaje asegura nuestro futuro”</td></tr><tr><td>2024</td><td>60</td><td>“El inventario de grupo, vital en el fortalecimiento de AA”</td></tr><tr><td>2025</td><td>61</td><td>“La Recuperación y la práctica de las Tradiciones garantizan un mejor Servicio”</td></tr><tr><td>2026</td><td>62</td><td>“La Unidad, la Confianza y la Comunicación fortalecen nuestra Estructura”</td></tr></tbody></table>
+<h3>FUENTES DE CONSULTA</h3>
+<p>Informes finales de las conferencias 1965 2017</p>
+<p>Documento Recomendaciones Vigentes 1965-2015</p>
+<p>Documento Recomendaciones Vigentes 1965-2018</p>
+<p>Archivo virtual, SIGECOR - OSG</p>
+<div class="folio run">Recomendaciones 1965 - 2025 - Pág. 44</div>
+</section>
+<footer class="pie">Acciones Recomendables 1965–2026 · Fin del documento</footer>
+</main>
+<script>
+(function(){
+  var bar=document.querySelector('.progreso');
+  function prog(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?(h.scrollTop/m*100):0)+'%';}
+  window.addEventListener('scroll',prog,{passive:true});prog();
+  var f=document.getElementById('ir');
+  if(f){f.addEventListener('submit',function(e){e.preventDefault();var n=f.querySelector('input').value.trim();var el=document.getElementById('p'+n);if(el){el.scrollIntoView();}});}
+  var t=document.getElementById('tema');
+  if(t){t.addEventListener('click',function(){var r=document.documentElement;var dark=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);r.setAttribute('data-theme',dark?'light':'dark');try{localStorage.setItem('tema',r.getAttribute('data-theme'))}catch(e){}});
+    try{var s=localStorage.getItem('tema');if(s)document.documentElement.setAttribute('data-theme',s)}catch(e){}}
+})();
+</script>
+</body></html>

@@ -133,15 +133,14 @@
   <script>
     (() => {
       const sources = [
-        ['Acciones_Recomendables_1965-2026.md', 'Acciones recomendables 1965–2026'],
-        ['Informe_Final_Conferencia_62.md', 'Informe final de la 62.ª Conferencia'],
-        ['Manual_de_Servicio_2025.md', 'Manual de Servicio 2025'],
-        ['Doce_Pasos_y_Doce_Tradiciones.md', 'Doce Pasos y Doce Tradiciones'],
-        ['Alcoholicos_Anonimos_Libro_Grande.md', 'Alcohólicos Anónimos · Libro Grande'],
-        ['AA_Llega_a_su_Mayoria_de_Edad.md', 'AA llega a su mayoría de edad'],
-        ['El_Lenguaje_del_Corazon.md', 'El lenguaje del corazón'],
-        ['El_Dr_Bob_y_los_Buenos_Veteranos.md', 'El Dr. Bob y los buenos veteranos'],
-        ['formato_proyectos_accion_recomendable.md', 'Formato para proyectos de acción recomendable']
+        ['Acciones_Recomendables_1965-2026.html', 'Acciones recomendables 1965–2026'],
+        ['Informe_Final_Conferencia_62.html', 'Informe final de la 62.ª Conferencia'],
+        ['Manual_de_Servicio_2025.html', 'Manual de Servicio 2025'],
+        ['Doce_Pasos_y_Doce_Tradiciones.html', 'Doce Pasos y Doce Tradiciones'],
+        ['Alcoholicos_Anonimos_Libro_Grande.html', 'Alcohólicos Anónimos · Libro Grande'],
+        ['AA_Llega_a_su_Mayoria_de_Edad.html', 'AA llega a su mayoría de edad'],
+        ['El_Lenguaje_del_Corazon.html', 'El lenguaje del corazón'],
+        ['El_Dr_Bob_y_los_Buenos_Veteranos.html', 'El Dr. Bob y los buenos veteranos']
       ];
       const stopWords = new Set('a al algo algunas algunos ante bajo cada como con contra cual cuales cuando de del desde donde dos el ella ellas ellos en entre era es esa esas ese esos esta estas este esto estos fue ha hasta hay la las le les lo los más me mi muy ni no nos o para pero por que qué quien se sin sobre son su sus también te tiene todo tras tu un una uno unos unas y ya'.split(' '));
       const log = document.getElementById('chat-log');
@@ -168,14 +167,17 @@
         let body = [];
         const flush = () => {
           const content = body.join('\n').trim();
-          if (content) sections.push({heading, content});
+          if (content) sections.push({heading, content, anchor: bodyAnchor});
           body = [];
         };
+        let bodyAnchor = '';
         for (const line of lines) {
           const match = line.match(/^\s*(#{1,6})\s+(.+?)\s*#*\s*$/) || line.match(/^\s*\*\*?(Pág(?:ina)?\.?\s*(?:PDF\s*)?\d+[^*]*)\*\*?\s*$/i);
           if (match) {
             flush();
             heading = (match[2] || match[1]).replace(/[*_`]/g, '').trim();
+            const pageMatch = heading.match(/^Pág(?:ina)?\.?\s*(?:PDF\s*)?(\d+)/i);
+            if (pageMatch) bodyAnchor = 'p' + pageMatch[1];
           } else body.push(line);
         }
         flush();
@@ -193,7 +195,7 @@
           if (buffer) addChunk(buffer);
           function addChunk(raw) {
             const content = cleanMarkdown(raw);
-            if (content.length >= 55) chunks.push({file, title, heading: section.heading, content, normalized: normalize(section.heading + ' ' + content)});
+            if (content.length >= 55) chunks.push({file, title, heading: section.heading, anchor: section.anchor, content, normalized: normalize(section.heading + ' ' + content)});
           }
         }
         return chunks;
@@ -213,9 +215,23 @@
 
       function loadIndex() {
         if (!chunksPromise) chunksPromise = Promise.all(sources.map(async ([file, title]) => {
-          const response = await fetch('fuentes_AA_md/' + encodeURIComponent(file));
+          const response = await fetch('Fuentes_AA_Area3/html/' + encodeURIComponent(file));
           if (!response.ok) throw new Error('No se pudo cargar ' + file + ' (' + response.status + ').');
-          return splitDocument(sourceText(await response.text()), file, title);
+          const html = await response.text();
+          const parsed = new DOMParser().parseFromString(html, 'text/html');
+          const pages = [...parsed.querySelectorAll('section.pagina[id]')];
+          if (pages.length) {
+            const text = pages.map(page => {
+              const pageNumber = page.id.match(/\d+/)?.[0] || '';
+              const content = [...page.querySelectorAll('h1,h2,h3,h4,h5,h6,p,li,blockquote,tr')].map(node => {
+                const value = node.textContent.replace(/\s+/g, ' ').trim();
+                return value && (/^H[1-6]$/.test(node.tagName) ? '### ' + value : value);
+              }).filter(Boolean).join('\n\n');
+              return `### Página PDF ${pageNumber}\n\n${content}`;
+            }).join('\n\n');
+            return splitDocument(text, file, title);
+          }
+          return splitDocument(sourceText(html), file, title);
         })).then(groups => groups.flat());
         return chunksPromise;
       }
@@ -270,7 +286,7 @@
           const source = document.createElement('div');
           source.className = 'source-hit';
           const link = document.createElement('a');
-          link.href = 'lector_fuentes.html?doc=' + encodeURIComponent(hit.file) + '&seccion=' + encodeURIComponent(hit.heading);
+          link.href = 'Fuentes_AA_Area3/html/' + encodeURIComponent(hit.file) + (hit.anchor ? '#' + encodeURIComponent(hit.anchor) : '');
           link.target = '_blank'; link.rel = 'noopener';
           link.textContent = hit.title;
           source.appendChild(link);
