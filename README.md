@@ -16,4 +16,4 @@ La página principal organiza el espacio de trabajo de la 63.ª Conferencia y el
 
 ## Buscador de fuentes
 
-El índice busca fragmentos en los archivos Markdown de `fuentes_AA_md/` y abre los resultados en una vista HTML legible. La carpeta de fuentes incluye un catálogo de lectura. Como el sitio usa GitHub Pages público, tanto los Markdown originales como el buscador quedan accesibles públicamente.
+El índice busca fragmentos en las versiones HTML de `Fuentes_AA_Area3/html/` y en el formato de proyectos de `fuentes_AA_md/`, y abre cada resultado en su página de origen. [Abrir repositorio de fuentes](https://wiroal.github.io/racsg/Fuentes_AA_Area3/). Como el sitio usa GitHub Pages público, las fuentes y el buscador quedan accesibles públicamente.

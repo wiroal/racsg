@@ -81,6 +81,7 @@
             <li>Comité, proponente y documentos de respaldo.</li>
             <li>Calendario de consulta y estado de revisión.</li>
           </ul>
+          <div class="links" style="margin-top:12px"><a class="text-link" href="lector_fuentes.html?doc=formato_proyectos_accion_recomendable.md">Abrir formato →</a><a class="text-link" href="https://wiroal.github.io/proyecto_accion_recomendable/">Preparar un proyecto →</a></div>
         </article>
 
         <article class="card">
@@ -125,11 +126,13 @@
         <article class="card"><h3>Informe de la 62.ª RAC</h3><p>Presentación que antes ocupaba la página principal, conservada como archivo de la conferencia anterior.</p><a class="text-link" href="csg62.html">Abrir archivo →</a></article>
         <article class="card"><h3>Análisis del Plan Nacional de Acción</h3><p>Material de referencia sobre unicidad de propósito y el análisis comparativo del Plan.</p><a class="text-link" href="analisis-box459-vs-plan62csg.html">Abrir análisis →</a></article>
         <article class="card"><h3>Biblioteca de AA</h3><p>Inventario y tabla de contenido por temas de los materiales disponibles.</p><a class="text-link" href="biblioteca_aa.html">Abrir biblioteca →</a></article>
-        <article class="card"><h3>Notas sobre la MRAC</h3><p>Observaciones al segundo borrador, útiles para el seguimiento del trabajo prorrogado.</p><a class="text-link" href="comentarios_mcsg_01.md">Leer comentarios →</a></article>
+        <article class="card"><h3>Notas sobre la MRAC</h3><p>Observaciones al segundo borrador, útiles para el seguimiento del trabajo prorrogado.</p><a class="text-link" href="lector_fuentes.html?doc=comentarios_mcsg_01.md">Leer comentarios →</a></article>
+        <article class="card"><h3>Repositorio de fuentes</h3><p>Los ocho documentos que consulta el buscador, para leer en HTML o descargar en PDF y texto plano.</p><a class="text-link" href="Fuentes_AA_Area3/index.html">Abrir repositorio →</a></article>
+        <article class="card"><h3>Formato de proyectos</h3><p>Plantilla para presentar un proyecto de acción recomendable a la Conferencia.</p><a class="text-link" href="lector_fuentes.html?doc=formato_proyectos_accion_recomendable.md">Abrir formato →</a></article>
       </div>
     </section>
   </main>
-  <footer><div class="wrap">Espacio de trabajo de la 63.ª Conferencia · <a href="csg62.html">Archivo 62.ª RAC</a> · <a href="biblioteca_aa.html">Biblioteca</a></div></footer>
+  <footer><div class="wrap">Espacio de trabajo de la 63.ª Conferencia · <a href="csg62.html">Archivo 62.ª RAC</a> · <a href="biblioteca_aa.html">Biblioteca</a> · <a href="Fuentes_AA_Area3/index.html">Fuentes</a> · <a href="https://wiroal.github.io/">wiroal.github.io</a></div></footer>
   <script>
     (() => {
       const sources = [
@@ -140,7 +143,8 @@
         ['Alcoholicos_Anonimos_Libro_Grande.html', 'Alcohólicos Anónimos · Libro Grande'],
         ['AA_Llega_a_su_Mayoria_de_Edad.html', 'AA llega a su mayoría de edad'],
         ['El_Lenguaje_del_Corazon.html', 'El lenguaje del corazón'],
-        ['El_Dr_Bob_y_los_Buenos_Veteranos.html', 'El Dr. Bob y los buenos veteranos']
+        ['El_Dr_Bob_y_los_Buenos_Veteranos.html', 'El Dr. Bob y los buenos veteranos'],
+        ['formato_proyectos_accion_recomendable.md', 'Formato para proyectos de acción recomendable']
       ];
       const stopWords = new Set('a al algo algunas algunos ante bajo cada como con contra cual cuales cuando de del desde donde dos el ella ellas ellos en entre era es esa esas ese esos esta estas este esto estos fue ha hasta hay la las le les lo los más me mi muy ni no nos o para pero por que qué quien se sin sobre son su sus también te tiene todo tras tu un una uno unos unas y ya'.split(' '));
       const log = document.getElementById('chat-log');
@@ -215,7 +219,7 @@
 
       function loadIndex() {
         if (!chunksPromise) chunksPromise = Promise.all(sources.map(async ([file, title]) => {
-          const response = await fetch('Fuentes_AA_Area3/html/' + encodeURIComponent(file));
+          const response = await fetch((file.endsWith('.md') ? 'fuentes_AA_md/' : 'Fuentes_AA_Area3/html/') + encodeURIComponent(file));
           if (!response.ok) throw new Error('No se pudo cargar ' + file + ' (' + response.status + ').');
           const html = await response.text();
           const parsed = new DOMParser().parseFromString(html, 'text/html');
@@ -286,7 +290,9 @@
           const source = document.createElement('div');
           source.className = 'source-hit';
           const link = document.createElement('a');
-          link.href = 'Fuentes_AA_Area3/html/' + encodeURIComponent(hit.file) + (hit.anchor ? '#' + encodeURIComponent(hit.anchor) : '');
+          link.href = hit.file.endsWith('.md')
+            ? 'lector_fuentes.html?doc=' + encodeURIComponent(hit.file) + '&seccion=' + encodeURIComponent(hit.heading)
+            : 'Fuentes_AA_Area3/html/' + encodeURIComponent(hit.file) + (hit.anchor ? '#' + encodeURIComponent(hit.anchor) : '');
           link.target = '_blank'; link.rel = 'noopener';
           link.textContent = hit.title;
           source.appendChild(link);
@@ -312,7 +318,7 @@
           if (hits.length) addBubble('bot', `Encontré ${hits.length} pasajes que pueden servir. Revisa el fragmento y abre la fuente para leerlo en contexto:`, hits);
           else addBubble('bot', 'No encontré coincidencias claras. Prueba con términos más concretos, el nombre de un comité, una tradición o el año de la recomendación.');
         } catch (error) {
-          addBubble('bot', 'No pude cargar las fuentes publicadas en fuentes_AA_md/. Verifica que estén disponibles en el sitio y vuelve a intentarlo. Detalle: ' + error.message);
+          addBubble('bot', 'No pude cargar las fuentes publicadas. Verifica que estén disponibles en el sitio y vuelve a intentarlo. Detalle: ' + error.message);
         } finally {
           submit.disabled = false;
           submit.textContent = 'Buscar';
