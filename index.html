@@ -17,7 +17,7 @@
     .notice{background:#fff;border-left:4px solid var(--gold);padding:16px 18px;border-radius:8px;box-shadow:0 2px 10px #17264d0b;margin-bottom:22px}.notice strong{color:var(--navy)}
     .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.card{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:19px;box-shadow:0 3px 12px #17264d08}.card h3{font-size:1.08rem;color:var(--navy);margin:0 0 8px}.card p{color:#505a6e;margin:0 0 12px}.meta{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:#eef1f7;color:#405174;margin-bottom:9px}.meta.pending{background:#fbf3dc;color:#795b13}.meta.active{background:#e8f2ec;color:var(--green)}
     .links{display:flex;flex-wrap:wrap;gap:10px}.text-link{color:#284d86;font-weight:700;text-decoration-thickness:1px;text-underline-offset:3px}.small{font-size:.9rem;color:var(--muted)}.checklist{padding-left:20px;margin:10px 0 0;color:#505a6e}.checklist li{margin:5px 0}
-    .search-shell{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 5px 20px #17264d0c}.chat-log{height:min(460px,60vh);min-height:260px;overflow:auto;padding:18px;background:#f8f9fb;display:flex;flex-direction:column;gap:13px}.bubble{max-width:min(760px,94%);padding:13px 15px;border-radius:12px;background:#fff;border:1px solid var(--line);white-space:pre-wrap}.bubble.user{align-self:flex-end;background:#eaf0fa;border-color:#d9e3f4}.bubble.bot{align-self:flex-start}.bubble p{margin:0 0 8px}.bubble p:last-child{margin-bottom:0}.bubble .source-hit{display:block;margin-top:11px;padding-top:10px;border-top:1px solid var(--line);font-size:.9rem}.source-hit a{color:#284d86;font-weight:700;text-decoration-thickness:1px;text-underline-offset:2px}.source-hit small{display:block;color:var(--muted);margin-top:2px}.chat-form{padding:14px;border-top:1px solid var(--line);display:flex;gap:10px}.chat-form input{min-width:0;flex:1;padding:12px 13px;border:1px solid #cbd2de;border-radius:8px;font:inherit}.chat-form input:focus{outline:3px solid #dce5f3;border-color:#49699d}.chat-form button{border:0;border-radius:8px;background:var(--navy);color:#fff;padding:0 20px;font:700 1rem system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer}.chat-form button:disabled{opacity:.55;cursor:wait}.suggestions{display:flex;flex-wrap:wrap;gap:8px;padding:0 14px 14px}.suggestions button{background:#f3f5f8;border:1px solid var(--line);border-radius:20px;padding:7px 11px;color:#33415d;cursor:pointer;font:inherit;font-size:.85rem}.search-note{padding:0 14px 14px;color:var(--muted);font-size:.82rem}
+    .search-shell{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 5px 20px #17264d0c}.chat-log{height:min(460px,60vh);min-height:260px;overflow:auto;padding:18px;background:#f8f9fb;display:flex;flex-direction:column;gap:13px}.bubble{max-width:min(760px,94%);padding:13px 15px;border-radius:12px;background:#fff;border:1px solid var(--line);white-space:pre-wrap}.bubble.user{align-self:flex-end;background:#eaf0fa;border-color:#d9e3f4}.bubble.bot{align-self:flex-start}.bubble p{margin:0 0 8px}.bubble p:last-child{margin-bottom:0}.bubble .source-hit{display:block;margin-top:11px;padding-top:10px;border-top:1px solid var(--line);font-size:.9rem}.source-hit a{color:#284d86;font-weight:700;text-decoration-thickness:1px;text-underline-offset:2px}.source-hit small{display:block;color:var(--muted);margin-top:2px}.accion-texto{margin-top:6px}.more{margin-top:12px;background:#f3f5f8;border:1px solid var(--line);border-radius:20px;padding:7px 13px;color:#33415d;cursor:pointer;font:inherit;font-size:.85rem}.chat-form{padding:14px;border-top:1px solid var(--line);display:flex;gap:10px}.chat-form input{min-width:0;flex:1;padding:12px 13px;border:1px solid #cbd2de;border-radius:8px;font:inherit}.chat-form input:focus{outline:3px solid #dce5f3;border-color:#49699d}.chat-form button{border:0;border-radius:8px;background:var(--navy);color:#fff;padding:0 20px;font:700 1rem system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer}.chat-form button:disabled{opacity:.55;cursor:wait}.suggestions{display:flex;flex-wrap:wrap;gap:8px;padding:0 14px 14px}.suggestions button{background:#f3f5f8;border:1px solid var(--line);border-radius:20px;padding:7px 11px;color:#33415d;cursor:pointer;font:inherit;font-size:.85rem}.search-note{padding:0 14px 14px;color:var(--muted);font-size:.82rem}
     footer{background:var(--navy);color:#dbe2ef;padding:22px;text-align:center;font-size:.88rem}footer a{color:#f0d889}
     @media(max-width:680px){.grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:6px}.hero{padding-top:35px}}
   </style>
@@ -100,7 +100,7 @@
       </div>
       <div class="search-shell">
         <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-label="Conversación con el buscador">
-          <div class="bubble bot">Puedo buscar en acciones recomendables, el informe de la 62.ª Conferencia, el Manual de Servicio, los Doce Pasos y Doce Tradiciones y otros textos de la biblioteca. Escribe una pregunta o un tema; te mostraré fragmentos y enlaces a sus fuentes.</div>
+          <div class="bubble bot">Busco primero en las 344 acciones recomendables y luego en el informe de la 62.ª Conferencia, el Manual de Servicio, los Doce Pasos y Doce Tradiciones y otros textos de la biblioteca. Escribe un tema, un comité o un año; cada resultado enlaza a su fuente.</div>
         </div>
         <form class="chat-form" id="search-form">
           <label for="search-query" class="small" style="position:absolute;left:-10000px">Pregunta o tema</label>
@@ -280,6 +280,96 @@
         return excerpt;
       }
 
+      // Las acciones recomendables se buscan aparte, sobre la base de datos por comité y año,
+      // y se muestran antes que los demás documentos.
+      const ACCIONES_URL = 'https://wiroal.github.io/proyecto_accion_recomendable/datos_acciones.js';
+      const ACCIONES_POR_TANDA = 8;
+      const palabrasDelTema = new Set('accion acciones recomendable recomendables recomendacion recomendaciones recomienda recomiendan habla hablan dice dicen'.split(' '));
+      const ordinales = {uno: ['uno', 'primer', 'primera'], dos: ['dos', 'segundo', 'segunda'], tres: ['tres', 'tercer', 'tercera'], cuatro: ['cuatro', 'cuarto', 'cuarta'], cinco: ['cinco', 'quinto', 'quinta'], seis: ['seis', 'sexto', 'sexta'], siete: ['siete', 'septimo', 'septima'], ocho: ['ocho', 'octavo', 'octava'], nueve: ['nueve', 'noveno', 'novena'], diez: ['diez', 'decimo', 'decima'], once: ['once', 'undecimo', 'undecima'], doce: ['doce', 'duodecimo', 'duodecima']};
+      let accionesPromise;
+
+      function loadAcciones() {
+        if (!accionesPromise) accionesPromise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = ACCIONES_URL;
+          script.onload = () => resolve(ACCIONES.map((accion, orden) => ({...accion, orden, texto: ' ' + normalize(accion.t + ' ' + accion.k), comite: ' ' + normalize(accion.c)})));
+          script.onerror = () => { accionesPromise = null; reject(new Error('Sin datos de acciones')); };
+          document.head.appendChild(script);
+        });
+        return accionesPromise;
+      }
+
+      // Las páginas que ya están en la base no se repiten como «otras fuentes».
+      function cubiertoPorAcciones(chunk, acciones) {
+        if (chunk.file !== 'Acciones_Recomendables_1965-2026.html') return false;
+        const pagina = Number((chunk.anchor || '').slice(1));
+        return acciones.some(accion => accion.p + 1 === pagina);
+      }
+
+      function rankAcciones(acciones, query) {
+        const consulta = normalize(query);
+        const anios = (consulta.match(/\b(?:19|20)\d\d\b/g) || []).map(Number);
+        const de62 = /\b(?:conferencia|rac) 62\b|\b62 (?:a )?(?:conferencia|rac)\b/.test(consulta);
+        if (de62) anios.push(2026);
+        const terminos = [...new Set(termsFor(query))]
+          .filter(term => !palabrasDelTema.has(term) && !/^(?:19|20)\d\d$/.test(term) && !(de62 && (term === 'conferencia' || term === 'rac')))
+          .map(term => (ordinales[term] || [term.length > 4 ? term.replace(/(?:es|s)$/, '') : term]).map(forma => ' ' + forma));
+        const candidatas = anios.length ? acciones.filter(accion => anios.includes(accion.a)) : acciones;
+        const peso = terminos.map(formas => Math.log(1 + acciones.length / (1 + acciones.filter(accion => formas.some(forma => accion.texto.includes(forma) || accion.comite.includes(forma))).length)));
+        const puntuadas = candidatas.map(accion => {
+          let score = 0, coincidencias = 0;
+          terminos.forEach((formas, indice) => {
+            const enComite = formas.some(forma => accion.comite.includes(forma));
+            if (!enComite && !formas.some(forma => accion.texto.includes(forma))) return;
+            coincidencias++;
+            score += peso[indice] + (enComite ? 2 : 0);
+          });
+          return {...accion, score, coincidencias};
+        });
+        const orden = (a, b) => b.score - a.score || b.a - a.a || a.orden - b.orden;
+        if (!terminos.length) return {lista: anios.length || termsFor(query).length ? puntuadas.sort(orden) : [], parcial: false};
+        const completas = puntuadas.filter(accion => accion.coincidencias === terminos.length);
+        if (completas.length) return {lista: completas.sort(orden), parcial: false};
+        const minimo = Math.max(1, Math.ceil(terminos.length / 2));
+        return {lista: puntuadas.filter(accion => accion.coincidencias >= minimo).sort(orden), parcial: true};
+      }
+
+      function addAcciones({lista, parcial}) {
+        const total = lista.length;
+        const mensaje = !total ? 'No encontré acciones recomendables con esos términos. Prueba con el nombre de un comité, un año o una palabra más general.'
+          : (parcial ? `Ninguna acción recomendable reúne todos los términos; estas ${total} coinciden con parte de ellos:`
+          : total === 1 ? 'Encontré 1 acción recomendable:' : `Encontré ${total} acciones recomendables:`);
+        const bubble = addBubble('bot', mensaje);
+        let mostradas = 0;
+        const mas = document.createElement('button');
+        mas.type = 'button';
+        mas.className = 'more';
+        const mostrarTanda = () => {
+          for (const accion of lista.slice(mostradas, mostradas + ACCIONES_POR_TANDA)) {
+            const ficha = document.createElement('div');
+            ficha.className = 'source-hit';
+            const link = document.createElement('a');
+            link.href = 'Fuentes_AA_Area3/html/Acciones_Recomendables_1965-2026.html#p' + (accion.p + 1);
+            link.target = '_blank'; link.rel = 'noopener';
+            link.textContent = accion.c + ' · ' + accion.a;
+            const tipo = document.createElement('small');
+            tipo.textContent = accion.k + ' · pág. ' + accion.p + ' del documento';
+            const texto = document.createElement('div');
+            texto.className = 'accion-texto';
+            texto.textContent = accion.t;
+            ficha.append(link, tipo, texto);
+            bubble.insertBefore(ficha, mas.isConnected ? mas : null);
+          }
+          mostradas = Math.min(total, mostradas + ACCIONES_POR_TANDA);
+          const faltan = total - mostradas;
+          if (faltan) { mas.textContent = `Mostrar ${Math.min(faltan, ACCIONES_POR_TANDA)} más (faltan ${faltan})`; if (!mas.isConnected) bubble.appendChild(mas); }
+          else mas.remove();
+        };
+        mas.addEventListener('click', mostrarTanda);
+        mostrarTanda();
+        return bubble;
+      }
+
       function addBubble(kind, message, hits = []) {
         const bubble = document.createElement('div');
         bubble.className = 'bubble ' + kind;
@@ -306,6 +396,7 @@
         }
         log.appendChild(bubble);
         log.scrollTop = log.scrollHeight;
+        return bubble;
       }
 
       async function search(query) {
@@ -313,10 +404,15 @@
         submit.disabled = true;
         submit.textContent = 'Buscando…';
         try {
+          const acciones = await loadAcciones().catch(() => null);
+          const accionesBubble = acciones ? addAcciones(rankAcciones(acciones, query)) : null;
           const chunks = await loadIndex();
-          const hits = rankChunks(chunks, query);
-          if (hits.length) addBubble('bot', `Encontré ${hits.length} pasajes que pueden servir. Revisa el fragmento y abre la fuente para leerlo en contexto:`, hits);
-          else addBubble('bot', 'No encontré coincidencias claras. Prueba con términos más concretos, el nombre de un comité, una tradición o el año de la recomendación.');
+          const hits = rankChunks(acciones ? chunks.filter(chunk => !cubiertoPorAcciones(chunk, acciones)) : chunks, query);
+          if (hits.length) addBubble('bot', `En otras fuentes encontré ${hits.length} pasajes relacionados:`, hits);
+          else if (!acciones) addBubble('bot', 'No encontré coincidencias claras. Prueba con términos más concretos, el nombre de un comité, una tradición o el año de la recomendación.');
+          else addBubble('bot', 'No encontré pasajes relacionados en las otras fuentes.');
+          if (!acciones) addBubble('bot', 'No pude cargar la lista de acciones recomendables. Estos resultados vienen solo de los documentos; vuelve a intentarlo para ver las acciones por comité y año.');
+          if (accionesBubble) log.scrollTop += accionesBubble.getBoundingClientRect().top - log.getBoundingClientRect().top - 12;
         } catch (error) {
           addBubble('bot', 'No pude cargar las fuentes publicadas. Verifica que estén disponibles en el sitio y vuelve a intentarlo. Detalle: ' + error.message);
         } finally {
