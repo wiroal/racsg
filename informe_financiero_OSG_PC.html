@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Informe Financiero OSG 2025 · Área 3, Región C</title>
+<title>Informe Financiero OSG · 2025 y Corte Octubre 2026 (Reporte 7) · Área 3, Región C</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -166,7 +166,18 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Source S
 .fin-table .pos { color:var(--green); font-weight:700; }
 .fin-table .neg { color:var(--accent); font-weight:700; }
 .fin-table .deficit-row td { background:#fee2e2; font-weight:700; color:#7f1d1d; font-size:.9rem; border-top:2px solid var(--accent); }
+.fin-table .surplus-row td { background:#d1fae5; font-weight:700; color:#065f46; font-size:.9rem; border-top:2px solid var(--green); }
 .fin-table .section-head td { background:rgba(26,36,86,.06); font-size:.68rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; padding:5px 14px; }
+
+/* ══ Q1 TREND BARS ══ */
+.trend-block { display:flex; flex-direction:column; gap:7px; }
+.trend-month { display:flex; align-items:center; gap:9px; }
+.trend-mes { font-size:.74rem; color:var(--muted); min-width:38px; flex-shrink:0; text-align:right; font-weight:600; }
+.trend-bars { flex:1; display:flex; flex-direction:column; gap:3px; }
+.trend-ing, .trend-gas { height:15px; border-radius:3px; display:flex; align-items:center; padding-left:7px; }
+.trend-ing span, .trend-gas span { font-size:.65rem; font-weight:700; color:var(--white); white-space:nowrap; }
+.trend-legend { display:flex; gap:14px; justify-content:flex-end; margin-bottom:2px; }
+.legend-box { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
 
 /* ══ REGION TABLE ══ */
 .reg-table { width:100%; border-collapse:collapse; font-size:.84rem; }
@@ -221,9 +232,9 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Source S
       <button class="tbtn" id="btnReset">↺ Reset</button>
     </div>
   </div>
-  <div id="topbar-center"><div id="slide-title-bar">Informe Financiero OSG 2025 · Área 3, Región C</div></div>
+  <div id="topbar-center"><div id="slide-title-bar">Informe Financiero OSG · 2025 y Corte Octubre 2026 · Área 3, Región C</div></div>
   <div id="topbar-right">
-    <div id="slide-counter">1 / 7</div>
+    <div id="slide-counter">1 / 11</div>
     <button class="nav-btn" id="btnPrev" disabled>← Anterior</button>
     <button class="nav-btn primary" id="btnNext">Siguiente →</button>
   </div>
@@ -244,15 +255,15 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Source S
 <div class="slide-data" data-label="Portada">
   <div class="cover-wrap">
     <div class="cover-hero">
-      <div class="cover-badge">ÁREA 3, REGIÓN C · TERRITORIO SUR · BOGOTÁ · CONFIDENCIAL</div>
-      <h1>Informe Financiero OSG 2025</h1>
+      <div class="cover-badge">ÁREA 3, REGIÓN C · BOGOTÁ · REPORTE 7 · CORTE OCTUBRE 2026</div>
+      <h1>Informe Financiero OSG<br><span style="font-size:1.75rem;color:var(--gold-lt)">Cierre 2025 · Q1 2026 · Corte Octubre 2026</span></h1>
       <p class="lema">"...fondos suficientes para su funcionamiento, más una reserva adecuada, sean su prudente principio financiero..."<br><em style="font-size:.82rem;color:#a0aec0">— Garantías Generales · Art. 12 Carta Constitutiva</em></p>
     </div>
     <div class="cover-meta">
-      <div class="meta-item"><div class="meta-val deficit">-$163,8M</div><div class="meta-lbl">Déficit 2025</div></div>
-      <div class="meta-item"><div class="meta-val" style="font-size:1.3rem">$153,4M</div><div class="meta-lbl">Impuesto renta (causa)</div></div>
-      <div class="meta-item"><div class="meta-val green">97,5%</div><div class="meta-lbl">Ejecución Región C</div></div>
-      <div class="meta-item"><div class="meta-val top1" style="font-size:1.3rem;color:var(--navy)">#1 País</div><div class="meta-lbl">Literatura OSG · Reg. C</div></div>
+      <div class="meta-item"><div class="meta-val deficit">−$163,8M</div><div class="meta-lbl">Déficit 2025 (cierre)</div></div>
+      <div class="meta-item"><div class="meta-val" style="color:var(--orange)">−$31,7M</div><div class="meta-lbl">Déficit 2026 (ene–oct)</div></div>
+      <div class="meta-item"><div class="meta-val deficit">−$195,5M</div><div class="meta-lbl">Déficit acumulado total</div></div>
+      <div class="meta-item"><div class="meta-val green">$231,1M</div><div class="meta-lbl">Reserva Prudente (oct)</div></div>
     </div>
   </div>
 </div>
@@ -465,18 +476,202 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Source S
   </div>
 </div>
 
-<!-- ⑦ CIERRE -->
+<!-- ⑦ PRIMER TRIMESTRE 2026 -->
+<div class="slide-data" data-label="Q1 2026 · Recuperación">
+  <div class="s-header">
+    <div class="s-tag">Primer Trimestre 2026 · ¿Cómo empezó el año?</div>
+    <div class="s-title">Señales de Recuperación (Enero – Marzo 2026)</div>
+    <div class="s-sub">Comparativo Q1 2026 vs. Q1 2025 · Cifras en miles de pesos</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col">
+      <div class="card-grid g2">
+        <div class="card green">
+          <div class="card-lbl">Ingresos crecen</div>
+          <div class="card-val green">+28%</div>
+          <div class="card-desc">De $193,9M a <strong>$248,1M</strong></div>
+        </div>
+        <div class="card gold">
+          <div class="card-lbl">Gastos suben solo</div>
+          <div class="card-val gold">+12,5%</div>
+          <div class="card-desc">De $264,5M a <strong>$297,6M</strong></div>
+        </div>
+      </div>
+      <table class="fin-table">
+        <thead><tr><th>Mes</th><th class="r">Ing. 2026</th><th class="r">Ing. 2025</th><th class="r">Var.</th></tr></thead>
+        <tbody>
+          <tr><td>Enero</td><td class="r">$49.430</td><td class="r">$43.941</td><td class="r pos">+$5.489</td></tr>
+          <tr><td>Febrero</td><td class="r">$74.940</td><td class="r">$63.998</td><td class="r pos">+$10.942</td></tr>
+          <tr><td>Marzo</td><td class="r">$123.675</td><td class="r">$85.967</td><td class="r pos">+$37.708</td></tr>
+          <tr class="sub"><td><strong>Total Q1</strong></td><td class="r"><strong>$248.135</strong></td><td class="r"><strong>$193.906</strong></td><td class="r pos"><strong>+$54.229</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="hbox green-bg">Los ingresos crecieron al <strong>doble de velocidad</strong> que los gastos — primera señal clara de recuperación en 2026.</div>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Tendencia mensual Q1 · Ingresos vs. Gastos</div>
+      <div class="trend-legend">
+        <div class="legend-item"><div class="legend-box" style="background:var(--green)"></div><span style="font-size:.72rem;color:var(--muted)">Ingresos 2026</span></div>
+        <div class="legend-item"><div class="legend-box" style="background:var(--accent)"></div><span style="font-size:.72rem;color:var(--muted)">Gastos 2026</span></div>
+      </div>
+      <div class="trend-block">
+        <div class="trend-month">
+          <div class="trend-mes">Ene</div>
+          <div class="trend-bars"><div class="trend-ing" style="width:40%;background:var(--green)"><span>$49,4M</span></div><div class="trend-gas" style="width:63%;background:var(--accent)"><span>$78,1M</span></div></div>
+        </div>
+        <div class="trend-month">
+          <div class="trend-mes">Feb</div>
+          <div class="trend-bars"><div class="trend-ing" style="width:60%;background:var(--green)"><span>$74,9M</span></div><div class="trend-gas" style="width:77%;background:var(--accent)"><span>$95,1M</span></div></div>
+        </div>
+        <div class="trend-month">
+          <div class="trend-mes">Mar</div>
+          <div class="trend-bars"><div class="trend-ing" style="width:100%;background:var(--green)"><span>$123,7M</span></div><div class="trend-gas" style="width:100%;background:var(--accent)"><span>$124,3M</span></div></div>
+        </div>
+      </div>
+      <div class="card-grid g2" style="margin-top:4px">
+        <div class="card red"><div class="card-lbl">Déficit Q1 2026</div><div class="card-val red">−$49,4M</div><div class="card-desc">Estacionalidad de inicio de año</div></div>
+        <div class="card green"><div class="card-lbl">Mejora vs. Q1 2025</div><div class="card-val green">+$21,1M</div><div class="card-desc">Déficit 30% menor que en Q1 2025</div></div>
+      </div>
+      <div class="hbox cream" style="margin-top:auto"><strong>Lectura Q1:</strong> En marzo los ingresos casi igualaron los gastos ($123,7M vs. $124,3M), anticipando el repunte de mitad de año.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑧ CORTE OCTUBRE 2026 · REPORTE 7 -->
+<div class="slide-data" data-label="Oct 2026 · Reporte 7">
+  <div class="s-header">
+    <div class="s-tag">Reporte 7 · 63.ª Conferencia · Corte 31 de octubre de 2026</div>
+    <div class="s-title">El Déficit Baja: Balance y Resultados a Octubre 2026</div>
+    <div class="s-sub">Tres meses consecutivos con superávit · Prudencia financiera y austeridad</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col">
+      <table class="fin-table" style="font-size:.78rem">
+        <thead><tr><th>Estado de Resultados (Ene–Oct 2026)</th><th class="r">Acumulado ($)</th></tr></thead>
+        <tbody>
+          <tr><td>Ingresos misionales – Literatura</td><td class="r">520.634.204</td></tr>
+          <tr><td>Ingresos comunitarios (Aportes)</td><td class="r">313.311.096</td></tr>
+          <tr><td>Excedentes de eventos</td><td class="r">89.114.327</td></tr>
+          <tr><td>Suscripción Boletín y Revista</td><td class="r">58.968.000</td></tr>
+          <tr class="sub"><td><strong>TOTAL INGRESOS ORDINARIOS</strong></td><td class="r"><strong>982.027.627</strong></td></tr>
+          <tr><td>Gastos operacionales</td><td class="r">607.541.111</td></tr>
+          <tr><td>Gastos misionales</td><td class="r">405.873.692</td></tr>
+          <tr><td>No operacionales (neto: $12,95M − $13,26M)</td><td class="r neg">−304.531</td></tr>
+          <tr class="surplus-row"><td>Superávit del mes de octubre 2026</td><td class="r">+$27.373.875</td></tr>
+          <tr class="deficit-row"><td>DÉFICIT EJERCICIO 2026 (a oct 31)</td><td class="r">−$31.691.707</td></tr>
+        </tbody>
+      </table>
+      <div class="hbox navy" style="padding:10px 14px;font-size:.79rem"><strong>Balance General (31 oct 2026):</strong> Activos <strong>$531,8M</strong> (Disponible $168,3M · Inversiones $142,9M · Inventarios $132,6M) · Pasivos <strong>$153,5M</strong> · Patrimonio <strong>$378,3M</strong>.</div>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Evolución del déficit acumulado (2025 + 2026)</div>
+      <div class="card-grid g2">
+        <div class="card red">
+          <div class="card-lbl">Pico en julio 2026</div>
+          <div class="card-val red">−$274,4M</div>
+          <div class="card-desc">Acumulado máximo antes de la racha positiva</div>
+        </div>
+        <div class="card green">
+          <div class="card-lbl">Acumulado a oct 2026</div>
+          <div class="card-val green">−$195,5M</div>
+          <div class="card-desc">Bajó <strong>$79M</strong> entre julio y octubre</div>
+        </div>
+      </div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">2025 (cierre)</div><div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--navy)"><span>−$163,8M</span></div></div><div class="bar-val">$163,8M</div></div>
+        <div class="bar-row"><div class="bar-label">Julio 2026 (pico)</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--accent)"><span>−$274,4M</span></div></div><div class="bar-val">$274,4M</div></div>
+        <div class="bar-row"><div class="bar-label">Septiembre 2026</div><div class="bar-track"><div class="bar-fill" style="width:81%;background:var(--orange)"><span>−$222,9M</span></div></div><div class="bar-val">$222,9M</div></div>
+        <div class="bar-row"><div class="bar-label" style="font-weight:700;color:var(--navy)">Octubre 2026 ★</div><div class="bar-track"><div class="bar-fill" style="width:71%;background:var(--green)"><span>−$195,5M</span></div></div><div class="bar-val">$195,5M</div></div>
+      </div>
+      <div class="card-grid g2">
+        <div class="card gold"><div class="card-lbl">Composición a oct 31</div><div class="card-val" style="font-size:1rem">−$163,8M + −$31,7M</div><div class="card-desc">Déficit 2025 + Ene–Oct 2026 = <strong>−$195.487.155</strong></div></div>
+        <div class="card green"><div class="card-lbl">Reserva Prudente</div><div class="card-val green">$231,1M</div><div class="card-desc">CDT + reservas ($301,9M reservas totales)</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑨ ESTADÍSTICAS A OCTUBRE 2026 -->
+<div class="slide-data" data-label="Oct 2026 · Regiones y Área 3">
+  <div class="s-header">
+    <div class="s-tag">OSG Área de Contabilidad · Estadísticas Enero – Octubre 2026</div>
+    <div class="s-title">Aportes y Literatura por Regiones y Área 3</div>
+    <div class="s-sub">Meta presupuestal acumulada a octubre: 83% del presupuesto anual</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col">
+      <table class="reg-table" style="font-size:.78rem">
+        <thead><tr><th>Región</th><th class="r">Presup. 2026</th><th class="r">Aportes Oct</th><th class="r">Meta Oct</th><th class="r">% Ejec.</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A</strong></td><td class="r">$56,2M</td><td class="r">$39,1M</td><td class="r">$46,8M</td><td class="r"><span class="pct-bar warn" style="width:28px"></span>69,6%</td></tr>
+          <tr><td><strong>B</strong></td><td class="r">$86,3M</td><td class="r">$26,9M</td><td class="r">$71,9M</td><td class="r"><span class="pct-bar low" style="width:13px"></span>31,2%</td></tr>
+          <tr class="highlight-row"><td><strong>C · Bogotá ★</strong></td><td class="r">$94,2M</td><td class="r">$64,7M</td><td class="r">$78,5M</td><td class="r"><span class="pct-bar warn" style="width:27px"></span>68,7%</td></tr>
+          <tr><td><strong>D</strong></td><td class="r">$64,5M</td><td class="r">$53,7M</td><td class="r">$53,8M</td><td class="r"><span class="pct-bar over" style="width:33px"></span>83,2%</td></tr>
+          <tr><td><strong>E</strong></td><td class="r">$219,0M</td><td class="r">$121,8M</td><td class="r">$182,5M</td><td class="r"><span class="pct-bar low" style="width:22px"></span>55,6%</td></tr>
+          <tr class="tot"><td><strong>TOTAL (+$7,2M x id.)</strong></td><td class="r"><strong>$520,1M</strong></td><td class="r"><strong>$313,3M</strong></td><td class="r"><strong>83%</strong></td><td class="r"><strong>60,2%</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="hbox orange" style="padding:10px 14px;font-size:.8rem"><strong>Región C frente a su presupuesto (meta oct 83%):</strong><br>Eventos <strong>149,5%</strong> ($32,1M) · Literatura <strong>94,2%</strong> ($134,9M) · Aportes <strong>68,7%</strong> ($64,7M). Faltan <strong>$13,7M</strong> para alcanzar la meta de aportes a octubre.</div>
+      <div class="hbox navy" style="padding:10px 14px;font-size:.79rem;margin-top:auto"><strong>Modalidades oct 2026:</strong> Mensual grupos $194,3M (63,5%) · Aniv. miembro $44,5M (14,5%) · Voluntario $28,3M (9,2%) · Sem. Gratitud previa $8,8M.</div>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Top 6 Áreas en Aportes (ene–oct 2026)</div>
+      <div class="bar-chart">
+        <div class="bar-row"><div class="bar-label">Reg. E · Área 7</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--navy)"><span>$50,0M</span></div></div><div class="bar-val">$50,0M</div></div>
+        <div class="bar-row"><div class="bar-label">Reg. E · Área 6</div><div class="bar-track"><div class="bar-fill" style="width:66%;background:var(--navy-mid)"><span>$33,2M</span></div></div><div class="bar-val">$33,2M</div></div>
+        <div class="bar-row"><div class="bar-label" style="color:var(--navy);font-weight:700">Reg. C · Área 3 ★</div><div class="bar-track"><div class="bar-fill" style="width:58%;background:var(--gold)"><span>$29,1M</span></div></div><div class="bar-val">$29,1M</div></div>
+        <div class="bar-row"><div class="bar-label">Reg. D · Área 3</div><div class="bar-track"><div class="bar-fill" style="width:43%;background:#6b7280"><span>$21,7M</span></div></div><div class="bar-val">$21,7M</div></div>
+        <div class="bar-row"><div class="bar-label">Reg. E · Área 3</div><div class="bar-track"><div class="bar-fill" style="width:35%;background:#9ca3af"><span>$17,5M</span></div></div><div class="bar-val">$17,5M</div></div>
+      </div>
+      <div class="card-grid g2">
+        <div class="card gold"><div class="card-lbl">Área 3 · Aportes</div><div class="card-val gold">#3 del País</div><div class="card-desc"><strong>$29,1M</strong> (44,9% de Reg. C · 9,5% del país)</div></div>
+        <div class="card green"><div class="card-lbl">Área 3 · Literatura OSG</div><div class="card-val green">#1 del País</div><div class="card-desc"><strong>$64,9M</strong> · Reg. C compra <strong>+31%</strong>/miembro ($52.535 vs. $40.140 país)</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑩ SEMANA DE LA GRATITUD Y NOVEDADES REPORTE 7 -->
+<div class="slide-data" data-label="Gratitud y Reporte 7">
+  <div class="s-header">
+    <div class="s-tag">Reporte 7 · Noviembre 2026 · 63.ª Conferencia</div>
+    <div class="s-title">Semana de la Gratitud y Agenda Hacia la 63.ª RAC</div>
+    <div class="s-sub">23 al 29 de noviembre de 2026 · "La prudencia financiera ha rendido sus frutos en vidas salvadas"</div>
+  </div>
+  <div class="s-body cols">
+    <div class="col">
+      <div class="hbox gold-bg" style="font-size:.9rem"><strong>Meta inmediata en Región C:</strong> cerrar la brecha de <strong>$13,7M</strong> en aportes durante la Semana de la Gratitud para superar el déficit acumulado muy pronto.</div>
+      <div class="card-grid g2">
+        <div class="card gold"><div class="card-lbl">Llave Bre-B / Bancolombia</div><div class="card-val">0090041712</div><div class="card-desc">Ahorros Bancolombia 10035135274 · Caja Social 26506414192 · NIT 890906108-5</div></div>
+        <div class="card green"><div class="card-lbl">Enviar comprobante</div><div class="card-val green">314 792 2703</div><div class="card-desc">WhatsApp · secretariageneral@aacolombia.org (indicar grupo/área y concepto)</div></div>
+      </div>
+      <div class="hbox cream"><strong>Transferencia electrónica:</strong> se agradece usar canales electrónicos en lugar de oficinas o corresponsales para evitar tarifas bancarias costosas.</div>
+    </div>
+    <div class="col">
+      <div class="sec-lbl">Hitos institucionales del Reporte 7</div>
+      <div class="item-list">
+        <div class="item-row"><div class="dot gr"></div><div class="item-text"><strong>29 oct 2026 · Expediente IVC 037/2025 archivado:</strong> Gobernación de Antioquia cerró actuación preliminar sin mérito para cargos (sujeto a recurso de reposición).</div></div>
+        <div class="item-row"><div class="dot g"></div><div class="item-text"><strong>23 – 29 nov 2026 · Semana de la Gratitud:</strong> renovación nacional del compromiso con la Séptima Tradición.</div></div>
+        <div class="item-row"><div class="dot"></div><div class="item-text"><strong>06 feb 2027 · Fecha límite:</strong> envío de temas, proyectos de recomendación e informes de Delegados (Paneles 62 y 63).</div></div>
+        <div class="item-row"><div class="dot g"></div><div class="item-text"><strong>29 abr – 2 may 2027 · 63.ª Conferencia:</strong> Rionegro, Antioquia · Casa de Encuentros De La Salle.</div></div>
+      </div>
+      <div class="hbox navy" style="margin-top:auto"><strong>Novedades:</strong> Manual de Servicio 2025 en PDF en <em>aacolombia.org</em> · Boletín OSG N.º 551 · Revista N.º 203 y Planeador 2027.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ⑪ CIERRE -->
 <div class="slide-data" data-label="Cierre">
   <div class="closing-wrap">
     <div class="closing-hero">
-      <div class="cover-badge">DELEGADO ÁREA 3 · REGIÓN C · TERRITORIO SUR · BOGOTÁ · CONFIDENCIAL</div>
-      <h1 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--white);line-height:1.2">Informe Financiero OSG 2025</h1>
-      <p style="font-size:.95rem;color:var(--gold-lt);font-style:italic;line-height:1.6;max-width:560px">Documento preparado para compartir en grupos — Área 3, Región C, Territorio Sur</p>
+      <div class="cover-badge">DELEGADO ÁREA 3 · REGIÓN C · BOGOTÁ · REPORTE 7 · NOVIEMBRE 2026</div>
+      <h1 style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--white);line-height:1.2">Informe Financiero OSG · 2025 – Oct 2026</h1>
+      <p style="font-size:.95rem;color:var(--gold-lt);font-style:italic;line-height:1.6;max-width:560px">La Unidad, la Confianza y la Comunicación fortalecen nuestra Estructura</p>
     </div>
     <div class="closing-body">
       <div class="aa-circle">7ª</div>
-      <div class="closing-lema">"La Séptima Tradición no es una sugerencia: es la columna vertebral de nuestra independencia."</div>
-      <p style="color:var(--muted);font-size:.82rem;line-height:1.7;max-width:480px">Elaborado por el Delegado · Panel 62 · Área 3, Región C, Territorio Sur — Bogotá<br>62ª Reunión Anual de la Conferencia de Servicios Generales · Rionegro 2026<br><strong style="color:var(--accent)">DOCUMENTO CONFIDENCIAL — Solo para uso dentro de AA</strong></p>
+      <div class="closing-lema">"La prudencia financiera ha rendido sus frutos en vidas salvadas."</div>
+      <p style="color:var(--muted);font-size:.82rem;line-height:1.7;max-width:480px">Elaborado por el Delegado C3 · Panel 62 · Área 3, Región C — Bogotá<br>Fuentes: Informe 62ª RAC, Q1 2026, Reporte 7 y Estadísticas OSG a octubre 31 de 2026<br><strong style="color:var(--accent)">DOCUMENTO CONFIDENCIAL — Solo para uso dentro de AA</strong></p>
     </div>
   </div>
 </div>
@@ -486,9 +681,11 @@ html, body { height: 100%; width: 100%; overflow: hidden; font-family: 'Source S
 <script>
 const MINS = 20;
 const slideTitles = [
-  'Portada','Resumen ejecutivo','Estado de resultados',
-  'Aportes por región','Literatura — Ranking',
-  'Mensaje a los grupos','Cierre'
+  'Portada','Resumen ejecutivo 2025','Estado de resultados 2025',
+  'Aportes por región 2025','Literatura 2025 — Ranking',
+  'Mensaje a los grupos 2025','Q1 2026 — Señales de recuperación',
+  'Corte Oct 2026 — Reporte 7','Estadísticas Oct 2026 — Regiones y Área 3',
+  'Semana de la Gratitud y Agenda','Cierre'
 ];
 const tpl = document.getElementById('t-slides').content;
 const slideNodes = Array.from(tpl.querySelectorAll('.slide-data'));
